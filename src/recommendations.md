@@ -72,4 +72,4 @@ Also see [TypeScript Guide in new docs](https://vuejs.org/guide/typescript/overv
 
 ### JSX
 
-JSX support for Vue 3 is now provided via [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next).
+JSX support for Vue 3 is now provided via [`@vue/babel-plugin-jsx`](https://github.com/vuejs/babel-plugin-jsx).
