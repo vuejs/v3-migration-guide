@@ -2,4 +2,4 @@
 
 This is split from the legacy v3 documentation into a standalone repo.
 
-Deployed at v3-migration.vuejs.org
+Deployed at [v3-migration.vuejs.org](https://v3-migration.vuejs.org)
