@@ -79,7 +79,7 @@ export default {
               link: '/breaking-changes/listeners-removed'
             },
             {
-              text: '$attrs includes class & class',
+              text: '$attrs includes class & style',
               link: '/breaking-changes/attrs-includes-class-style'
             }
           ]
