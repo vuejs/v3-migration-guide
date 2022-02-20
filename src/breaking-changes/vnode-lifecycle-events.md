@@ -9,7 +9,7 @@ badges:
 
 In Vue 2, it was possible to use events to listen for key stages in a component's lifecycle. These events had names that started with the prefix `hook:`, followed by the name of the corresponding lifecycle hook.
 
-In Vue 3, this prefix has been changed to `vnode-`. In addition, these events are now available for HTML elements as well as components.
+In Vue 3, this prefix has been changed to `vue:`. In addition, these events are now available for HTML elements as well as components.
 
 ## 2.x Syntax
 
