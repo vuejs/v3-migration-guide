@@ -38,7 +38,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
 ### Preparations
 
-- If you are still using the [deprecated named / scoped slot syntax](https://vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax), update it to the latest syntax first (which is already supported in 2.6).
+- If you are still using the [deprecated named / scoped slot syntax](https://v2.vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax), update it to the latest syntax first (which is already supported in 2.6).
 
 ### Installation
 
