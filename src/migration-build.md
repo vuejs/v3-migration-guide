@@ -167,6 +167,8 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
      export { configureCompat }
    }
    ```
+ 
+   Note that this module declaration must be placed in a `*.d.ts` file which contains at least one other top-level import or export (`export {}` is enough) in order for these types to [augment the module](https://vuejs.org/guide/typescript/options-api.html#type-augmentation-placement) as opposed to overwriting it. 
 
 5. At this point, your application may encounter some compile-time errors / warnings (e.g. use of filters). Fix them first. If all compiler warnings are gone, you can also set the compiler to Vue 3 mode.
 
