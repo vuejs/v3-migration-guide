@@ -1,7 +1,3 @@
----
-sidebar: false
----
-
 # Vue 3 Migration Guide
 
 This guide is primarily for users with prior Vue 2 experience who want to learn about the changes between Vue 2 and Vue 3. **This is not something you have to read from top to bottom before trying out Vue 3.** The recommended way to learn Vue 3 is by reading the [new documentation](https://vuejs.org).
