@@ -83,19 +83,28 @@ This guide is primarily for users with prior Vue 2 experience who want to learn 
 </div>
 <!-- VueMastery End -->
 
+<style>
+.note {
+  color: #476582;
+}
+</style>
+
 ## Notable New Features
 
 Some of the new features to keep an eye on in Vue 3 include:
 
-- [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html)
-- [SFC Composition API Syntax Sugar (`<script setup>`)](https://vuejs.org/api/sfc-script-setup.html)
+- [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html)<span class="note">\*</span>
+- [SFC Composition API Syntax Sugar (`<script setup>`)](https://vuejs.org/api/sfc-script-setup.html)<span class="note">\*</span>
 - [Teleport](https://vuejs.org/guide/built-ins/teleport.html)
 - [Fragments](/new/fragments.html)
-- [Emits Component Option](https://vuejs.org/api/options-state.html#emits)
+- [Emits Component Option](https://vuejs.org/api/options-state.html#emits)<span class="note">\*\*</span>
 - [`createRenderer` API from `@vue/runtime-core`](https://vuejs.org/api/custom-renderer.html) to create custom renderers
-- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)
+- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)<span class="note">\*</span>
 - [SFC `<style scoped>` can now include global rules or rules that target only slotted content](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 - [Suspense](https://vuejs.org/guide/built-ins/suspense.html) <sup class="warning">experimental</sup>
+
+<sub class="note"><b>\*</b> Now also supported in <a href="https://blog.vuejs.org/posts/vue-2-7-naruto.html" target="_blank">Vue 2.7</a></sub><br>
+<sub class="note"><b>\*\*</b> Supported in Vue 2.7, but only for type inference</sub>
 
 ## Breaking Changes
 
