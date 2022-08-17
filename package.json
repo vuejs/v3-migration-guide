@@ -2,6 +2,7 @@
   "name": "migration-guide",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build",
@@ -11,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.5"
+    "vitepress": "^1.0.0-alpha.8"
   },
   "pnpm": {
     "peerDependencyRules": {
