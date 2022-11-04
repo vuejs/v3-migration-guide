@@ -11,6 +11,7 @@ export default {
       prev: '上一页',
       next: '下一页',
     },
+    outlineTitle: '本页目录',
     nav: [
       { text: 'Vue 3 文档', link: 'https://cn.vuejs.org' },
     ],
@@ -22,7 +23,7 @@ export default {
           { text: '新的推荐', link: '/zh/recommendations' },
           { text: '迁移构建', link: '/zh/migration-build' },
           {
-            text: '破坏性改变',
+            text: '非兼容性改变',
             link: '/zh/breaking-changes/'
           }
         ]
