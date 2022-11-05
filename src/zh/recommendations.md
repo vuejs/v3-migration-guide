@@ -6,7 +6,7 @@ Vue 3 的支持库进行了重大更新。以下是新的默认建议的摘要:
 - 构建工具: Vue CLI -> [Vite](https://vitejs.dev/)
 - 状态管理: Vuex -> [Pinia](https://pinia.vuejs.org/)
 - IDE 插件支持: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-- 新的 TypeScript 命令行工具: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc)
+- 新的 TypeScript 命令行工具: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
 - 静态网站生成: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
@@ -69,7 +69,7 @@ devtools 扩展已收到重大更新（作为 v6 发布）以同时支持 Vue 2 
 
 ### TypeScript 支持
 
-您现在可以使用 [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) 从命令行对 Vue SFC 进行类型检查和生成定义文件。
+您现在可以使用 [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc) 从命令行对 Vue SFC 进行类型检查和生成定义文件。
 或者您也可以参阅 [新文档中的 TypeScript 指南](https://cn.vuejs.org/guide/typescript/overview.html)。
 
 
