@@ -10,8 +10,6 @@ Vue 3 的支持库进行了重大更新。以下是新的默认建议的摘要:
 - 静态网站生成: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
-<!-- TODO -->
-
 ## 详情说明
 
 ### 构建工具链
