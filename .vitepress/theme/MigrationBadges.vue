@@ -1,4 +1,5 @@
 <script>
+import { useData } from 'vitepress'
 const validBadges = {
   new: 'new',
   breaking: 'breaking',
@@ -16,10 +17,15 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      validBadges
+  setup () {
+    const { site } = useData()
+    if ( site.value.lang === 'zh-CN' ) {
+      validBadges.new = '新增'
+      validBadges.breaking = '非兼容'
+      validBadges.removed = '移除'
+      validBadges.updated = '更新'
     }
+    return { validBadges }
   }
 }
 </script>
