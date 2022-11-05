@@ -6,7 +6,7 @@ The supporting libraries for Vue 3 have undergone major updates. Here is a summa
 - Build Toolchain: Vue CLI -> [Vite](https://vitejs.dev/)
 - State Management: Vuex -> [Pinia](https://pinia.vuejs.org/)
 - IDE Support: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-- New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc)
+- New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
 - SSG: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
@@ -62,7 +62,7 @@ The devtools extension has received major updates (released as v6) to support bo
 
 ### TypeScript Support
 
-You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc).
+You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
 
 Also see [TypeScript Guide in new docs](https://vuejs.org/guide/typescript/overview.html).
 
