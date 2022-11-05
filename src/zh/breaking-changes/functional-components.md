@@ -115,6 +115,6 @@ export default {
 
 有关新的函数式组件的用法和对渲染函数的更改的详细信息，请参考：
 
-- [迁移：渲染函数](/guide/migration/render-function-api.html)
-- [指南：渲染函数](/guide/render-function.html)
-- [迁移构建开关：`COMPONENT_FUNCTIONAL`](migration-build.html#兼容性配置)
+- [迁移：渲染函数](./render-function-api.html)
+- [指南：渲染函数](https://cn.vuejs.org/guide/extras/render-function.html#render-functions-jsx)
+- [迁移构建开关：`COMPONENT_FUNCTIONAL`](/zh/migration-build.html#兼容性配置)

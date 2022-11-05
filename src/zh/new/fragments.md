@@ -37,4 +37,4 @@ Vue 3 现在正式支持了多根节点的组件，也就是片段！
 </template>
 ```
 
-有关 attribute 继承如何工作的详细信息，见[非 Prop 的 Attribute](/guide/component-attrs.html)。
+有关 attribute 继承如何工作的详细信息，见[透传 Attributes](https://cn.vuejs.org/guide/components/attrs.html#fallthrough-attributes)。

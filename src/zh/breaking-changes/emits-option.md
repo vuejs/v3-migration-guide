@@ -49,7 +49,7 @@ Vue 3 现在提供一个 `emits` 选项，和现有的 `props` 选项类似。�
 
 该选项也可以接收一个对象，该对象允许开发者定义传入事件参数的验证器，和 `props` 定义里的验证器类似。
 
-更多信息请参阅[这部分特性的 API 文档](../../api/options-data.md#emits)。
+更多信息请参阅[这部分特性的 API 文档](https://cn.vuejs.org/api/options-state.html#emits)。
 
 ## 迁移策略
 
