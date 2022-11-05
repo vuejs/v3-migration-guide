@@ -45,7 +45,7 @@ Vue Router 4.0 provides Vue 3 support and has a number of breaking changes of it
 - [GitHub](https://github.com/vuejs/pinia)
 - [State management chapter in new docs](https://vuejs.org/guide/scaling-up/state-management.html)
 
-Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can be used if you have existing Vuex stores that need to be migrated to Vue 3. The only breaking change is [how the plugin is installed](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes).
+Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can be used if you have existing Vuex stores that need to be migrated to Vue 3. The only breaking change is [how the plugin is installed](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#installation-process).
 
 ### IDE Support
 

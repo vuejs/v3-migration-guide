@@ -58,7 +58,7 @@ const asyncModalWithOptions = defineAsyncComponent({
 ```
 
 ::: tip 注意
-Vue Router 支持一个类似的机制来异步加载路由组件，也就是俗称的*懒加载*。尽管类似，但是这个功能和 Vue 所支持的异步组件是不同的。当用 Vue Router 配置路由组件时，你**不**应该使用 `defineAsyncComponent`。你可以在 Vue Router 文档的[懒加载路由](https://next.router.vuejs.org/guide/advanced/lazy-loading.html)章节阅读更多相关内容。
+Vue Router 支持一个类似的机制来异步加载路由组件，也就是俗称的*懒加载*。尽管类似，但是这个功能和 Vue 所支持的异步组件是不同的。当用 Vue Router 配置路由组件时，你**不**应该使用 `defineAsyncComponent`。你可以在 Vue Router 文档的[懒加载路由](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)章节阅读更多相关内容。
 :::
 
 对 2.x 所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以明确组件定义不能直接被提供。
