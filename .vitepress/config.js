@@ -12,7 +12,7 @@ export default {
     localeLinks: {
       items: [
         {text: 'English', link: '/'},
-        {text: '中文简体', link: '/zh/'}
+        {text: '中文简体 (未完成)', link: '/zh/'}
       ]
     },
     locales: locales.themeConfig
