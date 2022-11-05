@@ -65,7 +65,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-如果你使用的是 Vue 的 [CDN](/guide/installation.html#cdn) 构建版本，那么 `createApp` 将通过全局的 `Vue` 对象暴露。
+如果你使用的是 Vue 的 [CDN](/zh/breaking-changes/introduction.html#cdn) 构建版本，那么 `createApp` 将通过全局的 `Vue` 对象暴露。
 
 ```js
 const { createApp } = Vue
@@ -87,7 +87,7 @@ const app = createApp({})
 | Vue.prototype              | app.config.globalProperties ([见下方](#vue-prototype-替换为-config-globalproperties))                        |
 | Vue.extend                 | *移除* ([见下方](#vue-extend-移除))                                                                 |
 
-所有其他不全局改变行为的全局 API 现在都是具名导出，文档见[全局 API Treeshaking](/guide/migration/global-api-treeshaking.html)。
+所有其他不全局改变行为的全局 API 现在都是具名导出，文档见[全局 API Treeshaking](/zh/breaking-changes/global-api-treeshaking.html)。
 
 ### `config.productionTip` 移除
 
@@ -95,7 +95,7 @@ const app = createApp({})
 
 对于 ES 模块构建版本，由于它们是与打包器一起使用的，而且在大多数情况下，CLI 或脚手架已经正确地配置了生产环境，所以本提示将不再出现。
 
-[迁移构建开关：`CONFIG_PRODUCTION_TIP`](migration-build.html#兼容性配置)
+[迁移构建开关：`CONFIG_PRODUCTION_TIP`](/zh/migration-build.html#兼容性配置)
 
 ### `config.ignoredElements` 替换为 `config.isCustomElement`
 
@@ -118,13 +118,13 @@ app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
 - 这将是 Vue CLI 配置中新的顶层选项。
 :::
 
-[迁移构建开关：`CONFIG_IGNORED_ELEMENTS`](migration-build.html#兼容性配置)
+[迁移构建开关：`CONFIG_IGNORED_ELEMENTS`](/zh/migration-build.html#兼容性配置)
 
 ### `Vue.prototype` 替换为 `config.globalProperties`
 
 在 Vue 2 中， `Vue.prototype` 通常用于添加所有组件都能访问的 property。
 
-在 Vue 3 中与之对应的是 [`config.globalProperties`](/api/application-config.html#globalproperties)。这些 property 将被复制到应用中，作为实例化组件的一部分。
+在 Vue 3 中与之对应的是 [`config.globalProperties`](https://cn.vuejs.org/api/application-config.html#globalproperties)。这些 property 将被复制到应用中，作为实例化组件的一部分。
 
 ```js
 // 之前 - Vue 2
@@ -139,7 +139,7 @@ app.config.globalProperties.$http = () => {}
 
 使用 `provide` ([稍后](#provide-inject)会讨论) 时，也应考虑作为 `globalProperties` 的替代品。
 
-[迁移构建开关：`GLOBAL_PROTOTYPE`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_PROTOTYPE`](/zh/migration-build.html#兼容性配置)
 
 ### `Vue.extend` 移除
 
@@ -186,9 +186,9 @@ Vue.createApp(Profile).mount('#mount-point')
 
 #### 组件继承
 
-在 Vue 3 中，我们强烈建议使用 [组合式 API](/api/composition-api.html) 来替代继承与 mixin。如果因为某种原因仍然需要使用组件继承，你可以使用 [`extends` 选项](/api/options-composition.html#extends) 来代替 `Vue.extend`。
+在 Vue 3 中，我们强烈建议使用 [组合式 API](https://cn.vuejs.org/api/composition-api.html) 来替代继承与 mixin。如果因为某种原因仍然需要使用组件继承，你可以使用 [`extends` 选项](https://cn.vuejs.org/api/options-composition.html#extends) 来代替 `Vue.extend`。
 
-[迁移构建开关：`GLOBAL_EXTEND`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_EXTEND`](/zh/migration-build.html#兼容性配置)
 
 ### 插件开发者须知
 
@@ -243,7 +243,7 @@ app.directive('focus', {
 app.mount('#app')
 ```
 
-[迁移构建开关：`GLOBAL_MOUNT`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_MOUNT`](/zh/migration-build.html#兼容性配置)
 
 ## Provide / Inject
 
