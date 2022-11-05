@@ -192,13 +192,13 @@
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
 
-9. [将 `vuex` 升级至 v4](https://next.vuex.vuejs.org/zh/guide/migrating-to-4-0-from-3-x.html)。
+9. [将 `vuex` 升级至 v4](https://vuex.vuejs.org/zh/guide/migrating-to-4-0-from-3-x.html)。
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
 
-10. [将 `vue-router` 升级至 v4](https://next.router.vuejs.org/zh/guide/migration/index.html)。如果你还使用了 `vuex-router-sync`，可以同时将其替换为一个 store getter。
+10. [将 `vue-router` 升级至 v4](https://router.vuejs.org/zh/guide/migration/index.html)。如果你还使用了 `vuex-router-sync`，可以同时将其替换为一个 store getter。
 
-    升级过后，同 `<router-view>` 一起使用 `<transition>` 和 `<keep-alive>` 就要求使用新的[基于作用域插槽的语法](https://next.router.vuejs.org/zh/guide/migration/index.html#router-view-、-keep-alive-和-transition)。
+    升级过后，同 `<router-view>` 一起使用 `<transition>` 和 `<keep-alive>` 就要求使用新的[基于作用域插槽的语法](https://router.vuejs.org/zh/guide/migration/index.html#router-view-、-keep-alive-和-transition)。
 
     [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
 
