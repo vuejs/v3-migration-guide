@@ -25,3 +25,12 @@
 - [`v-bind="object"` 现在是顺序敏感的](./v-bind.html)
 - [`v-on:event.native` 事件修饰符已经被移除](./v-on-native-modifier-removed)
 
+
+
+### 组件
+
+- [函数式组件只能通过纯函数进行创建](./functional-components.html)
+- [单文件组件 (SFC) `<template>` 标签的  `functional` attribute 和函数式组件的 `functional` 选项已被移除](./functional-components.html)
+- [异步组件现在需要通过 `defineAsyncComponent` 方法进行创建](./async-components.html)
+- [组件事件现在应该使用 `emits` 选项进行声明](./emits-option.html)
+
