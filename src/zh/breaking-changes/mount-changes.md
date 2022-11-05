@@ -91,8 +91,8 @@ app.mount('#app')
 
 ## 迁移策略
 
-[迁移构建开关：`GLOBAL_MOUNT_CONTAINER`](migration-build.html#兼容性配置)
+[迁移构建开关：`GLOBAL_MOUNT_CONTAINER`](/zh/migration-build.html#兼容性配置)
 
 ## 参考
 
-- [`mount` API](/api/application-api.html#mount)
+- [`mount` API](https://cn.vuejs.org/api/application.html#app-mount)

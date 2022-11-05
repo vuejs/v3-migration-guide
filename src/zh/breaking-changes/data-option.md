@@ -111,7 +111,7 @@ const CompA = {
 }
 ```
 
-[迁移构建开关：`OPTIONS_DATA_FN`](migration-build.html#兼容性配置)
+[迁移构建开关：`OPTIONS_DATA_FN`](/zh/migration-build.html#兼容性配置)
 
 ## 迁移策略
 
@@ -122,7 +122,7 @@ const CompA = {
 
 对于依赖 mixin 的深度合并行为的用户，我们建议重构代码以完全避免这种依赖，因为 mixin 的深度合并非常隐式，这让代码逻辑更难理解和调试。
 
-[迁移构建开关：](migration-build.html#兼容性配置)
+[迁移构建开关：](/zh/migration-build.html#兼容性配置)
 
 - `OPTIONS_DATA_FN`
 - `OPTIONS_DATA_MERGE`

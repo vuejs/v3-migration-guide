@@ -63,5 +63,5 @@ badges:
 
 ## 参考
 
-- [`<Transition>` 作为根元素不再能够从外界被切换](/guide/migration/transition-as-root.html)
-- [`<TransitionGroup>` 现在默认不渲染包裹器元素](/guide/migration/transition-group.html)
+- [`<Transition>` 作为根元素不再能够从外界被切换](./transition-as-root.html)
+- [`<TransitionGroup>` 现在默认不渲染包裹器元素](./transition-group.html)

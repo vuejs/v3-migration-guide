@@ -73,7 +73,7 @@ badges:
 
 我们建议用计算属性或方法代替过滤器，而不是使用过滤器。
 
-[迁移构建开关：](migration-build.html#兼容性配置)
+[迁移构建开关：](/zh/migration-build.html#兼容性配置)
 
 - `FILTERS`
 - `COMPILER_FILTERS`
@@ -82,7 +82,7 @@ badges:
 
 如果在应用中全局注册了过滤器，那么在每个组件中用计算属性或方法调用来替换它可能就没那么方便了。
 
-取而代之的是，你可以通过[全局属性](../../api/application-config.html#globalproperties)以让它能够被所有组件使用到：
+取而代之的是，你可以通过[全局属性](https://cn.vuejs.org/api/application.html#app-config-globalproperties)以让它能够被所有组件使用到：
 
 ```js
 // main.js
