@@ -29,7 +29,7 @@ npm init vue@3
 - [Vue CLI -> Vite Migration Guide from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [Tools / Plugins that help with auto migration](https://github.com/vitejs/awesome-vite#vue-cli)
 
-或者您也可以参阅[新文档中的工具章节](https://cn.vuejs.org/guide/scaling-up/tooling.html)
+或者您也可以参阅 [Vue 新文档中工具章节](https://cn.vuejs.org/guide/scaling-up/tooling.html)
 
 ### Vue Router
 
@@ -38,4 +38,12 @@ Vue Router 4.0 提供了对 Vue 3 的支持，并且有许多自己的重大更�
 - [文档](https://router.vuejs.org/zh/index.html)
 - [GitHub](https://github.com/vuejs/router)
 - [RFCs](https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3Arouter)
+
+### 状态管理工具
+
+Pinia 是我们新推荐的大规模状态管理解决方案。 本来是作为 Vuex 5 的原型创建的，现在已经演变为我们为 Vuex 5 计划的实际实现。考虑到核心团队成员Eduardo投入的工作量，我们决定保留其原始名称
+
+- [文档](https://pinia.vuejs.org/zh/index.html)
+- [GitHub](https://github.com/vuejs/pinia)
+- [Vue 新文档中状态管理章节](https://cn.vuejs.org/guide/scaling-up/state-management.html)
 
