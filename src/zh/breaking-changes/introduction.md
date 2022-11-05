@@ -149,9 +149,9 @@ Vue 3 中一些需要关注的新功能包括：
 
 <a href="https://www.npmjs.com/package/vue-router/v/next" target="_blank" noopener noreferrer><img src="https://img.shields.io/npm/v/vue-router/next.svg"></a>
 
-Vue Router 4.0 提供了 Vue 3 支持，并有许多非兼容的变更，详情见[迁移指南](https://next.router.vuejs.org/guide/migration/)。
+Vue Router 4.0 提供了 Vue 3 支持，并有许多非兼容的变更，详情见[迁移指南](https://router.vuejs.org/zh/guide/migration/)。
 
-- [文档](https://next.router.vuejs.org/)
+- [文档](https://router.vuejs.org/zh/)
 - [Github](https://github.com/vuejs/vue-router-next)
 - [RFCs](https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3Arouter)
 
@@ -161,7 +161,7 @@ Vue Router 4.0 提供了 Vue 3 支持，并有许多非兼容的变更，详情�
 
 Vuex 4.0 提供了 Vue 3 支持，其 API 与 3.x 基本相同。唯一的非兼容变更是[插件的安装方式](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes)。
 
-- [文档](https://next.vuex.vuejs.org/)
+- [文档](https://vuex.vuejs.org/zh/)
 - [Github](https://github.com/vuejs/vuex/tree/4.0)
 
 ### Devtools 扩展
