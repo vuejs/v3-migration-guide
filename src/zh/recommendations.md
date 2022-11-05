@@ -49,3 +49,18 @@ Pinia 是我们新推荐的大规模状态管理解决方案。 本来是作为 
 
 Vuex 4.0 还提供对于 Vue 3 的支持，其 API 与 3.x 大致相同，如果您有需要迁移到 Vue 3 的现有 Vuex tores，可以使用它。唯一的重大变化是 [插件的安装方式](https://vuex.vuejs.org/zh/guide/migrating-to-4-0-from-3-x.html#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B)
 
+
+
+### IDE 支持
+
+[Volar](https://github.com/johnsoncodehk/volar) 现在是新的官方 VSCode 扩展，大大改进了对 Vue SFC 的 TypeScript 支持，包括模板表达式的完整类型推断。
+如果您以前安装过 Vetur，请确保将其禁用以避免与 Volar 冲突。
+
+
+
+### Devtools Extension
+
+devtools 扩展已收到重大更新（作为 v6 发布）以同时支持 Vue 2 和 Vue 3。如果您之前安装过 beta 版本的v6，您现在可以将其删除并安装稳定版本的扩展。
+
+- [文档](https://devtools.vuejs.org/guide/installation.html)
+- [GitHub](https://github.com/vuejs/devtools)
