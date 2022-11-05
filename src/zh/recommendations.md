@@ -64,3 +64,22 @@ devtools 扩展已收到重大更新（作为 v6 发布）以同时支持 Vue 2 
 
 - [文档](https://devtools.vuejs.org/guide/installation.html)
 - [GitHub](https://github.com/vuejs/devtools)
+
+
+
+### TypeScript 支持
+
+您现在可以使用 [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc) 从命令行对 Vue SFC 进行类型检查和生成定义文件。
+或者您也可以参阅 [新文档中的 TypeScript 指南](https://cn.vuejs.org/guide/typescript/overview.html)。
+
+
+
+### 静态站点生成器
+
+[VitePress](https://vitepress.vuejs.org/) 是 VuePress 的精神继承者，建立在 Vue 3 + Vite 之上。它提供了卓越的开发体验，还可以生成更快的站点。
+
+
+
+### JSX
+
+现在通过  [`@vue/babel-plugin-jsx`](https://github.com/vuejs/babel-plugin-jsx)  提供对于Vue3 中 JSX 的支持
