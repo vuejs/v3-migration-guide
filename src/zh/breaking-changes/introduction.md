@@ -65,7 +65,7 @@ Vue 3 中一些需要关注的新功能包括：
 - [单文件组件组合式 API 语法糖 (`<script setup>`)](https://cn.vuejs.org/api/sfc-script-setup.html)
 - [单文件组件状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://cn.vuejs.org/api/sfc-style.html#状态驱动的动态-css)
 - [SFC `<style scoped>` 现在可以包含全局规则或只针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
-- [Suspense](./suspense.html) <Badge text="实验性" type="warning" />
+- [Suspense](./suspense.html)
 
 ## 非兼容的变更
 
