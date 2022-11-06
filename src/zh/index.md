@@ -96,7 +96,7 @@ Vue 3 中需要关注的一些新特性包括:
 - [组合式 API](https://cn.vuejs.org/guide/extras/composition-api-faq.html)<span class="note">\*</span>
 - [单文件组件，组合式 API 语法糖 (`<script setup>`)](https://cn.vuejs.org/api/sfc-script-setup.html)<span class="note">\*</span>
 - [Teleport 组件](https://cn.vuejs.org/guide/built-ins/teleport.html)
-- [Fragments 片段](/zh/new/fragments.html)
+- [Fragments 片段](./new/fragments.html)
 - [Emits 组件选项](https://cn.vuejs.org/api/options-state.html#emits)<span class="note">\*\*</span>
 - [`createRenderer` API from `@vue/runtime-core`](https://cn.vuejs.org/api/custom-renderer.html) 用来创建自定义渲染函数
 - [单文件组件，状态绑定 CSS 变量(`v-bind` in `<style>`)](https://cn.vuejs.org/api/sfc-css-features.html#v-bind-in-css)<span class="note">\*</span>
@@ -108,12 +108,12 @@ Vue 3 中需要关注的一些新特性包括:
 
 ## 非兼容性改变
 
-列出了 Vue 2 和 Vue 3 之间的非兼容性更改 [这里](/zh/breaking-changes/)。
+列出了 Vue 2 和 Vue 3 之间的非兼容性更改 [这里](./breaking-changes/)。
 
 ## 新的框架级别推荐
 
-列出了新的框架级建议 [这里](/zh/recommendations)。
+列出了新的框架级建议 [这里](./recommendations)。
 
 ## 迁移构建
 
-如果您有一个现有的 Vue 2 项目或库，并打算将其升级到 Vue 3，我们将提供一个 Vue 3 的构建版本，它提供与 Vue 2 兼容的 api。查看 [迁移构建](/zh/migration-build) 页面了解更多细节。
+如果您有一个现有的 Vue 2 项目或库，并打算将其升级到 Vue 3，我们将提供一个 Vue 3 的构建版本，它提供与 Vue 2 兼容的 api。查看 [迁移构建](./migration-build) 页面了解更多细节。

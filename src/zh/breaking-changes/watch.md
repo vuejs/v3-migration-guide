@@ -29,4 +29,4 @@ watch: {
 
 如果你依赖于侦听数组的改变，添加 `deep` 选项以确保回调能被正确地触发。
 
-[迁移构建开关：`WATCH_ARRAY`](/zh/migration-build.html#兼容性配置)
+[迁移构建开关：`WATCH_ARRAY`](../migration-build.html#兼容性配置)

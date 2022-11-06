@@ -96,7 +96,7 @@ Vue.config.ignoredElements = ['plastic-button']
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[迁移构建开关：`COMPILER_IS_ON_ELEMENT`](/zh/migration-build.html#兼容性配置)
+[迁移构建开关：`COMPILER_IS_ON_ELEMENT`](../migration-build.html#兼容性配置)
 
 ## 使用 `vue:` 前缀来解决 DOM 内模板解析问题
 

@@ -33,4 +33,4 @@ export default {
 
 ## 迁移策略
 
-[迁移构建开关：`PROPS_DEFAULT_THIS`](/zh/migration-build.html#兼容性配置)
+[迁移构建开关：`PROPS_DEFAULT_THIS`](../migration-build.html#兼容性配置)

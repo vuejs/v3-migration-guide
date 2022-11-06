@@ -184,7 +184,7 @@
 
    - 如果你使用了 `vue-router`，请注意在升级至 `vue-router` v4 之前，`<transition>` 和 `<keep-alive>` 无法和 `<router-view>` 一起工作。
 
-7. 升级 [`<transition>` 类名](/zh/breaking-changes/transition.html)。这是唯一没有运行时警告的特性。你可以在整个项目范围内做一次 `.*-enter` 和 `.*-leave` CSS 类名的搜索。
+7. 升级 [`<transition>` 类名](./breaking-changes/transition.html)。这是唯一没有运行时警告的特性。你可以在整个项目范围内做一次 `.*-enter` 和 `.*-leave` CSS 类名的搜索。
 
    [示例提交](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
 
@@ -272,72 +272,72 @@ export default {
 
 | ID | 类型 | 描述 | 文档 |
 | ---- | ---- | ---- | ---- |
-| GLOBAL_MOUNT_CONTAINER                | ⨂    | 被挂载的应用不会替换被挂载到的元素 | [链接](/zh/breaking-changes/mount-changes.html)                                                    |
+| GLOBAL_MOUNT_CONTAINER                | ⨂    | 被挂载的应用不会替换被挂载到的元素 | [链接](./breaking-changes/mount-changes.html)                                                    |
 | CONFIG_DEVTOOLS                       | ⨂    | 生产环境开发者工具现在是一个构建时的开关 | [链接](https://github.com/vuejs/vue-next/tree/master/packages/vue#bundler-build-feature-flags) |
-| COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂    | `v-if` 和 `v-for` 用在相同的元素上时的处理顺序发生了改变 | [链接](/zh/breaking-changes/v-if-v-for.html)                                                       |
-| COMPILER_V_IF_SAME_KEY                | ⨂    | `v-if` 分支不能再拥有相同的 key | [链接](/zh/breaking-changes/key-attribute.html#on-conditional-branches)                            |
-| COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key 现在应该被放在 `<template>` 上 | [链接](/zh/breaking-changes/key-attribute.html#with-template-v-for)                                |
-| COMPILER_SFC_FUNCTIONAL               | ⨂    | 单文件组件中不再支持 `<template functional>` | [链接](/zh/breaking-changes/functional-components.html#single-file-components-sfcs)                |
+| COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂    | `v-if` 和 `v-for` 用在相同的元素上时的处理顺序发生了改变 | [链接](./breaking-changes/v-if-v-for.html)                                                       |
+| COMPILER_V_IF_SAME_KEY                | ⨂    | `v-if` 分支不能再拥有相同的 key | [链接](./breaking-changes/key-attribute.html#on-conditional-branches)                            |
+| COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key 现在应该被放在 `<template>` 上 | [链接](./breaking-changes/key-attribute.html#with-template-v-for)                                |
+| COMPILER_SFC_FUNCTIONAL               | ⨂    | 单文件组件中不再支持 `<template functional>` | [链接](./breaking-changes/functional-components.html#single-file-components-sfcs)                |
 
 ### 部分兼容且附带注意事项
 
 | ID | 类型 | 描述 | 文档 |
 | ---- | ---- | ---- | ---- |
-| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` 现在改为了 `config.compilerOptions.isCustomElement` (只在浏览器编译器构建版本中)。如果使用了构建设置，`isCustomElement` 必须通过构建配置传入。 | [链接](/zh/breaking-changes/global-api.html#config-ignoredelements-替换为-config-iscustomelement) |
-| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` 被移除 (兼容模式只在浏览器编译器构建版本中支持) | [链接](/zh/breaking-changes/inline-template-attribute.html)                                                       |
-| PROPS_DEFAULT_THIS       | ◐    | prop 的默认工厂方法不再可以访问 `this` (在兼容模式下，`this` 不是一个真实的实例——它只暴露 prop、`$options` 和注入) | [链接](/zh/breaking-changes/props-default-this.html)                                                              |
+| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` 现在改为了 `config.compilerOptions.isCustomElement` (只在浏览器编译器构建版本中)。如果使用了构建设置，`isCustomElement` 必须通过构建配置传入。 | [链接](./breaking-changes/global-api.html#config-ignoredelements-替换为-config-iscustomelement) |
+| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` 被移除 (兼容模式只在浏览器编译器构建版本中支持) | [链接](./breaking-changes/inline-template-attribute.html)                                                       |
+| PROPS_DEFAULT_THIS       | ◐    | prop 的默认工厂方法不再可以访问 `this` (在兼容模式下，`this` 不是一个真实的实例——它只暴露 prop、`$options` 和注入) | [链接](./breaking-changes/props-default-this.html)                                                              |
 | INSTANCE_DESTROY         | ◐    | `$destroy` 实例方法被移除 (在兼容模式下，只在根实例下支持) | |
 | GLOBAL_PRIVATE_UTIL      | ◐    | `Vue.util` 是私有的，且不再可用 | |
-| CONFIG_PRODUCTION_TIP    | ◐    | 不再需要 `config.productionTip`  | [链接](/zh/breaking-changes/global-api.html#config-productiontip-移除) |
+| CONFIG_PRODUCTION_TIP    | ◐    | 不再需要 `config.productionTip`  | [链接](./breaking-changes/global-api.html#config-productiontip-移除) |
 | CONFIG_SILENT            | ◐    | `config.silent` 被移除 | |
 
 ### 仅兼容 (无告警)
 
 | ID | 类型 | 描述 | 文档 |
 | ---- | ---- | ---- | ---- |
-| TRANSITION_CLASSES | ⭘    | 过渡动画的进入/离开的 class 发生了变化 | [链接](/zh/breaking-changes/transition.html) |
+| TRANSITION_CLASSES | ⭘    | 过渡动画的进入/离开的 class 发生了变化 | [链接](./breaking-changes/transition.html) |
 
 ### 完全兼容
 
 | ID | 类型 | 描述 | 文档 |
 | ---- | ---- | ---- | ---- |
-| GLOBAL_MOUNT                 | ✔    | new Vue() -> createApp | [链接](/zh/breaking-changes/global-api.html#挂载-app-实例) |
-| GLOBAL_EXTEND                | ✔    | Vue.extend 被移除 (使用 `defineComponent` 或 `extends` 选项) | [链接](/zh/breaking-changes/global-api.html#vue-extend-移除) |
-| GLOBAL_PROTOTYPE             | ✔    | `Vue.prototype` -> `app.config.globalProperties` | [链接](/zh/breaking-changes/global-api.html#vue-prototype-替换为-config-globalproperties) |
+| GLOBAL_MOUNT                 | ✔    | new Vue() -> createApp | [链接](./breaking-changes/global-api.html#挂载-app-实例) |
+| GLOBAL_EXTEND                | ✔    | Vue.extend 被移除 (使用 `defineComponent` 或 `extends` 选项) | [链接](./breaking-changes/global-api.html#vue-extend-移除) |
+| GLOBAL_PROTOTYPE             | ✔    | `Vue.prototype` -> `app.config.globalProperties` | [链接](./breaking-changes/global-api.html#vue-prototype-替换为-config-globalproperties) |
 | GLOBAL_SET                   | ✔    | `Vue.set` 被移除 (不再需要) | |
 | GLOBAL_DELETE                | ✔    | `Vue.delete` 被移除 (不再需要) | |
 | GLOBAL_OBSERVABLE            | ✔    | `Vue.observable` 被移除 (使用 `reactive`) | [链接](https://cn.vuejs.org/api/reactivity-core.html#reactive) |
-| CONFIG_KEY_CODES             | ✔    | config.keyCodes 被移除 | [链接](/zh/breaking-changes/keycode-modifiers.html) |
+| CONFIG_KEY_CODES             | ✔    | config.keyCodes 被移除 | [链接](./breaking-changes/keycode-modifiers.html) |
 | CONFIG_WHITESPACE            | ✔    | 在 Vue 3 中空格默认为 `"condense"` | |
 | INSTANCE_SET                 | ✔    | `vm.$set` 被移除 (不再需要) | |
 | INSTANCE_DELETE              | ✔    | `vm.$delete` 被移除 (不再需要) | |
-| INSTANCE_EVENT_EMITTER       | ✔    | `vm.$on`、`vm.$off`、`vm.$once` 被移除 | [链接](/zh/breaking-changes/events-api.html) |
-| INSTANCE_EVENT_HOOKS         | ✔    | 实例不再抛出 `hook:x` 事件 | [链接](/zh/breaking-changes/vnode-lifecycle-events.html) |
-| INSTANCE_CHILDREN            | ✔    | `vm.$children` 被移除 | [链接](/zh/breaking-changes/children.html) |
-| INSTANCE_LISTENERS           | ✔    | `vm.$listeners` 被移除 | [链接](/zh/breaking-changes/listeners-removed.html) |
-| INSTANCE_SCOPED_SLOTS        | ✔    | `vm.$scopedSlots` 被移除；`vm.$slots` 现在暴露函数 | [链接](/zh/breaking-changes/slots-unification.html) |
-| INSTANCE_ATTRS_CLASS_STYLE   | ✔    | `$attrs` 现在包含了 `class` 和 `style` | [链接](/zh/breaking-changes/attrs-includes-class-style.html) |
-| OPTIONS_DATA_FN              | ✔    | `data` 在所有情况下都必须是一个函数 | [链接](/zh/breaking-changes/data-option.html) |
-| OPTIONS_DATA_MERGE           | ✔    | 来自 mixin 或扩展的 `data` 现在都是浅合并 | [链接](/zh/breaking-changes/data-option.html) |
+| INSTANCE_EVENT_EMITTER       | ✔    | `vm.$on`、`vm.$off`、`vm.$once` 被移除 | [链接](./breaking-changes/events-api.html) |
+| INSTANCE_EVENT_HOOKS         | ✔    | 实例不再抛出 `hook:x` 事件 | [链接](./breaking-changes/vnode-lifecycle-events.html) |
+| INSTANCE_CHILDREN            | ✔    | `vm.$children` 被移除 | [链接](./breaking-changes/children.html) |
+| INSTANCE_LISTENERS           | ✔    | `vm.$listeners` 被移除 | [链接](./breaking-changes/listeners-removed.html) |
+| INSTANCE_SCOPED_SLOTS        | ✔    | `vm.$scopedSlots` 被移除；`vm.$slots` 现在暴露函数 | [链接](./breaking-changes/slots-unification.html) |
+| INSTANCE_ATTRS_CLASS_STYLE   | ✔    | `$attrs` 现在包含了 `class` 和 `style` | [链接](./breaking-changes/attrs-includes-class-style.html) |
+| OPTIONS_DATA_FN              | ✔    | `data` 在所有情况下都必须是一个函数 | [链接](./breaking-changes/data-option.html) |
+| OPTIONS_DATA_MERGE           | ✔    | 来自 mixin 或扩展的 `data` 现在都是浅合并 | [链接](./breaking-changes/data-option.html) |
 | OPTIONS_BEFORE_DESTROY       | ✔    | `beforeDestroy` -> `beforeUnmount` | |
 | OPTIONS_DESTROYED            | ✔    | `destroyed` -> `unmounted` | |
-| WATCH_ARRAY                  | ✔    | 对于一个数组的操作，侦听无法被触发了，除非使用了深度侦听 | [链接](/zh/breaking-changes/watch.html) |
-| V_FOR_REF                    | ✔    | `v-for` 内的 `ref` 不再注册 ref 数组 | [链接](/zh/breaking-changes/array-refs.html) |
-| V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` 不再支持 keyCode 修饰符 | [链接](/zh/breaking-changes/keycode-modifiers.html) |
-| CUSTOM_DIR                   | ✔    | 自定义指令钩子命名变化 | [链接](/zh/breaking-changes/custom-directives.html) |
-| ATTR_FALSE_VALUE             | ✔    | attribute 的绑定值为布尔值 `false` 时不再将其移除 | [链接](/zh/breaking-changes/attribute-coercion.html) |
-| ATTR_ENUMERATED_COERCION     | ✔    | 不再特殊处理枚举类型 attribute | [链接](/zh/breaking-changes/attribute-coercion.html) |
-| TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` 不再默认渲染一个根元素 | [链接](/zh/breaking-changes/transition-group.html) |
-| COMPONENT_ASYNC              | ✔    | 异步组件 API 改变 (现在需要 `defineAsyncComponent`) | [链接](/zh/breaking-changes/async-components.html) |
-| COMPONENT_FUNCTIONAL         | ✔    | 函数式组件 API 改变 (现在必须只是一个普通函数) | [链接](/zh/breaking-changes/functional-components.html) |
-| COMPONENT_V_MODEL            | ✔    | 组件的 v-model 修改 | [链接](/zh/breaking-changes/v-model.html) |
-| RENDER_FUNCTION              | ✔    | 渲染函数 API 更改 | [链接](/zh/breaking-changes/render-function-api.html) |
-| FILTERS                      | ✔    | 过滤器被移除 (该选项只会影响运行时的过滤器 API) | [链接](/zh/breaking-changes/filters.html) |
-| COMPILER_IS_ON_ELEMENT       | ✔    | `is` 的使用现在被严格限制在 `<component>` 上 | [链接](/zh/breaking-changes/custom-elements-interop.html) |
-| COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` 被替换为带参数的 `v-model` | [链接](/zh/breaking-changes/v-model.html) |
+| WATCH_ARRAY                  | ✔    | 对于一个数组的操作，侦听无法被触发了，除非使用了深度侦听 | [链接](./breaking-changes/watch.html) |
+| V_FOR_REF                    | ✔    | `v-for` 内的 `ref` 不再注册 ref 数组 | [链接](./breaking-changes/array-refs.html) |
+| V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` 不再支持 keyCode 修饰符 | [链接](./breaking-changes/keycode-modifiers.html) |
+| CUSTOM_DIR                   | ✔    | 自定义指令钩子命名变化 | [链接](./breaking-changes/custom-directives.html) |
+| ATTR_FALSE_VALUE             | ✔    | attribute 的绑定值为布尔值 `false` 时不再将其移除 | [链接](./breaking-changes/attribute-coercion.html) |
+| ATTR_ENUMERATED_COERCION     | ✔    | 不再特殊处理枚举类型 attribute | [链接](./breaking-changes/attribute-coercion.html) |
+| TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` 不再默认渲染一个根元素 | [链接](./breaking-changes/transition-group.html) |
+| COMPONENT_ASYNC              | ✔    | 异步组件 API 改变 (现在需要 `defineAsyncComponent`) | [链接](./breaking-changes/async-components.html) |
+| COMPONENT_FUNCTIONAL         | ✔    | 函数式组件 API 改变 (现在必须只是一个普通函数) | [链接](./breaking-changes/functional-components.html) |
+| COMPONENT_V_MODEL            | ✔    | 组件的 v-model 修改 | [链接](./breaking-changes/v-model.html) |
+| RENDER_FUNCTION              | ✔    | 渲染函数 API 更改 | [链接](./breaking-changes/render-function-api.html) |
+| FILTERS                      | ✔    | 过滤器被移除 (该选项只会影响运行时的过滤器 API) | [链接](./breaking-changes/filters.html) |
+| COMPILER_IS_ON_ELEMENT       | ✔    | `is` 的使用现在被严格限制在 `<component>` 上 | [链接](./breaking-changes/custom-elements-interop.html) |
+| COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` 被替换为带参数的 `v-model` | [链接](./breaking-changes/v-model.html) |
 | COMPILER_V_BIND_PROP         | ✔    | `v-bind.prop` 修饰符被移除 | |
-| COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` 现在是顺序敏感的 | [链接](/zh/breaking-changes/v-bind.html) |
-| COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` 修饰符被移除 | [链接](/zh/breaking-changes/v-on-native-modifier-removed.html) |
+| COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` 现在是顺序敏感的 | [链接](./breaking-changes/v-bind.html) |
+| COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` 修饰符被移除 | [链接](./breaking-changes/v-on-native-modifier-removed.html) |
 | COMPILER_V_FOR_REF           | ✔    | `v-for` 中的 `ref` (编译器支持)) | |
 | COMPILER_NATIVE_TEMPLATE     | ✔    | 没有特殊指令的 `<template>` 现在会被渲染为原生元素 | |
 | COMPILER_FILTERS             | ✔    | 过滤器 (编译器支持) | |
