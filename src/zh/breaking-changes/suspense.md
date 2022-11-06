@@ -81,7 +81,7 @@ export default {
 
 将 `<suspense>` 跟 [`<transition>`](/api/built-in-components.html#transition) 和 [`<keep-alive>`](/api/built-in-components.html#keep-alive) 组件相结合是常见的情形。这些组件的嵌套顺序对于它们的正确工作很重要。
 
-额外的，这些组件经常用于衔接 [Vue Router](https://next.router.vuejs.org/zh/) 的 `<router-view>` 组件。
+额外的，这些组件经常用于衔接 [Vue Router](https://router.vuejs.org/zh/) 的 `<router-view>` 组件。
 
 以下示例展示了如何嵌套这些组件以让它们的表现符合预期。若要简化这个组合你可以移除不需要的组件：
 
@@ -104,4 +104,4 @@ export default {
 </router-view>
 ```
 
-Vue Router 有内置的基于动态导入的[组件懒加载](https://next.router.vuejs.org/zh/guide/advanced/lazy-loading.html)支持。它和异步组件有所区别，并且当前不会触发 `<suspense>`。不过它们仍然可以包含异步组件作为后代，这样它们还是可以正常触发 `<suspense>`。
+Vue Router 有内置的基于动态导入的[组件懒加载](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)支持。它和异步组件有所区别，并且当前不会触发 `<suspense>`。不过它们仍然可以包含异步组件作为后代，这样它们还是可以正常触发 `<suspense>`。

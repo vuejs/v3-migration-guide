@@ -103,9 +103,9 @@ mounted(el, binding, vnode) {
 ```
 
 :::warning
-有了[片段](/guide/migration/fragments.html#概览)的支持，组件可能会有多个根节点。当被应用于多根组件时，自定义指令将被忽略，并将抛出警告。
+有了[片段](../new/fragments.html#概览)的支持，组件可能会有多个根节点。当被应用于多根组件时，自定义指令将被忽略，并将抛出警告。
 :::
 
 ## 迁移策略
 
-[迁移构建开关：`CUSTOM_DIR`](migration-build.html#兼容性配置)
+[迁移构建开关：`CUSTOM_DIR`](../migration-build.html#兼容性配置)

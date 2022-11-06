@@ -30,7 +30,7 @@ badges:
 
 `inline-template` 的大多数用例都假设是在没有构建工具的环境中，也就是所有模板都直接写在 HTML 页面中。
 
-[迁移构建开关：`COMPILER_INLINE_TEMPLATE`](migration-build.html#兼容性配置)
+[迁移构建开关：`COMPILER_INLINE_TEMPLATE`](../migration-build.html#兼容性配置)
 
 ### 选项 #1：使用 `<script>` 标签
 
@@ -81,4 +81,4 @@ const MyComp = {
 </template>
 ```
 
-> - 提示：在 3.x 中，由于原生[片段](/guide/migration/fragments)的支持，插槽也可以渲染为根节点！
+> - 提示：在 3.x 中，由于原生[片段](../new/fragments)的支持，插槽也可以渲染为根节点！

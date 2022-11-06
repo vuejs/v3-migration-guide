@@ -12,7 +12,7 @@ badges:
 
 - 组件接收到的原始 prop 将作为参数传递给默认函数；
 
-- [inject](../composition-api-provide-inject.md) API 可以在默认函数中使用。
+- [inject](https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject) API 可以在默认函数中使用。
 
 ```js
 import { inject } from 'vue'
@@ -33,4 +33,4 @@ export default {
 
 ## 迁移策略
 
-[迁移构建开关：`PROPS_DEFAULT_THIS`](migration-build.html#兼容性配置)
+[迁移构建开关：`PROPS_DEFAULT_THIS`](../migration-build.html#兼容性配置)

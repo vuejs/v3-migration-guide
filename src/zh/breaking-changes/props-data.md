@@ -7,7 +7,7 @@ badges:
 
 ## 概述
 
-`propsData` 选项之前用于在创建 Vue 实例的过程中传入 prop，现在它被移除了。如果想为 Vue 3 应用的根组件传入 prop，请使用 [createApp](/api/global-api.html#createapp) 的第二个参数。
+`propsData` 选项之前用于在创建 Vue 实例的过程中传入 prop，现在它被移除了。如果想为 Vue 3 应用的根组件传入 prop，请使用 [createApp](https://cn.vuejs.org/api/application.html#createapp) 的第二个参数。
 
 ## 2.x 语法
 

@@ -17,7 +17,7 @@ Vue.nextTick(() => {
 })
 ```
 
-或者，如果你曾经对涉及[异步组件](/guide/component-dynamic-async.html)的应用进行单元测试，那么你很可能编写过以下内容：
+或者，如果你曾经对涉及[异步组件](https://v2.cn.vuejs.org/v2/guide/components-dynamic-async.html)的应用进行单元测试，那么你很可能编写过以下内容：
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -110,7 +110,7 @@ export function render() {
 有了全局 tree-shaking 后，用户只需为他们实际使用到的功能“买单”。更棒的是，因为可选特性不会增加未使用它们的应用的打包产物大小，以后在追加核心功能时，即使对框架大小有所顾虑，它也将不再那么重要了。
 
 :::warning 重要
-以上仅适用于 [ES 模块构建版本](/guide/installation.html#对不同构建版本的解释)，用于支持 tree-shaking 的打包工具——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出以从该全局变量上使用 API，而不是导入)。
+以上仅适用于 [ES 模块构建版本](https://github.com/vuejs/core/tree/master/packages/vue#which-dist-file-to-use)，用于支持 tree-shaking 的打包工具——UMD 构建仍然包括所有特性，并暴露 Vue 全局变量上的所有内容 (编译器将生成适当的输出以从该全局变量上使用 API，而不是导入)。
 :::
 
 ## 插件中的用法

@@ -96,7 +96,7 @@ Vue.config.ignoredElements = ['plastic-button']
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[迁移构建开关：`COMPILER_IS_ON_ELEMENT`](migration-build.html#兼容性配置)
+[迁移构建开关：`COMPILER_IS_ON_ELEMENT`](../migration-build.html#兼容性配置)
 
 ## 使用 `vue:` 前缀来解决 DOM 内模板解析问题
 
@@ -128,3 +128,7 @@ Vue.config.ignoredElements = ['plastic-button']
 - 将 `config.ignoredElements` 替换为 `vue-loader` 的 `compilerOptions` (使用构建步骤) 或 `app.config.compilerOptions.isCustomElement` (使用动态模板编译)
 
 - 将所有非针对 `<component>` 标签的 `is` 用法更改为 `<component is="...">` (对于 SFC 模板) 或为其添加 `vue:` 前缀 (对于 DOM 内模板)。
+
+## 参考
+
+- [迁移指南 - Vue 与 Web Components](https://cn.vuejs.org/guide/extras/web-components.html)

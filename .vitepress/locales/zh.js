@@ -154,7 +154,7 @@ export default {
             link: '/zh/breaking-changes/transition-group'
           },
           {
-            text: 'VNode 声明周期事件',
+            text: 'VNode 生命周期事件',
             link: '/zh/breaking-changes/vnode-lifecycle-events'
           },
           { text: 'Watch 侦听数组', link: '/zh/breaking-changes/watch' }

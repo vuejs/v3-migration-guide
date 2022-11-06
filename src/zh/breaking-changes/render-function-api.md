@@ -46,53 +46,6 @@ export default {
 }
 ```
 
-## 渲染函数签名更改
-
-### 2.x 语法
-
-在 2.x 中，`render` 函数自动接收参数，如 `h` 函数。
-
-```js
-// Vue 2 渲染函数示例
-export default {
-  render(h) {
-    return h('div')
-  }
-}
-```
-
-### 3.x 语法
-
-在 3.x 中，由于 `render` 函数不再接收任何参数，它将主要在 `setup()` 函数内部使用。这还有一个好处：可以访问在作用域中声明的响应式状态和函数，以及传递给 `setup()` 的参数。
-
-```js
-import { h, reactive } from 'vue'
-
-export default {
-  setup(props, { slots, attrs, emit }) {
-    const state = reactive({
-      count: 0
-    })
-
-    function increment() {
-      state.count++
-    }
-
-    // 返回渲染函数
-    return () =>
-      h(
-        'div',
-        {
-          onClick: increment
-        },
-        state.count
-      )
-  }
-}
-```
-
-有关 `setup()` 如何工作的详细信息，请参考[组合式 API 指南](/guide/composition-api-introduction.html)。
-
 ## VNode Prop 格式化
 
 ### 2.x 语法
@@ -178,7 +131,7 @@ export default {
 
 ## 迁移策略
 
-[迁移构建开关：`RENDER_FUNCTION`](migration-build.html#兼容性配置)
+[迁移构建开关：`RENDER_FUNCTION`](../migration-build.html#兼容性配置)
 
 ### 工具库作者
 
@@ -190,4 +143,4 @@ export default {
 
 ## 下一步
 
-详细文档请参考 [Render 函数指南](/guide/render-function)！
+详细文档请参考 [Render 函数指南](https://cn.vuejs.org/guide/extras/render-function.html)！

@@ -37,8 +37,8 @@ export default {
 
 ## 3.x 更新
 
-在 3.x 中，`$children` property 已被移除，且不再支持。如果你需要访问子组件实例，我们建议使用 [$refs](/guide/component-template-refs.html#模板引用)。
+在 3.x 中，`$children` property 已被移除，且不再支持。如果你需要访问子组件实例，我们建议使用 [模板引用](https://cn.vuejs.org/guide/essentials/template-refs.html#template-refs)。
 
 ## 迁移策略
 
-[迁移构建开关：`INSTANCE_CHILDREN`](migration-build.html#兼容性配置)
+[迁移构建开关：`INSTANCE_CHILDREN`](../migration-build.html#兼容性配置)
