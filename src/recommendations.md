@@ -6,7 +6,7 @@ The supporting libraries for Vue 3 have undergone major updates. Here is a summa
 - Build Toolchain: Vue CLI -> [Vite](https://vitejs.dev/)
 - State Management: Vuex -> [Pinia](https://pinia.vuejs.org/)
 - IDE Support: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-- New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc)
+- New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
 - SSG: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
@@ -45,7 +45,7 @@ Vue Router 4.0 provides Vue 3 support and has a number of breaking changes of it
 - [GitHub](https://github.com/vuejs/pinia)
 - [State management chapter in new docs](https://vuejs.org/guide/scaling-up/state-management.html)
 
-Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can be used if you have existing Vuex stores that need to be migrated to Vue 3. The only breaking change is [how the plugin is installed](https://next.vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes).
+Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can be used if you have existing Vuex stores that need to be migrated to Vue 3. The only breaking change is [how the plugin is installed](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes).
 
 ### IDE Support
 
@@ -62,7 +62,7 @@ The devtools extension has received major updates (released as v6) to support bo
 
 ### TypeScript Support
 
-You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc).
+You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
 
 Also see [TypeScript Guide in new docs](https://vuejs.org/guide/typescript/overview.html).
 
