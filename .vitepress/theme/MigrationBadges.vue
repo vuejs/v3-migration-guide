@@ -1,9 +1,19 @@
 <script>
+import { useData } from 'vitepress'
 const validBadges = {
   new: 'new',
   breaking: 'breaking',
   removed: 'removed',
   updated: 'updated'
+}
+const localeBadges = {
+  'en-US': validBadges,
+  'zh-CN': {
+    new: '新增',
+    breaking: '非兼容',
+    removed: '移除',
+    updated: '更新'
+  }
 }
 
 export default {
@@ -16,10 +26,9 @@ export default {
       }
     }
   },
-  data() {
-    return {
-      validBadges
-    }
+  setup () {
+    const { site } = useData()
+    return { validBadges: localeBadges[site.value.lang] ?? validBadges }
   }
 }
 </script>
