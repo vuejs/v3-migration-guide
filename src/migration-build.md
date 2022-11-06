@@ -196,9 +196,9 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
 
-10. [Upgrade `vue-router` to v4](https://router.vuejs.org/index.html). If you also use `vuex-router-sync`, you can replace it with a store getter.
+10. [Upgrade `vue-router` to v4](https://next.router.vuejs.org/index.html). If you also use `vuex-router-sync`, you can replace it with a store getter.
 
-    After the upgrade, to use `<transition>` and `<keep-alive>` with `<router-view>` requires using the new [scoped-slot based syntax](https://router.vuejs.org/guide/migration/#router-view-keep-alive-and-transition).
+    After the upgrade, to use `<transition>` and `<keep-alive>` with `<router-view>` requires using the new [scoped-slot based syntax](https://next.router.vuejs.org/guide/migration/#router-view-keep-alive-and-transition).
 
     [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
 
