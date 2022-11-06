@@ -17,7 +17,7 @@ Suspense 是一个试验性的新特性，其 API 可能随时会发生变动。
 
 该 `<suspense>` 组件提供了另一个方案，允许将等待过程提升到组件树中处理，而不是在单个组件中。
 
-一个常见的[异步组件](/guide/component-dynamic-async.html#异步组件)用例：
+一个常见的[异步组件](https://cn.vuejs.org/guide/component-dynamic-async.html#异步组件)用例：
 
 ```vue{2-4,6,17}
 <template>
@@ -79,7 +79,7 @@ export default {
 
 ## 和其它组件结合
 
-将 `<suspense>` 跟 [`<transition>`](/api/built-in-components.html#transition) 和 [`<keep-alive>`](/api/built-in-components.html#keep-alive) 组件相结合是常见的情形。这些组件的嵌套顺序对于它们的正确工作很重要。
+将 `<suspense>` 跟 [`<transition>`](https://cn.vuejs.org/api/built-in-components.html#transition) 和 [`<keep-alive>`](https://cn.vuejs.org/api/built-in-components.html#keep-alive) 组件相结合是常见的情形。这些组件的嵌套顺序对于它们的正确工作很重要。
 
 额外的，这些组件经常用于衔接 [Vue Router](https://router.vuejs.org/zh/) 的 `<router-view>` 组件。
 
