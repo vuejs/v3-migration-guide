@@ -6,6 +6,15 @@ const validBadges = {
   removed: 'removed',
   updated: 'updated'
 }
+const localeBadges = {
+  'en-US': validBadges,
+  'zh-CN': {
+    new: '新增',
+    breaking: '非兼容',
+    removed: '移除',
+    updated: '更新'
+  }
+}
 
 export default {
   props: {
@@ -19,13 +28,7 @@ export default {
   },
   setup () {
     const { site } = useData()
-    if ( site.value.lang === 'zh-CN' ) {
-      validBadges.new = '新增'
-      validBadges.breaking = '非兼容'
-      validBadges.removed = '移除'
-      validBadges.updated = '更新'
-    }
-    return { validBadges }
+    return { validBadges: localeBadges[site.value.lang] ?? validBadges }
   }
 }
 </script>
