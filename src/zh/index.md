@@ -101,7 +101,7 @@ Vue 3 中需要关注的一些新特性包括:
 - [来自 `@vue/runtime-core` 的 `createRenderer` API](https://cn.vuejs.org/api/custom-renderer.html) 用来创建自定义渲染函数
 - [单文件组件中的状态驱动的 CSS 变量 (`<style>` 中的 `v-bind`)](https://cn.vuejs.org/api/sfc-css-features.html#v-bind-in-css)<span class="note">\*</span>
 - [SFC `<style scoped>` 新增全局规则和针对插槽内容的规则](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
-- [Suspense](https://vuejs.org/guide/built-ins/suspense.html) <sup class="warning">实验性</sup>
+- [Suspense](https://cn.vuejs.org/guide/built-ins/suspense.html) <sup class="warning">实验性</sup>
 
 <sub class="note"><b>\*</b> 现在也支持在 <a href="https://blog.vuejs.org/posts/vue-2-7-naruto.html" target="_blank">Vue 2.7</a> 中使用</sub><br>
 <sub class="note"><b>\*\*</b> Vue 2.7 中支持，但仅用于类型推断</sub>
