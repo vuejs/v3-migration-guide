@@ -21,7 +21,7 @@ export default {
         items: [
           { text: '概览', link: '/zh/' },
           { text: '新的推荐', link: '/zh/recommendations' },
-          { text: '迁移构建', link: '/zh/migration-build' },
+          { text: '用于迁移的构建版本', link: '/zh/migration-build' },
           {
             text: '非兼容性改变',
             link: '/zh/breaking-changes/'
