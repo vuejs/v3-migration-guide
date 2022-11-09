@@ -18,7 +18,7 @@
 
 - [`v-model` 指令在组件上的使用已经被重新设计，替换掉了  `v-bind.sync`](./v-model.html)
 - [在`<template v-for>`  和没有 `v-for` 的节点身上使用 `key` 发生了变化 ](./key-attribute.html)
-- [`v-if` and `v-for` 在同一个元素身上使用时的优先级发生了变化](./v-if-v-for.html)
+- [`v-if` 和 `v-for` 在同一个元素身上使用时的优先级发生了变化](./v-if-v-for.html)
 - [`v-bind="object"` 现在是顺序敏感的](./v-bind.html)
 - [`v-on:event.native` 事件修饰符已经被移除](./v-on-native-modifier-removed)
 
@@ -47,16 +47,16 @@
 
 - `destroyed` 生命周期选项被重命名为 `unmounted`
 - `beforeDestroy` 生命周期选项被重命名为 `beforeUnmount`
-- [`default` prop 工厂函数不再可以访问 `this` 上下文](./props-default-this.html)
+- [Props 的 `default` 工厂函数不再可以访问 `this` 上下文](./props-default-this.html)
 - [自定义指令的 API 已更改为与组件生命周期一致，且 `binding.expression` 已移除](./custom-directives.html)
 - [`data` 选项应始终被声明为一个函数](./data-option.html)
 - [来自 mixin 的 `data` 选项现在为浅合并](./data-option.html#mixin-合并行为变更)
 - [Attribute 强制策略已更改](./attribute-coercion.html)
-- [一些过渡的 class 被重命名](./transition.html)
+- [Transition 的一些 class 被重命名](./transition.html)
 - [`<TransitionGroup>` 不再默认渲染包裹元素](./transition-group.html)
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则必须指定 `deep` 选项](./watch.html)
 - 没有特殊指令的标记 (`v-if/else-if/else`、`v-for` 或 `v-slot`) 的 `<template>` 现在被视为普通元素，并将渲染为原生的 `<template>` 元素，而不是渲染其内部内容。
-- [已挂载的应用不会取代它所挂载的元素](./mount-changes.html)
+- [已挂载的应用不会替换它所挂载的元素](./mount-changes.html)
 - [生命周期的 `hook:` 事件前缀改为 `vue:`](./vnode-lifecycle-events.html)
 
 ### 被移除的 API
@@ -67,5 +67,5 @@
 - [内联模板 attribute](./inline-template-attribute.html)
 - [`$children` 实例 property](./children.html)
 - [`propsData` 选项](./props-data.html)
-- `$destroy` 实例方法。用户不应再手动管理单个 Vue 组件的生命周期。
+- `$destroy` 实例方法。用户不应该再手动管理单个 Vue 组件的生命周期。
 - 全局函数 `set` 和 `delete` 以及实例方法 `$set` 和 `$delete`。基于代理的变化检测已经不再需要它们了。
