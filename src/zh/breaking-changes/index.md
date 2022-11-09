@@ -47,11 +47,11 @@
 
 - `destroyed` 生命周期选项被重命名为 `unmounted`
 - `beforeDestroy` 生命周期选项被重命名为 `beforeUnmount`
-- [props 的 `default` 工厂函数不再可以访问 `this` 上下文](./props-default-this.html)
+- [Props 的 `default` 工厂函数不再可以访问 `this` 上下文](./props-default-this.html)
 - [自定义指令的 API 已更改为与组件生命周期一致，且 `binding.expression` 已移除](./custom-directives.html)
 - [`data` 选项应始终被声明为一个函数](./data-option.html)
 - [来自 mixin 的 `data` 选项现在为浅合并](./data-option.html#mixin-合并行为变更)
-- [attribute 强制策略已更改](./attribute-coercion.html)
+- [Attribute 强制策略已更改](./attribute-coercion.html)
 - [Transition 的一些 class 被重命名](./transition.html)
 - [`<TransitionGroup>` 不再默认渲染包裹元素](./transition-group.html)
 - [当侦听一个数组时，只有当数组被替换时，回调才会触发，如果需要在变更时触发，则必须指定 `deep` 选项](./watch.html)
