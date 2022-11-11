@@ -112,7 +112,7 @@ Breaking changes between Vue 2 and Vue 3 are listed [here](./breaking-changes/).
 
 ## New Framework-level Recommendations
 
-New framework-level recommendations are listed [here](/recommendations).
+New framework-level recommendations are listed [here](./recommendations).
 
 ## Migration Build
 
