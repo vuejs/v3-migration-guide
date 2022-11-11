@@ -33,4 +33,4 @@ export default {
 
 ## Migration Strategy
 
-[Migration build flag: `PROPS_DEFAULT_THIS`](/migration-build.html#compat-configuration)
+[Migration build flag: `PROPS_DEFAULT_THIS`](../migration-build.html#compat-configuration)

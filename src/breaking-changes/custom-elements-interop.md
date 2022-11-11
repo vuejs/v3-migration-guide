@@ -96,7 +96,7 @@ In 3.0, we are limiting Vue's special treatment of the `is` attribute to the `<c
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[Migration build flag: `COMPILER_IS_ON_ELEMENT`](/migration-build.html#compat-configuration)
+[Migration build flag: `COMPILER_IS_ON_ELEMENT`](../migration-build.html#compat-configuration)
 
 ## `vue:` Prefix for In-DOM Template Parsing Workarounds
 

@@ -108,4 +108,4 @@ With [fragments](../new/fragments.html#overview) support, components can potenti
 
 ## Migration Strategy
 
-[Migration build flag: `CUSTOM_DIR`](/migration-build.html#compat-configuration)
+[Migration build flag: `CUSTOM_DIR`](../migration-build.html#compat-configuration)

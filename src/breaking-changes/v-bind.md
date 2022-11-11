@@ -45,4 +45,4 @@ In 3x, if an element has both `v-bind="object"` and an identical individual attr
 
 If you are relying on this override functionality for `v-bind`, we currently recommend ensuring that your `v-bind` attribute is defined before individual attributes.
 
-[Migration build flag: `COMPILER_V_BIND_OBJECT_ORDER`](/migration-build.html#compat-configuration)
+[Migration build flag: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build.html#compat-configuration)

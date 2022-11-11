@@ -37,7 +37,7 @@ In Vue 3, we have [fragment support](../new/fragments.html), so components no lo
 
 ## Migration Strategy
 
-[Migration build flag: `TRANSITION_GROUP_ROOT`](/migration-build.html#compat-configuration)
+[Migration build flag: `TRANSITION_GROUP_ROOT`](../migration-build.html#compat-configuration)
 
 ## See also
 

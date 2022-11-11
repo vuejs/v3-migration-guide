@@ -95,7 +95,7 @@ In Vue 3.x, the "use production build" tip will only show up when using the "dev
 
 For ES modules builds, since they are used with bundlers, and in most cases a CLI or boilerplate would have configured the production env properly, this tip will no longer show up.
 
-[Migration build flag: `CONFIG_PRODUCTION_TIP`](/migration-build.html#compat-configuration)
+[Migration build flag: `CONFIG_PRODUCTION_TIP`](../migration-build.html#compat-configuration)
 
 ### `config.ignoredElements` Is Now `config.compilerOptions.isCustomElement`
 
@@ -118,7 +118,7 @@ In Vue 3, the check of whether an element is a component or not has been moved t
 - This will be a new top-level option in the Vue CLI config.
   :::
 
-[Migration build flag: `CONFIG_IGNORED_ELEMENTS`](/migration-build.html#compat-configuration)
+[Migration build flag: `CONFIG_IGNORED_ELEMENTS`](../migration-build.html#compat-configuration)
 
 ### `Vue.prototype` Replaced by `config.globalProperties`
 
@@ -139,7 +139,7 @@ app.config.globalProperties.$http = () => {}
 
 Using `provide` (discussed [below](#provide-inject)) should also be considered as an alternative to `globalProperties`.
 
-[Migration build flag: `GLOBAL_PROTOTYPE`](/migration-build.html#compat-configuration)
+[Migration build flag: `GLOBAL_PROTOTYPE`](../migration-build.html#compat-configuration)
 
 ### `Vue.extend` Removed
 
@@ -189,7 +189,7 @@ Note that although the return type of `defineComponent` is a constructor-like ty
 
 In Vue 3, we strongly recommend favoring composition via [Composition API](https://vuejs.org/guide/reusability/composables.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](https://vuejs.org/api/options-composition.html#extends) instead of `Vue.extend`.
 
-[Migration build flag: `GLOBAL_EXTEND`](/migration-build.html#compat-configuration)
+[Migration build flag: `GLOBAL_EXTEND`](../migration-build.html#compat-configuration)
 
 ### A Note for Plugin Authors
 
@@ -244,7 +244,7 @@ app.directive('focus', {
 app.mount('#app')
 ```
 
-[Migration build flag: `GLOBAL_MOUNT`](/migration-build.html#compat-configuration)
+[Migration build flag: `GLOBAL_MOUNT`](../migration-build.html#compat-configuration)
 
 ## Provide / Inject
 
