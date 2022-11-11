@@ -96,7 +96,7 @@ Some of the new features to keep an eye on in Vue 3 include:
 - [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html)<span class="note">\*</span>
 - [SFC Composition API Syntax Sugar (`<script setup>`)](https://vuejs.org/api/sfc-script-setup.html)<span class="note">\*</span>
 - [Teleport](https://vuejs.org/guide/built-ins/teleport.html)
-- [Fragments](/new/fragments.html)
+- [Fragments](./new/fragments.html)
 - [Emits Component Option](https://vuejs.org/api/options-state.html#emits)<span class="note">\*\*</span>
 - [`createRenderer` API from `@vue/runtime-core`](https://vuejs.org/api/custom-renderer.html) to create custom renderers
 - [SFC State-driven CSS Variables (`v-bind` in `<style>`)](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)<span class="note">\*</span>
@@ -108,7 +108,7 @@ Some of the new features to keep an eye on in Vue 3 include:
 
 ## Breaking Changes
 
-Breaking changes between Vue 2 and Vue 3 are listed [here](/breaking-changes/).
+Breaking changes between Vue 2 and Vue 3 are listed [here](./breaking-changes/).
 
 ## New Framework-level Recommendations
 

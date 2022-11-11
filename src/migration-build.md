@@ -184,11 +184,11 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
    - If you are using `vue-router`, note `<transition>` and `<keep-alive>` will not work with `<router-view>` until you upgrade to `vue-router` v4.
 
-7. Update [`<transition>` class names](/breaking-changes/transition.html). This is the only feature that does not have a runtime warning. You can do a project-wide search for `.*-enter` and `.*-leave` CSS class names.
+7. Update [`<transition>` class names](./breaking-changes/transition.html). This is the only feature that does not have a runtime warning. You can do a project-wide search for `.*-enter` and `.*-leave` CSS class names.
 
    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
 
-8. Update app entry to use [new global mounting API](/breaking-changes/global-api.html#a-new-global-api-createapp).
+8. Update app entry to use [new global mounting API](./breaking-changes/global-api.html#a-new-global-api-createapp).
 
    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
 
@@ -273,71 +273,71 @@ Features that start with `COMPILER_` are compiler-specific: if you are using the
 
 | ID                                    | Type | Description                                                             | Docs                                                                                       |
 | ------------------------------------- | ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| GLOBAL_MOUNT_CONTAINER                | ⨂    | Mounted application does not replace the element it's mounted to        | [link](/breaking-changes/mount-changes.html)                                               |
+| GLOBAL_MOUNT_CONTAINER                | ⨂    | Mounted application does not replace the element it's mounted to        | [link](./breaking-changes/mount-changes.html)                                               |
 | CONFIG_DEVTOOLS                       | ⨂    | production devtools is now a build-time flag                            | [link](https://github.com/vuejs/core/tree/master/packages/vue#bundler-build-feature-flags) |
-| COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂    | `v-if` and `v-for` precedence when used on the same element has changed | [link](/breaking-changes/v-if-v-for.html)                                                  |
-| COMPILER_V_IF_SAME_KEY                | ⨂    | `v-if` branches can no longer have the same key                         | [link](/breaking-changes/key-attribute.html#on-conditional-branches)                       |
-| COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key should now be placed on `<template>`             | [link](/breaking-changes/key-attribute.html#with-template-v-for)                           |
-| COMPILER_SFC_FUNCTIONAL               | ⨂    | `<template functional>` is no longer supported in SFCs                  | [link](/breaking-changes/functional-components.html#single-file-components-sfcs)           |
+| COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂    | `v-if` and `v-for` precedence when used on the same element has changed | [link](./breaking-changes/v-if-v-for.html)                                                  |
+| COMPILER_V_IF_SAME_KEY                | ⨂    | `v-if` branches can no longer have the same key                         | [link](./breaking-changes/key-attribute.html#on-conditional-branches)                       |
+| COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key should now be placed on `<template>`             | [link](./breaking-changes/key-attribute.html#with-template-v-for)                           |
+| COMPILER_SFC_FUNCTIONAL               | ⨂    | `<template functional>` is no longer supported in SFCs                  | [link](./breaking-changes/functional-components.html#single-file-components-sfcs)           |
 
 ### Partially Compatible with Caveats
 
 | ID                       | Type | Description                                                                                                                                                                                | Docs                                                                                                           |
 | ------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` is now `config.compilerOptions.isCustomElement` (only in browser compiler build). If using build setup, `isCustomElement` must be passed via build configuration. | [link](/breaking-changes/global-api.html#config-ignoredelements-is-now-config-compileroptions-iscustomelement) |
-| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` removed (compat only supported in browser compiler build)                                                                                                                | [link](/breaking-changes/inline-template-attribute.html)                                                       |
-| PROPS_DEFAULT_THIS       | ◐    | props default factory no longer have access to `this` (in compat mode, `this` is not a real instance - it only exposes props, `$options` and injections)                                   | [link](/breaking-changes/props-default-this.html)                                                              |
+| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` is now `config.compilerOptions.isCustomElement` (only in browser compiler build). If using build setup, `isCustomElement` must be passed via build configuration. | [link](./breaking-changes/global-api.html#config-ignoredelements-is-now-config-compileroptions-iscustomelement) |
+| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` removed (compat only supported in browser compiler build)                                                                                                                | [link](./breaking-changes/inline-template-attribute.html)                                                       |
+| PROPS_DEFAULT_THIS       | ◐    | props default factory no longer have access to `this` (in compat mode, `this` is not a real instance - it only exposes props, `$options` and injections)                                   | [link](./breaking-changes/props-default-this.html)                                                              |
 | INSTANCE_DESTROY         | ◐    | `$destroy` instance method removed (in compat mode, only supported on root instance)                                                                                                       |                                                                                                                |
 | GLOBAL_PRIVATE_UTIL      | ◐    | `Vue.util` is private and no longer available                                                                                                                                              |                                                                                                                |
-| CONFIG_PRODUCTION_TIP    | ◐    | `config.productionTip` no longer necessary                                                                                                                                                 | [link](/breaking-changes/global-api.html#config-productiontip-removed)                                         |
+| CONFIG_PRODUCTION_TIP    | ◐    | `config.productionTip` no longer necessary                                                                                                                                                 | [link](./breaking-changes/global-api.html#config-productiontip-removed)                                         |
 | CONFIG_SILENT            | ◐    | `config.silent` removed                                                                                                                                                                    |                                                                                                                |
 
 ### Compat only (no warning)
 
 | ID                 | Type | Description                            | Docs                                      |
 | ------------------ | ---- | -------------------------------------- | ----------------------------------------- |
-| TRANSITION_CLASSES | ⭘    | Transition enter/leave classes changed | [link](/breaking-changes/transition.html) |
+| TRANSITION_CLASSES | ⭘    | Transition enter/leave classes changed | [link](./breaking-changes/transition.html) |
 
 ### Fully Compatible
 
 | ID                           | Type | Description                                                           | Docs                                                                                        |
 | ---------------------------- | ---- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| GLOBAL_MOUNT                 | ✔    | new Vue() -> createApp                                                | [link](/breaking-changes/global-api.html#mounting-app-instance)                             |
-| GLOBAL_EXTEND                | ✔    | Vue.extend removed (use `defineComponent` or `extends` option)        | [link](/breaking-changes/global-api.html#vue-extend-removed)                                |
-| GLOBAL_PROTOTYPE             | ✔    | `Vue.prototype` -> `app.config.globalProperties`                      | [link](/breaking-changes/global-api.html#vue-prototype-replaced-by-config-globalproperties) |
+| GLOBAL_MOUNT                 | ✔    | new Vue() -> createApp                                                | [link](./breaking-changes/global-api.html#mounting-app-instance)                             |
+| GLOBAL_EXTEND                | ✔    | Vue.extend removed (use `defineComponent` or `extends` option)        | [link](./breaking-changes/global-api.html#vue-extend-removed)                                |
+| GLOBAL_PROTOTYPE             | ✔    | `Vue.prototype` -> `app.config.globalProperties`                      | [link](./breaking-changes/global-api.html#vue-prototype-replaced-by-config-globalproperties) |
 | GLOBAL_SET                   | ✔    | `Vue.set` removed (no longer needed)                                  |                                                                                             |
 | GLOBAL_DELETE                | ✔    | `Vue.delete` removed (no longer needed)                               |                                                                                             |
 | GLOBAL_OBSERVABLE            | ✔    | `Vue.observable` removed (use `reactive`)                             | [link](https://vuejs.org/api/reactivity-core.html#reactive)                                 |
-| CONFIG_KEY_CODES             | ✔    | config.keyCodes removed                                               | [link](/breaking-changes/keycode-modifiers.html)                                            |
+| CONFIG_KEY_CODES             | ✔    | config.keyCodes removed                                               | [link](./breaking-changes/keycode-modifiers.html)                                            |
 | CONFIG_WHITESPACE            | ✔    | In Vue 3 whitespace defaults to `"condense"`                          |                                                                                             |
 | INSTANCE_SET                 | ✔    | `vm.$set` removed (no longer needed)                                  |                                                                                             |
 | INSTANCE_DELETE              | ✔    | `vm.$delete` removed (no longer needed)                               |                                                                                             |
-| INSTANCE_EVENT_EMITTER       | ✔    | `vm.$on`, `vm.$off`, `vm.$once` removed                               | [link](/breaking-changes/events-api.html)                                                   |
-| INSTANCE_EVENT_HOOKS         | ✔    | Instance no longer emits `hook:x` events                              | [link](/breaking-changes/vnode-lifecycle-events.html)                                       |
-| INSTANCE_CHILDREN            | ✔    | `vm.$children` removed                                                | [link](/breaking-changes/children.html)                                                     |
-| INSTANCE_LISTENERS           | ✔    | `vm.$listeners` removed                                               | [link](/breaking-changes/listeners-removed.html)                                            |
-| INSTANCE_SCOPED_SLOTS        | ✔    | `vm.$scopedSlots` removed; `vm.$slots` now exposes functions          | [link](/breaking-changes/slots-unification.html)                                            |
-| INSTANCE_ATTRS_CLASS_STYLE   | ✔    | `$attrs` now includes `class` and `style`                             | [link](/breaking-changes/attrs-includes-class-style.html)                                   |
-| OPTIONS_DATA_FN              | ✔    | `data` must be a function in all cases                                | [link](/breaking-changes/data-option.html)                                                  |
-| OPTIONS_DATA_MERGE           | ✔    | `data` from mixin or extension is now shallow merged                  | [link](/breaking-changes/data-option.html)                                                  |
+| INSTANCE_EVENT_EMITTER       | ✔    | `vm.$on`, `vm.$off`, `vm.$once` removed                               | [link](./breaking-changes/events-api.html)                                                   |
+| INSTANCE_EVENT_HOOKS         | ✔    | Instance no longer emits `hook:x` events                              | [link](./breaking-changes/vnode-lifecycle-events.html)                                       |
+| INSTANCE_CHILDREN            | ✔    | `vm.$children` removed                                                | [link](./breaking-changes/children.html)                                                     |
+| INSTANCE_LISTENERS           | ✔    | `vm.$listeners` removed                                               | [link](./breaking-changes/listeners-removed.html)                                            |
+| INSTANCE_SCOPED_SLOTS        | ✔    | `vm.$scopedSlots` removed; `vm.$slots` now exposes functions          | [link](./breaking-changes/slots-unification.html)                                            |
+| INSTANCE_ATTRS_CLASS_STYLE   | ✔    | `$attrs` now includes `class` and `style`                             | [link](./breaking-changes/attrs-includes-class-style.html)                                   |
+| OPTIONS_DATA_FN              | ✔    | `data` must be a function in all cases                                | [link](./breaking-changes/data-option.html)                                                  |
+| OPTIONS_DATA_MERGE           | ✔    | `data` from mixin or extension is now shallow merged                  | [link](./breaking-changes/data-option.html)                                                  |
 | OPTIONS_BEFORE_DESTROY       | ✔    | `beforeDestroy` -> `beforeUnmount`                                    |                                                                                             |
 | OPTIONS_DESTROYED            | ✔    | `destroyed` -> `unmounted`                                            |                                                                                             |
-| WATCH_ARRAY                  | ✔    | watching an array no longer triggers on mutation unless deep          | [link](/breaking-changes/watch.html)                                                        |
-| V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` no longer supports keyCode modifiers                           | [link](/breaking-changes/keycode-modifiers.html)                                            |
-| CUSTOM_DIR                   | ✔    | Custom directive hook names changed                                   | [link](/breaking-changes/custom-directives.html)                                            |
-| ATTR_FALSE_VALUE             | ✔    | No longer removes attribute if binding value is boolean `false`       | [link](/breaking-changes/attribute-coercion.html)                                           |
-| ATTR_ENUMERATED_COERCION     | ✔    | No longer special case enumerated attributes                          | [link](/breaking-changes/attribute-coercion.html)                                           |
-| TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` no longer renders a root element by default      | [link](/breaking-changes/transition-group.html)                                             |
-| COMPONENT_ASYNC              | ✔    | Async component API changed (now requires `defineAsyncComponent`)     | [link](/breaking-changes/async-components.html)                                             |
-| COMPONENT_FUNCTIONAL         | ✔    | Functional component API changed (now must be plain functions)        | [link](/breaking-changes/functional-components.html)                                        |
-| COMPONENT_V_MODEL            | ✔    | Component v-model reworked                                            | [link](/breaking-changes/v-model.html)                                                      |
-| RENDER_FUNCTION              | ✔    | Render function API changed                                           | [link](/breaking-changes/render-function-api.html)                                          |
-| FILTERS                      | ✔    | Filters removed (this option affects only runtime filter APIs)        | [link](/breaking-changes/filters.html)                                                      |
-| COMPILER_IS_ON_ELEMENT       | ✔    | `is` usage is now restricted to `<component>` only                    | [link](/breaking-changes/custom-elements-interop.html)                                      |
-| COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` replaced by `v-model` with arguments                    | [link](/breaking-changes/v-model.html)                                                      |
+| WATCH_ARRAY                  | ✔    | watching an array no longer triggers on mutation unless deep          | [link](./breaking-changes/watch.html)                                                        |
+| V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` no longer supports keyCode modifiers                           | [link](./breaking-changes/keycode-modifiers.html)                                            |
+| CUSTOM_DIR                   | ✔    | Custom directive hook names changed                                   | [link](./breaking-changes/custom-directives.html)                                            |
+| ATTR_FALSE_VALUE             | ✔    | No longer removes attribute if binding value is boolean `false`       | [link](./breaking-changes/attribute-coercion.html)                                           |
+| ATTR_ENUMERATED_COERCION     | ✔    | No longer special case enumerated attributes                          | [link](./breaking-changes/attribute-coercion.html)                                           |
+| TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` no longer renders a root element by default      | [link](./breaking-changes/transition-group.html)                                             |
+| COMPONENT_ASYNC              | ✔    | Async component API changed (now requires `defineAsyncComponent`)     | [link](./breaking-changes/async-components.html)                                             |
+| COMPONENT_FUNCTIONAL         | ✔    | Functional component API changed (now must be plain functions)        | [link](./breaking-changes/functional-components.html)                                        |
+| COMPONENT_V_MODEL            | ✔    | Component v-model reworked                                            | [link](./breaking-changes/v-model.html)                                                      |
+| RENDER_FUNCTION              | ✔    | Render function API changed                                           | [link](./breaking-changes/render-function-api.html)                                          |
+| FILTERS                      | ✔    | Filters removed (this option affects only runtime filter APIs)        | [link](./breaking-changes/filters.html)                                                      |
+| COMPILER_IS_ON_ELEMENT       | ✔    | `is` usage is now restricted to `<component>` only                    | [link](./breaking-changes/custom-elements-interop.html)                                      |
+| COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` replaced by `v-model` with arguments                    | [link](./breaking-changes/v-model.html)                                                      |
 | COMPILER_V_BIND_PROP         | ✔    | `v-bind.prop` modifier removed                                        |                                                                                             |
-| COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` is now order sensitive                              | [link](/breaking-changes/v-bind.html)                                                       |
-| COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` modifier removed                                        | [link](/breaking-changes/v-on-native-modifier-removed.html)                                 |
+| COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` is now order sensitive                              | [link](./breaking-changes/v-bind.html)                                                       |
+| COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` modifier removed                                        | [link](./breaking-changes/v-on-native-modifier-removed.html)                                 |
 | COMPILER_V_FOR_REF           | ✔    | `ref` in `v-for` (compiler support)                                   |                                                                                             |
 | COMPILER_NATIVE_TEMPLATE     | ✔    | `<template>` with no special directives now renders as native element |                                                                                             |
 | COMPILER_FILTERS             | ✔    | filters (compiler support)                                            |                                                                                             |
