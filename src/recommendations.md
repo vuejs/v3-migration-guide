@@ -31,7 +31,7 @@ Also see [Tooling chapter in new docs](https://vuejs.org/guide/scaling-up/toolin
 
 ### Vue Router
 
-Vue Router 4.0 provides Vue 3 support and has a number of breaking changes of its own. Check out its [migration guide](https://router.vuejs.org/) for full details.
+Vue Router 4.0 provides Vue 3 support and has a number of breaking changes of its own. Check out its [migration guide](https://router.vuejs.org/guide/migration/index.html) for full details.
 
 - [Documentation](https://router.vuejs.org/)
 - [GitHub](https://github.com/vuejs/router)
