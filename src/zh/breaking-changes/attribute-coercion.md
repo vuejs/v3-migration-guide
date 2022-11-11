@@ -1,6 +1,6 @@
 ---
 badges:
-- breaking
+  - breaking
 ---
 
 # attribute 强制行为 <MigrationBadges :badges="$frontmatter.badges" />
