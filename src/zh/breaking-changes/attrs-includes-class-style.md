@@ -1,7 +1,7 @@
 ---
 title: $attrs 包含 class & style
 badges:
-  - breaking
+- breaking
 ---
 
 # `$attrs` 包含 `class` & `style` <MigrationBadges :badges="$frontmatter.badges" />

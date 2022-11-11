@@ -1,6 +1,6 @@
 ---
 badges:
-  - new
+- new
 ---
 
 # 异步组件 <MigrationBadges :badges="$frontmatter.badges" />

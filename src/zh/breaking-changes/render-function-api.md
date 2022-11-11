@@ -2,6 +2,7 @@
 badges:
   - breaking
 ---
+
 # 渲染函数 API <MigrationBadges :badges="$frontmatter.badges" />
 
 ## 概览
