@@ -20,7 +20,7 @@
 
 - 对 IE11 的支持：[Vue 3 已经官方放弃对 IE11 的支持](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)。如果仍然需要支持 IE11 或更低版本，那你仍需继续使用 Vue 2。
 
-- 服务端渲染：该迁移构建版本可以被用于服务端渲染，但是迁移一个自定义的服务端渲染配置还有很多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/vue-next/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 以支持 Vue 3 服务端渲染。如果你正在使用 [Nuxt.js](https://zh.nuxtjs.org/)，可以尝试 [Nuxt Bridge，一个 Nuxt.js 2 到 3 的兼容层](https://v3.nuxtjs.org/getting-started/bridge/)。对于复杂、生产环境的项目来说，可能最好还是等待一下 [Nuxt 3 (目前处于 beta 阶段)](https://v3.nuxtjs.org/getting-started/introduction)。
+- 服务端渲染：该迁移构建版本可以被用于服务端渲染，但是迁移一个自定义的服务端渲染配置还有很多工作要做。大致的思路是将 `vue-server-renderer` 替换为 [`@vue/server-renderer`](https://github.com/vuejs/core/tree/master/packages/server-renderer)。Vue 3 不再提供一个包渲染器，且我们推荐使用 [Vite](https://cn.vitejs.dev/guide/ssr.html) 以支持 Vue 3 服务端渲染。如果你正在使用 [Nuxt.js](https://zh.nuxtjs.org/)，可以尝试 [Nuxt Bridge，一个 Nuxt.js 2 到 3 的兼容层](https://v3.nuxtjs.org/getting-started/bridge/)。对于复杂、生产环境的项目来说，可能更好还是等待一下 Nuxt 3。
 
 ### 预期
 
@@ -75,13 +75,13 @@
    ```js
    // vue.config.js
    module.exports = {
-     chainWebpack: config => {
+     chainWebpack: (config) => {
        config.resolve.alias.set('vue', '@vue/compat')
 
        config.module
          .rule('vue')
          .use('vue-loader')
-         .tap(options => {
+         .tap((options) => {
            return {
              ...options,
              compilerOptions: {
@@ -273,7 +273,7 @@ export default {
 | ID | 类型 | 描述 | 文档 |
 | ---- | ---- | ---- | ---- |
 | GLOBAL_MOUNT_CONTAINER                | ⨂    | 被挂载的应用不会替换被挂载到的元素 | [链接](./breaking-changes/mount-changes.html)                                                    |
-| CONFIG_DEVTOOLS                       | ⨂    | 生产环境开发者工具现在是一个构建时的开关 | [链接](https://github.com/vuejs/vue-next/tree/master/packages/vue#bundler-build-feature-flags) |
+| CONFIG_DEVTOOLS                       | ⨂    | 生产环境开发者工具现在是一个构建时的开关 | [链接](https://github.com/vuejs/core/tree/master/packages/vue#bundler-build-feature-flags) |
 | COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂    | `v-if` 和 `v-for` 用在相同的元素上时的处理顺序发生了改变 | [链接](./breaking-changes/v-if-v-for.html)                                                       |
 | COMPILER_V_IF_SAME_KEY                | ⨂    | `v-if` 分支不能再拥有相同的 key | [链接](./breaking-changes/key-attribute.html#on-conditional-branches)                            |
 | COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key 现在应该被放在 `<template>` 上 | [链接](./breaking-changes/key-attribute.html#with-template-v-for)                                |
@@ -322,7 +322,6 @@ export default {
 | OPTIONS_BEFORE_DESTROY       | ✔    | `beforeDestroy` -> `beforeUnmount` | |
 | OPTIONS_DESTROYED            | ✔    | `destroyed` -> `unmounted` | |
 | WATCH_ARRAY                  | ✔    | 对于一个数组的操作，侦听无法被触发了，除非使用了深度侦听 | [链接](./breaking-changes/watch.html) |
-| V_FOR_REF                    | ✔    | `v-for` 内的 `ref` 不再注册 ref 数组 | [链接](./breaking-changes/array-refs.html) |
 | V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` 不再支持 keyCode 修饰符 | [链接](./breaking-changes/keycode-modifiers.html) |
 | CUSTOM_DIR                   | ✔    | 自定义指令钩子命名变化 | [链接](./breaking-changes/custom-directives.html) |
 | ATTR_FALSE_VALUE             | ✔    | attribute 的绑定值为布尔值 `false` 时不再将其移除 | [链接](./breaking-changes/attribute-coercion.html) |

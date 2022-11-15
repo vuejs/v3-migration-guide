@@ -17,7 +17,7 @@ Vue.nextTick(() => {
 })
 ```
 
-或者，如果你曾经对涉及[异步组件](https://v2.cn.vuejs.org/v2/guide/components-dynamic-async.html)的应用进行单元测试，那么你很可能编写过以下内容：
+或者，如果你曾经对涉及异步组件的应用进行单元测试，那么你很可能编写过以下内容：
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -38,7 +38,7 @@ test('an async feature', async () => {
 
 但是，如果你从来都没有过手动操作 DOM 的必要，也没有在你的应用中使用或测试过异步组件，那该怎么办？或者，不管出于什么原因，你更喜欢使用老式的 `window.setTimeout()` 来代替它？在这种情况下，`nextTick()` 的代码就会变成死代码——也就是说，代码写了，但从未使用过。而死代码很难成为一个好的东西，尤其是在我们的客户端上下文中，每一个字节都很重要。
 
-如 [webpack](https://webpack.js.org/) 这样的模块打包工具支持 [tree-shaking](https://webpack.js.org/guides/tree-shaking/)，这是表达“消除死代码”的一个花哨术语。遗憾的是，由于之前的 Vue 版本中的代码编写方式，如 `Vue.nextTick()` 这样的全局 API 是不支持 tree-shake 的，不管它们实际上是否被使用了，都会被包含在最终的打包产物中。
+如 webpack 和 Rollup (Vite 基于它) 这样的模块打包工具支持 [tree-shaking](https://webpack.js.org/guides/tree-shaking/)，这是表达“消除死代码”的一个花哨术语。遗憾的是，由于之前的 Vue 版本中的代码编写方式，如 `Vue.nextTick()` 这样的全局 API 是不支持 tree-shake 的，不管它们实际上是否被使用了，都会被包含在最终的打包产物中。
 
 ## 3.x 语法
 

@@ -3,7 +3,7 @@ badges:
   - breaking
 ---
 
-# 全局 API <MigrationBadges :badges="$frontmatter.badges" />
+# 全局 API 应用实例 <MigrationBadges :badges="$frontmatter.badges" />
 
 Vue 2.x 有许多全局 API 和配置，它们可以全局改变 Vue 的行为。例如，要注册全局组件，可以使用 `Vue.component` API，就像这样：
 
@@ -20,7 +20,7 @@ Vue.component('button-counter', {
 
 ```js
 Vue.directive('focus', {
-  inserted: el => el.focus()
+  inserted: (el) => el.focus()
 })
 ```
 
@@ -65,7 +65,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-如果你使用的是 Vue 的 [CDN](./introduction.html#cdn) 构建版本，那么 `createApp` 将通过全局的 `Vue` 对象暴露。
+如果你使用的是 Vue 的 CDN 构建版本，那么 `createApp` 将通过全局的 `Vue` 对象暴露。
 
 ```js
 const { createApp } = Vue
@@ -107,7 +107,7 @@ Vue.config.ignoredElements = ['my-el', /^ion-/]
 
 // 之后
 const app = createApp({})
-app.config.compilerOptions.isCustomElement = tag => tag.startsWith('ion-')
+app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('ion-')
 ```
 
 :::tip 重要
@@ -234,7 +234,7 @@ app.component('button-counter', {
 })
 
 app.directive('focus', {
-  mounted: el => el.focus()
+  mounted: (el) => el.focus()
 })
 
 // 现在，所有通过 app.mount() 挂载的应用实例及其组件树，
@@ -275,7 +275,7 @@ import { createApp } from 'vue'
 import Foo from './Foo.vue'
 import Bar from './Bar.vue'
 
-const createMyApp = options => {
+const createMyApp = (options) => {
   const app = createApp(options)
   app.directive('focus' /* ... */)
 
