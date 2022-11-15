@@ -39,7 +39,7 @@ Vue Router 4.0 提供了对 Vue 3 的支持，并且自身也有许多重大的�
 
 ### 状态管理
 
-[Pinia](https://pinia.vuejs.org/zh/index.html) 是我们新推荐的大规模状态管理的解决方案。 Pinia 是作为 Vuex 5 的雏形而创建的，现已实现了 Vuex 5 中计划实际实现的大部分功能。考虑到核心团队成员 [Eduardo](https://github.com/posva) 投入的工作量，我们决定保留其原始名称。
+[Pinia](https://pinia.vuejs.org/zh/index.html) 是我们新推荐的大规模状态管理的解决方案。 Pinia 是作为 Vuex 5 的雏形而创建的，现已实现了 Vuex 5 中计划实际实现的大部分功能。考虑到核心团队成员 [Eduardo](https://github.com/posva) 的倾情投入，我们决定保留其原始名称。
 
 - [文档](https://pinia.vuejs.org/zh/index.html)
 - [GitHub](https://github.com/vuejs/pinia)

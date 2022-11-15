@@ -37,7 +37,7 @@ export default {
 
 ## 3.x 更新
 
-在 3.x 中，`$children` property 已被移除，且不再支持。如果你需要访问子组件实例，我们建议使用 [$refs](https://cn.vuejs.org/guide/essentials/template-refs.html#template-refs)。
+在 3.x 中，`$children` property 已被移除，且不再支持。如果你需要访问子组件实例，我们建议使用[模板引用](https://cn.vuejs.org/guide/essentials/template-refs.html#template-refs)。
 
 ## 迁移策略
 
