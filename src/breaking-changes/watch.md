@@ -29,4 +29,4 @@ watch: {
 
 If you rely on watching array mutations, add the `deep` option to ensure that your callback is triggered correctly.
 
-[Migration build flag: `WATCH_ARRAY`](/migration-build.html#compat-configuration)
+[Migration build flag: `WATCH_ARRAY`](../migration-build.html#compat-configuration)

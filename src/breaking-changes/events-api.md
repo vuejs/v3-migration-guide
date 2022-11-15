@@ -58,7 +58,7 @@ We removed `$on`, `$off` and `$once` methods from the instance completely. `$emi
 
 ## Migration Strategy
 
-[Migration build flag: `INSTANCE_EVENT_EMITTER`](/migration-build.html#compat-configuration)
+[Migration build flag: `INSTANCE_EVENT_EMITTER`](../migration-build.html#compat-configuration)
 
 In Vue 3, it is no longer possible to use these APIs to listen to a component's own emitted events from within a component. There is no migration path for that use case.
 

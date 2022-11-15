@@ -30,7 +30,7 @@ This feature will no longer be supported.
 
 Most of the use cases for `inline-template` assumes a no-build-tool setup, where all templates are written directly inside the HTML page.
 
-[Migration build flag: `COMPILER_INLINE_TEMPLATE`](/migration-build.html#compat-configuration)
+[Migration build flag: `COMPILER_INLINE_TEMPLATE`](../migration-build.html#compat-configuration)
 
 ### Option #1: Use `<script>` tag
 
@@ -81,4 +81,4 @@ The child, instead of providing no template, should now render the default slot\
 </template>
 ```
 
-> - Note: In 3.x, slots can be rendered as the root with native [fragments](/new/fragments) support!
+> - Note: In 3.x, slots can be rendered as the root with native [fragments](../new/fragments) support!
