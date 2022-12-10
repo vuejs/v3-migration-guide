@@ -46,7 +46,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
    - If using custom webpack setup: Upgrade `vue-loader` to `^16.0.0`.
    - If using `vue-cli`: upgrade to the latest `@vue/cli-service` with `vue upgrade`
-   - (Alternative) migrate to [Vite](https://vitejs.dev/) + [vite-plugin-vue2](https://github.com/vitejs/vite-plugin-vue2). [[Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/565b948919eb58f22a32afca7e321b490cb3b074)]
+   - (Alternative) migrate to [Vite](https://vitejs.dev/) + [@vitejs/plugin-vue2](https://github.com/vitejs/vite-plugin-vue2) (Vue 2.7) or [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2) (Vue 2.6 or earlier). [[Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/565b948919eb58f22a32afca7e321b490cb3b074)]
 
 2. In `package.json`, update `vue` to 3.1, install `@vue/compat` of the same version, and replace `vue-template-compiler` (if present) with `@vue/compiler-sfc`:
 
