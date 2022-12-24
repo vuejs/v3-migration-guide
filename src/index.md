@@ -1,5 +1,9 @@
 # Vue 3 Migration Guide
 
+:::warning Vue 2 support will end on December 31st, 2023.
+Learn more about [Extended LTS](https://v2.vuejs.org/lts/) if upgrading to Vue 3 isn't feasible before the EOL date.
+:::
+
 This guide is primarily for users with prior Vue 2 experience who want to learn about the changes between Vue 2 and Vue 3. **This is not something you have to read from top to bottom before trying out Vue 3.** The recommended way to learn Vue 3 is by reading the [new documentation](https://vuejs.org).
 
 <!-- VueMastery Start -->
