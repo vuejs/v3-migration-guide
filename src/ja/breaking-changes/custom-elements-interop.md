@@ -61,7 +61,7 @@ Vue.config.ignoredElements = ['plastic-button']
 
   It's important to note the runtime config only affects runtime template compilation - it won't affect pre-compiled templates.
 
-## Customized Built-in Elements
+## Customized Built-in Elements {#customized-built-in-elements}
 
 The Custom Elements specification provides a way to use custom elements as [Customized Built-in Element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) by adding the `is` attribute to a built-in element:
 

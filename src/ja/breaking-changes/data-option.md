@@ -62,7 +62,7 @@ Using the example above, there would only be one possible implementation of the 
 </script>
 ```
 
-## Mixin Merge Behavior Change
+## Mixin Merge Behavior Change {#mixin-merge-behavior-change}
 
 In addition, when `data()` from a component and its mixins or extends base are merged, the merge is now performed *shallowly*:
 

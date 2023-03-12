@@ -85,7 +85,7 @@ DynamicHeading.props = ['level']
 export default DynamicHeading
 ```
 
-### Single File Components (SFCs)
+### Single File Components (SFCs) {#single-file-components-sfcs}
 
 In 3.x, the performance difference between stateful and functional components has been drastically reduced and will be insignificant in most use cases. As a result, the migration path for developers using `functional` on SFCs is to remove the attribute and rename all references of `props` to `$props` and `attrs` to `$attrs`.
 

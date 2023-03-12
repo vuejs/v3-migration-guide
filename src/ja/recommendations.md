@@ -1,75 +1,75 @@
-# New Framework-level Recommendations
+# フレームワークレベルでの新しい推奨事項
 
-The supporting libraries for Vue 3 have undergone major updates. Here is a summary of the new default recommendations:
+Vue 3 をサポートするライブラリーが大幅に更新されました。新しいデフォルトの推奨ライブラリーの概要は以下のとおりです:
 
-- New versions of Router, Devtools & test utils w/ Vue 3 support
-- Build Toolchain: Vue CLI -> [Vite](https://ja.vitejs.dev/)
-- State Management: Vuex -> [Pinia](https://pinia.vuejs.org/)
-- IDE Support: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-- New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
+- Vue 3 をサポートした Router, Devtools, test utils の新バージョン
+- ビルドツールチェーン: Vue CLI -> [Vite](https://ja.vitejs.dev//)
+- 状態管理: Vuex -> [Pinia](https://pinia.vuejs.org/)
+- IDE サポート: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+- 新しいコマンドライン TypeScript サポート: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
 - SSG: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
-## Details
+## 詳細
 
-### Build Toolchain
+### ビルドツールチェーン
 
-We now recommend [Vite](https://ja.vitejs.dev/) as the new build toolchain for Vue 3 projects. Vite is a new build tool that offers extremely fast server start and hot update performance. It was originally created by the Vue team but is now a cross-framework tool. Learn more about [why we are recommending Vite](https://ja.vitejs.dev/guide/why.html).
+Vue 3 プロジェクトの新しいビルドツールチェーンとして、[Vite](https://ja.vitejs.dev/) を推奨することになりました。Vite は、非常に高速なサーバー起動とホットアップデートのパフォーマンスを提供する新しいビルドツールです。元々は Vue チームによって作られたものですが、現在はクロスフレームワークのツールとなっています。詳細は [Vite を推奨する理由](https://ja.vitejs.dev/guide/why.html)をご覧ください。
 
-You can create a new Vite-powered Vue 3 project via [`create-vue`](https://github.com/vuejs/create-vue), our new scaffolding tool:
+新しいスキャフォールディングツールである [`create-vue`](https://github.com/vuejs/create-vue) を使って、Vite を搭載した新しい Vue 3 プロジェクトを作成できます:
 
 ```sh
 npm init vue@3
 ```
 
-While Vue CLI has also been upgraded to support Vue 3, it is now in maintenance and no longer recommended for new projects. For information on migrating from Vue CLI to Vite:
+Vue CLI も Vue 3 をサポートするようアップグレードされましたが、現在はメンテナンス中であり、新しいプロジェクトには推奨されなくなりました。Vue CLI から Vite への移行に関する情報はこちら:
 
-- [Vue CLI -> Vite Migration Guide from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
-- [Tools / Plugins that help with auto migration](https://github.com/vitejs/awesome-vite#vue-cli)
+- [VueSchool.io による Vue CLI -> Vite の移行ガイド](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
+- [自動移行に役立つツールやプラグイン](https://github.com/vitejs/awesome-vite#vue-cli)
 
-Also see [Tooling chapter in new docs](https://ja.vuejs.org/guide/scaling-up/tooling.html).
+[新しいドキュメントのツールガイドの章](https://ja.vuejs.org/guide/scaling-up/tooling.html)も参照してください。
 
 ### Vue Router
 
-Vue Router 4.0 provides Vue 3 support and has a number of breaking changes of its own. Check out its [migration guide](https://router.vuejs.org/guide/migration/index.html) for full details.
+Vue Router 4.0 は Vue 3 のサポートを提供し、多くの破壊的変更があります。詳細については、その[移行ガイド](https://router.vuejs.org/guide/migration/index.html)を確認してください。
 
-- [Documentation](https://router.vuejs.org/)
+- [ドキュメント](https://router.vuejs.org/)
 - [GitHub](https://github.com/vuejs/router)
-- [RFCs](https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3Arouter)
+- [RFC](https://github.com/vuejs/rfcs/pulls?q=is%3Apr+is%3Amerged+label%3Arouter)
 
-### State Management
+### 状態管理
 
-[Pinia](https://pinia.vuejs.org/) is the new recommended large-scale state management solution. Pinia was created as a prototype for Vuex 5, and has now evolved into the de facto implementation for what we had planned for Vuex 5. We decided to keep its original name in respect of the amount of work that went into it by core team member [Eduardo](https://github.com/posva).
+[Pinia](https://pinia.vuejs.org/) は、新しく推奨される大規模な状態管理ソリューションです。Pinia は Vuex 5 のプロトタイプとして作成されましたが、現在では Vuex 5 で計画していたものの事実上の実装に発展しています。コアチームのメンバーである [Eduardo](https://github.com/posva) による作業量に敬意を表して、元の名前を残すことにしました。
 
-- [Documentation](https://pinia.vuejs.org/)
+- [ドキュメント](https://pinia.vuejs.org/)
 - [GitHub](https://github.com/vuejs/pinia)
-- [State management chapter in new docs](https://ja.vuejs.org/guide/scaling-up/state-management.html)
+- [新しいドキュメントの状態管理の章](https://ja.vuejs.org/guide/scaling-up/state-management.html)
 
-Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can be used if you have existing Vuex stores that need to be migrated to Vue 3. The only breaking change is [how the plugin is installed](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes).
+Vuex 4.0 は、3.x とほぼ同じ API で Vue 3 もサポートしており、既存の Vuex ストアを Vue 3 に移行する必要がある場合に利用できます。唯一の破壊的変更は、[プラグインのインストール方法](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes)です。
 
-### IDE Support
+### IDE サポート
 
-[Volar](https://github.com/johnsoncodehk/volar) is now the new official VSCode extension, with greatly improved TypeScript support for Vue SFCs, including full type inference for template expressions.
+[Volar](https://github.com/johnsoncodehk/volar) は、テンプレート式の完全な型推論を含む、Vue SFC の TypeScript サポートが大幅に改善された、新しい公式 VSCode 拡張になりました。
 
-If you have previous installed Vetur, make sure to disable it to avoid conflict with Volar.
+Volar との競合を避けるため、Vetur をインストールしている場合は必ず無効にしてください。
 
-### Devtools Extension
+### Devtools 拡張機能
 
-The devtools extension has received major updates (released as v6) to support both Vue 2 and Vue 3. If you have previously installed v6 via the beta channel, you can remove it and install the extension from the stable channel now.
+Devtools 拡張機能は、Vue 2 と Vue 3 の両方をサポートするためのメジャーアップデート（v6 としてリリース）がありました。以前にベータチャンネル経由で v6 をインストールした場合は、それを削除して、安定版チャンネルから拡張機能をインストールできます。
 
-- [Documentation](https://devtools.vuejs.org/guide/installation.html)
+- [ドキュメント](https://devtools.vuejs.org/guide/installation.html)
 - [GitHub](https://github.com/vuejs/devtools)
 
-### TypeScript Support
+### TypeScript のサポート
 
-You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
+[vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc) を使って、コマンドラインから Vue SFC の型チェックと定義ファイルの生成ができるようになりました。
 
-Also see [TypeScript Guide in new docs](https://ja.vuejs.org/guide/typescript/overview.html).
+[新しいドキュメントの TypeScript ガイド](https://ja.vuejs.org/guide/typescript/overview.html)も参照してください。
 
-### Static Site Generator
+### 静的サイトジェネレーター
 
-[VitePress](https://vitepress.vuejs.org/) is the spiritual successor to VuePress, built on Vue 3 + Vite. It provides a far superior dev experience and also produces faster sites.
+[VitePress](https://vitepress.vuejs.org/) は、VuePress の精神的後継で、Vue 3 + Vite で構築されています。はるかに優れた開発体験を提供し、より高速なサイトを作成できます。
 
 ### JSX
 
-JSX support for Vue 3 is now provided via [`@vue/babel-plugin-jsx`](https://github.com/vuejs/babel-plugin-jsx).
+[`@vue/babel-plugin-jsx`](https://github.com/vuejs/babel-plugin-jsx) によって Vue 3 の JSX サポートが提供されるようになりました。

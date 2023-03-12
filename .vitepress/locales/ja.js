@@ -16,13 +16,13 @@ export default {
 
     sidebar: [
       {
-        text: 'Guide',
+        text: 'ガイド',
         items: [
-          { text: 'Overview', link: '/ja/' },
-          { text: 'New Recommendations', link: '/ja/recommendations' },
-          { text: 'Migration Build', link: '/ja/migration-build' },
+          { text: '概要', link: '/ja/' },
+          { text: '新しい推奨事項', link: '/ja/recommendations' },
+          { text: '移行ビルド', link: '/ja/migration-build' },
           {
-            text: 'Breaking Changes',
+            text: '破壊的変更',
             link: '/ja/breaking-changes/'
           }
         ]

@@ -1,66 +1,66 @@
-# Breaking Changes
+# 破壊的変更
 
-This page lists all Vue 3 breaking changes from Vue 2.
+このページでは、Vue 2 から Vue 3 の破壊的変更をすべてリストアップしています。
 
-While it looks like a lot has changed, a lot of what you know and love about Vue is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
+たくさん変わったように見えますが、Vue について皆さんが知っていることや気に入っていることの多くは変わりません。しかしできる限り徹底して、ドキュメント化されたすべての変更について詳細な説明と例を提供したいと考えました。
 
-## Details
+## 詳細
 
-### Global API
+### グローバル API
 
-- [Global Vue API is changed to use an application instance](./global-api.html)
-- [Global and internal APIs have been restructured to be tree-shakable](./global-api-treeshaking.html)
+- [グローバル Vue API はアプリケーションインスタンスを使用するように変更されました](./global-api.html)
+- [グローバル API と内部 API が再構築され、ツリーシェイキングが可能になりました](./global-api-treeshaking.html)
 
-### Template Directives
+### テンプレートディレクティブ
 
-- [`v-model` usage on components has been reworked, replacing `v-bind.sync`](./v-model.html)
-- [`key` usage on `<template v-for>` and non-`v-for` nodes has changed](./key-attribute.html)
-- [`v-if` and `v-for` precedence when used on the same element has changed](./v-if-v-for.html)
-- [`v-bind="object"` is now order-sensitive](./v-bind.html)
-- [`v-on:event.native` modifier has been removed](./v-on-native-modifier-removed.md)
+- [コンポーネントでの `v-model` の使用方法が見直され、`v-bind.sync` を置き換えます](./v-model.html)
+- [`<template v-for>` や `v-for` でないノードでの `key` の使い方が変更されました](./key-attribute.html)
+- [`v-if` と `v-for` を同じ要素で使用した場合の優先順位が変更されました](./v-if-v-for.html)
+- [`v-bind="object"` は順序に依存するようになりました](./v-bind.html)
+- [`v-on:event.native` 修飾子は削除されました](./v-on-native-modifier-removed.md)
 
-### Components
+### コンポーネント
 
-- [Functional components can only be created using a plain function](./functional-components.html)
-- [`functional` attribute on single-file component (SFC) `<template>` and `functional` component option are deprecated](./functional-components.html)
-- [Async components now require `defineAsyncComponent` method to be created](./async-components.html)
-- [Component events should now be declared with the `emits` option](./emits-option.md)
+- [関数型コンポーネントは普通の関数のみで作成できます](./functional-components.html)
+- [単一ファイルコンポーネント（SFC）での `<template>` の `functional` 属性と、コンポーネントオプションの `functional` は非推奨です](./functional-components.html)
+- [非同期コンポーネントを作成するには `defineAsyncComponent` メソッドが必要になりました](./async-components.html)
+- [コンポーネントイベントは `emits` オプションで宣言する必要があります](./emits-option.md)
 
-### Render Function
+### レンダー関数
 
-- [Render function API changed](./render-function-api.html)
-- [`$scopedSlots` property is removed and all slots are exposed via `$slots` as functions](./slots-unification.html)
-- [`$listeners` has been removed / merged into `$attrs`](./listeners-removed)
-- [`$attrs` now includes `class` and `style` attributes](./attrs-includes-class-style.md)
+- [レンダー関数の API が変更されました](./render-function-api.html)
+- [`$scopedSlots` プロパティーは削除され、すべてのスロットが `$slots` で関数として公開されます](./slots-unification.html)
+- [`$listeners` は削除され、`$attrs` に統合されました](./listeners-removed)
+- [`$attrs` には `class` と `style` 属性が含まれるようになりました](./attrs-includes-class-style.md)
 
-### Custom Elements
+### カスタム要素
 
-- [Custom element checks are now performed during template compilation](./custom-elements-interop.html)
-- [Special `is` attribute usage is restricted to the reserved `<component>` tag only](./custom-elements-interop.html#customized-built-in-elements)
+- [テンプレートのコンパイル時に、カスタム要素のチェックが行われるようになりました](./custom-elements-interop.html)
+- [特別な `is` 属性の使用は、予約済みである `<component>` タグのみに制限されます](./custom-elements-interop.html#customized-built-in-elements)
 
-### Other Minor Changes
+### その他の小さな変更
 
-- The `destroyed` lifecycle option has been renamed to `unmounted`
-- The `beforeDestroy` lifecycle option has been renamed to `beforeUnmount`
-- [Props `default` factory function no longer has access to `this` context](./props-default-this.html)
-- [Custom directive API changed to align with component lifecycle and `binding.expression` removed](./custom-directives.html)
-- [The `data` option should always be declared as a function](./data-option.html)
-- [The `data` option from mixins is now merged shallowly](./data-option.html#mixin-merge-behavior-change)
-- [Attributes coercion strategy changed](./attribute-coercion.html)
-- [Some transition classes got a rename](./transition.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
-- [When watching an array, the callback will only trigger when the array is replaced. If you need to trigger on mutation, the `deep` option must be specified.](./watch.html)
-- `<template>` tags with no special directives (`v-if/else-if/else`, `v-for`, or `v-slot`) are now treated as plain elements and will result in a native `<template>` element instead of rendering its inner content.
-- [Mounted application does not replace the element it's mounted to](./mount-changes.html)
-- [Lifecycle `hook:` events prefix changed to `vnode-`](./vnode-lifecycle-events.html)
+- ライフサイクルの `destroyed` オプションは `unmounted` に名称変更されました
+- ライフサイクルの `beforeDestroy` オプションは `beforeUnmount` に名称変更されました
+- [props の `default` ファクトリー関数は `this` コンテキストにアクセスできなくなりました](./props-default-this.html)
+- [カスタムディレクティブ API は、コンポーネントのライフサイクルに合わせて変更され、`binding.expression` は削除されました](./custom-directives.html)
+- [`data` オプションは、常に関数として宣言する必要があります](./data-option.html)
+- [mixins の `data` オプションは浅くマージされるようになりました](./data-option.html#mixin-merge-behavior-change)
+- [属性の型強制戦略が変更されました](./attribute-coercion.html)
+- [一部のトランジションクラス名が変更されました](./transition.html)
+- [`<TransitionGroup>` はデフォルトでラッパー要素をレンダリングしないようになりました](./transition-group.html)
+- [配列を監視している場合、コールバックは配列が置換されたときにのみトリガーされます。変更時にトリガーする必要がある場合は、`deep` オプションを指定する必要があります。](./watch.html)
+- 特別なディレクティブ（`v-if/else-if/else`, `v-for`, `v-slot`）を持たない `<template>` タグはプレーンな要素として扱われ、その内部コンテンツをレンダリングする代わりに、ネイティブの `<template>` 要素が生成されるようになりました。
+- [マウントされたアプリケーションは、そこにマウントされている要素を置き換えません](./mount-changes.html)
+- [ライフサイクルの `hook:` イベントプレフィックスが `vnode-` に変更されました](./vnode-lifecycle-events.html)
 
-### Removed APIs
+### 削除された API
 
-- [`keyCode` support as `v-on` modifiers](./keycode-modifiers.html)
-- [$on, $off and \$once instance methods](./events-api.html)
-- [Filters](./filters.html)
-- [Inline templates attributes](./inline-template-attribute.html)
-- [`$children` instance property](./children.html)
-- [`propsData` option](./props-data.html)
-- `$destroy` instance method. Users should no longer manually manage the lifecycle of individual Vue components.
-- Global functions `set` and `delete`, and the instance methods `$set` and `$delete`. They are no longer required with proxy-based change detection.
+- [`v-on` 修飾子としての `keyCode` サポート](./keycode-modifiers.html)
+- [$on, $off, \$once インスタンスメソッド](./events-api.html)
+- [フィルター](./filters.html)
+- [インラインテンプレート属性](./inline-template-attribute.html)
+- [`$children` インスタンスプロパティー](./children.html)
+- [`propsData` オプション](./props-data.html)
+- `$destroy` インスタンスメソッド。ユーザーは、個々の Vue コンポーネントのライフサイクルを手動で管理する必要がなくなりました。
+- グローバル関数の `set` と `delete`、インスタンスメソッドの `$set` と `$delete` は削除されました。プロキシベースの変更検出では不要になりました。

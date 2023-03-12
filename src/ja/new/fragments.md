@@ -5,7 +5,7 @@ badges:
 
 # Fragments <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Overview {#overview}
 
 In Vue 3, components now have official support for multi-root node components, i.e., fragments!
 

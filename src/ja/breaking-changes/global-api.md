@@ -55,7 +55,7 @@ While this approach is convenient, it leads to a couple of problems. Technically
 
 To avoid these problems, in Vue 3 we introduce…
 
-## A New Global API: `createApp`
+## A New Global API: `createApp` {#a-new-global-api-createapp}
 
 Calling `createApp` returns an _app instance_, a new concept in Vue 3.
 
@@ -89,7 +89,7 @@ An app instance exposes a subset of the Vue 2 global APIs. The rule of thumb is 
 
 All other global APIs that do not globally mutate behavior are now named exports, as documented in [Global API Treeshaking](./global-api-treeshaking.html).
 
-### `config.productionTip` Removed
+### `config.productionTip` Removed {#config-productiontip-removed}
 
 In Vue 3.x, the "use production build" tip will only show up when using the "dev + full build" (the build that includes the runtime compiler and has warnings).
 
@@ -97,7 +97,7 @@ For ES modules builds, since they are used with bundlers, and in most cases a CL
 
 [Migration build flag: `CONFIG_PRODUCTION_TIP`](../migration-build.html#compat-configuration)
 
-### `config.ignoredElements` Is Now `config.compilerOptions.isCustomElement`
+### `config.ignoredElements` Is Now `config.compilerOptions.isCustomElement` {#config-ignoredelements-is-now-config-compileroptions-iscustomelement}
 
 This config option was introduced with the intention to support native custom elements, so the renaming better conveys what it does. The new option also expects a function which provides more flexibility than the old string / RegExp approach:
 
@@ -120,7 +120,7 @@ In Vue 3, the check of whether an element is a component or not has been moved t
 
 [Migration build flag: `CONFIG_IGNORED_ELEMENTS`](../migration-build.html#compat-configuration)
 
-### `Vue.prototype` Replaced by `config.globalProperties`
+### `Vue.prototype` Replaced by `config.globalProperties` {#vue-prototype-replaced-by-config-globalproperties}
 
 In Vue 2, `Vue.prototype` was commonly used to add properties that would be accessible in all components.
 
@@ -141,7 +141,7 @@ Using `provide` (discussed [below](#provide-inject)) should also be considered a
 
 [Migration build flag: `GLOBAL_PROTOTYPE`](../migration-build.html#compat-configuration)
 
-### `Vue.extend` Removed
+### `Vue.extend` Removed {#vue-extend-removed}
 
 In Vue 2.x, `Vue.extend` was used to create a "subclass" of the base Vue constructor with the argument that should be an object containing component options. In Vue 3.x, we don't have the concept of component constructors anymore. Mounting a component should always use the `createApp` global API:
 
@@ -210,7 +210,7 @@ const app = createApp(MyApp)
 app.use(VueRouter)
 ```
 
-## Mounting App Instance
+## Mounting App Instance {#mounting-app-instance}
 
 After being initialized with `createApp(/* options */)`, the app instance `app` can be used to mount a root component instance with `app.mount(domTarget)`:
 

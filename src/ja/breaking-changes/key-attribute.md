@@ -18,7 +18,7 @@ The `key` special attribute is used as a hint for Vue's virtual DOM algorithm to
 - [List Rendering: Maintaining State](https://ja.vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
 - [API Reference: `key` Special Attribute](https://ja.vuejs.org/api/built-in-special-attributes.html#key)
 
-## On conditional branches
+## On conditional branches {#on-conditional-branches}
 
 In Vue 2.x, it was recommended to use `key`s on `v-if`/`v-else`/`v-else-if` branches.
 
@@ -52,7 +52,7 @@ The breaking change is that if you manually provide `key`s, each branch must use
 <div v-else key="b">No</div>
 ```
 
-## With `<template v-for>`
+## With `<template v-for>` {#with-template-v-for}
 
 In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place the `key`s on each of its children.
 
