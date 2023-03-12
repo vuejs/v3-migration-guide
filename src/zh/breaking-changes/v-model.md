@@ -144,7 +144,7 @@ this.$emit('update:title', newValue)
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-我们可以在[组件事件](http://cn.vuejs.org/guide/components/events.html#usage-with-v-model)部分中了解有关自定义 `v-model` 修饰符的更多信息。
+[自定义 `v-model` 修饰符](https://cn.vuejs.org/guide/components/v-model.html)的更多信息。
 
 ## 迁移策略
 
@@ -191,6 +191,6 @@ this.$emit('update:title', newValue)
 
 更多新的 `v-model` 语法相关信息，请参考：
 
-- [在组件中使用 `v-model`](https://cn.vuejs.org/guide/components/events.html#usage-with-v-model) 
-- [`v-model` 参数](https://cn.vuejs.org/guide/components/events.html#v-model-arguments)
-- [处理 `v-model` 修饰符](https://cn.vuejs.org/guide/components/events.html#usage-with-v-model)
+- [在组件中使用 `v-model`](https://cn.vuejs.org/guide/components/v-model.html) 
+- [`v-model` 参数](https://cn.vuejs.org/guide/components/v-model.html#v-model-arguments)
+- [处理 `v-model` 修饰符](https://cn.vuejs.org/guide/components/v-model.html#handling-v-model-modifiers)
