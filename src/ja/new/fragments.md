@@ -37,4 +37,4 @@ In 3.x, components now can have multiple root nodes! However, this does require 
 </template>
 ```
 
-For more information on how attribute inheritance works, see [Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html#fallthrough-attributes).
+For more information on how attribute inheritance works, see [Fallthrough Attributes](https://ja.vuejs.org/guide/components/attrs.html#fallthrough-attributes).

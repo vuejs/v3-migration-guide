@@ -131,4 +131,4 @@ With the behavior change of `is`, a `vue:` prefix is now required to resolve the
 
 ## See Also
 
-- [Guide - Vue and Web Components](https://vuejs.org/guide/extras/web-components.html)
+- [Guide - Vue and Web Components](https://ja.vuejs.org/guide/extras/web-components.html)

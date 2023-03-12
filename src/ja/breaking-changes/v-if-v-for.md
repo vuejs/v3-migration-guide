@@ -32,5 +32,5 @@ Rather than managing this at the template level, one method for accomplishing th
 
 ## See also
 
-- [List Rendering - Displaying Filtered/Sorted Results](https://vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
-- [List Rendering - `v-for` with `v-if`](https://vuejs.org/guide/essentials/list.html#v-for-with-v-if)
+- [List Rendering - Displaying Filtered/Sorted Results](https://ja.vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
+- [List Rendering - `v-for` with `v-if`](https://ja.vuejs.org/guide/essentials/list.html#v-for-with-v-if)

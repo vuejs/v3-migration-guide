@@ -15,8 +15,8 @@ badges:
 
 The `key` special attribute is used as a hint for Vue's virtual DOM algorithm to keep track of a node's identity. That way, Vue knows when it can reuse and patch existing nodes and when it needs to reorder or recreate them. For more information, see the following sections:
 
-- [List Rendering: Maintaining State](https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
-- [API Reference: `key` Special Attribute](https://vuejs.org/api/built-in-special-attributes.html#key)
+- [List Rendering: Maintaining State](https://ja.vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
+- [API Reference: `key` Special Attribute](https://ja.vuejs.org/api/built-in-special-attributes.html#key)
 
 ## On conditional branches
 

@@ -3,7 +3,7 @@
 The supporting libraries for Vue 3 have undergone major updates. Here is a summary of the new default recommendations:
 
 - New versions of Router, Devtools & test utils w/ Vue 3 support
-- Build Toolchain: Vue CLI -> [Vite](https://vitejs.dev/)
+- Build Toolchain: Vue CLI -> [Vite](https://ja.vitejs.dev/)
 - State Management: Vuex -> [Pinia](https://pinia.vuejs.org/)
 - IDE Support: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 - New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
@@ -14,7 +14,7 @@ The supporting libraries for Vue 3 have undergone major updates. Here is a summa
 
 ### Build Toolchain
 
-We now recommend [Vite](https://vitejs.dev/) as the new build toolchain for Vue 3 projects. Vite is a new build tool that offers extremely fast server start and hot update performance. It was originally created by the Vue team but is now a cross-framework tool. Learn more about [why we are recommending Vite](https://vitejs.dev/guide/why.html).
+We now recommend [Vite](https://ja.vitejs.dev/) as the new build toolchain for Vue 3 projects. Vite is a new build tool that offers extremely fast server start and hot update performance. It was originally created by the Vue team but is now a cross-framework tool. Learn more about [why we are recommending Vite](https://ja.vitejs.dev/guide/why.html).
 
 You can create a new Vite-powered Vue 3 project via [`create-vue`](https://github.com/vuejs/create-vue), our new scaffolding tool:
 
@@ -27,7 +27,7 @@ While Vue CLI has also been upgraded to support Vue 3, it is now in maintenance 
 - [Vue CLI -> Vite Migration Guide from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [Tools / Plugins that help with auto migration](https://github.com/vitejs/awesome-vite#vue-cli)
 
-Also see [Tooling chapter in new docs](https://vuejs.org/guide/scaling-up/tooling.html).
+Also see [Tooling chapter in new docs](https://ja.vuejs.org/guide/scaling-up/tooling.html).
 
 ### Vue Router
 
@@ -43,7 +43,7 @@ Vue Router 4.0 provides Vue 3 support and has a number of breaking changes of it
 
 - [Documentation](https://pinia.vuejs.org/)
 - [GitHub](https://github.com/vuejs/pinia)
-- [State management chapter in new docs](https://vuejs.org/guide/scaling-up/state-management.html)
+- [State management chapter in new docs](https://ja.vuejs.org/guide/scaling-up/state-management.html)
 
 Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can be used if you have existing Vuex stores that need to be migrated to Vue 3. The only breaking change is [how the plugin is installed](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html#breaking-changes).
 
@@ -64,7 +64,7 @@ The devtools extension has received major updates (released as v6) to support bo
 
 You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
 
-Also see [TypeScript Guide in new docs](https://vuejs.org/guide/typescript/overview.html).
+Also see [TypeScript Guide in new docs](https://ja.vuejs.org/guide/typescript/overview.html).
 
 ### Static Site Generator
 

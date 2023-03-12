@@ -1,24 +1,29 @@
 export default {
   vitepressConfig: {
-    title: 'Vue 3 Migration Guide',
-    description: 'Guide on migrating from Vue 2 to Vue 3',
-    lang: 'en-US'
+    title: 'Vue 3 移行ガイド',
+    description: 'Vue 2 から Vue 3 への移行に関するガイド',
+    lang: 'ja-JP',
   },
   themeConfig: {
+    docFooter: {
+      prev: '前のページ',
+      next: '次のページ',
+    },
+    outlineTitle: 'ページの内容',
     nav: [
-      { text: 'Vue 3 Docs', link: 'https://vuejs.org' },
+      { text: 'Vue 3 ドキュメント', link: 'https://ja.vuejs.org' },
     ],
 
     sidebar: [
       {
         text: 'Guide',
         items: [
-          { text: 'Overview', link: '/' },
-          { text: 'New Recommendations', link: '/recommendations' },
-          { text: 'Migration Build', link: '/migration-build' },
+          { text: 'Overview', link: '/ja/' },
+          { text: 'New Recommendations', link: '/ja/recommendations' },
+          { text: 'Migration Build', link: '/ja/migration-build' },
           {
             text: 'Breaking Changes',
-            link: '/breaking-changes/'
+            link: '/ja/breaking-changes/'
           }
         ]
       },
@@ -27,30 +32,30 @@ export default {
         items: [
           {
             text: 'Global API Application Instance',
-            link: '/breaking-changes/global-api'
+            link: '/ja/breaking-changes/global-api'
           },
           {
             text: 'Global API Treeshaking',
-            link: '/breaking-changes/global-api-treeshaking'
+            link: '/ja/breaking-changes/global-api-treeshaking'
           }
         ]
       },
       {
         text: 'Template Directives',
         items: [
-          { text: 'v-model', link: '/breaking-changes/v-model' },
+          { text: 'v-model', link: '/ja/breaking-changes/v-model' },
           {
             text: 'key Usage Change',
-            link: '/breaking-changes/key-attribute'
+            link: '/ja/breaking-changes/key-attribute'
           },
           {
             text: 'v-if vs. v-for Precedence',
-            link: '/breaking-changes/v-if-v-for'
+            link: '/ja/breaking-changes/v-if-v-for'
           },
-          { text: 'v-bind Merge Behavior', link: '/breaking-changes/v-bind' },
+          { text: 'v-bind Merge Behavior', link: '/ja/breaking-changes/v-bind' },
           {
             text: 'v-on.native modifier removed',
-            link: '/breaking-changes/v-on-native-modifier-removed'
+            link: '/ja/breaking-changes/v-on-native-modifier-removed'
           }
         ]
       },
@@ -59,13 +64,13 @@ export default {
         items: [
           {
             text: 'Functional Components',
-            link: '/breaking-changes/functional-components'
+            link: '/ja/breaking-changes/functional-components'
           },
           {
             text: 'Async Components',
-            link: '/breaking-changes/async-components'
+            link: '/ja/breaking-changes/async-components'
           },
-          { text: 'emits Option', link: '/breaking-changes/emits-option' }
+          { text: 'emits Option', link: '/ja/breaking-changes/emits-option' }
         ]
       },
       {
@@ -73,19 +78,19 @@ export default {
         items: [
           {
             text: 'Render Function API',
-            link: '/breaking-changes/render-function-api'
+            link: '/ja/breaking-changes/render-function-api'
           },
           {
             text: 'Slots Unification',
-            link: '/breaking-changes/slots-unification'
+            link: '/ja/breaking-changes/slots-unification'
           },
           {
             text: '$listeners merged into $attrs',
-            link: '/breaking-changes/listeners-removed'
+            link: '/ja/breaking-changes/listeners-removed'
           },
           {
             text: '$attrs includes class & style',
-            link: '/breaking-changes/attrs-includes-class-style'
+            link: '/ja/breaking-changes/attrs-includes-class-style'
           }
         ]
       },
@@ -94,7 +99,7 @@ export default {
         items: [
           {
             text: 'Custom Elements Interop Changes',
-            link: '/breaking-changes/custom-elements-interop'
+            link: '/ja/breaking-changes/custom-elements-interop'
           }
         ]
       },
@@ -103,16 +108,16 @@ export default {
         items: [
           {
             text: 'v-on keyCode Modifiers',
-            link: '/breaking-changes/keycode-modifiers'
+            link: '/ja/breaking-changes/keycode-modifiers'
           },
-          { text: 'Events API', link: '/breaking-changes/events-api' },
-          { text: 'Filters', link: '/breaking-changes/filters' },
+          { text: 'Events API', link: '/ja/breaking-changes/events-api' },
+          { text: 'Filters', link: '/ja/breaking-changes/filters' },
           {
             text: 'inline-template',
-            link: '/breaking-changes/inline-template-attribute'
+            link: '/ja/breaking-changes/inline-template-attribute'
           },
-          { text: '$children', link: '/breaking-changes/children' },
-          { text: 'propsData option', link: '/breaking-changes/props-data' }
+          { text: '$children', link: '/ja/breaking-changes/children' },
+          { text: 'propsData option', link: '/ja/breaking-changes/props-data' }
         ]
       },
       {
@@ -120,38 +125,38 @@ export default {
         items: [
           {
             text: 'Attribute Coercion Behavior',
-            link: '/breaking-changes/attribute-coercion'
+            link: '/ja/breaking-changes/attribute-coercion'
           },
           {
             text: 'Custom Directives',
-            link: '/breaking-changes/custom-directives'
+            link: '/ja/breaking-changes/custom-directives'
           },
-          { text: 'Data Option', link: '/breaking-changes/data-option' },
+          { text: 'Data Option', link: '/ja/breaking-changes/data-option' },
           {
             text: 'Mount API changes',
-            link: '/breaking-changes/mount-changes'
+            link: '/ja/breaking-changes/mount-changes'
           },
           {
             text: 'Props Default Function this Access',
-            link: '/breaking-changes/props-default-this'
+            link: '/ja/breaking-changes/props-default-this'
           },
           {
             text: 'Transition Class Change',
-            link: '/breaking-changes/transition'
+            link: '/ja/breaking-changes/transition'
           },
           {
             text: 'Transition as Root',
-            link: '/breaking-changes/transition-as-root'
+            link: '/ja/breaking-changes/transition-as-root'
           },
           {
             text: 'Transition Group Root Element',
-            link: '/breaking-changes/transition-group'
+            link: '/ja/breaking-changes/transition-group'
           },
           {
             text: 'VNode lifecycle events',
-            link: '/breaking-changes/vnode-lifecycle-events'
+            link: '/ja/breaking-changes/vnode-lifecycle-events'
           },
-          { text: 'Watch on Arrays', link: '/breaking-changes/watch' }
+          { text: 'Watch on Arrays', link: '/ja/breaking-changes/watch' }
         ]
       }
     ]

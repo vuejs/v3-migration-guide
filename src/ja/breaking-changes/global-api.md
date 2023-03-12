@@ -124,7 +124,7 @@ In Vue 3, the check of whether an element is a component or not has been moved t
 
 In Vue 2, `Vue.prototype` was commonly used to add properties that would be accessible in all components.
 
-The equivalent in Vue 3 is [`config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties). These properties will be copied across as part of instantiating a component within the application:
+The equivalent in Vue 3 is [`config.globalProperties`](https://ja.vuejs.org/api/application.html#app-config-globalproperties). These properties will be copied across as part of instantiating a component within the application:
 
 ```js
 // before - Vue 2
@@ -187,7 +187,7 @@ Note that although the return type of `defineComponent` is a constructor-like ty
 
 #### Component Inheritance
 
-In Vue 3, we strongly recommend favoring composition via [Composition API](https://vuejs.org/guide/reusability/composables.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](https://vuejs.org/api/options-composition.html#extends) instead of `Vue.extend`.
+In Vue 3, we strongly recommend favoring composition via [Composition API](https://ja.vuejs.org/guide/reusability/composables.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](https://ja.vuejs.org/api/options-composition.html#extends) instead of `Vue.extend`.
 
 [Migration build flag: `GLOBAL_EXTEND`](../migration-build.html#compat-configuration)
 

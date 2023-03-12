@@ -12,7 +12,7 @@ badges:
 
 ## 3.x Syntax
 
-When using [the `watch` option](https://vuejs.org/api/options-state.html#watch) to watch an array, the callback will only trigger when the array is replaced. In other words, the watch callback will no longer be triggered on array mutation. To trigger on mutation, the `deep` option must be specified.
+When using [the `watch` option](https://ja.vuejs.org/api/options-state.html#watch) to watch an array, the callback will only trigger when the array is replaced. In other words, the watch callback will no longer be triggered on array mutation. To trigger on mutation, the `deep` option must be specified.
 
 ```js
 watch: {

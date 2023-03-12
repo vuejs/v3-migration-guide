@@ -49,7 +49,7 @@ Similar to props, the events that the component emits can now be defined with th
 
 The option also accepts an object, which allows the developer to define validators for the arguments that are passed with the emitted event, similar to validators in `props` definitions.
 
-For more information on this, please read the [API documentation for this feature](https://vuejs.org/api/options-state.html#emits).
+For more information on this, please read the [API documentation for this feature](https://ja.vuejs.org/api/options-state.html#emits).
 
 ## Migration Strategy
 

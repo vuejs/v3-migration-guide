@@ -7,7 +7,7 @@ badges:
 
 ## Overview
 
-Support for the [inline-template feature](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates) has been removed.
+Support for the [inline-template feature](https://v2.ja.vuejs.org/v2/guide/components-edge-cases#%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88) has been removed.
 
 ## 2.x Syntax
 

@@ -143,4 +143,4 @@ For more information, see [The Render Function Api Change RFC](https://github.co
 
 ## Next Steps
 
-See [Render Function Guide](https://vuejs.org/guide/extras/render-function.html) for more detailed documentation!
+See [Render Function Guide](https://ja.vuejs.org/guide/extras/render-function.html) for more detailed documentation!

@@ -101,4 +101,4 @@ In most circumstances, using a global event bus for communicating between compon
 * Provide / inject allow a component to communicate with its slot contents. This is useful for tightly-coupled components that are always used together.
 * Provide / inject can also be used for long-distance communication between components. It can help to avoid 'prop drilling', where props need to be passed down through many levels of components that don't need those props themselves.
 * Prop drilling can also be avoided by refactoring to use slots. If an interim component doesn't need the props then it might indicate a problem with separation of concerns. Introducing a slot in that component allows the parent to create the content directly, so that props can be passed without the interim component needing to get involved.
-* [Global state management](https://vuejs.org/guide/scaling-up/state-management.html), such as [Pinia](https://pinia.vuejs.org/).
+* [Global state management](https://ja.vuejs.org/guide/scaling-up/state-management.html), such as [Pinia](https://pinia.vuejs.org/).

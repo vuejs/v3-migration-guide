@@ -12,7 +12,7 @@ Instead:
 
 - Raw props received by the component are passed to the default function as argument;
 
-- The [inject](https://vuejs.org/api/composition-api-dependency-injection.html#inject) API can be used inside default functions.
+- The [inject](https://ja.vuejs.org/api/composition-api-dependency-injection.html#inject) API can be used inside default functions.
 
 ```js
 import { inject } from 'vue'

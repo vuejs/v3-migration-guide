@@ -82,7 +82,7 @@ Instead of using filters, we recommend replacing them with computed properties o
 
 If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
 
-Instead, you can make your global filters available to all components through [globalProperties](https://vuejs.org/api/application.html#app-config-globalproperties):
+Instead, you can make your global filters available to all components through [globalProperties](https://ja.vuejs.org/api/application.html#app-config-globalproperties):
 
 ```js
 // main.js

@@ -37,7 +37,7 @@ export default {
 
 ## 3.x Update
 
-In 3.x, the `$children` property is removed and no longer supported. Instead, if you need to access a child component instance, we recommend using [template refs](https://vuejs.org/guide/essentials/template-refs.html#template-refs).
+In 3.x, the `$children` property is removed and no longer supported. Instead, if you need to access a child component instance, we recommend using [template refs](https://ja.vuejs.org/guide/essentials/template-refs.html#template-refs).
 
 ## Migration Strategy
 
