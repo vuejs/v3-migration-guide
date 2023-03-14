@@ -144,7 +144,7 @@ this.$emit('update:title', newValue)
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-[自定义 `v-model` 修饰符](https://cn.vuejs.org/guide/components/v-model.html)的更多信息。
+查阅关于[组件上的自定义 `v-model` 修饰符](https://cn.vuejs.org/guide/components/v-model.html)的更多信息。
 
 ## 迁移策略
 
