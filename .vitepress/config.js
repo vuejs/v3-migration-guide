@@ -12,8 +12,8 @@ export default {
     localeLinks: {
       items: [
         {text: 'English', link: '/'},
-        {text: '中文简体 (未完成)', link: '/zh/'},
-        {text: '日本語（未完成）', link: '/ja/'},
+        {text: '中文简体', link: '/zh/'},
+        {text: '日本語（翻訳中）', link: '/ja/'},
       ]
     },
     locales: locales.themeConfig

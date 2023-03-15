@@ -144,7 +144,7 @@ In addition to 2.x hard-coded `v-model` modifiers like `.trim`, now 3.x supports
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-Read more about custom `v-model` modifiers in the [Component Events](https://ja.vuejs.org/guide/components/v-model.html) section.
+Read more about [custom `v-model` modifiers on components](https://ja.vuejs.org/guide/components/v-model.html#handling-v-model-modifiers).
 
 ## Migration Strategy
 
