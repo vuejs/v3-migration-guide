@@ -6,13 +6,14 @@ import locales from "./locales"
 export default {
   srcDir: 'src',
   locales: locales.vitepressConfig,
-  
+
 
   themeConfig: {
     localeLinks: {
       items: [
         {text: 'English', link: '/'},
-        {text: '中文简体', link: '/zh/'}
+        {text: '中文简体', link: '/zh/'},
+        {text: '日本語（翻訳中）', link: '/ja/'},
       ]
     },
     locales: locales.themeConfig
