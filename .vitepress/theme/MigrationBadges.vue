@@ -13,6 +13,12 @@ const localeBadges = {
     breaking: '非兼容',
     removed: '移除',
     updated: '更新'
+  },
+  'ja-JP': {
+    new: '新機能',
+    breaking: '破壊的変更',
+    removed: '削除',
+    updated: '更新'
   }
 }
 
