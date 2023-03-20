@@ -3,21 +3,21 @@ badges:
   - breaking
 ---
 
-# Global API Treeshaking <MigrationBadges :badges="$frontmatter.badges" />
+# グローバル API ツリーシェイキング <MigrationBadges :badges="$frontmatter.badges" />
 
-## 2.x Syntax
+## 2.x の構文
 
-If you’ve ever had to manually manipulate DOM in Vue, you might have come across this pattern:
+Vue で DOM を手動で操作したことがある人は、次のパターンに出くわしたことがあるかもしれません:
 
 ```js
 import Vue from 'vue'
 
 Vue.nextTick(() => {
-  // something DOM-related
+  // DOM 関連の何か
 })
 ```
 
-Or, if you’ve been unit-testing an application involving async components, chances are you’ve written something like this:
+あるいは、非同期コンポーネントを含むアプリケーションをユニットテストしている場合、次のようなことを書いたことがあるのではないでしょうか:
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -26,33 +26,33 @@ import { MyComponent } from './MyComponent.vue'
 test('an async feature', async () => {
   const wrapper = shallowMount(MyComponent)
 
-  // execute some DOM-related tasks
+  // DOM に関連するいくつかのタスクを実行
 
   await wrapper.vm.$nextTick()
 
-  // run your assertions
+  // アサーション実行
 })
 ```
 
-`Vue.nextTick()` is a global API exposed directly on a single Vue object – in fact, the instance method `$nextTick()` is just a handy wrapper around `Vue.nextTick()` with the callback’s `this` context automatically bound to the current instance for convenience.
+`Vue.nextTick()` は、単一の Vue オブジェクト上で直接公開されるグローバル API です - 実際のところ、インスタンスメソッド `$nextTick()` は `Vue.nextTick()` の便利なラッパーに過ぎず、コールバックの `this` コンテキストは便宜上、現在のインスタンスに自動的に結合されます。
 
-But what if you’ve never had to deal with manual DOM manipulation, nor are you using or testing async components in your app? Or, what if, for whatever reason, you prefer to use the good old `window.setTimeout()` instead? In such a case, the code for `nextTick()` will become dead code – that is, code that’s written but never used. And dead code is hardly a good thing, especially in our client-side context where every kilobyte matters.
+しかし、手動で DOM を操作する必要がなく、アプリで非同期コンポーネントを使用したりテストしたりすることもない場合はどうでしょうか？　あるいは、何らかの理由で、代わりに古き良き `window.setTimeout()` を使いたい場合はどうでしょうか？　このような場合、`nextTick()` のコードはデッドコード、つまり、書かれているが使われないコードになってしまいます。特に、1 キロバイト単位が重要なクライアントサイドの文脈では、デッドコードは良いことではありません。
 
-Module bundlers like webpack and Rollup (which Vite is based upon) support [tree-shaking](https://webpack.js.org/guides/tree-shaking/), which is a fancy term for “dead code elimination.” Unfortunately, due to how the code is written in previous Vue versions, global APIs like `Vue.nextTick()` are not tree-shakeable and will be included in the final bundle regardless of where they are actually used or not.
+webpack や（Vite のベースとなっている）Rollup のようなモジュールバンドラーは、[ツリーシェイキング](https://webpack.js.org/guides/tree-shaking/)をサポートしています。これは「デッドコードの排除」を意味する装飾的な用語です。残念ながら以前の Vue バージョンではコードの記述方法が原因で、`Vue.nextTick()` のようなグローバル API はツリーシェイクされず、実際に使われる場所や使わない場所に関係なく最終的にバンドルに含まれます。
 
-## 3.x Syntax
+## 3.x の構文
 
-In Vue 3, the global and internal APIs have been restructured with tree-shaking support in mind. As a result, the global APIs can now only be accessed as named exports for the ES Modules build. For example, our previous snippets should now look like this:
+Vue 3 では、ツリーシェイキングのサポートを念頭に置いて、グローバル API と内部 API が再構築されました。その結果、グローバル API は、ES モジュールビルドの名前付きエクスポートとしてのみアクセスできるようになりました。例えば、上記のスニペットは次のようになります:
 
 ```js
 import { nextTick } from 'vue'
 
 nextTick(() => {
-  // something DOM-related
+  // DOM 関連の何か
 })
 ```
 
-and
+さらに
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -62,32 +62,32 @@ import { nextTick } from 'vue'
 test('an async feature', async () => {
   const wrapper = shallowMount(MyComponent)
 
-  // execute some DOM-related tasks
+  // DOM に関連するいくつかのタスクを実行
 
   await nextTick()
 
-  // run your assertions
+  // アサーション実行
 })
 ```
 
-Calling `Vue.nextTick()` directly will now result in the infamous `undefined is not a function` error.
+`Vue.nextTick()` を直接呼び出すと、悪名高い `undefined is not a function` エラーが発生するようになりました。
 
-With this change, provided the module bundler supports tree-shaking, global APIs that are not used in a Vue application will be eliminated from the final bundle, resulting in an optimal file size.
+この変更により、モジュールバンドラーがツリーシェイキングをサポートしている場合、Vue アプリケーションで使用されないグローバル API は最終的なバンドルから排除され、最適なファイルサイズになります。
 
-## Affected APIs
+## 影響を受ける API
 
-These global APIs in Vue 2.x are affected by this change:
+以下の Vue 2.x のグローバル API は、この変更の影響を受けます:
 
 - `Vue.nextTick`
-- `Vue.observable` (replaced by `Vue.reactive`)
+- `Vue.observable`（`Vue.reactive` に置き換え）
 - `Vue.version`
-- `Vue.compile` (only in full builds)
-- `Vue.set` (only in compat builds)
-- `Vue.delete` (only in compat builds)
+- `Vue.compile`（フルビルドのみ）
+- `Vue.set`（互換ビルドのみ）
+- `Vue.delete`（互換ビルドのみ）
 
-## Internal Helpers
+## 内部ヘルパー
 
-In addition to public APIs, many of the internal components/helpers are now exported as named exports as well. This allows the compiler to output code that only imports features when they are used. For example the following template:
+パブリック API に加え、内部コンポーネントやヘルパーの多くも名前付きエクスポートとして公開されるようになりました。これにより、コンパイラーは、機能が使用されるときだけインポートするコードを出力できます。例えば次のテンプレートは:
 
 ```html
 <transition>
@@ -95,7 +95,7 @@ In addition to public APIs, many of the internal components/helpers are now expo
 </transition>
 ```
 
-is compiled into something similar to the following:
+以下のようなものにコンパイルされます:
 
 ```js
 import { h, Transition, withDirectives, vShow } from 'vue'
@@ -105,17 +105,17 @@ export function render() {
 }
 ```
 
-This essentially means the `Transition` component only gets imported when the application actually makes use of it. In other words, if the application doesn’t have any `<transition>` component, the code supporting this feature will not be present in the final bundle.
+つまり、`Transition` コンポーネントは、アプリケーションが実際に使用するときにのみインポートされます。言い換えれば、アプリケーションが `<transition>` コンポーネントを持たない場合、この機能をサポートするコードは最終的なバンドルには含まれません。
 
-With global tree-shaking, the users only “pay” for the features they actually use. Even better, knowing that optional features won't increase the bundle size for applications not using them, framework size has become much less a concern for additional core features in the future, if at all.
+グローバルのツリーシェイキングでは、ユーザーは実際に使用する機能に対してのみ「支払う」ことになります。さらに良いことに、オプション機能を使用しないアプリケーションではバンドルサイズが大きくならないことが分かっているため、将来的にコア機能を追加する場合でも、フレームワークのサイズについて懸念することは少なくなっています。
 
-::: warning Important
-The above only applies to the [ES Modules builds](https://github.com/vuejs/core/tree/master/packages/vue#which-dist-file-to-use) for use with tree-shaking capable bundlers - the UMD build still includes all features and exposes everything on the Vue global variable (and the compiler will produce appropriate output to use APIs off the global instead of importing).
+::: warning 重要
+上記は、ツリーシェイキング可能なバンドラーで使用するための [ES モジュールビルド](https://github.com/vuejs/core/tree/master/packages/vue#which-dist-file-to-use)にのみ適用されます。UMD ビルドは依然としてすべての機能を含み、Vue グローバル変数ですべてを公開します（そしてコンパイラーは、インポートする代わりにグローバルから API を使用するように適切な出力を生成します）。
 :::
 
-## Usage in Plugins
+## プラグインでの使用
 
-If your plugin relies on an affected Vue 2.x global API, for instance:
+あなたのプラグインが、影響を受ける Vue 2.x のグローバル API に依存している場合、例えば:
 
 ```js
 const plugin = {
@@ -127,7 +127,7 @@ const plugin = {
 }
 ```
 
-In Vue 3, you’ll have to import it explicitly:
+Vue 3 では、明示的にインポートする必要があります:
 
 ```js
 import { nextTick } from 'vue'
@@ -141,7 +141,7 @@ const plugin = {
 }
 ```
 
-If you use a module bundle like webpack, this may cause Vue’s source code to be bundled into the plugin, and more often than not that’s not what you'd expect. A common practice to prevent this from happening is to configure the module bundler to exclude Vue from the final bundle. In webpack's case, you can use the [`externals`](https://webpack.js.org/configuration/externals/) configuration option:
+webpack のようなモジュールバンドルを使っている場合、Vue のソースコードがプラグインにバンドルされてしまうことがあり、それはほとんどが期待するものではないです。これを防ぐための一般的な方法は、最終的なバンドルから Vue を除外するようにモジュールバンドラーを設定することです。webpack の場合、[`externals`](https://webpack.js.org/configuration/externals/) という設定オプションを使用します:
 
 ```js
 // webpack.config.js
@@ -153,9 +153,9 @@ module.exports = {
 }
 ```
 
-This will tell webpack to treat the Vue module as an external library and not bundle it.
+これは webpack に、Vue モジュールを外部ライブラリーとして扱い、バンドルしないように指示します。
 
-If your module bundler of choice happens to be [Rollup](https://rollupjs.org/), you basically get the same effect for free, as by default Rollup will treat absolute module IDs (`'vue'` in our case) as external dependencies and not include them in the final bundle. During bundling though, it might emit a [“Treating vue as external dependency”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency) warning, which can be suppressed with the `external` option:
+モジュールバンドラーに [Rollup](https://rollupjs.org/) を選択した場合、基本的には何もせずに同じ効果を得られます。デフォルトでは Rollup は絶対モジュール ID（この例では `'vue'`）を外部依存関係として扱い、最終バンドルに含めないからです。しかし、バンドル中に ["Treating vue as external dependency"](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency) という警告が出ることがありますが、これは `external` オプションで抑制できます:
 
 ```js
 // rollup.config.js

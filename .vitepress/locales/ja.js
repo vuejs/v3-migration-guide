@@ -28,14 +28,14 @@ export default {
         ]
       },
       {
-        text: 'Global API',
+        text: 'グローバル API',
         items: [
           {
-            text: 'Global API Application Instance',
+            text: 'グローバル API アプリケーションインスタンス',
             link: '/ja/breaking-changes/global-api'
           },
           {
-            text: 'Global API Treeshaking',
+            text: 'グローバル API ツリーシェイキング',
             link: '/ja/breaking-changes/global-api-treeshaking'
           }
         ]
