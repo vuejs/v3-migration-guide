@@ -19,6 +19,12 @@ const localeBadges = {
     breaking: '破壊的変更',
     removed: '削除',
     updated: '更新'
+  },
+  'ua-UK': {
+    new: 'нове',
+    breaking: 'несумісно',
+    removed: 'видалено',
+    updated: 'змінено'
   }
 }
 
