@@ -2,53 +2,53 @@
 
 ## Огляд
 
-`@vue/compat` (aka "the migration build") is a build of Vue 3 that provides configurable Vue 2 compatible behavior.
+`@vue/compat` (така ж «міграційна збірка») — це збірка Vue 3, яка забезпечує настроювану поведінку, сумісну з Vue 2.
 
-The migration build runs in Vue 2 mode by default - most public APIs behave exactly like Vue 2, with only a few exceptions. Usage of features that have changed or been deprecated in Vue 3 will emit runtime warnings. A feature's compatibility can also be enabled/disabled on a per-component basis.
+Міграційна збірка виконується в режимі Vue 2 за замовчуванням - більшість загальнодоступних API поводяться так само, як Vue 2, лише за кількома винятками. Використання функцій, які були змінені або застарілі у Vue 3, видасть попередження під час виконання. Сумісність функції також можна ввімкнути/вимкнути для кожного компонента.
 
-### Intended Use Cases
+### Випадки використання за призначенням
 
-- Upgrading a Vue 2 application to Vue 3 (with [limitations](#known-limitations))
-- Migrating a library to support Vue 3
-- For experienced Vue 2 developers who have not tried Vue 3 yet, the migration build can be used in place of Vue 3 to help learn the difference between versions.
+- Оновлення програми Vue 2 до Vue 3 (з [обмеженнями](#known-limitations))
+- Перенесення бібліотеки на Vue 3
+- Досвідчені розробники Vue 2, які ще не пробували Vue 3, можуть використовувати збірку міграції замість Vue 3, щоб допомогти дізнатися різницю між версіями.
 
-### Known Limitations
+### Відомі обмеження
 
-While we've tried hard to make the migration build mimic Vue 2 behavior as much as possible, there are some limitations that may prevent your app from being eligible for upgrading:
+Попри те, що ми докладаємо всіх зусиль, щоб збірка для міграції якомога більше імітувала поведінку Vue 2, є деякі обмеження, через які ваш додаток не можна оновити:
 
-- Dependencies that rely on Vue 2 internal APIs or undocumented behavior. The most common case is usage of private properties on `VNodes`. If your project relies on component libraries like [Vuetify](https://vuetifyjs.com/en/), [Quasar](https://quasar.dev/) or [ElementUI](https://element.eleme.io/#/en-US), it is best to wait for their Vue 3 compatible versions.
+- Залежності, які покладаються на внутрішні API Vue 2 або недокументовану поведінку. Найпоширенішим випадком є використання приватних властивостей у `VNodes`. Якщо ваш проєкт покладається на такі бібліотеки компонентів, як [Vuetify](https://vuetifyjs.com/en/), [Quasar](https://quasar.dev/) або [ElementUI](https://element.eleme.io/#/en-US), найкраще дочекатися їхніх версій, сумісних з Vue 3.
 
-- Internet Explorer 11 support: [Vue 3 has officially dropped the plan for IE11 support](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). If you still need to support IE11 or below, you will have to stay on Vue 2.
+- Підтримка Internet Explorer 11: [Vue 3 офіційно відмовився від плану підтримки IE11](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). Якщо вам все ще потрібна підтримка IE11 або нижче, вам доведеться залишитися на Vue 2.
 
-- Server-side rendering: the migration build can be used for SSR, but migrating a custom SSR setup is much more involved. The general idea is replacing `vue-server-renderer` with [`@vue/server-renderer`](https://github.com/vuejs/core/tree/master/packages/server-renderer). Vue 3 no longer provides a bundle renderer and it is recommended to use Vue 3 SSR with [Vite](https://vitejs.dev/guide/ssr.html). If you are using [Nuxt.js](https://nuxtjs.org/), it is probably better to wait for Nuxt 3.
+- Візуалізація на стороні сервера: збірку міграції можна використовувати для SSR, але міграція користувацьких налаштувань SSR набагато складніша. Загальна ідея полягає в тому, щоб замінити `vue-server-renderer` на [`@vue/server-renderer`](https://github.com/vuejs/core/tree/master/packages/server-renderer). Vue 3 більше не надає пакетний рендерер, тому рекомендується використовувати Vue 3 SSR із [Vite](https://vitejs.dev/guide/ssr.html). Якщо ви використовуєте [Nuxt.js](https://nuxtjs.org/), можливо, краще дочекатися Nuxt 3.
 
-### Expectations
+### Очікування
 
-Please note that the migration build aims to cover only publicly documented Vue 2 APIs and behavior. If your application fails to run under the migration build due to reliance on undocumented behavior, it is unlikely that we'll tweak the migration build to cater to your specific case. Consider refactoring to remove reliance on the behavior in question instead.
+Зауважте, що збірка міграції має на меті охопити лише публічно задокументовані API та поведінку Vue 2. Якщо ваша програма не запускається в збірці міграції через незадокументовану поведінку, малоймовірно, що ми налаштуємо збірку міграції відповідно до вашого конкретного випадку. Натомість подумайте про рефакторинг, щоб усунути залежність від розглянутої поведінки.
 
-A word of caution: if your application is large and complex, migration will likely be a challenge even with the migration build. If your app is unfortunately not suitable for upgrade, do note that we are planning to backport Composition API and some other Vue 3 features to the 2.7 release (estimated late Q3 2021).
+Застереження: якщо ваша програма є великою та складною, міграція, ймовірно, буде проблемою навіть зі збіркою міграції. Якщо ваш додаток, на жаль, не підходить для оновлення, зверніть увагу, що ми плануємо резервно перенести композиційний API та деякі інші функції Vue 3 у випуск 2.7 (приблизно наприкінці третього кварталу 2021 року).
 
-If you do get your app running on the migration build, you **can** ship it to production before the migration is complete. Although there is a small performance/size overhead, it should not noticeably affect production UX. You may have to do so when you have dependencies that rely on Vue 2 behavior, and cannot be upgraded/replaced.
+Якщо ви запустите свою програму на збірці для міграції, ви **можете** відправити її в робочу версію до завершення міграції. Хоча є невеликі накладні витрати на продуктивність/розмір, це не повинно помітно вплинути на робочий UX. Можливо, вам доведеться це зробити, якщо у вас є залежності, які залежать від поведінки Vue 2 і не можуть бути оновлені/замінені.
 
-The migration build will be provided starting with 3.1, and will continue to be published alongside the 3.2 release line. We do plan to eventually stop publishing the migration build in a future minor version (no earlier than EOY 2021), so you should still aim to switch to the standard build before then.
+Міграційна збірка надаватиметься, починаючи з версії 3.1, і продовжуватиме публікуватися разом із версією версії 3.2. Зрештою ми плануємо припинити публікацію збірки для міграції в майбутній проміжній версії (не раніше кінця 2021 року), тому ви все одно повинні прагнути перейти на стандартну збірку до цього.
 
-## Upgrade Workflow
+## Процес оновлення
 
-The following workflow walks through the steps of migrating an actual Vue 2 app (Vue HackerNews 2.0) to Vue 3. The full commits can be found [here](https://github.com/vuejs/vue-hackernews-2.0/compare/migration). Note that the actual steps required for your project may vary, and these steps should be treated as general guidance rather than strict instructions.
+У наведеному нижче робочому процесі описано етапи міграції фактичної програми Vue 2 (Vue HackerNews 2.0) до Vue 3. Повні коміти можна знайти [тут](https://github.com/vuejs/vue-hackernews-2.0/compare/migration). Зауважте, що фактичні кроки, необхідні для вашого проєкту, можуть відрізнятися, і ці кроки слід розглядати як загальне керівництво, а не суворі інструкції.
 
-### Preparations
+### Приготування
 
-- If you are still using the [deprecated named / scoped slot syntax](https://v2.vuejs.org/v2/guide/components-slots.html#Deprecated-Syntax), update it to the latest syntax first (which is already supported in 2.6).
+- Якщо ви все ще використовуєте [застарілий синтаксис іменованого/облаштованого слота](https://v2.vuejs.org.ua/v2/guide/components-slots.html#Застарілий-синтаксис), спочатку оновіть його до найновішого синтаксису (який вже підтримується у версії 2.6).
 
-### Installation
+### Встановлення
 
-1. Upgrade tooling if applicable.
+1. Оновіть інструменти, якщо це можливо.
 
-   - If using custom webpack setup: Upgrade `vue-loader` to `^16.0.0`.
-   - If using `vue-cli`: upgrade to the latest `@vue/cli-service` with `vue upgrade`
-   - (Alternative) migrate to [Vite](https://vitejs.dev/) + [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2). [[Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/565b948919eb58f22a32afca7e321b490cb3b074)]
+   - Якщо використовується спеціальне налаштування webpack: оновіть `vue-loader` до `^16.0.0`.
+   - Якщо використовується `vue-cli`: оновіть до останньої версії `@vue/cli-service` за допомогою `vue upgrade`
+   - (Альтернатива) перейдіть на [Vite](https://vitejs.dev/) + [vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2). [[Приклад коміту](https://github.com/vuejs/vue-hackernews-2.0/commit/565b948919eb58f22a32afca7e321b490cb3b074)]
 
-2. In `package.json`, update `vue` to 3.1, install `@vue/compat` of the same version, and replace `vue-template-compiler` (if present) with `@vue/compiler-sfc`:
+2. В `package.json`, оновіть `vue` до 3.1, встановіть `@vue/compat` тієї ж версії та замініть `vue-template-compiler` (якщо є) на `@vue/compiler-sfc`:
 
    ```diff
    "dependencies": {
@@ -63,11 +63,11 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    }
    ```
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/14f6f1879b43f8610add60342661bf915f5c4b20)
+   [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/14f6f1879b43f8610add60342661bf915f5c4b20)
 
-3. In the build setup, alias `vue` to `@vue/compat` and enable compat mode via Vue compiler options.
+3. У налаштуваннях збірки додайте псевдонім `vue` до `@vue/compat` і ввімкніть режим сумісності за допомогою параметрів компілятора Vue.
 
-   **Example Configs**
+   **Приклади конфігурацій**
 
    <details>
      <summary><b>vue-cli</b></summary>
@@ -98,7 +98,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    </details>
 
    <details>
-     <summary><b>Plain webpack</b></summary>
+     <summary><b>"Чистий" webpack</b></summary>
 
    ```js
    // webpack.config.js
@@ -155,7 +155,7 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
 
    </details>
 
-4. If you are using TypeScript, you will also need to modify `vue`'s typing to expose the default export (which is no longer present in Vue 3) by adding a `*.d.ts` file with the following:
+4. Якщо ви використовуєте TypeScript, вам також потрібно змінити набір тексту `vue`, щоб відобразити експорт за замовчуванням (якого більше немає у Vue 3), додавши файл `*.d.ts` із таким:
 
    ```ts
    declare module 'vue' {
@@ -168,71 +168,71 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    }
    ```
 
-5. At this point, your application may encounter some compile-time errors / warnings (e.g. use of filters). Fix them first. If all compiler warnings are gone, you can also set the compiler to Vue 3 mode.
+5. На цьому етапі ваша програма може зіткнутися з деякими помилками/попередженнями під час компіляції (наприклад, використання фільтрів). Спочатку виправте їх. Якщо всі попередження компілятора зникли, ви також можете встановити компілятор у режим Vue 3.
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/b05d9555f6e115dea7016d7e5a1a80e8f825be52)
+   [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/b05d9555f6e115dea7016d7e5a1a80e8f825be52)
 
-6. After fixing the errors, the app should be able to run if it is not subject to the [limitations](#known-limitations) mentioned above.
+6. Після виправлення помилок програма має працювати, якщо на неї не поширюються [обмеження](#known-limitations), згадані вище.
 
-   You will likely see a LOT of warnings from both the command line and the browser console. Here are some general tips:
+   Ймовірно, ви побачите БАГАТО попереджень як з командного рядка, так і з консолі браузера. Ось кілька загальних порад:
 
-   - You can filter for specific warnings in the browser console. It's a good idea to use the filter and focus on fixing one item at a time. You can also use negated filters like `-GLOBAL_MOUNT`.
+   - Ви можете фільтрувати певні попередження в консолі браузера. Бажано використовувати фільтр і зосереджуватися на виправленні одного елемента за раз. Ви також можете використовувати негативні фільтри, такі як `-GLOBAL_MOUNT`.
 
-   - You can suppress specific deprecations via [compat configuration](#compat-configuration).
+   - Ви можете скасувати певні застарілі параметри за допомогою [налаштувань сумісності](#compat-configuration).
 
-   - Some warnings may be caused by a dependency that you use (e.g. `vue-router`). You can check this from the warning's component trace or stack trace (expanded on click). Focus on fixing the warnings that originate from your own source code first.
+   - Деякі попередження можуть бути викликані залежністю, яку ви використовуєте (наприклад, `vue-router`). Ви можете перевірити це в трасуванні компонента попередження або трасуванні стека (розгортається після клацання). Спершу зосередьтеся на виправленні попереджень, які походять із вашого власного вихідного коду.
 
-   - If you are using `vue-router`, note `<transition>` and `<keep-alive>` will not work with `<router-view>` until you upgrade to `vue-router` v4.
+   - Якщо ви використовуєте `vue-router`, зауважте, `<transition>` і `<keep-alive>` не працюватимуть з `<router-view>`, доки ви не оновите до `vue-router` v4.
 
-7. Update [`<transition>` class names](./breaking-changes/transition.html). This is the only feature that does not have a runtime warning. You can do a project-wide search for `.*-enter` and `.*-leave` CSS class names.
+7. Оновіть [назви класів в `<transition>`](./breaking-changes/transition). Це єдина функція, яка не має попередження під час виконання. Ви можете виконати пошук у всьому проєкті за назвами класів CSS `.*-enter` і `.*-leave`.
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
+   [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/d300103ba622ae26ac26a82cd688e0f70b6c1d8f)
 
-8. Update app entry to use [new global mounting API](./breaking-changes/global-api.html#a-new-global-api-createapp).
+8. Оновіть запис програми, щоб використовувати [новий глобальний API монтування](./breaking-changes/global-api#a-new-global-api-createapp).
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
+   [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/a6e0c9ac7b1f4131908a4b1e43641f608593f714)
 
-9. [Upgrade `vuex` to v4](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html).
+9. [Оновіть `vuex` до v4](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x.html).
 
-   [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
+   [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/5bfd4c61ee50f358cd5daebaa584f2c3f91e0205)
 
-10. [Upgrade `vue-router` to v4](https://router.vuejs.org/index.html). If you also use `vuex-router-sync`, you can replace it with a store getter.
+10. [Оновіть `vue-router` до v4](https://router.vuejs.org/index.html). Якщо ви також використовуєте `vuex-router-sync`, ви можете замінити його засобом отримання сховища vuex.
 
-    After the upgrade, to use `<transition>` and `<keep-alive>` with `<router-view>` requires using the new [scoped-slot based syntax](https://router.vuejs.org/guide/migration/#router-view-keep-alive-and-transition).
+    Після оновлення для використання `<transition>` і `<keep-alive>` з `<router-view>` потрібен новий [синтаксис на основі області дії](https://router.vuejs.org/guide/migration/#router-view-keep-alive-and-transition).
 
-    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
+    [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/758961e73ac4089890079d4ce14996741cf9344b)
 
-11. Pick off individual warnings. Note some features have conflicting behavior between Vue 2 and Vue 3 - for example, the render function API, or the functional component vs. async component change. To migrate to Vue 3 API without affecting the rest of the application, you can opt-in to Vue 3 behavior on a per-component basis with the [`compatConfig` option](#per-component-config).
+11. Виділіть окремі попередження. Зауважте, що деякі функції мають конфліктну поведінку між Vue 2 і Vue 3 - наприклад, API функції візуалізації або зміна функціонального компонента проти асинхронного компонента. Щоб перейти на API Vue 3, не впливаючи на решту програми, ви можете вибрати поведінку Vue 3 для кожного компонента за допомогою параметра [`compatConfig`](#per-component-config).
 
-    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/d0c7d3ae789be71b8fd56ce79cb4cb1f921f893b)
+    [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/d0c7d3ae789be71b8fd56ce79cb4cb1f921f893b)
 
-12. When all warnings are fixed, you can remove the migration build and switch to Vue 3 proper. Note you may not be able to do so if you still have dependencies that rely on Vue 2 behavior.
+12. Коли всі попередження виправлено, ви можете видалити збірку міграції та переключитися на належну Vue 3. Зауважте, що ви, можливо, не зможете це зробити, якщо у вас все ще є залежності, які покладаються на поведінку Vue 2.
 
-    [Example commit](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
+    [Приклад змін](https://github.com/vuejs/vue-hackernews-2.0/commit/9beb45490bc5f938c9e87b4ac1357cfb799565bd)
 
-## Compat Configuration
+## Конфігурація суміснності
 
-### Global Config
+### Глобальна конфігурація
 
-Compat features can be disabled individually:
+Функції сумісності можна вимкнути окремо:
 
 ```js
 import { configureCompat } from 'vue'
 
-// disable compat for certain features
+// вимкнути сумісність для певних функцій
 configureCompat({
   FEATURE_ID_A: false,
   FEATURE_ID_B: false
 })
 ```
 
-Alternatively, the entire application can default to Vue 3 behavior, with only certain compat features enabled:
+Крім того, уся програма може за замовчуванням використовувати поведінку Vue 3, увімкнувши лише певні функції сумісності:
 
 ```js
 import { configureCompat } from 'vue'
 
-// default everything to Vue 3 behavior, and only enable compat
-// for certain features
+// за замовчуванням все працює як Vue 3 і вмикає лише сумісність
+// для певних особливостей
 configureCompat({
   MODE: 3,
   FEATURE_ID_A: true,
@@ -240,104 +240,104 @@ configureCompat({
 })
 ```
 
-### Per-Component Config
+### Покомпонентна конфігурація
 
-A component can use the `compatConfig` option, which expects the same options as the global `configureCompat` method:
+Компонент може використовувати параметр `compatConfig`, який очікує тих самих параметрів, що й глобальний метод `configureCompat`:
 
 ```js
 export default {
   compatConfig: {
-    MODE: 3, // opt-in to Vue 3 behavior for this component only
-    FEATURE_ID_A: true // features can also be toggled at component level
+    MODE: 3, // увімкнути поведінку Vue 3 лише для цього компонента
+    FEATURE_ID_A: true // функції також можна перемикати на рівні компонентів
   }
   // ...
 }
 ```
 
-### Compiler-specific Config
+### Конфігурація компілятора
 
-Features that start with `COMPILER_` are compiler-specific: if you are using the full build (with in-browser compiler), they can be configured at runtime. However if using a build setup, they must be configured via the `compilerOptions` in the build config instead (see example configs above).
+Функції, які починаються з `COMPILER_`, залежать від компілятора: якщо ви використовуєте повну збірку (з компілятором у браузері), їх можна налаштувати під час виконання. Однак якщо використовується налаштування збірки, їх потрібно налаштувати за допомогою `compilerOptions` у конфігурації збірки (див. приклади конфігурацій вище).
 
-## Feature Reference
+## Посилання на функції
 
-### Compatibility Types
+### Типи сумісності
 
-- ✔ Fully compatible
-- ◐ Partially Compatible with caveats
-- ⨂ Incompatible (warning only)
-- ⭘ Compat only (no warning)
+- ✔ Повністю сумісний
+- ◐ Частково сумісний із застереженнями
+- ⨂ Несумісний (лише попередження)
+- ⭘ Тільки режим сумісності (без попередження)
 
-### Incompatible
+### Несумісний
 
-> Should be fixed upfront or will likely lead to errors
+> Має бути виправлено заздалегідь, інакше, ймовірно, призведе до помилок
 
-| ID                                    | Type | Description                                                             | Docs                                                                                       |
-| ------------------------------------- | ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| GLOBAL_MOUNT_CONTAINER                | ⨂    | Mounted application does not replace the element it's mounted to        | [link](./breaking-changes/mount-changes.html)                                               |
-| CONFIG_DEVTOOLS                       | ⨂    | production devtools is now a build-time flag                            | [link](https://github.com/vuejs/core/tree/master/packages/vue#bundler-build-feature-flags) |
-| COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂    | `v-if` and `v-for` precedence when used on the same element has changed | [link](./breaking-changes/v-if-v-for.html)                                                  |
-| COMPILER_V_IF_SAME_KEY                | ⨂    | `v-if` branches can no longer have the same key                         | [link](./breaking-changes/key-attribute.html#on-conditional-branches)                       |
-| COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂    | `<template v-for>` key should now be placed on `<template>`             | [link](./breaking-changes/key-attribute.html#with-template-v-for)                           |
-| COMPILER_SFC_FUNCTIONAL               | ⨂    | `<template functional>` is no longer supported in SFCs                  | [link](./breaking-changes/functional-components.html#single-file-components-sfcs)           |
+| ID                                    | Тип | Опис                                                                         | Документація                                                                               |
+| ------------------------------------- |-----|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| GLOBAL_MOUNT_CONTAINER                | ⨂   | Змонтована програма не замінює елемент, до якого вона змонтована             | [link](./breaking-changes/mount-changes.html)                                              |
+| CONFIG_DEVTOOLS                       | ⨂   | production devtools тепер є прапором під час збірки                          | [link](https://github.com/vuejs/core/tree/master/packages/vue#bundler-build-feature-flags) |
+| COMPILER_V_IF_V_FOR_PRECEDENCE        | ⨂   | Пріоритет `v-if` і `v-for` при використанні для того самого елемента змінено | [link](./breaking-changes/v-if-v-for.html)                                                 |
+| COMPILER_V_IF_SAME_KEY                | ⨂   | Гілки `v-if` більше не можуть мати однаковий ключ                            | [link](./breaking-changes/key-attribute.html#on-conditional-branches)                      |
+| COMPILER_V_FOR_TEMPLATE_KEY_PLACEMENT | ⨂   | Ключ `<template v-for>` тепер має бути поміщений у `<template>`              | [link](./breaking-changes/key-attribute.html#with-template-v-for)                          |
+| COMPILER_SFC_FUNCTIONAL               | ⨂   | `<template functional>` більше не підтримується в однофайлових компонентах   | [link](./breaking-changes/functional-components.html#single-file-components-sfcs)          |
 
-### Partially Compatible with Caveats
+### Частково сумісний із застереженнями
 
-| ID                       | Type | Description                                                                                                                                                                                | Docs                                                                                                           |
-| ------------------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` is now `config.compilerOptions.isCustomElement` (only in browser compiler build). If using build setup, `isCustomElement` must be passed via build configuration. | [link](./breaking-changes/global-api.html#config-ignoredelements-is-now-config-compileroptions-iscustomelement) |
-| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` removed (compat only supported in browser compiler build)                                                                                                                | [link](./breaking-changes/inline-template-attribute.html)                                                       |
-| PROPS_DEFAULT_THIS       | ◐    | props default factory no longer have access to `this` (in compat mode, `this` is not a real instance - it only exposes props, `$options` and injections)                                   | [link](./breaking-changes/props-default-this.html)                                                              |
-| INSTANCE_DESTROY         | ◐    | `$destroy` instance method removed (in compat mode, only supported on root instance)                                                                                                       |                                                                                                                |
-| GLOBAL_PRIVATE_UTIL      | ◐    | `Vue.util` is private and no longer available                                                                                                                                              |                                                                                                                |
-| CONFIG_PRODUCTION_TIP    | ◐    | `config.productionTip` no longer necessary                                                                                                                                                 | [link](./breaking-changes/global-api.html#config-productiontip-removed)                                         |
-| CONFIG_SILENT            | ◐    | `config.silent` removed                                                                                                                                                                    |                                                                                                                |
+| ID                       | Тип | Опис                                                                                                                                                                                                               | Документація                                                                                                           |
+| ------------------------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| -------------------------------------------------------------------------------------------------------------- |
+| CONFIG_IGNORED_ELEMENTS  | ◐    | `config.ignoredElements` тепер є `config.compilerOptions.isCustomElement` (лише у збірці компілятора браузера). Якщо використовується налаштування збірки, `isCustomElement` має бути передано через конфігурацію збірки. | [link](./breaking-changes/global-api.html#config-ignoredelements-is-now-config-compileroptions-iscustomelement) |
+| COMPILER_INLINE_TEMPLATE | ◐    | `inline-template` видалено (сумісність підтримується лише у збірці компілятора браузера)                                                                                                                                  | [link](./breaking-changes/inline-template-attribute.html)                                                       |
+| PROPS_DEFAULT_THIS       | ◐    | реквізити фабрики за замовчанням більше не мають доступу до `this` (у режимі compat `this` не є реальним екземпляром - він надає лише властивості, `$options` та ін’єкції)                                 | [link](./breaking-changes/props-default-this.html)                                                              |
+| INSTANCE_DESTROY         | ◐    | Видалено метод екземпляра $destroy (у режимі сумісності, підтримується лише в кореневому екземплярі)                                                                                                                                      |                                                                                                                |
+| GLOBAL_PRIVATE_UTIL      | ◐    | `Vue.util` є приватним і більше не доступний                                                                                                                                                                           |                                                                                                                |
+| CONFIG_PRODUCTION_TIP    | ◐    | `config.productionTip` більше не потрібен                                                                                                                                                                                | [link](./breaking-changes/global-api.html#config-productiontip-removed)                                         |
+| CONFIG_SILENT            | ◐    | `config.silent` видалено                                                                                                                                                                                                   |                                                                                                                |
 
-### Compat only (no warning)
+### Тільки режим сумісності (без попередження)
 
-| ID                 | Type | Description                            | Docs                                      |
+| ID                 | Тип | Опис                            | Документація                                      |
 | ------------------ | ---- | -------------------------------------- | ----------------------------------------- |
-| TRANSITION_CLASSES | ⭘    | Transition enter/leave classes changed | [link](./breaking-changes/transition.html) |
+| TRANSITION_CLASSES | ⭘    | Перехід до занять/залишення змінено | [link](./breaking-changes/transition.html) |
 
-### Fully Compatible
+### Повністю сумісний
 
-| ID                           | Type | Description                                                           | Docs                                                                                        |
-| ---------------------------- | ---- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| GLOBAL_MOUNT                 | ✔    | new Vue() -> createApp                                                | [link](./breaking-changes/global-api.html#mounting-app-instance)                             |
-| GLOBAL_EXTEND                | ✔    | Vue.extend removed (use `defineComponent` or `extends` option)        | [link](./breaking-changes/global-api.html#vue-extend-removed)                                |
-| GLOBAL_PROTOTYPE             | ✔    | `Vue.prototype` -> `app.config.globalProperties`                      | [link](./breaking-changes/global-api.html#vue-prototype-replaced-by-config-globalproperties) |
-| GLOBAL_SET                   | ✔    | `Vue.set` removed (no longer needed)                                  |                                                                                             |
-| GLOBAL_DELETE                | ✔    | `Vue.delete` removed (no longer needed)                               |                                                                                             |
-| GLOBAL_OBSERVABLE            | ✔    | `Vue.observable` removed (use `reactive`)                             | [link](https://vuejs.org/api/reactivity-core.html#reactive)                                 |
-| CONFIG_KEY_CODES             | ✔    | config.keyCodes removed                                               | [link](./breaking-changes/keycode-modifiers.html)                                            |
-| CONFIG_WHITESPACE            | ✔    | In Vue 3 whitespace defaults to `"condense"`                          |                                                                                             |
-| INSTANCE_SET                 | ✔    | `vm.$set` removed (no longer needed)                                  |                                                                                             |
-| INSTANCE_DELETE              | ✔    | `vm.$delete` removed (no longer needed)                               |                                                                                             |
-| INSTANCE_EVENT_EMITTER       | ✔    | `vm.$on`, `vm.$off`, `vm.$once` removed                               | [link](./breaking-changes/events-api.html)                                                   |
-| INSTANCE_EVENT_HOOKS         | ✔    | Instance no longer emits `hook:x` events                              | [link](./breaking-changes/vnode-lifecycle-events.html)                                       |
-| INSTANCE_CHILDREN            | ✔    | `vm.$children` removed                                                | [link](./breaking-changes/children.html)                                                     |
-| INSTANCE_LISTENERS           | ✔    | `vm.$listeners` removed                                               | [link](./breaking-changes/listeners-removed.html)                                            |
-| INSTANCE_SCOPED_SLOTS        | ✔    | `vm.$scopedSlots` removed; `vm.$slots` now exposes functions          | [link](./breaking-changes/slots-unification.html)                                            |
-| INSTANCE_ATTRS_CLASS_STYLE   | ✔    | `$attrs` now includes `class` and `style`                             | [link](./breaking-changes/attrs-includes-class-style.html)                                   |
-| OPTIONS_DATA_FN              | ✔    | `data` must be a function in all cases                                | [link](./breaking-changes/data-option.html)                                                  |
-| OPTIONS_DATA_MERGE           | ✔    | `data` from mixin or extension is now shallow merged                  | [link](./breaking-changes/data-option.html)                                                  |
-| OPTIONS_BEFORE_DESTROY       | ✔    | `beforeDestroy` -> `beforeUnmount`                                    |                                                                                             |
-| OPTIONS_DESTROYED            | ✔    | `destroyed` -> `unmounted`                                            |                                                                                             |
-| WATCH_ARRAY                  | ✔    | watching an array no longer triggers on mutation unless deep          | [link](./breaking-changes/watch.html)                                                        |
-| V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` no longer supports keyCode modifiers                           | [link](./breaking-changes/keycode-modifiers.html)                                            |
-| CUSTOM_DIR                   | ✔    | Custom directive hook names changed                                   | [link](./breaking-changes/custom-directives.html)                                            |
-| ATTR_FALSE_VALUE             | ✔    | No longer removes attribute if binding value is boolean `false`       | [link](./breaking-changes/attribute-coercion.html)                                           |
-| ATTR_ENUMERATED_COERCION     | ✔    | No longer special case enumerated attributes                          | [link](./breaking-changes/attribute-coercion.html)                                           |
-| TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` no longer renders a root element by default      | [link](./breaking-changes/transition-group.html)                                             |
-| COMPONENT_ASYNC              | ✔    | Async component API changed (now requires `defineAsyncComponent`)     | [link](./breaking-changes/async-components.html)                                             |
-| COMPONENT_FUNCTIONAL         | ✔    | Functional component API changed (now must be plain functions)        | [link](./breaking-changes/functional-components.html)                                        |
-| COMPONENT_V_MODEL            | ✔    | Component v-model reworked                                            | [link](./breaking-changes/v-model.html)                                                      |
-| RENDER_FUNCTION              | ✔    | Render function API changed                                           | [link](./breaking-changes/render-function-api.html)                                          |
-| FILTERS                      | ✔    | Filters removed (this option affects only runtime filter APIs)        | [link](./breaking-changes/filters.html)                                                      |
-| COMPILER_IS_ON_ELEMENT       | ✔    | `is` usage is now restricted to `<component>` only                    | [link](./breaking-changes/custom-elements-interop.html)                                      |
-| COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` replaced by `v-model` with arguments                    | [link](./breaking-changes/v-model.html)                                                      |
-| COMPILER_V_BIND_PROP         | ✔    | `v-bind.prop` modifier removed                                        |                                                                                             |
-| COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` is now order sensitive                              | [link](./breaking-changes/v-bind.html)                                                       |
-| COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` modifier removed                                        | [link](./breaking-changes/v-on-native-modifier-removed.html)                                 |
-| COMPILER_V_FOR_REF           | ✔    | `ref` in `v-for` (compiler support)                                   |                                                                                             |
-| COMPILER_NATIVE_TEMPLATE     | ✔    | `<template>` with no special directives now renders as native element |                                                                                             |
-| COMPILER_FILTERS             | ✔    | filters (compiler support)                                            |                                                                                             |
+| ID                           | Тип | Опис                                                                           | Документація                                                                                 |
+| ---------------------------- | ---- |--------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| GLOBAL_MOUNT                 | ✔    | new Vue() -> createApp                                                         | [link](./breaking-changes/global-api.html#mounting-app-instance)                             |
+| GLOBAL_EXTEND                | ✔    | Vue.extend видалено (використовуйте опцію `defineComponent` або `extends`)     | [link](./breaking-changes/global-api.html#vue-extend-removed)                                |
+| GLOBAL_PROTOTYPE             | ✔    | `Vue.prototype` -> `app.config.globalProperties`                               | [link](./breaking-changes/global-api.html#vue-prototype-replaced-by-config-globalproperties) |
+| GLOBAL_SET                   | ✔    | `Vue.set` видалено (більше не потрібен)                                        |                                                                                              |
+| GLOBAL_DELETE                | ✔    | `Vue.delete` видалено (більше не потрібен)                                     |                                                                                              |
+| GLOBAL_OBSERVABLE            | ✔    | `Vue.observable` видалено (використовуйте `reactive`)                          | [link](https://ua.vuejs.org/api/reactivity-core.html#reactive)                               |
+| CONFIG_KEY_CODES             | ✔    | config.keyCodes видалено                                                       | [link](./breaking-changes/keycode-modifiers.html)                                            |
+| CONFIG_WHITESPACE            | ✔    | У Vue 3 пробіл за замовчуванням `"condense".                                   |                                                                                              |
+| INSTANCE_SET                 | ✔    | `vm.$set` видалено (більше не потрібен)                                        |                                                                                              |
+| INSTANCE_DELETE              | ✔    | `vm.$delete` видалено (більше не потрібен)                                     |                                                                                              |
+| INSTANCE_EVENT_EMITTER       | ✔    | `vm.$on`, `vm.$off`, `vm.$once` видалено                                       | [link](./breaking-changes/events-api.html)                                                   |
+| INSTANCE_EVENT_HOOKS         | ✔    | Екземпляр більше не генерує події `hook:x`                                     | [link](./breaking-changes/vnode-lifecycle-events.html)                                       |
+| INSTANCE_CHILDREN            | ✔    | `vm.$children` видалено                                                        | [link](./breaking-changes/children.html)                                                     |
+| INSTANCE_LISTENERS           | ✔    | `vm.$listeners` видалено                                                       | [link](./breaking-changes/listeners-removed.html)                                            |
+| INSTANCE_SCOPED_SLOTS        | ✔    | `vm.$scopedSlots` видалено; `vm.$slots` тепер відкриває функції                | [link](./breaking-changes/slots-unification.html)                                            |
+| INSTANCE_ATTRS_CLASS_STYLE   | ✔    | `$attrs` тепер включає `class` і `style`                                       | [link](./breaking-changes/attrs-includes-class-style.html)                                   |
+| OPTIONS_DATA_FN              | ✔    | `data` має бути функцією в усіх випадках                                       | [link](./breaking-changes/data-option.html)                                                  |
+| OPTIONS_DATA_MERGE           | ✔    | `data` з mixin або розширення тепер неглибоко об’єднані                        | [link](./breaking-changes/data-option.html)                                                  |
+| OPTIONS_BEFORE_DESTROY       | ✔    | `beforeDestroy` -> `beforeUnmount`                                             |                                                                                              |
+| OPTIONS_DESTROYED            | ✔    | `destroyed` -> `unmounted`                                                     |                                                                                              |
+| WATCH_ARRAY                  | ✔    | перегляд масиву більше не запускає мутацію, якщо вона не глибока               | [link](./breaking-changes/watch.html)                                                        |
+| V_ON_KEYCODE_MODIFIER        | ✔    | `v-on` більше не підтримує модифікатори keyCode                                | [link](./breaking-changes/keycode-modifiers.html)                                            |
+| CUSTOM_DIR                   | ✔    | Назви користувацьких директив змінено                                          | [link](./breaking-changes/custom-directives.html)                                            |
+| ATTR_FALSE_VALUE             | ✔    | Більше не видаляється атрибут, якщо значення прив’язки є логічним `false`      | [link](./breaking-changes/attribute-coercion.html)                                           |
+| ATTR_ENUMERATED_COERCION     | ✔    | Більше не перераховуються атрибути спеціального регістру                       | [link](./breaking-changes/attribute-coercion.html)                                           |
+| TRANSITION_GROUP_ROOT        | ✔    | `<transition-group>` більше не рендерить кореневий елемент за замовчуванням    | [link](./breaking-changes/transition-group.html)                                             |
+| COMPONENT_ASYNC              | ✔    | API асинхронного компонента змінено (тепер потрібен `defineAsyncComponent`)    | [link](./breaking-changes/async-components.html)                                             |
+| COMPONENT_FUNCTIONAL         | ✔    | Змінено API функціонального компонента (тепер мають бути звичайні функції)     | [link](./breaking-changes/functional-components.html)                                        |
+| COMPONENT_V_MODEL            | ✔    | v-model компонента перероблено                                                 | [link](./breaking-changes/v-model.html)                                                      |
+| RENDER_FUNCTION              | ✔    | API рендер функції змінено                                                     | [link](./breaking-changes/render-function-api.html)                                          |
+| FILTERS                      | ✔    | Фільтри видалено (цей параметр впливає лише на API фільтрів під час виконання) | [link](./breaking-changes/filters.html)                                                      |
+| COMPILER_IS_ON_ELEMENT       | ✔    | Використання `is` обмежено лише до `<component>`                               | [link](./breaking-changes/custom-elements-interop.html)                                      |
+| COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` замінено на `v-model` з аргументами                              | [link](./breaking-changes/v-model.html)                                                      |
+| COMPILER_V_BIND_PROP         | ✔    | Модифікатор `v-bind.prop` видалено                                             |                                                                                              |
+| COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` тепер чутливий до порядку                                    | [link](./breaking-changes/v-bind.html)                                                       |
+| COMPILER_V_ON_NATIVE         | ✔    | Модифікатор `v-on.native` видалено                                             | [link](./breaking-changes/v-on-native-modifier-removed.html)                                 |
+| COMPILER_V_FOR_REF           | ✔    | `ref` в `v-for` (підтримка компілятора)                                             |                                                                                              |
+| COMPILER_NATIVE_TEMPLATE     | ✔    | `<template>` без спеціальних директив тепер відображається як рідний елемент          |                                                                                              |
+| COMPILER_FILTERS             | ✔    | фільтри (підтримка компілятора)                                                     |                                                                                              |
