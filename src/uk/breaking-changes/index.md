@@ -1,66 +1,67 @@
-# Breaking Changes
+# Несумісні зміни
 
-This page lists all Vue 3 breaking changes from Vue 2.
+На цій сторінці перераховано всі зміни Vue 3, які порушують роботу Vue 2.
 
-While it looks like a lot has changed, a lot of what you know and love about Vue is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
+Хоча здається, що багато чого змінилося, багато з того, що ви знаєте та любите про Vue, залишається незмінним; але ми хотіли бути максимально детальними та надати докладні пояснення та приклади для кожної задокументованої зміни.
 
-## Details
+## Деталі
 
-### Global API
+### Глобальний API
 
-- [Global Vue API is changed to use an application instance](./global-api.html)
-- [Global and internal APIs have been restructured to be tree-shakable](./global-api-treeshaking.html)
+- [API Global Vue змінено для використання екземпляра програми](./global-api.html)
+- [Глобальні та внутрішні API було реструктуровано, щоб вони могли трясти дерево](./global-api-treeshaking.html)
 
-### Template Directives
+### Директиви шаблонів
 
-- [`v-model` usage on components has been reworked, replacing `v-bind.sync`](./v-model.html)
-- [`key` usage on `<template v-for>` and non-`v-for` nodes has changed](./key-attribute.html)
-- [`v-if` and `v-for` precedence when used on the same element has changed](./v-if-v-for.html)
-- [`v-bind="object"` is now order-sensitive](./v-bind.html)
-- [`v-on:event.native` modifier has been removed](./v-on-native-modifier-removed.md)
+- [`v-model` використання компонентів було перероблено, замінивши `v-bind.sync`](./v-model.html)
+- [використання `key` на вузлах `<template v-for>` і не-`v-for` змінено](./key-attribute.html)
+- [змінено пріоритет `v-if` і `v-for` при використанні для того самого елемента](./v-if-v-for.html)
+- [`v-bind="object"` тепер чутливий до порядку](./v-bind.html)
+- ['v-on:event.native` модифікатор видалено](./v-on-native-modifier-removed.md)
 
-### Components
+### Компоненти
 
-- [Functional components can only be created using a plain function](./functional-components.html)
-- [`functional` attribute on single-file component (SFC) `<template>` and `functional` component option are deprecated](./functional-components.html)
-- [Async components now require `defineAsyncComponent` method to be created](./async-components.html)
-- [Component events should now be declared with the `emits` option](./emits-option.md)
+- [Функціональні компоненти можна створити лише за допомогою простої функції](./functional-components.html)
+- [Атрибут 'functional' однофайлового компонента (SFC) '<template>' і параметр компонента 'functional' застаріли](./functional-components.html)
+- [Асинхронні компоненти тепер потребують створення методу `defineAsyncComponent`](./async-components.html)
+- [Події компонентів тепер слід оголошувати за допомогою параметра `emits`](./emits-option.md)
 
-### Render Function
+### Функція візуалізації
 
-- [Render function API changed](./render-function-api.html)
-- [`$scopedSlots` property is removed and all slots are exposed via `$slots` as functions](./slots-unification.html)
-- [`$listeners` has been removed / merged into `$attrs`](./listeners-removed)
-- [`$attrs` now includes `class` and `style` attributes](./attrs-includes-class-style.md)
+- [API функції відтворення змінено](./render-function-api.html)
+- [Властивість `$scopedSlots` видалено, а всі слоти доступні через `$slots` як функції](./slots-unification.html)
+- [`$listeners` було видалено/об’єднано в `$attrs`](./listeners-removed)
+- [`$attrs` тепер включає атрибути `class` і `style`](./attrs-includes-class-style.md)
 
-### Custom Elements
+### Спеціальні елементи
 
-- [Custom element checks are now performed during template compilation](./custom-elements-interop.html)
-- [Special `is` attribute usage is restricted to the reserved `<component>` tag only](./custom-elements-interop.html#customized-built-in-elements)
+- [Перевірки користувацьких елементів тепер виконуються під час компіляції шаблону](./custom-elements-interop.html)
+- [Використання спеціального атрибута `is` обмежено лише зарезервованим тегом `<component>`](./custom-elements-interop.html#customized-built-in-elements)
 
-### Other Minor Changes
+### Інші незначні зміни
 
-- The `destroyed` lifecycle option has been renamed to `unmounted`
-- The `beforeDestroy` lifecycle option has been renamed to `beforeUnmount`
-- [Props `default` factory function no longer has access to `this` context](./props-default-this.html)
-- [Custom directive API changed to align with component lifecycle and `binding.expression` removed](./custom-directives.html)
-- [The `data` option should always be declared as a function](./data-option.html)
-- [The `data` option from mixins is now merged shallowly](./data-option.html#mixin-merge-behavior-change)
-- [Attributes coercion strategy changed](./attribute-coercion.html)
-- [Some transition classes got a rename](./transition.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
-- [When watching an array, the callback will only trigger when the array is replaced. If you need to trigger on mutation, the `deep` option must be specified.](./watch.html)
-- `<template>` tags with no special directives (`v-if/else-if/else`, `v-for`, or `v-slot`) are now treated as plain elements and will result in a native `<template>` element instead of rendering its inner content.
-- [Mounted application does not replace the element it's mounted to](./mount-changes.html)
-- [Lifecycle `hook:` events prefix changed to `vnode-`](./vnode-lifecycle-events.html)
+— Параметр `destroyed` життєвого циклу було перейменовано на `unmounted`.
+- Опцію життєвого циклу `beforeDestroy` було перейменовано на `beforeUnmount`
+- [Фабрична функція реквізитів `default` більше не має доступу до контексту `this`](./props-default-this.html)
+- [API спеціальної директиви змінено для узгодження з життєвим циклом компонента, а `binding.expression` видалено](./custom-directives.html)
+- [Параметр `data` завжди слід оголошувати як функцію](./data-option.html)
+- [Параметр `data` з міксинів тепер об’єднано поверхнево](./data-option.html#mixin-merge-behavior-change)
+- [Стратегію примусу атрибутів змінено](./attribute-coercion.html)
+- [Деякі класи переходу перейменовано](./transition.html)
+- [`<TransitionGroup>` тепер не відображає елемент оболонки за замовчуванням](./transition-group.html)
+- [Під час перегляду масиву зворотний виклик запускатиметься лише тоді, коли масив буде замінено. Якщо вам потрібно запустити мутацію, необхідно вказати опцію `deep`.](./watch.html)
+- Теги `<template>` без спеціальних директив (`v-if/else-if/else`, `v-for` або `v-slot`) тепер розглядаються як звичайні елементи та призведуть до рідного ` <template>` замість відтворення його внутрішнього вмісту.
+- [Змонтована програма не замінює елемент, до якого вона змонтована](./mount-changes.html)
+- [Префікс подій життєвого циклу `hook:` змінено на `vnode-`](./vnode-lifecycle-events.html)
 
-### Removed APIs
+### Видалені API
 
-- [`keyCode` support as `v-on` modifiers](./keycode-modifiers.html)
-- [$on, $off and \$once instance methods](./events-api.html)
-- [Filters](./filters.html)
-- [Inline templates attributes](./inline-template-attribute.html)
-- [`$children` instance property](./children.html)
-- [`propsData` option](./props-data.html)
-- `$destroy` instance method. Users should no longer manually manage the lifecycle of individual Vue components.
-- Global functions `set` and `delete`, and the instance methods `$set` and `$delete`. They are no longer required with proxy-based change detection.
+- [підтримка `keyCode` як модифікаторів `v-on`](./keycode-modifiers.html)
+- [методи екземплярів $on, $off і \$once](./events-api.html)
+- [Фільтри](./filters.html)
+- [Атрибути вбудованих шаблонів](./inline-template-attribute.html)
+- [властивість екземпляра `$children`](./children.html)
+- [параметр "propsData"](./props-data.html)
+- Метод екземпляра `$destroy`. Користувачі більше не повинні вручну керувати життєвим циклом окремих компонентів Vue.
+- Глобальні функції `set` і `delete`, а також методи екземплярів `$set` і `$delete`. Вони більше не потрібні для виявлення змін на основі проксі.
+

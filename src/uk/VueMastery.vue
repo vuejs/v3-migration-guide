@@ -14,7 +14,7 @@
         />
       </div>
       <p class="description">
-        Get the free Migration Guide Cheat Sheet at <span>VueMastery.com</span>
+        Отримайте безкоштовну шпаргалку з посібника з міграції на <span>VueMastery.com</span>
       </p>
       <div class="logo-wrapper">
         <img

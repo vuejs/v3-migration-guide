@@ -13,12 +13,12 @@ export default {
       {
         text: 'Гід',
         items: [
-          { text: 'Огляд', link: '/' },
-          { text: 'Нові рекомендації', link: '/recommendations' },
-          { text: 'Міграційна збірка', link: '/migration-build' },
+          { text: 'Огляд', link: '/uk/' },
+          { text: 'Нові рекомендації', link: '/uk/recommendations' },
+          { text: 'Міграційна збірка', link: '/uk/migration-build' },
           {
             text: 'Несумісні зміни',
-            link: '/breaking-changes/'
+            link: '/uk/breaking-changes/'
           }
         ]
       },
@@ -27,30 +27,30 @@ export default {
         items: [
           {
             text: 'Екземпляр програми глобального API',
-            link: '/breaking-changes/global-api'
+            link: '/uk/breaking-changes/global-api'
           },
           {
             text: 'Treeshaking глобального API ',
-            link: '/breaking-changes/global-api-treeshaking'
+            link: '/uk/breaking-changes/global-api-treeshaking'
           }
         ]
       },
       {
         text: 'Шаблон директив',
         items: [
-          { text: 'v-model', link: '/breaking-changes/v-model' },
+          { text: 'v-model', link: '/uk/breaking-changes/v-model' },
           {
             text: 'Зміни використання key',
-            link: '/breaking-changes/key-attribute'
+            link: '/uk/breaking-changes/key-attribute'
           },
           {
             text: 'Пріоритет v-if проти v-for',
-            link: '/breaking-changes/v-if-v-for'
+            link: '/uk/breaking-changes/v-if-v-for'
           },
-          { text: 'Поведінка злиття v-bind', link: '/breaking-changes/v-bind' },
+          { text: 'Поведінка злиття v-bind', link: '/uk/breaking-changes/v-bind' },
           {
             text: 'Модифікатор v-on.native видалено',
-            link: '/breaking-changes/v-on-native-modifier-removed'
+            link: '/uk/breaking-changes/v-on-native-modifier-removed'
           }
         ]
       },
@@ -59,13 +59,13 @@ export default {
         items: [
           {
             text: 'Функціональні компоненти',
-            link: '/breaking-changes/functional-components'
+            link: '/uk/breaking-changes/functional-components'
           },
           {
             text: 'Асинхронні компоненти',
-            link: '/breaking-changes/async-components'
+            link: '/uk/breaking-changes/async-components'
           },
-          { text: 'Опція emits', link: '/breaking-changes/emits-option' }
+          { text: 'Опція emits', link: '/uk/breaking-changes/emits-option' }
         ]
       },
       {
@@ -73,19 +73,19 @@ export default {
         items: [
           {
             text: 'API функцій рендерингу',
-            link: '/breaking-changes/render-function-api'
+            link: '/uk/breaking-changes/render-function-api'
           },
           {
             text: 'Уніфікація слотів',
-            link: '/breaking-changes/slots-unification'
+            link: '/uk/breaking-changes/slots-unification'
           },
           {
             text: '$listeners об\'єднано з $attrs',
-            link: '/breaking-changes/listeners-removed'
+            link: '/uk/breaking-changes/listeners-removed'
           },
           {
             text: '$attrs включає class & style',
-            link: '/breaking-changes/attrs-includes-class-style'
+            link: '/uk/breaking-changes/attrs-includes-class-style'
           }
         ]
       },
@@ -94,7 +94,7 @@ export default {
         items: [
           {
             text: 'Зміни взаємодії',
-            link: '/breaking-changes/custom-elements-interop'
+            link: '/uk/breaking-changes/custom-elements-interop'
           }
         ]
       },
@@ -103,16 +103,16 @@ export default {
         items: [
           {
             text: 'Модифікатор v-on keyCode',
-            link: '/breaking-changes/keycode-modifiers'
+            link: '/uk/breaking-changes/keycode-modifiers'
           },
-          { text: 'API подій', link: '/breaking-changes/events-api' },
-          { text: 'Фільтри', link: '/breaking-changes/filters' },
+          { text: 'API подій', link: '/uk/breaking-changes/events-api' },
+          { text: 'Фільтри', link: '/uk/breaking-changes/filters' },
           {
             text: 'inline-template',
-            link: '/breaking-changes/inline-template-attribute'
+            link: '/uk/breaking-changes/inline-template-attribute'
           },
-          { text: '$children', link: '/breaking-changes/children' },
-          { text: 'propsData option', link: '/breaking-changes/props-data' }
+          { text: '$children', link: '/uk/breaking-changes/children' },
+          { text: 'propsData option', link: '/uk/breaking-changes/props-data' }
         ]
       },
       {
@@ -120,38 +120,38 @@ export default {
         items: [
           {
             text: 'Атрибут примусової поведінки',
-            link: '/breaking-changes/attribute-coercion'
+            link: '/uk/breaking-changes/attribute-coercion'
           },
           {
             text: 'Спеціальні директиви',
-            link: '/breaking-changes/custom-directives'
+            link: '/uk/breaking-changes/custom-directives'
           },
-          { text: 'Опція Data', link: '/breaking-changes/data-option' },
+          { text: 'Опція Data', link: '/uk/breaking-changes/data-option' },
           {
             text: 'Зміни в API монтування',
-            link: '/breaking-changes/mount-changes'
+            link: '/uk/breaking-changes/mount-changes'
           },
           {
             text: 'Доступ до this в функції реквізитів',
-            link: '/breaking-changes/props-default-this'
+            link: '/uk/breaking-changes/props-default-this'
           },
           {
             text: 'Зміни класів в Transition',
-            link: '/breaking-changes/transition'
+            link: '/uk/breaking-changes/transition'
           },
           {
             text: 'Transition як кореневий елемент',
-            link: '/breaking-changes/transition-as-root'
+            link: '/uk/breaking-changes/transition-as-root'
           },
           {
             text: 'Transition Group як кореневий елемент',
-            link: '/breaking-changes/transition-group'
+            link: '/uk/breaking-changes/transition-group'
           },
           {
             text: 'Життєвий цикл VNode',
-            link: '/breaking-changes/vnode-lifecycle-events'
+            link: '/uk/breaking-changes/vnode-lifecycle-events'
           },
-          { text: 'Спостерігачі за масивами', link: '/breaking-changes/watch' }
+          { text: 'Спостерігачі за масивами', link: '/uk/breaking-changes/watch' }
         ]
       }
     ]
