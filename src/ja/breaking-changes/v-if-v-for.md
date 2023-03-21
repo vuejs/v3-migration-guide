@@ -1,36 +1,36 @@
 ---
-title: v-if vs. v-for Precedence
+title: v-if と v-for の優先順位
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-- **BREAKING**: If used on the same element, `v-if` will have higher precedence than `v-for`
+- **破壊的変更**: 同じ要素で使用した場合、`v-if` は `v-for` より優先度が高くなります
 
-## Introduction
+## はじめに
 
-Two of the most commonly used directives in Vue.js are `v-if` and `v-for`. So it's no surprise that there comes a time when developers want to use both together. While this is not a recommended practice, there may be times when this is necessary, so we wanted to provide guidance for how it works.
+Vue.js で最もよく使われるディレクティブは `v-if` と `v-for` の 2 つです。そのため、開発者がこの 2 つを一緒に使いたいと思うことがあっても不思議ではありません。これは推奨される方法ではありませんが、必要な場合もあるため、その仕組についてのガイダンスを提供したいと考えています。
 
-## 2.x Syntax
+## 2.x の構文
 
-In 2.x, when using `v-if` and `v-for` on the same element, `v-for` would take precedence.
+2.x では、同じ要素に対して `v-if` と `v-for` を使用した場合、`v-for` が優先されました。
 
-## 3.x Syntax
+## 3.x の構文
 
-In 3.x, `v-if` will always have the higher precedence than `v-for`.
+3.x では、`v-if` は常に `v-for` より優先度が高くなります。
 
-## Migration Strategy
+## 移行手順
 
-It is recommended to avoid using both on the same element due to the syntax ambiguity.
+構文があいまいなため、同じ要素で両方を使用することは避けることをお勧めします。
 
-Rather than managing this at the template level, one method for accomplishing this is to create a computed property that filters out a list for the visible elements.
+これをテンプレートレベルで管理するのではなく、表示する要素のリストをフィルタリングする算出プロパティを作成することで実現する方法があります。
 
-[Migration build flag: `COMPILER_V_IF_V_FOR_PRECEDENCE`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `COMPILER_V_IF_V_FOR_PRECEDENCE`](../migration-build.html#compat-configuration)
 
-## See also
+## 参照
 
-- [List Rendering - Displaying Filtered/Sorted Results](https://ja.vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
-- [List Rendering - `v-for` with `v-if`](https://ja.vuejs.org/guide/essentials/list.html#v-for-with-v-if)
+- [リストレンダリング - フィルタリング/並べ替えの結果を表示する](https://ja.vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
+- [リストレンダリング - `v-for` と `v-if`](https://ja.vuejs.org/guide/essentials/list.html#v-for-with-v-if)

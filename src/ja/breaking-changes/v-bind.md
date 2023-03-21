@@ -1,48 +1,48 @@
 ---
-title: v-bind Merge Behavior
+title: v-bind のマージ動作
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-- **BREAKING**: Order of bindings for v-bind will affect the rendering result.
+- **破壊的変更**: v-bind のバインディングの順番は、レンダリング結果に影響します。
 
-## Introduction
+## はじめに
 
-When dynamically binding attributes on an element, a common scenario involves using both the `v-bind="object"` syntax as well as individual attributes in the same element. However, this raises questions as far as the priority of merging.
+要素に属性を動的にバインドする場合、同じ要素で `v-bind="object"` 構文と個別の属性の両方を使用するのが一般的です。しかし、この場合、マージの優先順位に問題が生じます。
 
-## 2.x Syntax
+## 2.x の構文
 
-In 2.x, if an element has both `v-bind="object"` and an identical individual attribute defined, the individual attribute would always overwrite bindings in the `object`.
+2.x では、要素に `v-bind="object"` と個別の属性が定義されている場合、個別の属性は常に `object` のバインドを上書きしていました。
 
 ```html
-<!-- template -->
+<!-- テンプレート -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- 結果 -->
 <div id="red"></div>
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-In 3x, if an element has both `v-bind="object"` and an identical individual attribute defined, the order of how the bindings are declared determines how they are merged. In other words, rather than assuming developers want the individual attribute to always override what is defined in the `object`, developers now have more control over the desired merging behavior.
+3x では、要素に `v-bind="object"` と個別の属性が定義されている場合、バインディングが宣言されている順序によって、それらがどのようにマージされるかが決まります。つまり、`object` で定義されたものを個別の属性が常にオーバーライドすることを開発者が望んでいると想定するのではなく、必要とするマージ動作をより詳細にコントロールできるようになったのです。
 
 ```html
-<!-- template -->
+<!-- テンプレート -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- 結果 -->
 <div id="blue"></div>
 
-<!-- template -->
+<!-- テンプレート -->
 <div v-bind="{ id: 'blue' }" id="red"></div>
-<!-- result -->
+<!-- 結果 -->
 <div id="red"></div>
 ```
 
-## Migration Strategy
+## 移行手順
 
-If you are relying on this override functionality for `v-bind`, we currently recommend ensuring that your `v-bind` attribute is defined before individual attributes.
+この `v-bind` のオーバーライド機能を利用している場合は、`v-bind` 属性が個別の属性より先に定義されているか確認することをお勧めします。
 
-[Migration build flag: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build.html#compat-configuration)
