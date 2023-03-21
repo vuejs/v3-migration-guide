@@ -3,20 +3,20 @@ badges:
   - breaking
 ---
 
-# Global API Application Instance<MigrationBadges :badges="$frontmatter.badges" />
+# Екземпляр програми Global API<MigrationBadges :badges="$frontmatter.badges" />
 
-Vue 2.x has a number of global APIs and configurations that globally mutate Vue’s behavior. For instance, to register a global component, you would use the `Vue.component` API like this:
+Vue 2.x має низку глобальних API та конфігурацій, які глобально змінюють поведінку Vue. Наприклад, щоб зареєструвати глобальний компонент, ви повинні використати API `Vue.component` так:
 
 ```js
 Vue.component('button-counter', {
   data: () => ({
     count: 0
   }),
-  template: '<button @click="count++">Clicked {{ count }} times.</button>'
+  template: '<button @click="count++">Клацнуто {{ count }} разів.</button>'
 })
 ```
 
-Similarly, this is how a global directive is declared:
+Аналогічно ось як оголошується глобальна директива:
 
 ```js
 Vue.directive('focus', {
@@ -24,27 +24,27 @@ Vue.directive('focus', {
 })
 ```
 
-While this approach is convenient, it leads to a couple of problems. Technically, Vue 2 doesn't have a concept of an "app". What we define as an app is simply a root Vue instance created via `new Vue()`. Every root instance created from the same Vue constructor **shares the same global configuration**. As a result:
+Хоча цей підхід зручний, він призводить до кількох проблем. Технічно Vue 2 не має поняття «додаток». Те, що ми визначаємо як програму, — це просто кореневий екземпляр Vue, створений за допомогою `new Vue()`. Кожен кореневий екземпляр, створений з того самого конструктора Vue, **спільно використовує ту саму глобальну конфігурацію**. В результаті:
 
-- Global configuration makes it easy to accidentally pollute other test cases during testing. Users need to carefully store original global configuration and restore it after each test (e.g. resetting `Vue.config.errorHandler`). Some APIs like `Vue.use` and `Vue.mixin` don't even have a way to revert their effects. This makes tests involving plugins particularly tricky. In fact, vue-test-utils has to implement a special API `createLocalVue` to deal with this:
+- Глобальна конфігурація дозволяє легко випадково забруднити інші тестові випадки під час тестування. Користувачам потрібно ретельно зберігати початкову глобальну конфігурацію та відновлювати її після кожного тесту (наприклад, скидання `Vue.config.errorHandler`). Деякі API, такі як `Vue.use` і `Vue.mixin`, навіть не мають способу повернути свої ефекти. Це робить тестування із застосуванням плагінів особливо складним. Фактично, vue-test-utils має реалізувати спеціальний API `createLocalVue`, щоб впоратися з цим:
 
   ```js
   import { createLocalVue, mount } from '@vue/test-utils'
 
-  // create an extended `Vue` constructor
+  // створити розширений конструктор `Vue`
   const localVue = createLocalVue()
 
-  // install a plugin “globally” on the “local” Vue constructor
+  // встановити плагін «глобально» на «локальний» конструктор Vue
   localVue.use(MyPlugin)
 
-  // pass the `localVue` to the mount options
+  // передайте `localVue` до параметрів монтування
   mount(Component, { localVue })
   ```
 
-- Global configuration makes it difficult to share the same copy of Vue between multiple "apps" on the same page, but with different global configurations.
+- Глобальна конфігурація ускладнює спільний доступ до однієї копії Vue між декількома «додатками» на одній сторінці, але з різними глобальними конфігураціями.
 
   ```js
-  // this affects both root instances
+  // це стосується обох кореневих екземплярів
   Vue.mixin({
     /* ... */
   })
@@ -53,11 +53,11 @@ While this approach is convenient, it leads to a couple of problems. Technically
   const app2 = new Vue({ el: '#app-2' })
   ```
 
-To avoid these problems, in Vue 3 we introduce…
+Щоб уникнути цих проблем, у Vue 3 ми представляємо…
 
-## A New Global API: `createApp`
+## Новий глобальний API: `createApp`
 
-Calling `createApp` returns an _app instance_, a new concept in Vue 3.
+Виклик `createApp` повертає _екземпляр програми_, нову концепцію у Vue 3.
 
 ```js
 import { createApp } from 'vue'
@@ -65,7 +65,7 @@ import { createApp } from 'vue'
 const app = createApp({})
 ```
 
-If you're using a CDN build of Vue then `createApp` is exposed via the global `Vue` object:
+Якщо ви використовуєте збірку CDN Vue, тоді `createApp` відкривається через глобальний об’єкт `Vue`:
 
 ```js
 const { createApp } = Vue
@@ -73,89 +73,89 @@ const { createApp } = Vue
 const app = createApp({})
 ```
 
-An app instance exposes a subset of the Vue 2 global APIs. The rule of thumb is _any APIs that globally mutate Vue's behavior are now moved to the app instance_. Here is a table of the Vue 2 global APIs and their corresponding instance APIs:
+Екземпляр програми надає підмножину глобальних API Vue 2. Емпіричне правило таке: _будь-які API, які глобально змінюють поведінку Vue, тепер переміщуються в екземпляр програми_. Ось таблиця глобальних API Vue 2 і відповідних API екземплярів:
 
-| 2.x Global API             | 3.x Instance API (`app`)                                                                                                        |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Vue.config                 | app.config                                                                                                                      |
-| Vue.config.productionTip   | _removed_ ([see below](#config-productiontip-removed))                                                                          |
-| Vue.config.ignoredElements | app.config.compilerOptions.isCustomElement ([see below](#config-ignoredelements-is-now-config-compileroptions-iscustomelement)) |
-| Vue.component              | app.component                                                                                                                   |
-| Vue.directive              | app.directive                                                                                                                   |
-| Vue.mixin                  | app.mixin                                                                                                                       |
-| Vue.use                    | app.use ([see below](#a-note-for-plugin-authors))                                                                               |
-| Vue.prototype              | app.config.globalProperties ([see below](#vue-prototype-replaced-by-config-globalproperties))                                   |
-| Vue.extend                 | _removed_ ([see below](#vue-extend-removed))                                                                                    |
+| 2.x Глобальний API         | 3.x API екземпляра (`app`)                                                                                                       |
+| -------------------------- |----------------------------------------------------------------------------------------------------------------------------------|
+| Vue.config                 | app.config                                                                                                                       |
+| Vue.config.productionTip   | _видалено_ ([див. нижче](#config-productiontip-removed))                                                                         |
+| Vue.config.ignoredElements | app.config.compilerOptions.isCustomElement ([див. нижче](#config-ignoredelements-is-now-config-compileroptions-iscustomelement)) |
+| Vue.component              | app.component                                                                                                                    |
+| Vue.directive              | app.directive                                                                                                                    |
+| Vue.mixin                  | app.mixin                                                                                                                        |
+| Vue.use                    | app.use ([див. нижче](#a-note-for-plugin-authors))                                                                               |
+| Vue.prototype              | app.config.globalProperties ([див. нижче](#vue-prototype-replaced-by-config-globalproperties))                                   |
+| Vue.extend                 | _видалено_ ([див. нижче](#vue-extend-removed))                                                                                   |
 
-All other global APIs that do not globally mutate behavior are now named exports, as documented in [Global API Treeshaking](./global-api-treeshaking.html).
+Усі інші глобальні API, які глобально не змінюють поведінку, тепер називаються експортами, як зазначено в [Global API Treeshaking](./global-api-treeshaking.html).
 
-### `config.productionTip` Removed
+### `config.productionTip` Видалено
 
-In Vue 3.x, the "use production build" tip will only show up when using the "dev + full build" (the build that includes the runtime compiler and has warnings).
+У Vue 3.x підказка «використовувати робочу збірку» з’являтиметься лише під час використання «dev + повна збірка» (збірка, яка включає компілятор середовища виконання та має попередження).
 
-For ES modules builds, since they are used with bundlers, and in most cases a CLI or boilerplate would have configured the production env properly, this tip will no longer show up.
+Для збірок модулів ES, оскільки вони використовуються з бандлерами, і в більшості випадків CLI або шаблон правильно налаштували б робоче середовище, ця підказка більше не відображатиметься.
 
-[Migration build flag: `CONFIG_PRODUCTION_TIP`](../migration-build.html#compat-configuration)
+[Позначка збірки міграції: `CONFIG_PRODUCTION_TIP`](../migration-build.html#compat-configuration)
 
-### `config.ignoredElements` Is Now `config.compilerOptions.isCustomElement`
+### `config.ignoredElements` тепер `config.compilerOptions.isCustomElement`
 
-This config option was introduced with the intention to support native custom elements, so the renaming better conveys what it does. The new option also expects a function which provides more flexibility than the old string / RegExp approach:
+Цей параметр конфігурації було введено з метою підтримки власних користувацьких елементів, тому перейменування краще передає те, що він робить. Нова опція також передбачає функцію, яка забезпечує більшу гнучкість, ніж старий підхід string/RegExp:
 
 ```js
-// before
+// до
 Vue.config.ignoredElements = ['my-el', /^ion-/]
 
-// after
+// після
 const app = createApp({})
 app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('ion-')
 ```
 
-::: tip Important
+::: tip Важливо
 
-In Vue 3, the check of whether an element is a component or not has been moved to the template compilation phase, therefore this config option is only respected when using the runtime compiler. If you are using the runtime-only build, `isCustomElement` must be passed to `@vue/compiler-dom` in the build setup instead - for example, via the [`compilerOptions` option in vue-loader](https://vue-loader.vuejs.org/options.html#compileroptions).
+У Vue 3 перевірку того, чи є елемент компонентом, було перенесено на етап компіляції шаблону, тому цей параметр конфігурації враховується лише під час використання компілятора часу виконання. Якщо ви використовуєте збірку лише під час виконання, натомість `isCustomElement` потрібно передати в `@vue/compiler-dom` у налаштуваннях збірки - наприклад, через параметр [`compilerOptions` у vue-loader](https:/ /vue-loader.vuejs.org/options.html#compileroptions).
 
-- If `config.compilerOptions.isCustomElement` is assigned to when using a runtime-only build, a warning will be emitted instructing the user to pass the option in the build setup instead;
-- This will be a new top-level option in the Vue CLI config.
+- Якщо `config.compilerOptions.isCustomElement` призначено під час використання збірки лише під час виконання, буде випущено попередження, яке вказує користувачеві передати цей параметр у налаштуваннях збірки замість цього;
+- Це буде нова опція верхнього рівня в конфігурації Vue CLI.
   :::
 
-[Migration build flag: `CONFIG_IGNORED_ELEMENTS`](../migration-build.html#compat-configuration)
+[Позначка збірки міграції: `CONFIG_IGNORED_ELEMENTS`](../migration-build.html#compat-configuration)
 
-### `Vue.prototype` Replaced by `config.globalProperties`
+### `Vue.prototype` замінено на `config.globalProperties`
 
-In Vue 2, `Vue.prototype` was commonly used to add properties that would be accessible in all components.
+У Vue 2 `Vue.prototype` зазвичай використовувався для додавання властивостей, які будуть доступні в усіх компонентах.
 
-The equivalent in Vue 3 is [`config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties). These properties will be copied across as part of instantiating a component within the application:
+Еквівалентом у Vue 3 є [`config.globalProperties`](https://vuejs.org/api/application.html#app-config-globalproperties). Ці властивості буде скопійовано в рамках створення екземпляра компонента в програмі:
 
 ```js
-// before - Vue 2
+// до - Vue 2
 Vue.prototype.$http = () => {}
 ```
 
 ```js
-// after - Vue 3
+// після - Vue 3
 const app = createApp({})
 app.config.globalProperties.$http = () => {}
 ```
 
-Using `provide` (discussed [below](#provide-inject)) should also be considered as an alternative to `globalProperties`.
+Використання `provide` (обговорюється [нижче](#provide-inject)) також слід розглядати як альтернативу `globalProperties`.
 
-[Migration build flag: `GLOBAL_PROTOTYPE`](../migration-build.html#compat-configuration)
+[Позначка збірки міграції: `GLOBAL_PROTOTYPE`](../migration-build.html#compat-configuration)
 
-### `Vue.extend` Removed
+### `Vue.extend` Видалено
 
-In Vue 2.x, `Vue.extend` was used to create a "subclass" of the base Vue constructor with the argument that should be an object containing component options. In Vue 3.x, we don't have the concept of component constructors anymore. Mounting a component should always use the `createApp` global API:
+У Vue 2.x `Vue.extend` використовувався для створення «підкласу» базового конструктора Vue з аргументом, який повинен бути об’єктом, що містить параметри компонента. У Vue 3.x ми більше не маємо концепції конструкторів компонентів. Монтування компонента має завжди використовувати глобальний API `createApp`:
 
 ```js
-// before - Vue 2
+// до - Vue 2
 
-// create constructor
+// створення конструктору
 const Profile = Vue.extend({
-  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+  template: '<p>{{firstName}} {{lastName}} також відомий як {{alias}}</p>',
   data() {
     return {
-      firstName: 'Walter',
-      lastName: 'White',
-      alias: 'Heisenberg'
+      firstName: 'Волтер',
+      lastName: 'Вайт',
+      alias: 'Гайзенберг'
     }
   }
 })
@@ -164,14 +164,14 @@ new Profile().$mount('#mount-point')
 ```
 
 ```js
-// after - Vue 3
+// після - Vue 3
 const Profile = {
-  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+  template: '<p>{{firstName}} {{lastName}} також відомий як {{alias}}</p>',
   data() {
     return {
-      firstName: 'Walter',
-      lastName: 'White',
-      alias: 'Heisenberg'
+      firstName: 'Волтер',
+      lastName: 'Вайт',
+      alias: 'Гайзенберг'
     }
   }
 }
@@ -179,21 +179,21 @@ const Profile = {
 Vue.createApp(Profile).mount('#mount-point')
 ```
 
-#### Type Inference
+#### Визначення типу
 
-In Vue 2, `Vue.extend` was also used for providing TypeScript type inference for the component options. In Vue 3, the `defineComponent` global API can be used in place of `Vue.extend` for the same purpose.
+У Vue 2 `Vue.extend` також використовувався для визначення типу TypeScript для опцій компонента. У Vue 3 глобальний API `defineComponent` можна використовувати замість `Vue.extend` для тієї ж мети.
 
-Note that although the return type of `defineComponent` is a constructor-like type, it is only used for TSX inference. At runtime `defineComponent` is largely a noop and will return the options object as-is.
+Зауважте, що хоча тип повернення `defineComponent` є типом, подібним до конструктора, він використовується лише для висновку TSX. Під час виконання `defineComponent` є здебільшого noop і повертає об’єкт параметрів як є.
 
-#### Component Inheritance
+#### Успадкування компонентів
 
-In Vue 3, we strongly recommend favoring composition via [Composition API](https://vuejs.org/guide/reusability/composables.html) over inheritance and mixins. If for some reason you still need component inheritance, you can use the [`extends` option](https://vuejs.org/api/options-composition.html#extends) instead of `Vue.extend`.
+У Vue 3 ми наполегливо рекомендуємо віддавати перевагу композиції через [API композиції](https://vuejs.org/guide/reusability/composables.html) замість успадкування та міксинів. Якщо з якоїсь причини вам усе ще потрібне успадкування компонентів, ви можете використовувати параметр [`extends`](https://vuejs.org/api/options-composition.html#extends) замість `Vue.extend`.
 
-[Migration build flag: `GLOBAL_EXTEND`](../migration-build.html#compat-configuration)
+[Позначка збірки міграції: `GLOBAL_EXTEND`](../migration-build.html#compat-configuration)
 
-### A Note for Plugin Authors
+### Примітка для авторів плагінів
 
-It is a common practice for plugin authors to install the plugins automatically in their UMD builds using `Vue.use`. For instance, this is how the official `vue-router` plugin installs itself in a browser environment:
+Автори плагінів зазвичай встановлюють плагіни у своїх збірках UMD за допомогою `Vue.use`. Наприклад, ось як офіційний плагін `vue-router` встановлюється в середовищі браузера:
 
 ```js
 var inBrowser = typeof window !== 'undefined'
@@ -203,16 +203,16 @@ if (inBrowser && window.Vue) {
 }
 ```
 
-As the `use` global API is no longer available in Vue 3, this method will cease to work and calling `Vue.use()` will now trigger a warning. Instead, the end-user will now have to explicitly specify using the plugin on the app instance:
+Оскільки глобальний API `use` більше не доступний у Vue 3, цей метод перестане працювати, і виклик `Vue.use()` тепер ініціюватиме попередження. Натомість кінцевий користувач тепер повинен буде явно вказати використання плагіна в екземплярі програми:
 
 ```js
 const app = createApp(MyApp)
 app.use(VueRouter)
 ```
 
-## Mounting App Instance
+## Монтування екземпляра програми
 
-After being initialized with `createApp(/* options */)`, the app instance `app` can be used to mount a root component instance with `app.mount(domTarget)`:
+Після ініціалізації за допомогою `createApp(/* options */)` екземпляр програми `app` можна використовувати для монтування екземпляра кореневого компонента за допомогою `app.mount(domTarget)`:
 
 ```js
 import { createApp } from 'vue'
@@ -222,7 +222,7 @@ const app = createApp(MyApp)
 app.mount('#app')
 ```
 
-With all these changes, the component and directive we have at the beginning of the guide will be rewritten into something like this:
+З усіма цими змінами компонент і директива, які ми маємо на початку посібника, будуть переписані приблизно так:
 
 ```js
 const app = createApp(MyApp)
@@ -231,30 +231,31 @@ app.component('button-counter', {
   data: () => ({
     count: 0
   }),
-  template: '<button @click="count++">Clicked {{ count }} times.</button>'
+  template: '<button @click="count++">Клікнуто {{ count }} разів.</button>'
 })
 
 app.directive('focus', {
   mounted: (el) => el.focus()
 })
 
-// now every application instance mounted with app.mount(), along with its
-// component tree, will have the same “button-counter” component
-// and “focus” directive without polluting the global environment
+// тепер кожен екземпляр програми, змонтований за допомогою app.mount(),
+// разом із деревом компонентів матиме той самий компонент «button-counter» і директиву «focus»,
+// не забруднюючи глобальне середовище
+
 app.mount('#app')
 ```
 
-[Migration build flag: `GLOBAL_MOUNT`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `GLOBAL_MOUNT`](../migration-build.html#compat-configuration)
 
-## Provide / Inject
+## Надати / Ввести
 
-Similar to using the `provide` option in a 2.x root instance, a Vue 3 app instance can also provide dependencies that can be injected by any component inside the app:
+Подібно до використання опції `provide` в кореневому екземплярі 2.x, екземпляр програми Vue 3 також може надавати залежності, які можуть бути введені будь-яким компонентом усередині програми:
 
 ```js
-// in the entry
+// у записі
 app.provide('guide', 'Vue 3 Guide')
 
-// in a child component
+// у дочірньому компоненті
 export default {
   inject: {
     book: {
@@ -265,11 +266,11 @@ export default {
 }
 ```
 
-Using `provide` is especially useful when writing a plugin, as an alternative to `globalProperties`.
+Використання `provide` особливо корисне під час написання плагіна, як альтернатива `globalProperties`.
 
-## Share Configurations Among Apps
+## Поділитися конфігураціями серед програм
 
-One way to share configurations e.g. components or directives among apps is to create a factory function, like this:
+Один зі способів обміну конфігураціями, напр. компонентів або директив серед додатків — створити фабричну функцію, як-от:
 
 ```js
 import { createApp } from 'vue'
@@ -287,4 +288,4 @@ createMyApp(Foo).mount('#foo')
 createMyApp(Bar).mount('#bar')
 ```
 
-Now the `focus` directive will be available in both `Foo` and `Bar` instances and their descendants.
+Тепер директива `focus` буде доступна як в екземплярах `Foo`, так і в `Bar` та їхніх нащадках.

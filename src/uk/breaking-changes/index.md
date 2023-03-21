@@ -17,12 +17,12 @@
 - [використання `key` на вузлах `<template v-for>` і не-`v-for` змінено](./key-attribute.html)
 - [змінено пріоритет `v-if` і `v-for` при використанні для того самого елемента](./v-if-v-for.html)
 - [`v-bind="object"` тепер чутливий до порядку](./v-bind.html)
-- ['v-on:event.native` модифікатор видалено](./v-on-native-modifier-removed.md)
+- [`v-on:event.native` модифікатор видалено](./v-on-native-modifier-removed.md)
 
 ### Компоненти
 
 - [Функціональні компоненти можна створити лише за допомогою простої функції](./functional-components.html)
-- [Атрибут 'functional' однофайлового компонента (SFC) '<template>' і параметр компонента 'functional' застаріли](./functional-components.html)
+- [Атрибут 'functional' однофайлового компонента (SFC) `<template>` і параметр компонента `functional` застаріли](./functional-components.html)
 - [Асинхронні компоненти тепер потребують створення методу `defineAsyncComponent`](./async-components.html)
 - [Події компонентів тепер слід оголошувати за допомогою параметра `emits`](./emits-option.md)
 

@@ -19,7 +19,7 @@ import VueMasteryWidget from './VueMastery.vue'
 
 - [Композиційний API](https://ua.vuejs.org/guide/extras/composition-api-faq.html)<span class="note">\*</span>
 - [SFC Composition API Syntax Sugar (`<script setup>`)](https://ua.vuejs.org/api/sfc-script-setup.html)<span class="note">\*</span>
-- [Teleport](https://vuejs.org/guide/built-ins/teleport.html)
+- [Teleport](https://ua.vuejs.org/guide/built-ins/teleport.html)
 - [Fragments](./new/fragments.html)
 - [Опція компоненту Emits](https://ua.vuejs.org/api/options-state.html#emits)<span class="note">\*\*</span>
 - [`createRenderer` API з `@vue/runtime-core`](https://ua.vuejs.org/api/custom-renderer.html) для створення користувацьких рендерів
