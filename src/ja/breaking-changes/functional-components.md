@@ -3,36 +3,36 @@ badges:
   - breaking
 ---
 
-# Functional Components <MigrationBadges :badges="$frontmatter.badges" />
+# 関数型コンポーネント <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-In terms of what has changed, at a high level:
+変更点の概要は次のとおりです:
 
-- Performance gains from 2.x for functional components are now negligible in 3.x, so we recommend just using stateful components
-- Functional components can only be created using a plain function that receives `props` and `context` (i.e., `slots`, `attrs`, `emit`)
-- **BREAKING:** `functional` attribute on single-file component (SFC) `<template>` is removed
-- **BREAKING:** `{ functional: true }` option in components created by functions is removed
+- 関数型コンポーネントは 2.x からパフォーマンス向上し、3.x では無視できる程度になってので、ステートフルコンポーネントのみ使用することを推奨します
+- 関数型コンポーネントは、`props` と `context`（つまり `slot`, `attrs`, `emit`）を受け取るプレーンな関数だけで作成できます
+- **破壊的変更:** 単一ファイルコンポーネント（SFC）における `<template>` の `functional` 属性は削除されました
+- **破壊的変更:** 関数によって作成されたコンポーネントの `{ Functional: true }` オプションは削除されました
 
-For more information, read on!
+詳細については続きをお読みください！
 
-## Introduction
+## はじめに
 
-In Vue 2, functional components had two primary use cases:
+Vue 2 では、関数型コンポーネントには 2 つの主なユースケースがありました:
 
-- as a performance optimization, because they initialized much faster than stateful components
-- to return multiple root nodes
+- ステートフルコンポーネントよりもはるかに高速に初期化されるので、パフォーマンスの最適化として
+- 複数のルートノードを返すため
 
-However, in Vue 3, the performance of stateful components has improved to the point that the difference is negligible. In addition, stateful components now also include the ability to return multiple root nodes.
+しかし Vue 3 では、ステートフルコンポーネントのパフォーマンスは、その差が無視できるほどに向上しています。さらに、ステートフルなコンポーネントには、複数のルートノードを返す機能も追加されました。
 
-As a result, the only remaining use case for functional components is simple components, such as a component to create a dynamic heading. Otherwise, it is recommended to use stateful components as you normally would.
+その結果、関数型コンポーネントに残った唯一のユースケースは、動的な見出しを作成するコンポーネントのような単純なコンポーネントだけです。それ以外の場合は、通常通りステートフルコンポーネントを使用することをおすすめします。
 
-## 2.x Syntax
+## 2.x の構文
 
-Using the `<dynamic-heading>` component, which is responsible for rendering out the appropriate heading (i.e., `h1`, `h2`, `h3`, etc.), this could have been written as a single-file component in 2.x as:
+適切な見出し（`h1`, `h2`, `h3` など）をレンダリングする `<dynamic-heading>` コンポーネントを例にすると、2.x では単一ファイルコンポーネントとして以下のように記述できました:
 
 ```js
-// Vue 2 Functional Component Example
+// Vue 2 の関数型コンポーネントの例
 export default {
   functional: true,
   props: ['level'],
@@ -42,10 +42,10 @@ export default {
 }
 ```
 
-Or, for those who preferred the `<template>` in a single-file component:
+あるいは、単一ファイルコンポーネントの `<template>` を好む場合は:
 
 ```vue
-<!-- Vue 2 Functional Component Example with <template> -->
+<!-- Vue 2 で <template> を使った関数型コンポーネントの例 -->
 <template functional>
   <component
     :is="`h${props.level}`"
@@ -61,17 +61,17 @@ export default {
 </script>
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-### Components Created by Functions
+### 関数で作られるコンポーネント
 
-Now in Vue 3, all functional components are created with a plain function. In other words, there is no need to define the `{ functional: true }` component option.
+Vue 3 では、すべての関数型コンポーネントはプレーンな関数で作成されるようになりました。つまり、`{ functional: true }` というコンポーネントオプションを定義する必要はありません。
 
-They will receive two arguments: `props` and `context`. The `context` argument is an object that contains a component's `attrs`, `slots`, and `emit` properties.
+これらは 2 つの引数（`props` と `context`）を受け取ります。`context` 引数は、コンポーネントの `attrs`, `slots`, `emit` プロパティを含むオブジェクトです。
 
-In addition, rather than implicitly provide `h` in a `render` function, `h` is now imported globally.
+また、`render` 関数内で暗黙的に `h` を提供するのではなく、`h` はグローバルにインポートされるようになりました。
 
-Using the previously mentioned example of a `<dynamic-heading>` component, here is how it looks now.
+前述の `<dynamic-heading>` コンポーネントの例を使用すると、以下のようになります。
 
 ```js
 import { h } from 'vue'
@@ -85,11 +85,11 @@ DynamicHeading.props = ['level']
 export default DynamicHeading
 ```
 
-### Single File Components (SFCs) {#single-file-components-sfcs}
+### 単一ファイルコンポーネント (SFC) {#single-file-components-sfcs}
 
-In 3.x, the performance difference between stateful and functional components has been drastically reduced and will be insignificant in most use cases. As a result, the migration path for developers using `functional` on SFCs is to remove the attribute and rename all references of `props` to `$props` and `attrs` to `$attrs`.
+3.x では、ステートフルコンポーネントと関数型コンポーネントの性能差は大幅に減少し、ほとんどのユースケースで重要ではなくなります。その結果、SFC で `functional` を使用している開発者は、この属性を削除し、`props` の参照をすべて `$props` に、`attrs`を `$attrs` にリネームすることが移行手順となります。
 
-Using our `<dynamic-heading>` example from before, here is how it would look now.
+先ほどの `<dynamic-heading>` の例を使うと、次のようになります。
 
 ```vue{1,3,4}
 <template>
@@ -106,15 +106,15 @@ export default {
 </script>
 ```
 
-The main differences are that:
+主な違いは以下の通りです:
 
-1. `functional` attribute removed on `<template>`
-1. `listeners` are now passed as part of `$attrs` and can be removed
+1. `<template>` の `functional` 属性を削除
+1. `listeners` は `$attrs` の一部として渡されるようになったので、削除できます
 
-## Next Steps
+## 次のステップ
 
-For more information on the usage of the new functional components and the changes to render functions in general, see:
+新しい関数型コンポーネントの使用方法やレンダー関数全般の変更点に関する詳細は、こちらをご覧ください:
 
-- [Migration: Render Functions](./render-function-api.html)
-- [Guide: Render Functions](https://ja.vuejs.org/guide/extras/render-function.html#render-functions-jsx)
-- [Migration build flag: `COMPONENT_FUNCTIONAL`](../migration-build.html#compat-configuration)
+- [移行ガイド: レンダー関数](./render-function-api.html)
+- [ガイド: レンダー関数](https://ja.vuejs.org/guide/extras/render-function.html#render-functions-jsx)
+- [移行ビルドのフラグ: `COMPONENT_FUNCTIONAL`](../migration-build.html#compat-configuration)
