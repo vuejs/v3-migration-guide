@@ -3,27 +3,27 @@ badges:
   - new
 ---
 
-# Async Components <MigrationBadges :badges="$frontmatter.badges" />
+# 非同期コンポーネント <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-Here is a high level overview of what has changed:
+変更点の概要は次のとおりです:
 
-- New `defineAsyncComponent` helper method that explicitly defines async components
-- `component` option renamed to `loader`
-- Loader function does not inherently receive `resolve` and `reject` arguments and must return a Promise
+- 非同期コンポーネントを明示的に定義する新しいヘルパーメソッド `defineAsyncComponent`
+- `component` オプションは `loader` に名称変更されました
+- ローダー関数は `resolve` と `reject` の引数を受け取らず、Promise を返す必要があります
 
-For a more in-depth explanation, read on!
+より詳しい説明は続きをお読みください！
 
-## Introduction
+## はじめに
 
-Previously, async components were created by simply defining a component as a function that returned a promise, such as:
+以前は、以下のように promise を返す関数としてコンポーネントを定義するだけで、非同期コンポーネントが作成できました:
 
 ```js
 const asyncModal = () => import('./Modal.vue')
 ```
 
-Or, for the more advanced component syntax with options:
+もしくはオプションのついた、より高度なコンポーネント構文の場合は:
 
 ```js
 const asyncModal = {
@@ -35,19 +35,19 @@ const asyncModal = {
 }
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-Now, in Vue 3, since functional components are defined as pure functions, async components definitions need to be explicitly defined by wrapping it in a new `defineAsyncComponent` helper:
+Vue 3 では、関数型コンポーネントは純粋な関数として定義されるため、非同期コンポーネントの定義は、新しい `defineAsyncComponent` ヘルパーでラップして明示的に定義する必要があります:
 
 ```js
 import { defineAsyncComponent } from 'vue'
 import ErrorComponent from './components/ErrorComponent.vue'
 import LoadingComponent from './components/LoadingComponent.vue'
 
-// Async component without options
+// オプションなし非同期コンポーネント
 const asyncModal = defineAsyncComponent(() => import('./Modal.vue'))
 
-// Async component with options
+// オプションあり非同期コンポーネント
 const asyncModalWithOptions = defineAsyncComponent({
   loader: () => import('./Modal.vue'),
   delay: 200,
@@ -57,11 +57,11 @@ const asyncModalWithOptions = defineAsyncComponent({
 })
 ```
 
-::: tip NOTE
-Vue Router supports a similar mechanism for asynchronously loading route components, known as *lazy loading*. Despite the similarities, this feature is distinct from Vue's support for async components. You should **not** use `defineAsyncComponent` when configuring route components with Vue Router. You can read more about this in the [Lazy Loading Routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) section of the Vue Router documentation.
+::: tip 注意
+Vue Router は、ルート（route）コンポーネントを非同期にロードするための同様のメカニズムをサポートしており、*lazy loading* として知られています。類似しているとはいえ、この機能は Vue の非同期コンポーネントのサポートとは異なるものです。Vue Router でルートコンポーネントを設定する際、`defineAsyncComponent` は**使用しないで**ください。これについては、Vue Router ドキュメントの [Lazy Loading Routes](https://router.vuejs.org/guide/advanced/lazy-loading.html) セクションで詳しく説明されています。
 :::
 
-Another change that has been made from 2.x is that the `component` option is now renamed to `loader` in order to accurately communicate that a component definition cannot be provided directly.
+2.x からのもう 1 つの変更点は、コンポーネント定義を直接提供できないことを正確に伝えるために、`component` オプションが `loader` に名称変更されたことです。
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
@@ -75,15 +75,15 @@ const asyncModalWithOptions = defineAsyncComponent({
 })
 ```
 
-In addition, unlike 2.x, the loader function no longer receives the `resolve` and `reject` arguments and must always return a Promise.
+また、2.x とは異なり、loader 関数は `resolve` と `reject` の引数を受け取らなくなり、常に Promise を返す必要があります。
 
 ```js
-// 2.x version
+// 2.x バージョン
 const oldAsyncComponent = (resolve, reject) => {
   /* ... */
 }
 
-// 3.x version
+// 3.x バージョン
 const asyncComponent = defineAsyncComponent(
   () =>
     new Promise((resolve, reject) => {
@@ -92,7 +92,7 @@ const asyncComponent = defineAsyncComponent(
 )
 ```
 
-For more information on the usage of async components, see:
+非同期コンポーネントの使用方法の詳細については、こちらをご覧ください:
 
-- [Guide: Async Components](https://ja.vuejs.org/guide/components/async.html)
-- [Migration build flag: `COMPONENT_ASYNC`](../migration-build.html#compat-configuration)
+- [ガイド: 非同期コンポーネント](https://ja.vuejs.org/guide/components/async.html)
+- [移行ビルドのフラグ: `COMPONENT_ASYNC`](../migration-build.html#compat-configuration)

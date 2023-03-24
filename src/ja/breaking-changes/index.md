@@ -21,8 +21,8 @@
 
 ### コンポーネント
 
-- [関数型コンポーネントは普通の関数のみで作成できます](./functional-components.html)
-- [単一ファイルコンポーネント（SFC）での `<template>` の `functional` 属性と、コンポーネントオプションの `functional` は非推奨です](./functional-components.html)
+- [関数型コンポーネントはプレーンな関数のみで作成できます](./functional-components.html)
+- [単一ファイルコンポーネント（SFC）における `<template>` の `functional` 属性と、コンポーネントオプションの `functional` は非推奨です](./functional-components.html)
 - [非同期コンポーネントを作成するには `defineAsyncComponent` メソッドが必要になりました](./async-components.html)
 - [コンポーネントイベントは `emits` オプションで宣言する必要があります](./emits-option.md)
 

@@ -60,17 +60,17 @@ export default {
         ]
       },
       {
-        text: 'Components',
+        text: 'コンポーネント',
         items: [
           {
-            text: 'Functional Components',
+            text: '関数型コンポーネント',
             link: '/ja/breaking-changes/functional-components'
           },
           {
-            text: 'Async Components',
+            text: '非同期コンポーネント',
             link: '/ja/breaking-changes/async-components'
           },
-          { text: 'emits Option', link: '/ja/breaking-changes/emits-option' }
+          { text: 'emits オプション', link: '/ja/breaking-changes/emits-option' }
         ]
       },
       {
