@@ -3,24 +3,24 @@ badges:
   - breaking
 ---
 
-# `key` Attribute <MigrationBadges :badges="$frontmatter.badges" />
+# `key` 属性 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-- **NEW:** `key`s are no longer necessary on `v-if`/`v-else`/`v-else-if` branches, since Vue now automatically generates unique `key`s.
-  - **BREAKING:** If you manually provide `key`s, then each branch must use a unique `key`. You can no longer intentionally use the same `key` to force branch reuse.
-- **BREAKING:** `<template v-for>` `key` should be placed on the `<template>` tag (rather than on its children).
+- **新機能:** `v-if`/`v-else`/`v-else-if` の分岐では、Vue が自動的にユニークな `key` を生成するようになったため、`key` は不要になりました。
+  - **破壊的変更:** 手動で `key` を指定する場合、各ブランチはユニークな `key` を使用する必要があります。ブランチの再利用を強制するために、意図的に同じ `key` を使用できなくなりました。
+- **破壊的変更:** `<template v-for>` の `key` は（子要素ではなく）`<template>` タグに配置する必要があります。
 
-## Background
+## 背景
 
-The `key` special attribute is used as a hint for Vue's virtual DOM algorithm to keep track of a node's identity. That way, Vue knows when it can reuse and patch existing nodes and when it needs to reorder or recreate them. For more information, see the following sections:
+特別な属性 `key` は、Vue の仮想 DOM アルゴリズムがノードの ID を追跡するためのヒントとして使用されます。これにより、Vue は既存のノードを再利用したりパッチを当てたりできるタイミングや、ノードの並び替えや再作成が必要なタイミングを知ることができます。詳細については、下記のセクションを参照してください。
 
-- [List Rendering: Maintaining State](https://ja.vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
-- [API Reference: `key` Special Attribute](https://ja.vuejs.org/api/built-in-special-attributes.html#key)
+- [リストレンダリング: 状態管理](https://ja.vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
+- [API リファレンス: 特別な属性 `key`](https://ja.vuejs.org/api/built-in-special-attributes.html#key)
 
-## On conditional branches {#on-conditional-branches}
+## 条件分岐 {#on-conditional-branches}
 
-In Vue 2.x, it was recommended to use `key`s on `v-if`/`v-else`/`v-else-if` branches.
+Vue 2.x では、`v-if`/`v-else`/`v-else-if` の分岐に `key` を使用することが推奨されていました。
 
 ```html
 <!-- Vue 2.x -->
@@ -28,7 +28,7 @@ In Vue 2.x, it was recommended to use `key`s on `v-if`/`v-else`/`v-else-if` bran
 <div v-else key="no">No</div>
 ```
 
-The example above still works in Vue 3.x. However, we no longer recommend using the `key` attribute on `v-if`/`v-else`/`v-else-if` branches, since unique `key`s are now automatically generated on conditional branches if you don't provide them.
+上記の例は、Vue 3.x でも動作します。しかし、`v-if`/`v-else`/`v-else-if` の分岐で `key` 属性を使うことはもうお勧めしません。条件分岐で `key` を指定しない場合には自動的にユニークな `key` が生成されるようになったからです。
 
 ```html
 <!-- Vue 3.x -->
@@ -36,25 +36,25 @@ The example above still works in Vue 3.x. However, we no longer recommend using 
 <div v-else>No</div>
 ```
 
-The breaking change is that if you manually provide `key`s, each branch must use a unique `key`. In most cases, you can remove these `key`s.
+今回の破壊的変更は、手動で `key` を指定した場合、各ブランチはユニークな `key` を使用しなければならないことです。ほとんどの場合、これらの `key` は削除できます。
 
 ```html
 <!-- Vue 2.x -->
 <div v-if="condition" key="a">Yes</div>
 <div v-else key="a">No</div>
 
-<!-- Vue 3.x (recommended solution: remove keys) -->
+<!-- Vue 3.x （推奨の解決策: キーの削除） -->
 <div v-if="condition">Yes</div>
 <div v-else>No</div>
 
-<!-- Vue 3.x (alternate solution: make sure the keys are always unique) -->
+<!-- Vue 3.x （代替策: キーを常にユニークにする） -->
 <div v-if="condition" key="a">Yes</div>
 <div v-else key="b">No</div>
 ```
 
-## With `<template v-for>` {#with-template-v-for}
+## `<template v-for>` での使用 {#with-template-v-for}
 
-In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place the `key`s on each of its children.
+Vue 2.x では、`<template>` タグは `key` を持つことができず、その代わりにそれぞれの子要素に `key` を配置できました。
 
 ```html
 <!-- Vue 2.x -->
@@ -64,7 +64,7 @@ In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place 
 </template>
 ```
 
-In Vue 3.x, the `key` should be placed on the `<template>` tag instead.
+Vue 3.x ではそうではなく、`key` は `<template>` タグに配置する必要があります。
 
 ```html
 <!-- Vue 3.x -->
@@ -74,7 +74,7 @@ In Vue 3.x, the `key` should be placed on the `<template>` tag instead.
 </template>
 ```
 
-Similarly, when using `<template v-for>` with a child that uses `v-if`, the `key` should be moved up to the `<template>` tag.
+同様に、`v-if` がある子要素を持つ `<template v-for>` を使う場合、`key` は `<template>` タグに移動する必要があります。
 
 ```html
 <!-- Vue 2.x -->
