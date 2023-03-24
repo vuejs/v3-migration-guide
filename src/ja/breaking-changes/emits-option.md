@@ -93,5 +93,5 @@ export default {
 - [関連 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
 - [移行ガイド - `.native` 修飾子の削除](./v-on-native-modifier-removed.md)
 - [移行ガイド - `$listeners` の削除](./listeners-removed.md)
-- [移行ガイド - `$attrs` は `class` と `style` を含む](./attrs-includes-class-style.md)
+- [移行ガイド - `$attrs` が `class` と `style` を含有](./attrs-includes-class-style.md)
 - [移行ガイド - レンダー関数 API の変更点](./render-function-api.md)
