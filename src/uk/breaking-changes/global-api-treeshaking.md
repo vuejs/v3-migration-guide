@@ -3,21 +3,21 @@ badges:
   - breaking
 ---
 
-# Global API Treeshaking <MigrationBadges :badges="$frontmatter.badges" />
+# Глобальний АРІ "струшування дерева" <MigrationBadges :badges="$frontmatter.badges" />
 
-## 2.x Syntax
+## Синтаксис 2.x
 
-If you’ve ever had to manually manipulate DOM in Vue, you might have come across this pattern:
+Якщо вам коли-небудь доводилося вручну маніпулювати DOM у Vue, ви могли натрапити на цей шаблон:
 
 ```js
 import Vue from 'vue'
 
 Vue.nextTick(() => {
-  // something DOM-related
+  // щось пов'язане з DOM
 })
 ```
 
-Or, if you’ve been unit-testing an application involving async components, chances are you’ve written something like this:
+Або, якщо ви проводили модульне тестування програми з використанням асинхронних компонентів, швидше за все, ви написали щось на зразок цього:
 
 ```js
 import { shallowMount } from '@vue/test-utils'
@@ -26,29 +26,29 @@ import { MyComponent } from './MyComponent.vue'
 test('an async feature', async () => {
   const wrapper = shallowMount(MyComponent)
 
-  // execute some DOM-related tasks
+  // виконати деякі завдання, пов’язані з DOM
 
   await wrapper.vm.$nextTick()
 
-  // run your assertions
+  // виконати твердження
 })
 ```
 
-`Vue.nextTick()` is a global API exposed directly on a single Vue object – in fact, the instance method `$nextTick()` is just a handy wrapper around `Vue.nextTick()` with the callback’s `this` context automatically bound to the current instance for convenience.
+`Vue.nextTick()` – це глобальний API, відкритий безпосередньо для одного об'єкта Vue – насправді, метод екземпляра `nextTick()` — це просто зручна обгортка навколо `Vue.nextTick()` із контекстом `this` зворотного виклику, автоматично прив'язаним до поточного екземпляра для зручності.
 
-But what if you’ve never had to deal with manual DOM manipulation, nor are you using or testing async components in your app? Or, what if, for whatever reason, you prefer to use the good old `window.setTimeout()` instead? In such a case, the code for `nextTick()` will become dead code – that is, code that’s written but never used. And dead code is hardly a good thing, especially in our client-side context where every kilobyte matters.
+Але що, якщо вам ніколи не доводилося мати справу з ручними маніпуляціями DOM, а також ви не використовуєте чи тестуєте асинхронні компоненти у своїй програмі? Або що, якщо з будь-якої причини ви надаєте перевагу старому доброму `window.setTimeout()` замість цього? У такому випадку код для `nextTick()` стане мертвим кодом, тобто кодом, який був написаний, але ніколи не використовувався. І мертвий код – це навряд чи добре, особливо в нашому контексті на стороні клієнта, де кожен кілобайт має значення.
 
-Module bundlers like webpack and Rollup (which Vite is based upon) support [tree-shaking](https://webpack.js.org/guides/tree-shaking/), which is a fancy term for “dead code elimination.” Unfortunately, due to how the code is written in previous Vue versions, global APIs like `Vue.nextTick()` are not tree-shakeable and will be included in the final bundle regardless of where they are actually used or not.
+Збірники модулів, такі як webpack і Rollup (на яких базується Vite), підтримують [струшування дерева](https://webpack.js.org/guides/tree-shaking/), який є модним терміном для «усунення мертвого коду». На жаль, через те, як написаний код у попередніх версіях Vue, щодо глобальних API, таких як `Vue.nextTick()`, не можна реалізувати tree-shaking і відповідний код буде включений в остаточний пакет незалежно від того, чи ці API фактично використовуються чи ні.
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-In Vue 3, the global and internal APIs have been restructured with tree-shaking support in mind. As a result, the global APIs can now only be accessed as named exports for the ES Modules build. For example, our previous snippets should now look like this:
+У Vue 3 глобальний і внутрішній API були реструктуровані з урахуванням струшування дерева. Як наслідок, доступ до глобальних API тепер доступний лише як іменований експорт для збірки модулів ES. Наприклад, наші попередні фрагменти тепер мають виглядати так:
 
 ```js
 import { nextTick } from 'vue'
 
 nextTick(() => {
-  // something DOM-related
+  // щось пов'язане з DOM
 })
 ```
 
@@ -62,32 +62,32 @@ import { nextTick } from 'vue'
 test('an async feature', async () => {
   const wrapper = shallowMount(MyComponent)
 
-  // execute some DOM-related tasks
+  // виконати деякі завдання, пов’язані з DOM
 
   await nextTick()
 
-  // run your assertions
+  // виконати твердження
 })
 ```
 
-Calling `Vue.nextTick()` directly will now result in the infamous `undefined is not a function` error.
+Безпосередній виклик `Vue.nextTick()` тепер призведе до сумнозвісної помилки `undefined is not a function`.
 
-With this change, provided the module bundler supports tree-shaking, global APIs that are not used in a Vue application will be eliminated from the final bundle, resulting in an optimal file size.
+З цією зміною, за умови, що збірник модулів підтримує струшування дерева, глобальні API, які не використовуються в програмі Vue, буде вилучено з остаточного пакета, що призведе до оптимального розміру файлу.
 
-## Affected APIs
+## API, які зазнали змін
 
-These global APIs in Vue 2.x are affected by this change:
+Ця зміна стосується цих глобальних API у Vue 2.x:
 
 - `Vue.nextTick`
-- `Vue.observable` (replaced by `Vue.reactive`)
+- `Vue.observable` (замінено на `Vue.reactive`)
 - `Vue.version`
-- `Vue.compile` (only in full builds)
-- `Vue.set` (only in compat builds)
-- `Vue.delete` (only in compat builds)
+- `Vue.compile` (тільки в повних збірках)
+- `Vue.set` (тільки в сумісних збірках)
+- `Vue.delete` (тільки в сумісних збірках)
 
-## Internal Helpers
+## Внутрішні помічники
 
-In addition to public APIs, many of the internal components/helpers are now exported as named exports as well. This allows the compiler to output code that only imports features when they are used. For example the following template:
+Окрім загальнодоступних API, багато внутрішніх помічників компонентів тепер також експортуються як іменовані експорти. Це дозволяє компілятору виводити код, який імпортує функції лише тоді, коли вони використовуються. Наприклад, такий шаблон:
 
 ```html
 <transition>
@@ -95,7 +95,7 @@ In addition to public APIs, many of the internal components/helpers are now expo
 </transition>
 ```
 
-is compiled into something similar to the following:
+компілюється у щось подібне до наступного:
 
 ```js
 import { h, Transition, withDirectives, vShow } from 'vue'
@@ -105,17 +105,17 @@ export function render() {
 }
 ```
 
-This essentially means the `Transition` component only gets imported when the application actually makes use of it. In other words, if the application doesn’t have any `<transition>` component, the code supporting this feature will not be present in the final bundle.
+По суті, це означає, що компонент `Transition` імпортується лише тоді, коли програма фактично використовує його. Іншими словами, якщо програма не має жодного компонента `<transition>`, код, що підтримує цю функцію, не буде присутній у фінальній збірці.
 
-With global tree-shaking, the users only “pay” for the features they actually use. Even better, knowing that optional features won't increase the bundle size for applications not using them, framework size has become much less a concern for additional core features in the future, if at all.
+Завдяки глобальному струшуванню дерева користувачі «платять» лише за ті функції, якими вони фактично користуються. Навіть краще, знаючи, що додаткові функції не збільшать розмір комплекту для програм, які їх не використовують, розмір фреймворку стане набагато меншим занепокоєнням щодо додаткових основних функцій у майбутньому, якщо взагалі буде.
 
-::: warning Important
-The above only applies to the [ES Modules builds](https://github.com/vuejs/core/tree/master/packages/vue#which-dist-file-to-use) for use with tree-shaking capable bundlers - the UMD build still includes all features and exposes everything on the Vue global variable (and the compiler will produce appropriate output to use APIs off the global instead of importing).
+::: warning Важливо
+Вищезазначене стосується лише [збірок модулів ES](https://github.com/vuejs/core/tree/master/packages/vue#which-dist-file-to-use) для використання з комплектувальниками з можливістю струшуванню дерева - збірка UMD все ще включає всі функції та розташовує все в глобальній змінній Vue (і компілятор створить відповідне виведення для використання API поза глобальними замість імпорту).
 :::
 
-## Usage in Plugins
+## Використання в плагінах
 
-If your plugin relies on an affected Vue 2.x global API, for instance:
+Якщо ваш плагін покладається на глобальний API Vue 2.x, що зазнав змін, наприклад:
 
 ```js
 const plugin = {
@@ -127,7 +127,7 @@ const plugin = {
 }
 ```
 
-In Vue 3, you’ll have to import it explicitly:
+У Vue 3 вам доведеться імпортувати його явно:
 
 ```js
 import { nextTick } from 'vue'
@@ -141,7 +141,7 @@ const plugin = {
 }
 ```
 
-If you use a module bundle like webpack, this may cause Vue’s source code to be bundled into the plugin, and more often than not that’s not what you'd expect. A common practice to prevent this from happening is to configure the module bundler to exclude Vue from the final bundle. In webpack's case, you can use the [`externals`](https://webpack.js.org/configuration/externals/) configuration option:
+Якщо ви використовуєте пакет модулів, як-от webpack, це може призвести до того, що вихідний код Vue буде об'єднано в плагін, і найчастіше це не те, чого ви очікуєте. Загальна практика, щоб цього не сталося, полягає в тому, щоб налаштувати комплектувальник модулів, щоб виключити Vue з остаточної збірки. У випадку webpack ви можете використовувати параметр конфігурації [`externals`](https://webpack.js.org/configuration/externals/):
 
 ```js
 // webpack.config.js
@@ -153,9 +153,9 @@ module.exports = {
 }
 ```
 
-This will tell webpack to treat the Vue module as an external library and not bundle it.
+Це вкаже webpack розглядати модуль Vue як зовнішню бібліотеку та не комплектувати його.
 
-If your module bundler of choice happens to be [Rollup](https://rollupjs.org/), you basically get the same effect for free, as by default Rollup will treat absolute module IDs (`'vue'` in our case) as external dependencies and not include them in the final bundle. During bundling though, it might emit a [“Treating vue as external dependency”](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency) warning, which can be suppressed with the `external` option:
+Якщо ви вибрали збірник модулів [Rollup](https://rollupjs.org/), ви фактично отримаєте той самий ефект безкоштовно, оскільки за замовчанням Rollup розглядатиме абсолютні ідентифікатори модулів (`'vue'` у нашому випадку) як зовнішні залежності і не включатиме їх у остаточний пакет. Однак під час пакування він може видати попередження [“Treating vue as external dependency” («Обробка vue як зовнішньої залежності»)](https://rollupjs.org/guide/en/#warning-treating-module-as-external-dependency), який можна придушити опцією `external`:
 
 ```js
 // rollup.config.js

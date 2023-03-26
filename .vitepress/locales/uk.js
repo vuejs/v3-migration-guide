@@ -30,7 +30,7 @@ export default {
             link: '/uk/breaking-changes/global-api'
           },
           {
-            text: 'Treeshaking глобального API ',
+            text: 'Глобальний API струшування дерева',
             link: '/uk/breaking-changes/global-api-treeshaking'
           }
         ]
