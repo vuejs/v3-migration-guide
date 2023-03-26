@@ -1,18 +1,18 @@
 ---
-title: emits Option
+title: emits オプション
 badges:
   - new
 ---
 
-# `emits` Option <MigrationBadges :badges="$frontmatter.badges" />
+# `emits` オプション <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-Vue 3 now offers an `emits` option, similar to the existing `props` option. This option can be used to define the events that a component can emit to its parent.
+Vue 3 では、既存の `props` オプションと同様に、`emits` オプションを提供するようになりました。このオプションを使用してコンポーネントが親に発行可能なイベントを定義できます。
 
-## 2.x Behavior
+## 2.x の動作
 
-In Vue 2, you can define the props that a component receives, but you can't declare which events it can emit:
+Vue 2 ではコンポーネントが受け取るプロパティを定義できますが、そのコンポーネントが発行可能なイベントは宣言できません:
 
 ```vue
 <template>
@@ -28,9 +28,9 @@ In Vue 2, you can define the props that a component receives, but you can't decl
 </script>
 ```
 
-## 3.x Behavior
+## 3.x の動作
 
-Similar to props, the events that the component emits can now be defined with the `emits` option:
+プロパティと同様に、コンポーネントが発行するイベントを `emits` オプションで定義できるようになりました:
 
 ```vue
 <template>
@@ -47,19 +47,19 @@ Similar to props, the events that the component emits can now be defined with th
 </script>
 ```
 
-The option also accepts an object, which allows the developer to define validators for the arguments that are passed with the emitted event, similar to validators in `props` definitions.
+このオプションにはオブジェクトも指定できます。開発者は、`props` 定義のバリデーターと同じように、発行されるイベントに渡される引数のバリデーターを定義できます。
 
-For more information on this, please read the [API documentation for this feature](https://ja.vuejs.org/api/options-state.html#emits).
+詳細については、[この機能の API ドキュメント](https://ja.vuejs.org/api/options-state.html#emits)をお読みください。
 
-## Migration Strategy
+## 移行手順
 
-It is highly recommended that you document all the events emitted by each of your components using `emits`.
+`emits` を使って、各コンポーネントが発行するすべてのイベントをドキュメント化することを強くお勧めします。
 
-This is especially important because of [the removal of the `.native` modifier](./v-on-native-modifier-removed.md). Any listeners for events that aren't declared with `emits` will now be included in the component's `$attrs`, which by default will be bound to the component's root node.
+特に、[`.native` 修飾子が削除される](./v-on-native-modifier-removed.md)ため重要です。`emits` で宣言されていないイベントリスナーは、コンポーネントの `$attrs` に含まれるようになり、デフォルトではコンポーネントのルートノードにバインドされます。
 
-### Example
+### 例
 
-For components that re-emit native events to their parent, this would now lead to two events being fired:
+ネイティブイベントを親に再発行するコンポーネントの場合、2 つのイベントが発生することになります:
 
 ```vue
 <template>
@@ -67,31 +67,31 @@ For components that re-emit native events to their parent, this would now lead t
 </template>
 <script>
 export default {
-  emits: [] // without declared event
+  emits: [] // イベント宣言なし
 }
 </script>
 ```
 
-When a parent listens for the `click` event on the component:
+親がコンポーネントの `click` イベントを購読する場合:
 
 ```html
 <my-button v-on:click="handleClick"></my-button>
 ```
 
-it would now be triggered _twice_:
+これは**2 回**トリガーされます:
 
-- Once from `$emit()`.
-- Once from a native event listener applied to the root element.
+- `$emit()` から 1 回。
+- ルート要素に適用されるネイティブイベントリスナーから 1 回。
 
-Here you have two options:
+ここで、2 つの選択肢があります:
 
-1. Properly declare the `click` event. This is useful if you actually do add some logic to that event handler in `<my-button>`.
-2. Remove the re-emitting of the event, since the parent can now listen for the native event easily, without adding `.native`. Suitable when you really only re-emit the event anyway.
+1. `click` イベントを適切に宣言する。これは実際に `<my-button>` のイベントハンドラーに何らかのロジックを追加する場合に便利です。
+2. イベントの再発行を削除する。`.native` を追加しなくても、親は簡単にネイティブイベントを購読できるようになりました。とにかくイベントを再発行するだけの場合に適しています。
 
-## See also
+## 参照
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
-- [Migration guide - `.native` modifier removed](./v-on-native-modifier-removed.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - `$attrs` includes `class` & `style`](./attrs-includes-class-style.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [関連 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
+- [移行ガイド - `.native` 修飾子の削除](./v-on-native-modifier-removed.md)
+- [移行ガイド - `$listeners` の削除](./listeners-removed.md)
+- [移行ガイド - `$attrs` が `class` と `style` を含有](./attrs-includes-class-style.md)
+- [移行ガイド - レンダー関数 API の変更点](./render-function-api.md)

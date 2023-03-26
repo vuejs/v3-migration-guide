@@ -41,36 +41,36 @@ export default {
         ]
       },
       {
-        text: 'Template Directives',
+        text: 'テンプレートディレクティブ',
         items: [
           { text: 'v-model', link: '/ja/breaking-changes/v-model' },
           {
-            text: 'key Usage Change',
+            text: 'key の使用方法の変更',
             link: '/ja/breaking-changes/key-attribute'
           },
           {
-            text: 'v-if vs. v-for Precedence',
+            text: 'v-if と v-for の優先順位',
             link: '/ja/breaking-changes/v-if-v-for'
           },
-          { text: 'v-bind Merge Behavior', link: '/ja/breaking-changes/v-bind' },
+          { text: 'v-bind のマージ動作', link: '/ja/breaking-changes/v-bind' },
           {
-            text: 'v-on.native modifier removed',
+            text: 'v-on.native 修飾子の削除',
             link: '/ja/breaking-changes/v-on-native-modifier-removed'
           }
         ]
       },
       {
-        text: 'Components',
+        text: 'コンポーネント',
         items: [
           {
-            text: 'Functional Components',
+            text: '関数型コンポーネント',
             link: '/ja/breaking-changes/functional-components'
           },
           {
-            text: 'Async Components',
+            text: '非同期コンポーネント',
             link: '/ja/breaking-changes/async-components'
           },
-          { text: 'emits Option', link: '/ja/breaking-changes/emits-option' }
+          { text: 'emits オプション', link: '/ja/breaking-changes/emits-option' }
         ]
       },
       {
