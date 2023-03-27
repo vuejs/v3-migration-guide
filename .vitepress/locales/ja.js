@@ -74,31 +74,31 @@ export default {
         ]
       },
       {
-        text: 'Render Function',
+        text: 'レンダー関数',
         items: [
           {
-            text: 'Render Function API',
+            text: 'レンダー関数 API',
             link: '/ja/breaking-changes/render-function-api'
           },
           {
-            text: 'Slots Unification',
+            text: 'スロットの統一',
             link: '/ja/breaking-changes/slots-unification'
           },
           {
-            text: '$listeners merged into $attrs',
+            text: '$listeners は $attrs に合併',
             link: '/ja/breaking-changes/listeners-removed'
           },
           {
-            text: '$attrs includes class & style',
+            text: '$attrs が class と style を包含',
             link: '/ja/breaking-changes/attrs-includes-class-style'
           }
         ]
       },
       {
-        text: 'Custom Elements',
+        text: 'カスタム要素',
         items: [
           {
-            text: 'Custom Elements Interop Changes',
+            text: 'カスタム要素の相互運用性の変更',
             link: '/ja/breaking-changes/custom-elements-interop'
           }
         ]

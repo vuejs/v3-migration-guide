@@ -1,14 +1,14 @@
 ---
-title: $listeners removed
+title: $listeners の削除
 badges:
   - breaking
 ---
 
-# `$listeners` removed <MigrationBadges :badges="$frontmatter.badges" />
+# `$listeners` の削除 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-The `$listeners` object has been removed in Vue 3. Event listeners are now part of `$attrs`:
+Vue 3 では、`$listeners` オブジェクトは削除されました。イベントリスナーは `$attrs` の一部になりました:
 
 ```js
 {
@@ -17,10 +17,10 @@ The `$listeners` object has been removed in Vue 3. Event listeners are now part 
 }
 ```
 
-## 2.x Syntax
+## 2.x の構文
 
-In Vue 2, you can access attributes passed to your components with `this.$attrs`, and event listeners with `this.$listeners`.
-In combination with `inheritAttrs: false`, they allow the developer to apply these attributes and listeners to some other element instead of the root element:
+Vue 2 では、コンポーネントに渡される属性には `this.$attrs` でアクセスし、イベントリスナーには `this.$listeners` でアクセスできます。
+`inheritAttrs: false` と組み合わせることで、これらの属性やリスナーをルート要素ではなく他の要素に適用できます:
 
 ```html
 <template>
@@ -35,9 +35,9 @@ In combination with `inheritAttrs: false`, they allow the developer to apply the
 </script>
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-In Vue 3's virtual DOM, event listeners are now just attributes, prefixed with `on`, and as such are part of the `$attrs` object, so `$listeners` has been removed.
+Vue 3 の仮想 DOM では、イベントリスナーは単なる属性となり、接頭辞に `on` が付き、`$attrs` オブジェクトの一部となるため、`$listeners` は削除されました。
 
 ```vue
 <template>
@@ -52,7 +52,7 @@ export default {
 </script>
 ```
 
-If this component received an `id` attribute and a `v-on:close` listener, the `$attrs` object will now look like this:
+このコンポーネントが `id` 属性と `v-on:close` リスナーを受け取った場合、 `$attrs` オブジェクトは次のようになります:
 
 ```js
 {
@@ -61,16 +61,16 @@ If this component received an `id` attribute and a `v-on:close` listener, the `$
 }
 ```
 
-## Migration Strategy
+## 移行手順
 
-Remove all usages of `$listeners`.
+`$listeners` の使用箇所をすべて削除します。
 
-[Migration build flag: `INSTANCE_LISTENERS`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `INSTANCE_LISTENERS`](../migration-build.html#compat-configuration)
 
-## See also
+## 参照
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md)
-- [Migration guide - `$attrs`includes `class` & `style` ](./attrs-includes-class-style.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
-- [Migration guide - New Emits Option](./emits-option.md)
-- [Migration guide - `.native` modifier removed](./v-on-native-modifier-removed.md)
+- [関連 RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md)
+- [移行ガイド - `$attrs` が `class` と `style` を包含](./attrs-includes-class-style.md)
+- [移行ガイド - レンダー関数 API の変更点](./render-function-api.md)
+- [移行ガイド - 新しい `emits` オプション](./emits-option.md)
+- [移行ガイド - `.native` 修飾子の削除](./v-on-native-modifier-removed.md)

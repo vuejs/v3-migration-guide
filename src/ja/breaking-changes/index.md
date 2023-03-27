@@ -30,7 +30,7 @@
 
 - [レンダー関数の API が変更されました](./render-function-api.html)
 - [`$scopedSlots` プロパティーは削除され、すべてのスロットが `$slots` で関数として公開されます](./slots-unification.html)
-- [`$listeners` は削除され、`$attrs` に統合されました](./listeners-removed)
+- [`$listeners` は削除され、`$attrs` に合併されました](./listeners-removed)
 - [`$attrs` には `class` と `style` 属性が含まれるようになりました](./attrs-includes-class-style.md)
 
 ### カスタム要素
