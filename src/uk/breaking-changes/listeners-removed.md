@@ -57,7 +57,7 @@ export default {
 ```js
 {
   id: 'my-input',
-  onClose: () => console.log('Подію "close" було визвано.')
+  onClose: () => console.log('Подію "close" було викликано.')
 }
 ```
 
