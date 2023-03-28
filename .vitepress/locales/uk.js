@@ -5,6 +5,11 @@ export default {
     lang: 'ua-UK'
   },
   themeConfig: {
+    docFooter: {
+      prev: 'Попередня сторінка',
+      next: 'Наступна сторінка',
+    },
+    outlineTitle: 'На цій сторінці',
     nav: [
       { text: 'Документація по Vue 3', link: 'https://ua.vuejs.org' },
     ],
