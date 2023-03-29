@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# Render Function API <MigrationBadges :badges="$frontmatter.badges" />
+# API функції рендерингу <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-This change will not affect `<template>` users.
+Ця зміна не вплине на користувачів `<template>`.
 
-Here is a quick summary of what has changed:
+Ось короткий огляд того, що змінилося:
 
-- `h` is now globally imported instead of passed to render functions as an argument
-- render function arguments changed to be more consistent between stateful and functional components
-- VNodes now have a flat props structure
+- `h` тепер імпортується глобально замість того, щоб передаватися функціям рендерингу як аргумент
+- змінено аргументи функції рендерингу для більшої узгодженості між компонентами зі збереженням стану та функціональними компонентами
+- VNode тепер має пласку структуру реквізитів
 
-For more information, read on!
+Щоб дізнатися більше, читайте далі!
 
-## Render Function Argument
+## Аргумент функції рендерингу
 
-### 2.x Syntax
+### 2.x Синтаксис
 
-In 2.x, the `render` function would automatically receive the `h` function (which is a conventional alias for `createElement`) as an argument:
+У версії 2.x функція `render` автоматично отримувала функцію `h` (яка є умовним псевдонімом для `createElement`) як аргумент:
 
 ```js
-// Vue 2 Render Function Example
+// Vue 2 Приклад функції рендерингу
 export default {
   render(h) {
     return h('div')
@@ -32,12 +32,12 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x Синтаксис
 
-In 3.x, `h` is now globally imported instead of being automatically passed as an argument.
+У версії 3.x `h` тепер імпортується глобально, а не автоматично передається як аргумент.
 
 ```js
-// Vue 3 Render Function Example
+// Vue 3 Приклад функції рендерингу
 import { h } from 'vue'
 
 export default {
@@ -47,11 +47,11 @@ export default {
 }
 ```
 
-## VNode Props Format
+## Формат реквізитів VNode
 
-### 2.x Syntax
+### 2.x Синтаксис
 
-In 2.x, `domProps` contained a nested list within the VNode props:
+У версії 2.x `domProps` містив вкладений список у реквізитах VNode:
 
 ```js
 // 2.x
@@ -67,12 +67,12 @@ In 2.x, `domProps` contained a nested list within the VNode props:
 }
 ```
 
-### 3.x Syntax
+### 3.x Синтаксис
 
-In 3.x, the entire VNode props structure is flattened. Using the example from above, here is what it would look like now.
+У версії 3.x всю структуру реквізитів VNode було спрощено. Використовуючи приклад вище, ось як це виглядатиме зараз.
 
 ```js
-// 3.x Syntax
+// 3.x Синтаксис
 {
   class: ['button', { 'is-outlined': isOutlined }],
   style: [{ color: '#34495E' }, { backgroundColor: buttonColor }],
@@ -83,11 +83,11 @@ In 3.x, the entire VNode props structure is flattened. Using the example from ab
 }
 ```
 
-## Registered Component
+## Зареєстрований компонент
 
-### 2.x Syntax
+### 2.x Синтаксис
 
-In 2.x, when a component has been registered, the render function would work well when passing the component's name as a string to the first argument:
+У версії 2.x, коли компонент було зареєстровано, функція рендерингу добре працювала при передачі імені компонента у вигляді рядка як першого аргументу:
 
 ```js
 // 2.x
@@ -99,7 +99,7 @@ Vue.component('button-counter', {
   }
   template: `
     <button @click="count++">
-      Clicked {{ count }} times.
+      Натиснено {{ count }} разів.
     </button>
   `
 })
@@ -111,9 +111,9 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x Синтаксис
 
-In 3.x, with VNodes being context-free, we can no longer use a string ID to implicitly lookup registered components. Instead, we need to use an imported `resolveComponent` method:
+У версії 3.x, оскільки VNodes є контекстно-вільними, ми більше не можемо використовувати рядковий ідентифікатор для безпосереднього пошуку зареєстрованих компонентів. Замість цього нам потрібно використовувати імпортований метод `resolveComponent`:
 
 ```js
 // 3.x
@@ -127,20 +127,20 @@ export default {
 }
 ```
 
-For more information, see [The Render Function Api Change RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
+Більш детальну інформацію можна знайти у документі про [зміну API функції рендерингу RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
 
-## Migration Strategy
+## Стратегія міграції
 
-[Migration build flag: `RENDER_FUNCTION`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `RENDER_FUNCTION`](../migration-build.html#compat-configuration)
 
-### Library Authors
+### Автори бібліотеки
 
-`h` being globally imported means that any library that contains Vue components will include `import { h } from 'vue'` somewhere. As a result, this creates a bit of overhead since it requires library authors to properly configure the externalization of Vue in their build setup:
+Глобально імпортована функція `h` означає, що будь-яка бібліотека, яка містить компоненти Vue, буде мати `import { h } from 'vue'`. В результаті, це створює певні труднощі, оскільки вимагає від авторів бібліотек належним чином налаштувати екстерналізацію Vue у налаштуваннях збірки:
 
-- Vue should not be bundled into the library
-- For module builds, the import should be left alone and be handled by the end user bundler
-- For UMD / browser builds, it should try the global Vue.h first and fallback to require calls
+- Vue не повинен бути включений до бібліотеки
+- Для збірок модулів імпорт варто залишити в стороні, і він буде оброблятися кінцевим користувацьким пакувальником
+- Для UMD/браузерних збірок слід спочатку спробувати глобальний Vue.h, а потім зробити резервний варіант, щоб забезпечити виклики
 
-## Next Steps
+## Наступні кроки
 
-See [Render Function Guide](https://vuejs.org/guide/extras/render-function.html) for more detailed documentation!
+Більш детальну інформацію дивіться у [гіді про функію рендерингу](https://ua.vuejs.org/guide/extras/render-function.html)!
