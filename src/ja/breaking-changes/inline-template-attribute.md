@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Inline Template Attribute <MigrationBadges :badges="$frontmatter.badges" />
+# インラインテンプレート属性 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-Support for the [inline-template feature](https://v2.ja.vuejs.org/v2/guide/components-edge-cases#%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88) has been removed.
+[インラインテンプレート機能](https://v2.ja.vuejs.org/v2/guide/components-edge-cases#%E3%82%A4%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88)のサポートは削除されました。
 
-## 2.x Syntax
+## 2.x の構文
 
-In 2.x, Vue provided the `inline-template` attribute on child components to use its inner content as its template instead of treating it as distributed content.
+2.x では、Vue は子コンポーネントに `inline-template` 属性を提供し、その内容を（配布するコンテンツとして扱うのではなく）テンプレートとして使用できました。
 
 ```html
 <my-component inline-template>
@@ -22,19 +22,19 @@ In 2.x, Vue provided the `inline-template` attribute on child components to use 
 </my-component>
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-This feature will no longer be supported.
+この機能は今後サポートされません。
 
-## Migration Strategy
+## 移行手順
 
-Most of the use cases for `inline-template` assumes a no-build-tool setup, where all templates are written directly inside the HTML page.
+`inline-template` のユースケースのほとんどは、すべてのテンプレートが HTML ページの中に直接書かれる、ビルドツールのないセットアップを想定しています。
 
-[Migration build flag: `COMPILER_INLINE_TEMPLATE`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `COMPILER_INLINE_TEMPLATE`](../migration-build.html#compat-configuration)
 
-### Option #1: Use `<script>` tag
+### 選択肢 #1: `<script>` タグを使用する
 
-The most straightforward workaround in such cases is using `<script>` with an alternative type:
+このような場合の最も簡単な回避策は、代替の type 属性で `<script>` を使うことです:
 
 ```html
 <script type="text/html" id="my-comp-template">
@@ -42,7 +42,7 @@ The most straightforward workaround in such cases is using `<script>` with an al
 </script>
 ```
 
-And in the component, target the template using a selector:
+そしてコンポーネントでは、セレクターを使ってテンプレートをターゲットにします:
 
 ```js
 const MyComp = {
@@ -51,34 +51,34 @@ const MyComp = {
 }
 ```
 
-This doesn't require any build setup, works in all browsers, is not subject to any in-DOM HTML parsing caveats (e.g. you can use camelCase prop names), and provides proper syntax highlighting in most IDEs. In traditional server-side frameworks, these templates can be split out into server template partials (included into the main HTML template) for better maintainability.
+これは、ビルドのセットアップを必要とせず、すべてのブラウザーで動作し、DOM 内の HTML パースの注意点（例えば、camelCase のプロパティ名を使用できる）に左右されず、ほとんどの IDE で適切なシンタックスハイライトを提供します。従来のサーバーサイドフレームワークでは、これらのテンプレートは保守性を高めるために、サーバーテンプレートのパーシャル（メインの HTML テンプレートに含まれる）に分割できます。
 
-### Option #2: Default Slot
+### 選択肢 #2: デフォルトスロット
 
-A component previously using `inline-template` can also be refactored using the default slot - which makes the data scoping more explicit while preserving the convenience of writing child content inline:
+これまで `inline-template` を使用していたコンポーネントも、デフォルトのスロットを使用してリファクタリングできます。これにより、子コンテンツをインラインで記述する利便性を維持しつつ、データのスコープがより明確になります:
 
 ```html
-<!-- 2.x Syntax -->
+<!-- 2.x の構文 -->
 <my-comp inline-template :msg="parentMsg">
   {{ msg }} {{ childState }}
 </my-comp>
 
-<!-- Default Slot Version -->
+<!-- デフォルトスロットバージョン -->
 <my-comp v-slot="{ childState }">
   {{ parentMsg }} {{ childState }}
 </my-comp>
 ```
 
-The child, instead of providing no template, should now render the default slot\*:
+子コンポーネントは、テンプレートを提供しない代わりに、デフォルトスロット\*をレンダリングする必要があります:
 
 ```html
 <!--
-  in child template, render default slot while passing
-  in necessary private state of child.
+  子のテンプレートでは、必要な子コンポーネントのプライベート状態を渡しつつ、
+  デフォルトスロットをレンダリングします
 -->
 <template>
   <slot :childState="childState" />
 </template>
 ```
 
-> - Note: In 3.x, slots can be rendered as the root with native [fragments](../new/fragments) support!
+> - 注意: 3.x では、ネイティブの [fragments](../new/fragments) サポートにより、スロットをルートとしてレンダリングすることができます！

@@ -104,20 +104,20 @@ export default {
         ]
       },
       {
-        text: 'Removed APIs',
+        text: '削除された API',
         items: [
           {
-            text: 'v-on keyCode Modifiers',
+            text: 'v-on の keyCode 修飾子',
             link: '/ja/breaking-changes/keycode-modifiers'
           },
-          { text: 'Events API', link: '/ja/breaking-changes/events-api' },
-          { text: 'Filters', link: '/ja/breaking-changes/filters' },
+          { text: 'イベント API', link: '/ja/breaking-changes/events-api' },
+          { text: 'フィルター', link: '/ja/breaking-changes/filters' },
           {
-            text: 'inline-template',
+            text: 'インラインテンプレート',
             link: '/ja/breaking-changes/inline-template-attribute'
           },
           { text: '$children', link: '/ja/breaking-changes/children' },
-          { text: 'propsData option', link: '/ja/breaking-changes/props-data' }
+          { text: 'propsData オプション', link: '/ja/breaking-changes/props-data' }
         ]
       },
       {
