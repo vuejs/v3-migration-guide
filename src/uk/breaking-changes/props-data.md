@@ -5,13 +5,13 @@ badges:
 
 # `propsData` <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-The `propsData` option, used to pass props to the Vue instance during its creation, is removed. To pass props to the root component of a Vue 3 application, use the second argument of [createApp](https://vuejs.org/api/application.html#createapp).
+Опцію `propsData`, яка раніше використовувалася для передачі реквізитів до екземпляра Vue під час його створення, видалено. Щоб передати реквізити кореневому компоненту застосунку Vue 3, використовуйте другий аргумент функції [createApp](https://vuejs.org/api/application.html#createapp).
 
-## 2.x Syntax
+## 2.x Синтаксис
 
-In 2.x, we were able to pass props to a Vue instance during its creation:
+У версії 2.x ми могли передавати реквізити екземпляру Vue під час його створення:
 
 ```js
 const Comp = Vue.extend({
@@ -21,14 +21,14 @@ const Comp = Vue.extend({
 
 new Comp({
   propsData: {
-    username: 'Evan'
+    username: 'Еван'
   }
 })
 ```
 
-## 3.x Update
+## 3.x Оновлення
 
-The `propsData` option has been removed. If you need to pass props to the root component instance during its creation, you should use the second argument of `createApp`:
+Опцію `propsData` видалено. Якщо вам потрібно передати реквізити кореневому екземпляру компонента під час його створення, використовуйте другий аргумент функції `createApp`:
 
 ```js
 const app = createApp(
