@@ -117,7 +117,7 @@ export default {
             link: '/uk/breaking-changes/inline-template-attribute'
           },
           { text: '$children', link: '/uk/breaking-changes/children' },
-          { text: 'propsData option', link: '/uk/breaking-changes/props-data' }
+          { text: 'Опція propsData', link: '/uk/breaking-changes/props-data' }
         ]
       },
       {
