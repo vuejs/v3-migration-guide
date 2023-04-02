@@ -3,21 +3,21 @@ badges:
   - removed
 ---
 
-# Filters <MigrationBadges :badges="$frontmatter.badges" />
+# Фільтри <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-Filters are removed from Vue 3.0 and no longer supported.
+Фільтри видалено з версії Vue 3.0 і вони більше не підтримуються.
 
-## 2.x Syntax
+## 2.x Синтаксис
 
-In 2.x, developers could use filters in order to apply common text formatting.
+У версії 2.x розробники могли використовувати фільтри для застосування загального форматування тексту.
 
-For example:
+Наприклад:
 
 ```html
 <template>
-  <h1>Bank Account Balance</h1>
+  <h1>Баланс на банківському рахунку</h1>
   <p>{{ accountBalance | currencyUSD }}</p>
 </template>
 
@@ -38,17 +38,17 @@ For example:
 </script>
 ```
 
-While this seems like a convenience, it requires a custom syntax that breaks the assumption of expressions inside curly braces being "just JavaScript," which has both learning and implementation costs.
+Хоча це здається зручнішим, це вимагає спеціального синтаксису, який порушує припущення, що вирази у фігурних дужках є "просто JavaScript", бо вимагає витрат на вивчення та реалізацію.
 
-## 3.x Update
+## 3.x Оновлення
 
-In 3.x, filters are removed and no longer supported. Instead, we recommend replacing them with method calls or computed properties.
+У версії 3.x фільтри вилучено і більше не підтримуються. Натомість ми рекомендуємо замінити їх викликами методів або обчислюваними властивостями.
 
-Using the example above, here is one example of how it could be implemented.
+Використовуючи наведений вище приклад, ось один з варіантів, як це може бути реалізовано.
 
 ```html
 <template>
-  <h1>Bank Account Balance</h1>
+  <h1>Баланс на банківському рахунку</h1>
   <p>{{ accountInUSD }}</p>
 </template>
 
@@ -69,20 +69,20 @@ Using the example above, here is one example of how it could be implemented.
 </script>
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-Instead of using filters, we recommend replacing them with computed properties or methods.
+Замість того, щоб використовувати фільтри, ми рекомендуємо замінити їх обчислювальними властивостями або методами.
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Прапор збірки міграції:](../migration-build.html#compat-configuration)
 
 - `FILTERS`
 - `COMPILER_FILTERS`
 
-### Global Filters
+### Глобальні фільтри
 
-If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
+Якщо ви використовуєте фільтри, які були зареєстровані глобально, а потім використовувалися в усьому вашому додатку, ймовірно, буде незручно замінити їх обчислювальними властивостями або методами в кожному окремому компоненті.
 
-Instead, you can make your global filters available to all components through [globalProperties](https://vuejs.org/api/application.html#app-config-globalproperties):
+Замість цього ви можете зробити ваші глобальні фільтри доступними для всіх компонентів за допомогою [globalProperties](https://ua.vuejs.org/api/application.html#app-config-globalproperties):
 
 ```js
 // main.js
@@ -95,13 +95,13 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-Then you can fix all templates using this `$filters` object like this:
+Потім ви можете виправити всі шаблони за допомогою цього об'єкта `$filters` ось так:
 
 ```html
 <template>
-  <h1>Bank Account Balance</h1>
+  <h1>Баланс на банківському рахунку</h1>
   <p>{{ $filters.currencyUSD(accountBalance) }}</p>
 </template>
 ```
 
-Note that with this approach, you can only use methods, not computed properties, as the latter only make sense when defined in the context of an individual component.
+Зауважте, що при такому підході ви можете використовувати лише методи, а не обчислювані властивості, оскільки останні мають сенс лише тоді, коли оголошені в контексті окремого компонента.
