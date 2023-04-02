@@ -73,7 +73,7 @@ badges:
 
 Замість того, щоб використовувати фільтри, ми рекомендуємо замінити їх обчислювальними властивостями або методами.
 
-[Прапор збірки міграції:](../migration-build.html#compat-configuration)
+[Стяги збірки міграції:](../migration-build.html#compat-configuration)
 
 - `FILTERS`
 - `COMPILER_FILTERS`
