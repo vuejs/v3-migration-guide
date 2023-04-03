@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Events API <MigrationBadges :badges="$frontmatter.badges" />
+# API подій <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-`$on`, `$off` and `$once` instance methods are removed. Component instances no longer implement the event emitter interface.
+Методи екземплярів `$on`, `$off` та `$once` видалено. Екземпляри компонентів більше не реалізують інтерфейс випромінювача подій.
 
-## 2.x Syntax
+## 2.x Синтаксис
 
-In 2.x, a Vue instance could be used to trigger handlers attached imperatively via the event emitter API (`$on`, `$off` and `$once`). This could be used to create an _event bus_ to create global event listeners used across the whole application:
+У версії 2.x екземпляр Vue можна було використовувати для ініціювання обробників, приєднаних безпосередньо через API випромінювача подій (`$on`, `$off` та `$once`). Це могло бути використано для створення _шини подій_ для створення глобальних слухачів подій, що використовуються у всьому додатку:
 
 ```js
 // eventBus.js
@@ -27,13 +27,13 @@ import eventBus from './eventBus'
 
 export default {
   mounted() {
-    // adding eventBus listener
+    // додавання слухача шини подій
     eventBus.$on('custom-event', () => {
-      console.log('Custom event triggered!')
+      console.log('Ініційовано користувацьку подію!')
     })
   },
   beforeDestroy() {
-    // removing eventBus listener
+    // видалення слухача шини подій
     eventBus.$off('custom-event')
   }
 }
@@ -46,40 +46,40 @@ import eventBus from './eventBus'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventBus.$emit('custom-event') // if ChildComponent is mounted, we will have a message in the console
+      eventBus.$emit('custom-event') // коли ChildComponent змонтовано, то в консолі з'явиться повідомлення
     }
   }
 }
 ```
 
-## 3.x Update
+## 3.x Оновлення
 
-We removed `$on`, `$off` and `$once` methods from the instance completely. `$emit` is still a part of the existing API as it's used to trigger event handlers declaratively attached by a parent component.
+Ми повністю видалили методи `$on`, `$off` та `$once` з екземпляра. Метод `$emit` все ще є частиною чинного API, оскільки він використовується для ініціювання обробників подій, які декларативно приєднані батьківським компонентом.
 
-## Migration Strategy
+## Стратегія міграції
 
-[Migration build flag: `INSTANCE_EVENT_EMITTER`](../migration-build.html#compat-configuration)
+[Стяг збірки міграції: `INSTANCE_EVENT_EMITTER`](../migration-build.html#compat-configuration)
 
-In Vue 3, it is no longer possible to use these APIs to listen to a component's own emitted events from within a component. There is no migration path for that use case.
+У Vue 3 більше не можна використовувати ці API для прослуховування власних подій, що випромінюються компонентом зсередини. Для цього варіанту використання не існує шляху міграції.
 
-### Root Component Events
+### Події кореневого компонента
 
-Static event listeners can be added to the root component by passing them as props to `createApp`:
+Статичні слухачі подій можна додати до кореневого компонента, передавши їх як реквізити до `createApp`:
 
 ```js
 createApp(App, {
-  // Listen for the 'expand' event
+  // Прослуховування події 'expand'
   onExpand() {
     console.log('expand')
   }
 })
 ```
 
-### Event Bus
+### Шина подій
 
-The event bus pattern can be replaced by using an external library implementing the event emitter interface, for example [mitt](https://github.com/developit/mitt) or [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
+Шаблон шини подій можна замінити за допомогою зовнішньої бібліотеки, що реалізує інтерфейс випромінювача подій, наприклад, [mitt](https://github.com/developit/mitt) або [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
 
-Example:
+Наприклад:
 
 ```js
 // eventBus.js
@@ -93,12 +93,12 @@ export default {
 }
 ```
 
-This provides the same event emitter API as in Vue 2.
+Це забезпечує той самий API випромінювача подій, що й версія Vue 2.
 
-In most circumstances, using a global event bus for communicating between components is discouraged. While it is often the simplest solution in the short term, it almost invariably proves to be a maintenance headache in the long term. Depending on the circumstances, there are various alternatives to using an event bus:
+У більшості випадків не рекомендується використовувати глобальну шину подій для зв'язку між компонентами. Хоча це часто є найпростішим рішенням у короткостроковій перспективі, в довгостроковій перспективі це майже завжди призводить до головного болю в підтримці. Залежно від обставин, існують різні альтернативи використанню шини подій:
 
-* Props and events should be your first choice for parent-child communication. Siblings can communicate via their parent.
-* Provide / inject allow a component to communicate with its slot contents. This is useful for tightly-coupled components that are always used together.
-* Provide / inject can also be used for long-distance communication between components. It can help to avoid 'prop drilling', where props need to be passed down through many levels of components that don't need those props themselves.
-* Prop drilling can also be avoided by refactoring to use slots. If an interim component doesn't need the props then it might indicate a problem with separation of concerns. Introducing a slot in that component allows the parent to create the content directly, so that props can be passed without the interim component needing to get involved.
-* [Global state management](https://vuejs.org/guide/scaling-up/state-management.html), such as [Pinia](https://pinia.vuejs.org/).
+* Реквізити та події повинні бути вашим першим вибором для спілкування між батьківськими та дочірніми компонентами. Дочірні компоненти можуть спілкуватися через своїх батьків.
+* `Provide / inject` дозволяє компоненту обмінюватися даними з вмістом слота. Це корисно для тісно пов'язаних компонентів, які завжди використовуються разом.
+* `Provide / inject` також можна використовувати для зв'язку між компонентами на великих відстанях. Це може допомогти уникнути "буріння реквізиту", коли реквізит потрібно передавати через багато рівнів компонентів, які самі не потребують цього реквізиту.
+* Буріння реквізиту також можна уникнути шляхом рефакторингу з використанням слотів. Якщо проміжному компоненту не потрібні реквізити, це може вказувати на проблему з розділенням відповідальності. Введення слоту в цей компонент дозволяє батьківському компоненту створювати вміст безпосередньо, так що реквізити можуть бути передані без участі проміжного компонента.
+* [Глобальне управління станом](https://ua.vuejs.org/guide/scaling-up/state-management.html), таке як [Pinia](https://pinia.vuejs.org/).
