@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# KeyCode Modifiers <MigrationBadges :badges="$frontmatter.badges" />
+# Модифікатори keyCode <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-Here is a quick summary of what has changed:
+Ось короткий огляд того, що змінилося:
 
-- **BREAKING**: Using numbers, i.e. keyCodes, as `v-on` modifiers is no longer supported
-- **BREAKING**: `config.keyCodes` is no longer supported
+- **НЕСУМІСНО**: Використання чисел, тобто кодів клавіш як модифікаторів `v-on` більше не підтримується
+- **НЕСУМІСНО**: `config.keyCodes` більше не підтримується
 
-## 2.x Syntax
+## 2.x Синтаксис
 
-In Vue 2, `keyCodes` were supported as a way to modify a `v-on` method.
+У версії Vue 2 підтримувалися `keyCodes` як спосіб модифікації методу `v-on`.
 
 ```html
-<!-- keyCode version -->
+<!-- версія коду клавіши -->
 <input v-on:keyup.13="submit" />
 
-<!-- alias version -->
+<!-- версія псевдоніму -->
 <input v-on:keyup.enter="submit" />
 ```
 
-In addition, you could define your own aliases via the global `config.keyCodes` option.
+Крім того, можна було визначити власні псевдоніми за допомогою глобального параметра `config.keyCodes`.
 
 ```js
 Vue.config.keyCodes = {
@@ -33,40 +33,40 @@ Vue.config.keyCodes = {
 ```
 
 ```html
-<!-- keyCode version -->
+<!-- версія коду клавіши -->
 <input v-on:keyup.112="showHelpText" />
 
-<!-- custom alias version -->
+<!-- версія користувацького псевдоніма -->
 <input v-on:keyup.f1="showHelpText" />
 ```
 
-## 3.x Syntax
+## 3.x Синтаксис
 
-Since [`KeyboardEvent.keyCode` has been deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode), it no longer makes sense for Vue 3 to continue supporting this as well. As a result, it is now recommended to use the kebab-case name for any key you want to use as a modifier.
+Оскільки [`KeyboardEvent.keyCode` вже втратив свою актуальність](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode), Vue 3 більше не має сенсу продовжувати підтримувати його. Як наслідок, тепер рекомендується використовувати назву в стилі люля-кебаб для будь-якої клавіші, яку ви хочете використати як модифікатор.
 
 ```html
-<!-- Vue 3 Key Modifier on v-on -->
+<!-- Vue 3 Модифікатор клавіш на v-on -->
 <input v-on:keyup.page-down="nextPage">
 
-<!-- Matches both q and Q -->
+<!-- Підходить для q та Q -->
 <input v-on:keypress.q="quit">
 ```
 
-As a result, this means that `config.keyCodes` is now also deprecated and will no longer be supported.
+Як наслідок, це означає, що `config.keyCodes` тепер також застарілий і більше не підтримується.
 
-## Migration Strategy
+## Стратегія міграції
 
-For those using `keyCode` in their codebase, we recommend converting them to their kebab-cased named equivalents.
+Для тих, хто використовує `keyCode` у своїй кодовій базі, ми рекомендуємо перетворити їх на іменовані еквіваленти в стилі люля-кебаб.
 
-The keys for some punctuation marks can just be included literally. e.g. For the `,` key:
+Клавіші для деяких розділових знаків можна вказати буквально, наприклад, для клавіші `,`:
 
 ```html
 <input v-on:keypress.,="commaPress">
 ```
 
-Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
+Обмеження синтаксису не дозволяють перевірити певні символи, такі як `"`, `'`, `/`, `=`, `>` та `.` Для цих символів вам слід перевірити `event.key` всередині слухача.
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Стяги збірки міграції:](../migration-build.html#compat-configuration)
 
 - `CONFIG_KEY_CODES`
 - `V_ON_KEYCODE_MODIFIER`
