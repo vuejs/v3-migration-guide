@@ -3,17 +3,17 @@ badges:
   - removed
 ---
 
-# Filters <MigrationBadges :badges="$frontmatter.badges" />
+# フィルター <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-Filters are removed from Vue 3.0 and no longer supported.
+Vue 3.0 からフィルターは削除され、サポートされなくなりました。
 
-## 2.x Syntax
+## 2.x の構文
 
-In 2.x, developers could use filters in order to apply common text formatting.
+2.x では、開発者はフィルターを使用して、共通のテキストフォーマットを適用できました。
 
-For example:
+例えば:
 
 ```html
 <template>
@@ -38,13 +38,13 @@ For example:
 </script>
 ```
 
-While this seems like a convenience, it requires a custom syntax that breaks the assumption of expressions inside curly braces being "just JavaScript," which has both learning and implementation costs.
+これは一見便利ですが、中括弧内の式が「ただの JavaScript」であるという前提を崩すカスタム構文が必要で、学習コストと実装コストの両方がかかります。
 
-## 3.x Update
+## 3.x の更新内容
 
-In 3.x, filters are removed and no longer supported. Instead, we recommend replacing them with method calls or computed properties.
+3.x ではフィルターは削除され、サポートされなくなりました。代わりに、メソッド呼び出しや算出プロパティに置き換えることをお勧めします。
 
-Using the example above, here is one example of how it could be implemented.
+上記の例を用いて、これを実装する方法の一例を紹介します。
 
 ```html
 <template>
@@ -69,20 +69,20 @@ Using the example above, here is one example of how it could be implemented.
 </script>
 ```
 
-## Migration Strategy
+## 移行手順
 
-Instead of using filters, we recommend replacing them with computed properties or methods.
+フィルターを使用する代わりに、算出プロパティやメソッドに置き換えることをお勧めします。
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ:](../migration-build.html#compat-configuration)
 
 - `FILTERS`
 - `COMPILER_FILTERS`
 
-### Global Filters
+### グローバルなフィルター
 
-If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
+グローバルに登録され、アプリ全体で使用されるフィルターを使用している場合、個々のコンポーネントごとに算出プロパティやメソッドに置き換えるのは不便な場合があります。
 
-Instead, you can make your global filters available to all components through [globalProperties](https://ja.vuejs.org/api/application.html#app-config-globalproperties):
+その代わりに [globalProperties](https://ja.vuejs.org/api/application.html#app-config-globalproperties) を使って、グローバルなフィルターをすべてのコンポーネントで利用できるようにできます:
 
 ```js
 // main.js
@@ -95,7 +95,7 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-Then you can fix all templates using this `$filters` object like this:
+そして以下のように、この `$filters` オブジェクトを使ってすべてのテンプレートを修正できます:
 
 ```html
 <template>
@@ -104,4 +104,4 @@ Then you can fix all templates using this `$filters` object like this:
 </template>
 ```
 
-Note that with this approach, you can only use methods, not computed properties, as the latter only make sense when defined in the context of an individual component.
+この方法では算出プロパティは使用できず、メソッドのみを使用できることに注意してください。算出プロパティは個々のコンポーネントの文脈で定義されたときにのみ意味を持つからです。

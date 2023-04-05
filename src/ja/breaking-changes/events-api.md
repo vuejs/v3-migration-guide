@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Events API <MigrationBadges :badges="$frontmatter.badges" />
+# イベント API <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-`$on`, `$off` and `$once` instance methods are removed. Component instances no longer implement the event emitter interface.
+`$on`、`$off`、`$once` インスタンスメソッドは削除されました。コンポーネントインスタンスはイベントエミッターインターフェースを実装しなくなりました。
 
-## 2.x Syntax
+## 2.x の構文
 
-In 2.x, a Vue instance could be used to trigger handlers attached imperatively via the event emitter API (`$on`, `$off` and `$once`). This could be used to create an _event bus_ to create global event listeners used across the whole application:
+2.x では、Vue インスタンスはイベントエミッターAPI（`$on`、`$off`、`$once`）を通じて、命令的にアタッチされたハンドラーをトリガーするために使用できました。これを利用して**イベントバス**を作成し、アプリケーション全体で使用するグローバルイベントリスナーを作成できます:
 
 ```js
 // eventBus.js
@@ -27,13 +27,13 @@ import eventBus from './eventBus'
 
 export default {
   mounted() {
-    // adding eventBus listener
+    // eventBus のリスナーを追加
     eventBus.$on('custom-event', () => {
       console.log('Custom event triggered!')
     })
   },
   beforeDestroy() {
-    // removing eventBus listener
+    // eventBus のリスナーを削除
     eventBus.$off('custom-event')
   }
 }
@@ -46,40 +46,40 @@ import eventBus from './eventBus'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventBus.$emit('custom-event') // if ChildComponent is mounted, we will have a message in the console
+      eventBus.$emit('custom-event') // ChildComponent がマウントされている場合、コンソールにメッセージが表示されます
     }
   }
 }
 ```
 
-## 3.x Update
+## 3.x の更新内容
 
-We removed `$on`, `$off` and `$once` methods from the instance completely. `$emit` is still a part of the existing API as it's used to trigger event handlers declaratively attached by a parent component.
+インスタンスから `$on`、`$off`、`$once` メソッドを完全に削除しました。`$emit` は、親コンポーネントから宣言的にアタッチされたイベントハンドラーをトリガーするために使用されるため、依然として API の一部です。
 
-## Migration Strategy
+## 移行手順
 
-[Migration build flag: `INSTANCE_EVENT_EMITTER`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `INSTANCE_EVENT_EMITTER`](../migration-build.html#compat-configuration)
 
-In Vue 3, it is no longer possible to use these APIs to listen to a component's own emitted events from within a component. There is no migration path for that use case.
+Vue 3 では、これらの API を使用して、コンポーネント内部からコンポーネント自身が発行したイベントを購読できなくなりました。そのユースケースのための移行経路はありません。
 
-### Root Component Events
+### ルートコンポーネントイベント
 
-Static event listeners can be added to the root component by passing them as props to `createApp`:
+静的なイベントリスナーは、`createApp` にプロパティとして渡すことで、ルートコンポーネントに追加できます:
 
 ```js
 createApp(App, {
-  // Listen for the 'expand' event
+  // 'expand' イベントを購読する
   onExpand() {
     console.log('expand')
   }
 })
 ```
 
-### Event Bus
+### イベントバス
 
-The event bus pattern can be replaced by using an external library implementing the event emitter interface, for example [mitt](https://github.com/developit/mitt) or [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
+イベントバスパターンは、イベントエミッターインターフェースを実装した外部ライブラリー、例えば [mitt](https://github.com/developit/mitt) や [tiny-emitter](https://github.com/scottcorgan/tiny-emitter) を使って置き換えられます。
 
-Example:
+例:
 
 ```js
 // eventBus.js
@@ -93,12 +93,12 @@ export default {
 }
 ```
 
-This provides the same event emitter API as in Vue 2.
+これは、Vue 2 と同じイベントエミッターAPI を提供します。
 
-In most circumstances, using a global event bus for communicating between components is discouraged. While it is often the simplest solution in the short term, it almost invariably proves to be a maintenance headache in the long term. Depending on the circumstances, there are various alternatives to using an event bus:
+ほとんどの場合、コンポーネント間の通信にグローバルイベントバスを使用することは推奨されません。短期的には最も簡単な解決策であることが多いのですが、長期的には必ずと言っていいほどメンテナンスに頭を悩ませることになります。状況に応じて、イベントバスの使用にはさまざまな代替案があります:
 
-* Props and events should be your first choice for parent-child communication. Siblings can communicate via their parent.
-* Provide / inject allow a component to communicate with its slot contents. This is useful for tightly-coupled components that are always used together.
-* Provide / inject can also be used for long-distance communication between components. It can help to avoid 'prop drilling', where props need to be passed down through many levels of components that don't need those props themselves.
-* Prop drilling can also be avoided by refactoring to use slots. If an interim component doesn't need the props then it might indicate a problem with separation of concerns. Introducing a slot in that component allows the parent to create the content directly, so that props can be passed without the interim component needing to get involved.
-* [Global state management](https://ja.vuejs.org/guide/scaling-up/state-management.html), such as [Pinia](https://pinia.vuejs.org/).
+* 親子間のコミュニケーションは、プロパティとイベントが第一候補です。兄弟要素は親を介して通信できます。
+* provide / inject によって、コンポーネントがそのスロットの中身と通信できるようになります。これは、常に一緒に使用される密結合のコンポーネントに便利です。
+* provide / inject は、コンポーネント間の長距離通信にも使用できます。これにより、あるプロパティがそのプロパティ自身を必要としない多くの階層のコンポーネントを介して渡される必要がある現象、つまり「プロパティのバケツリレー」を避けるのに役立ちます。
+* また、スロットを使用するようにリファクタリングすることで、プロパティのバケツリレーを回避できます。もし中間コンポーネントがプロパティを必要としないのであれば、それは関心の分離に問題があることを示している可能性があります。そのコンポーネントにスロットを導入することで、親コンポーネントが直接コンテンツを作成できるようになり、中間コンポーネントが関与することなくプロパティを渡すことができるようになります。
+* [Pinia](https://pinia.vuejs.org/) などの[グローバルな状態管理](https://ja.vuejs.org/guide/scaling-up/state-management.html)。
