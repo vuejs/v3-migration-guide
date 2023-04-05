@@ -3,41 +3,41 @@ badges:
   - breaking
 ---
 
-# Custom Elements Interop <MigrationBadges :badges="$frontmatter.badges" />
+# Зміни у взаємодії користувацьких елементів <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-- **BREAKING:** The checks to determine whether tags should be treated as custom elements are now performed during template compilation, and should be configured via compiler options instead of runtime config.
-- **BREAKING:** Special `is` attribute usage is restricted to the reserved `<component>` tag only.
-- **NEW:** To support 2.x use cases where `is` was used on native elements to work around native HTML parsing restrictions, prefix the value with `vue:` to resolve it as a Vue component.
+- **НЕСУМІСНО:** Перевірка того, чи слід розглядати теги як користувацькі елементи, тепер виконується під час компіляції шаблону, і її слід налаштовувати за допомогою опцій компілятора, а не конфігурації під час виконання в реальному часі.
+- **НЕСУМІСНО:** Використання спеціального атрибута `is` обмежено лише зарезервованим тегом `<component>`.
+- **НОВЕ:** Для підтримки випадків використання версії 2.x, коли `is` використовується на нативних елементах для обходу обмежень нативного парсингу HTML, додайте до значення префікс `vue:`, щоб відобразити його як компонент Vue.
 
-## Autonomous Custom Elements
+## Автономні користувацькі елементи
 
-If we want to add a custom element defined outside of Vue (e.g. using the Web Components API), we need to 'instruct' Vue to treat it as a custom element. Let's use the following template as an example.
+Якщо ми хочемо додати користувацький елемент, визначений за межами Vue (наприклад, за допомогою API веб-компонентів), нам потрібно "вказати" Vue розглядати його як користувацький елемент. Давайте розглянемо для прикладу наступний шаблон.
 
 ```html
 <plastic-button></plastic-button>
 ```
 
-### 2.x Syntax
+### 2.x Синтаксис
 
-In Vue 2.x, configuring tags as custom elements was done via `Vue.config.ignoredElements`:
+У версії Vue 2.x налаштування тегів як користувацьких елементів здійснювалося за допомогою `Vue.config.ignoredElements`:
 
 ```js
-// This will make Vue ignore custom element defined outside of Vue
-// (e.g., using the Web Components APIs)
+// Це змусить Vue ігнорувати користувацький елемент, визначений за межами Vue
+// (наприклад, за допомогою API веб-компонентів)
 
 Vue.config.ignoredElements = ['plastic-button']
 ```
 
-### 3.x Syntax
+### 3.x Синтаксис
 
-**In Vue 3.0, this check is performed during template compilation.** To instruct the compiler to treat `<plastic-button>` as a custom element:
+**У версії Vue 3.0 ця перевірка виконується під час компіляції шаблону.** Вказати компілятору вважати `<plastic-button>` користувацьким елементом:
 
-- If using a build step: pass the `isCustomElement` option to the Vue template compiler. If using `vue-loader`, this should be passed via `vue-loader`'s `compilerOptions` option:
+- Передайте опцію `isCustomElement`  компілятору шаблону Vue на етапі збірки. Якщо ви використовуєте `vue-loader`, це має бути передано через опцію `compilerOptions` у `vue-loader`:
 
   ```js
-  // in webpack config
+  // у конфігурації webpack
   rules: [
     {
       test: /\.vue$/,
@@ -52,60 +52,60 @@ Vue.config.ignoredElements = ['plastic-button']
   ]
   ```
 
-- If using on-the-fly template compilation, pass it via `app.config.compilerOptions.isCustomElement`:
+- Якщо ви використовуєте компіляцію шаблону на льоту, передайте його через `app.config.compilerOptions.isCustomElement`:
 
   ```js
   const app = Vue.createApp({})
   app.config.compilerOptions.isCustomElement = tag => tag === 'plastic-button'
   ```
 
-  It's important to note the runtime config only affects runtime template compilation - it won't affect pre-compiled templates.
+  Важливо зазначити, що конфігурація часу виконання впливає лише на компіляцію шаблонів під час виконання - вона не впливає на попередньо скомпільовані шаблони.
 
-## Customized Built-in Elements
+## Індивідуальні вбудовані елементи
 
-The Custom Elements specification provides a way to use custom elements as [Customized Built-in Element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) by adding the `is` attribute to a built-in element:
+Специфікація користувацьких елементів надає можливість використовувати користувацькі елементи як [Користувацькі вбудовані елементи](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), додавши атрибут `is` до вбудованого елемента:
 
 ```html
-<button is="plastic-button">Click Me!</button>
+<button is="plastic-button">Натисни мене!</button>
 ```
 
-Vue's usage of the `is` special attribute was simulating what the native attribute does before it was made universally available in browsers. However, in 2.x it was interpreted as rendering a Vue component with the name `plastic-button`. This blocks the native usage of Customized Built-in Element mentioned above.
+Використання спеціального атрибута `is` у Vue імітувало те, що робить рідний атрибут до того, як він став загальнодоступним у браузерах. Однак у версії 2.x його було сприйнято як рендеринг компонента Vue з назвою `plastic-button`. Це блокує використання вбудованого користувацького елемента, згаданого вище.
 
-In 3.0, we are limiting Vue's special treatment of the `is` attribute to the `<component>` tag only.
+У версії 3.0 ми обмежуємо спеціальне поводження Vue з атрибутом `is` лише з тегом `<component>`.
 
-- When used on the reserved `<component>` tag, it will behave exactly the same as in 2.x;
-- When used on normal components, it will behave like a normal attribute:
+- При використанні у зарезервованому тегу `<component>` він поводитиметься так само як і у версії 2.x;
+- При використанні зі звичайними компонентами він поводитиметься як звичайний атрибут:
 
   ```html
   <foo is="bar" />
   ```
 
-  - 2.x behavior: renders the `bar` component.
-  - 3.x behavior: renders the `foo` component and passing the `is` attribute.
+  - Поведінка 2.x: рендерить компонент `bar`.
+  - Поведінка 3.x: рендерить компонент `foo` і передає атрибут `is`.
 
-- When used on plain elements, it will be passed to the `createElement` call as the `is` attribute, and also rendered as a native attribute. This supports the usage of customized built-in elements.
+- При використанні на простих елементах він буде переданий до виклику `createElement` як атрибут `is`, а також відрендерений як власний атрибут. Це підтримує використання користувацьких вбудованих елементів.
 
   ```html
-  <button is="plastic-button">Click Me!</button>
+  <button is="plastic-button">Натисни мене!</button>
   ```
 
-  - 2.x behavior: renders the `plastic-button` component.
-  - 3.x behavior: renders a native button by calling
+  - Поведінка 2.x: рендерить компонент `plastic-button`.
+  - Поведінка 3.x: рендерить нативну кнопку за викликом
 
     ```js
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[Migration build flag: `COMPILER_IS_ON_ELEMENT`](../migration-build.html#compat-configuration)
+[Стяг збірки міграції: `COMPILER_IS_ON_ELEMENT`](../migration-build.html#compat-configuration)
 
-## `vue:` Prefix for In-DOM Template Parsing Workarounds
+## `vue:` Префікс для обхідних шляхів парсингу шаблонів In-DOM
 
-> Note: this section only affects cases where Vue templates are directly written in the page's HTML.
-> When using in-DOM templates, the template is subject to native HTML parsing rules. Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
+> Примітка: цей розділ стосується лише тих випадків, коли шаблони Vue безпосередньо вписані в HTML сторінки.
+> Деякі елементи HTML, такі як `<ul>`, `<ol>`, `<table>` та `<select>`, мають обмеження на те, які елементи можуть з’являтися всередині них, а деякі елементи, такі як `<li>`, `<tr>` та `<option>`, можуть лише з'являються всередині певних елементів.
 
-### 2.x Syntax
+### 2.x Синтаксис
 
-In Vue 2 we recommended working around with these restrictions by using the `is` attribute on a native tag:
+У версії Vue 2 ми рекомендували обходити ці обмеження, використовуючи атрибут `is` у нативному тегу:
 
 ```html
 <table>
@@ -113,9 +113,9 @@ In Vue 2 we recommended working around with these restrictions by using the `is`
 </table>
 ```
 
-### 3.x Syntax
+### 3.x Синтаксис
 
-With the behavior change of `is`, a `vue:` prefix is now required to resolve the element as a Vue component:
+Зі зміною поведінки `is` тепер потрібен префікс `vue:`, щоб розпізнати елемент як компонент Vue:
 
 ```html
 <table>
@@ -123,12 +123,12 @@ With the behavior change of `is`, a `vue:` prefix is now required to resolve the
 </table>
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-- Replace `config.ignoredElements` with either `vue-loader`'s `compilerOptions` (with the build step) or `app.config.compilerOptions.isCustomElement` (with on-the-fly template compilation)
+- Замініть `config.ignoredElements` на `compilerOptions` у `vue-loader` (на етапі збірки) або `app.config.compilerOptions.isCustomElement` (з компіляцією шаблону на льоту)
 
-- Change all non-`<component>` tags with `is` usage to `<component is="...">` (for SFC templates) or prefix it with `vue:` (for in-DOM templates).
+- Змініть усі не-теги `<component>` з використанням `is` на `<component is="...">` (для шаблонів SFC) або додайте до них префікс `vue:` (для шаблонів in-DOM).
 
-## See Also
+## Дивіться також
 
-- [Guide - Vue and Web Components](https://vuejs.org/guide/extras/web-components.html)
+- [Гід - Vue та веб-компоненти](https://ua.vuejs.org/guide/extras/web-components.html)
