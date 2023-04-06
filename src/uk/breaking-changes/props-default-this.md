@@ -1,18 +1,18 @@
 ---
-title: Props Default Function this Access
+title: Доступ до this в функції реквізитів
 badges:
   - breaking
 ---
 
-# Props Default Function `this` Access <MigrationBadges :badges="$frontmatter.badges" />
+# Доступ до `this` в функції реквізитів <MigrationBadges :badges="$frontmatter.badges" />
 
-Props default value factory functions no longer have access to `this`.
+Фабричні функції значення реквізитів за замовчуванням більше не мають доступу до `this`.
 
-Instead:
+Натомість:
 
-- Raw props received by the component are passed to the default function as argument;
+- Необроблені реквізити, отримані компонентом, передаються функцію за замовчуванням як аргумент;
 
-- The [inject](https://vuejs.org/api/composition-api-dependency-injection.html#inject) API can be used inside default functions.
+- API [inject](https://vuejs.org/api/composition-api-dependency-injection.html#inject) можна використовувати у функціях за замовчуванням.
 
 ```js
 import { inject } from 'vue'
@@ -21,9 +21,10 @@ export default {
   props: {
     theme: {
       default (props) {
-        // `props` is the raw values passed to the component,
-        // before any type / default coercions
-        // can also use `inject` to access injected properties
+        // `props` - це необроблені значення, передані компоненту,
+        // до будь-якого типу / приведення по замовчуванню
+        // також може використовувати `inject` для доступу до
+        // введених властивостей
         return inject('theme', 'default-theme')
       }
     }
@@ -31,6 +32,6 @@ export default {
 }
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-[Migration build flag: `PROPS_DEFAULT_THIS`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `PROPS_DEFAULT_THIS`](../migration-build.html#compat-configuration)
