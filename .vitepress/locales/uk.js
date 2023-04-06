@@ -153,7 +153,7 @@ export default {
             link: '/uk/breaking-changes/transition-group'
           },
           {
-            text: 'Життєвий цикл VNode',
+            text: 'Події життєвого циклу VNode',
             link: '/uk/breaking-changes/vnode-lifecycle-events'
           },
           { text: 'Спостерігачі за масивами', link: '/uk/breaking-changes/watch' }

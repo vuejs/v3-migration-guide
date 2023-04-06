@@ -3,17 +3,17 @@ badges:
   - breaking
 ---
 
-# VNode Lifecycle Events <MigrationBadges :badges="$frontmatter.badges" />
+# Події життєвого циклу VNode <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-In Vue 2, it was possible to use events to listen for key stages in a component's lifecycle. These events had names that started with the prefix `hook:`, followed by the name of the corresponding lifecycle hook.
+У Vue 2 можна було використовувати події для відстеження ключових етапів життєвого циклу компонента. Ці події мали назви, які починалися з префікса `hook:`, за яким слідувала назва відповідного хука життєвого циклу.
 
-In Vue 3, this prefix has been changed to `vue:`. In addition, these events are now available for HTML elements as well as components.
+У Vue 3 цей префікс було змінено на `vue:`. Крім того, ці події тепер доступні як для елементів HTML, так і для компонентів.
 
-## 2.x Syntax
+## Синтаксис 2.x
 
-In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed with `hook:`:
+У Vue 2 назва події така ж, як і еквівалентний хук життєвого циклу, із префіксом `hook:`:
 
 ```html
 <template>
@@ -21,9 +21,9 @@ In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed 
 </template>
 ```
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-In Vue 3, the event name is prefixed with `vue:`:
+У Vue 3 назва події має префікс `vue:`:
 
 ```html
 <template>
@@ -31,12 +31,12 @@ In Vue 3, the event name is prefixed with `vue:`:
 </template>
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-In most cases it should just require changing the prefix. The lifecycle hooks `beforeDestroy` and `destroyed` have been renamed to `beforeUnmount` and `unmounted` respectively, so the corresponding event names will also need to be updated.
+У більшості випадків потрібно просто змінити префікс. Хуки життєвого циклу `beforeDestroy` і `destroyed` були перейменовані на `beforeUnmount` і `unmounted` відповідно, тому відповідні назви подій також потрібно буде оновити.
 
-[Migration build flags: `INSTANCE_EVENT_HOOKS`](../migration-build.html#compat-configuration)
+[Прапори збірки міграції: `INSTANCE_EVENT_HOOKS`](../migration-build.html#compat-configuration)
 
-## See Also
+## Дивіться також
 
-- [Migration guide - Events API](./events-api.html)
+- [Посібник з міграції - API подій](./events-api.html)
