@@ -124,7 +124,7 @@ export default {
         text: 'Інші незначні зміни',
         items: [
           {
-            text: 'Атрибут примусової поведінки',
+            text: 'Поведінка приведення атрибутів',
             link: '/uk/breaking-changes/attribute-coercion'
           },
           {
