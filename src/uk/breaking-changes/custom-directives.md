@@ -108,4 +108,4 @@ mounted(el, binding, vnode) {
 
 ## Стратегія міграції
 
-[Стяг збірки міграції: `CUSTOM_DIR`](../migration-build.html#compat-configuration)
+[Прапорець збірки міграції: `CUSTOM_DIR`](../migration-build.html#compat-configuration)
