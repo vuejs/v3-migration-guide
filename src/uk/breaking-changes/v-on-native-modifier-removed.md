@@ -4,7 +4,7 @@ badges:
   - breaking
 ---
 
-# `v-on.native` modifier removed <MigrationBadges :badges="$frontmatter.badges" />
+# Модифікатор `v-on.native` видалено <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Огляд
 
