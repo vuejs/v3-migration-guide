@@ -1,25 +1,25 @@
 ---
-title: Data Option
+title: data オプション
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-- **BREAKING**: `data` component option declaration no longer accepts a plain JavaScript `object` and expects a `function` declaration.
+- **破壊的変更**: `data` コンポーネントオプションの宣言は、プレーンな JavaScript `object` を受け入れなくなり、`function` 宣言を期待するようになりました。
 
-- **BREAKING**: when merging multiple `data` return values from mixins or extends, the merge is now shallow instead of deep (only root-level properties are merged).
+- **破壊的変更**: mixins や extends から複数の `data` 戻り値をマージする際、深いマージではなく「浅く」なりました（ルートレベルのプロパティのみがマージされます）。
 
-## 2.x Syntax
+## 2.x の構文
 
-In 2.x, developers could define the `data` option with either an `object` or a `function`.
+2.x では、開発者は `object` または `function` のどちらかで `data` オプションを定義できました。
 
-For example:
+例えば:
 
 ```html
-<!-- Object Declaration -->
+<!-- オブジェクトでの定義 -->
 <script>
   const app = new Vue({
     data: {
@@ -28,7 +28,7 @@ For example:
   })
 </script>
 
-<!-- Function Declaration -->
+<!-- 関数での定義 -->
 <script>
   const app = new Vue({
     data() {
@@ -40,13 +40,13 @@ For example:
 </script>
 ```
 
-Though this provided some convenience in terms of root instances having a shared state, this has led to confusion due to the fact that its only possible on the root instance.
+これは、ルートインスタンスが状態を共有するという点では便利なのですが、ルートインスタンスでのみ可能であるため、混乱を招きました。
 
-## 3.x Update
+## 3.x の更新内容
 
-In 3.x, the `data` option has been standardized to only accept a `function` that returns an `object`.
+3.x では `data` オプションは、`object` を返す `function` のみを受け入れるように標準化されました。
 
-Using the example above, there would only be one possible implementation of the code:
+上記の例で言えば、このコードの実装は 1 つしかありえないことになります:
 
 ```html
 <script>
@@ -62,9 +62,9 @@ Using the example above, there would only be one possible implementation of the 
 </script>
 ```
 
-## Mixin Merge Behavior Change {#mixin-merge-behavior-change}
+## mixin マージ動作の変更 {#mixin-merge-behavior-change}
 
-In addition, when `data()` from a component and its mixins or extends base are merged, the merge is now performed *shallowly*:
+加えて、コンポーネントの `data()` と mixins や extends のベースの `data()` をマージする際に、「浅く」マージするようになりました:
 
 ```js
 const Mixin = {
@@ -90,7 +90,7 @@ const CompA = {
 }
 ```
 
-In Vue 2.x, the resulting `$data` is:
+Vue 2.x での、最終的な `$data` は:
 
 ```json
 {
@@ -101,7 +101,7 @@ In Vue 2.x, the resulting `$data` is:
 }
 ```
 
-In 3.0, the result will be:
+3.0 では、次のような結果になります:
 
 ```json
 {
@@ -111,18 +111,18 @@ In 3.0, the result will be:
 }
 ```
 
-[Migration build flag: `OPTIONS_DATA_FN`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `OPTIONS_DATA_FN`](../migration-build.html#compat-configuration)
 
-## Migration Strategy
+## 移行手順
 
-For users relying on the object declaration, we recommend:
+オブジェクト宣言に依存しているユーザーには、次のことをお勧めします:
 
-- Extracting the shared data into an external object and using it as a property in `data`
-- Rewrite references to the shared data to point to a new shared object
+- 共有データを外部オブジェクトに抽出し、それを `data` のプロパティとして使用する
+- 共有データへの参照を、新しい共有オブジェクトを指すように書き換える
 
-For users relying on the deep merge behavior from mixins, we recommend refactoring your code to avoid such reliance altogether, since deep merges from mixins are very implicit and can make the code logic more difficult to understand and debug.
+ミックスインからの深いマージ動作に依存しているユーザーには、そのような依存を完全に避けるためにコードをリファクタリングすることをお勧めします。ミックスインからの深いマージは非常に暗黙的で、コードロジックの理解やデバッグがより困難になることがあるからです。
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ:](../migration-build.html#compat-configuration)
 
 - `OPTIONS_DATA_FN`
 - `OPTIONS_DATA_MERGE`

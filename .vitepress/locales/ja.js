@@ -121,23 +121,23 @@ export default {
         ]
       },
       {
-        text: 'Other Minor Changes',
+        text: 'その他の細かい変更',
         items: [
           {
-            text: 'Attribute Coercion Behavior',
+            text: '属性の強制変換',
             link: '/ja/breaking-changes/attribute-coercion'
           },
           {
-            text: 'Custom Directives',
+            text: 'カスタムディレクティブ',
             link: '/ja/breaking-changes/custom-directives'
           },
-          { text: 'Data Option', link: '/ja/breaking-changes/data-option' },
+          { text: 'data オプション', link: '/ja/breaking-changes/data-option' },
           {
-            text: 'Mount API changes',
+            text: 'マウント API の変更',
             link: '/ja/breaking-changes/mount-changes'
           },
           {
-            text: 'Props Default Function this Access',
+            text: 'プロパティ default 関数の this アクセス',
             link: '/ja/breaking-changes/props-default-this'
           },
           {
