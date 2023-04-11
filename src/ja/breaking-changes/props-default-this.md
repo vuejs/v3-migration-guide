@@ -1,18 +1,18 @@
 ---
-title: Props Default Function this Access
+title: プロパティ default 関数の this アクセス
 badges:
   - breaking
 ---
 
-# Props Default Function `this` Access <MigrationBadges :badges="$frontmatter.badges" />
+# プロパティ default 関数の `this` アクセス <MigrationBadges :badges="$frontmatter.badges" />
 
-Props default value factory functions no longer have access to `this`.
+プロパティのデフォルト値ファクトリー関数は `this` にアクセスできなくなりました。
 
-Instead:
+その代わり:
 
-- Raw props received by the component are passed to the default function as argument;
+- コンポーネントが受け取った未加工のプロパティは、引数として default 関数に渡されます。
 
-- The [inject](https://ja.vuejs.org/api/composition-api-dependency-injection.html#inject) API can be used inside default functions.
+- [inject](https://ja.vuejs.org/api/composition-api-dependency-injection.html#inject) API は、default 関数内部で使用できます。
 
 ```js
 import { inject } from 'vue'
@@ -21,9 +21,9 @@ export default {
   props: {
     theme: {
       default (props) {
-        // `props` is the raw values passed to the component,
-        // before any type / default coercions
-        // can also use `inject` to access injected properties
+        // `props` はコンポーネントに渡された未加工の値
+        // 型変換やデフォルト値に変更される前
+        // `inject` を使用して、注入されたプロパティにアクセスできます
         return inject('theme', 'default-theme')
       }
     }
@@ -31,6 +31,6 @@ export default {
 }
 ```
 
-## Migration Strategy
+## 移行手順
 
-[Migration build flag: `PROPS_DEFAULT_THIS`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `PROPS_DEFAULT_THIS`](../migration-build.html#compat-configuration)
