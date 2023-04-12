@@ -1,18 +1,18 @@
 ---
-title: emits Option
+title: Опція emits
 badges:
   - new
 ---
 
-# `emits` Option <MigrationBadges :badges="$frontmatter.badges" />
+# Опція `emits` <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-Vue 3 now offers an `emits` option, similar to the existing `props` option. This option can be used to define the events that a component can emit to its parent.
+Vue 3 тепер пропонує опцію `emits`, подібну до існуючої опції `props`. Цю опцію можна використовувати для визначення подій, які компонент може випромінювати своєму батьківському компоненту.
 
-## 2.x Behavior
+## Поведінка 2.x
 
-In Vue 2, you can define the props that a component receives, but you can't declare which events it can emit:
+У Vue 2 ви можете визначити реквізити, які отримує компонент, але ви не можете оголосити, які події він може випромінювати:
 
 ```vue
 <template>
@@ -28,9 +28,9 @@ In Vue 2, you can define the props that a component receives, but you can't decl
 </script>
 ```
 
-## 3.x Behavior
+## Поведінка 3.x
 
-Similar to props, the events that the component emits can now be defined with the `emits` option:
+Подібно до реквізитів, події, які випромінює компонент, тепер можна визначити за допомогою опції `emits`:
 
 ```vue
 <template>
@@ -47,19 +47,19 @@ Similar to props, the events that the component emits can now be defined with th
 </script>
 ```
 
-The option also accepts an object, which allows the developer to define validators for the arguments that are passed with the emitted event, similar to validators in `props` definitions.
+Параметр також приймає об'єкт, який дозволяє розробнику визначати валідатори для аргументів, які передаються разом із випроміненою подією, подібно до валідаторів у визначеннях `props`.
 
-For more information on this, please read the [API documentation for this feature](https://vuejs.org/api/options-state.html#emits).
+Щоб дізнатися більше про це, прочитайте [документацію API для цієї особливості](https://vuejs.org/api/options-state.html#emits).
 
-## Migration Strategy
+## Стратегія міграції
 
-It is highly recommended that you document all the events emitted by each of your components using `emits`.
+Настійно рекомендуємо документувати всі події, створені кожним із ваших компонентів, за допомогою `emits`.
 
-This is especially important because of [the removal of the `.native` modifier](./v-on-native-modifier-removed.md). Any listeners for events that aren't declared with `emits` will now be included in the component's `$attrs`, which by default will be bound to the component's root node.
+Це особливо важливо через [видалення модифікатора `.native`](./v-on-native-modifier-removed.md). Усі слухачі подій, які не оголошено за допомогою `emits`, тепер будуть включені в `$attrs` компонента, який за замовчуванням буде прив'язаний до кореневого вузла компонента.
 
-### Example
+### Приклад
 
-For components that re-emit native events to their parent, this would now lead to two events being fired:
+Для компонентів, які повторно випромінюють рідні події своїм батькам, це призведе до запуску двох подій:
 
 ```vue
 <template>
@@ -67,31 +67,31 @@ For components that re-emit native events to their parent, this would now lead t
 </template>
 <script>
 export default {
-  emits: [] // without declared event
+  emits: [] // без оголошеної події
 }
 </script>
 ```
 
-When a parent listens for the `click` event on the component:
+Коли батьківський елемент прослуховує подію `click` на компоненті:
 
 ```html
 <my-button v-on:click="handleClick"></my-button>
 ```
 
-it would now be triggered _twice_:
+тепер він буде активований _двічі_:
 
-- Once from `$emit()`.
-- Once from a native event listener applied to the root element.
+- Один раз із `$emit()`.
+- Один раз із власного слухача подій, застосованого до кореневого елемента.
 
-Here you have two options:
+Тут у вас є два варіанти:
 
-1. Properly declare the `click` event. This is useful if you actually do add some logic to that event handler in `<my-button>`.
-2. Remove the re-emitting of the event, since the parent can now listen for the native event easily, without adding `.native`. Suitable when you really only re-emit the event anyway.
+1. Правильно оголосити подію `click`. Це корисно, якщо ви справді додаєте певну логіку до цього обробника подій у `<my-button>`.
+2. Вилучити повторне надсилання події, оскільки батьківський елемент тепер може легко прослуховувати власну подію, без додавання `.native`. Підходить, коли вам справді треба лише повторно випромінювати подію.
 
-## See also
+## Дивіться також
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
-- [Migration guide - `.native` modifier removed](./v-on-native-modifier-removed.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - `$attrs` includes `class` & `style`](./attrs-includes-class-style.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [Відповідний RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0030-emits-option.md)
+- [Посібник з міграції - Модифікатор `.native` видалено](./v-on-native-modifier-removed.md)
+- [Посібник з міграції - `$listeners` видалено](./listeners-removed.md)
+- [Посібник з міграції - `$attrs` включає `class` і `style`](./attrs-includes-class-style.md)
+- [Посібник з міграції - Зміни в API функцій рендерингу](./render-function-api.md)
