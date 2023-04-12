@@ -1,18 +1,18 @@
 ---
-title: Transition Group Root Element
+title: Transition Group як кореневий елемент
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-`<transition-group>` no longer renders a root element by default, but can still create one with the `tag` attribute.
+`<transition-group>` більше не рендерить кореневий елемент за замовчуванням, але все ще може створити його за допомогою атрибута `tag`.
 
-## 2.x Syntax
+## Синтаксис 2.x
 
-In Vue 2, `<transition-group>`, like other custom components, needed a root element, which by default was a `<span>` but was customizable via the `tag` attribute.
+У Vue 2 для `<transition-group>`, як і для інших користувацьких компонентів, потрібен був кореневий елемент, який за замовчуванням був `<span>`, але його можна було налаштувати за допомогою атрибута `tag`.
 
 ```html
 <transition-group tag="ul">
@@ -22,12 +22,12 @@ In Vue 2, `<transition-group>`, like other custom components, needed a root elem
 </transition-group>
 ```
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-In Vue 3, we have [fragment support](../new/fragments.html), so components no longer _need_ a root node. Consequently, `<transition-group>` no longer renders one by default.
+У Vue 3 у нас є [підтримка фрагментів](../new/fragments.html), тому компоненти більше не _потребують_ кореневого вузла. Отже, `<transition-group>` більше не рендерить його за замовчуванням.
 
-- If you already have the `tag` attribute defined in your Vue 2 code, like in the example above, everything will work as before
-- If you didn't have one defined _and_ your styling or other behaviors relied on the presence of the `<span>` root element to work properly, simply add `tag="span"` to the `<transition-group>`:
+- Якщо у вашому коді Vue 2 вже визначено атрибут `tag`, як наведено у прикладі вище, все працюватиме як і раніше
+- Якщо у вас його не було визначено _і_ ваш стиль чи інша поведінка залежали від наявності кореневого елемента `<span>` для належної роботи, просто додайте `tag="span"` до `<transition-group>`:
 
 ```html
 <transition-group tag="span">
@@ -35,11 +35,11 @@ In Vue 3, we have [fragment support](../new/fragments.html), so components no lo
 </transition-group>
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-[Migration build flag: `TRANSITION_GROUP_ROOT`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `TRANSITION_GROUP_ROOT`](../migration-build.html#compat-configuration)
 
-## See also
+## Дивіться також
 
-- [Some transition classes got a rename](./transition.html)
-- [`<Transition>` as a root can no longer be toggled from the outside](./transition-as-root.html)
+- [Деякі імена класів переходів отримали зміни](./transition.html)
+- [`<Transition>` як кореневий компонент більше не можна перемикати ззовні](./transition-as-root.html)

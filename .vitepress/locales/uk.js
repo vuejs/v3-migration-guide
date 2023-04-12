@@ -128,7 +128,7 @@ export default {
             link: '/uk/breaking-changes/attribute-coercion'
           },
           {
-            text: 'Спеціальні директиви',
+            text: 'Користувацькі директиви',
             link: '/uk/breaking-changes/custom-directives'
           },
           { text: 'Опція Data', link: '/uk/breaking-changes/data-option' },

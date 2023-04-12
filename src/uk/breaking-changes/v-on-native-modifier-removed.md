@@ -1,18 +1,18 @@
 ---
-title: v-on.native modifier removed
+title: Модифікатор v-on.native видалено
 badges:
   - breaking
 ---
 
-# `v-on.native` modifier removed <MigrationBadges :badges="$frontmatter.badges" />
+# Модифікатор `v-on.native` видалено <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-The `.native` modifier for `v-on` has been removed.
+Модифікатор `.native` для `v-on` було видалено.
 
-## 2.x Syntax
+## Синтаксис 2.x
 
-Event listeners passed to a component with `v-on` are by default only triggered by emitting an event with `this.$emit`. To add a native DOM listener to the child component's root element instead, the `.native` modifier can be used:
+Слухачі подій, передані компоненту за допомогою `v-on`, за замовчуванням ініціюються лише випромінюванням події за допомогою `this.$emit`. Щоб замість цього додати власний слухач DOM до кореневого елемента дочірнього компонента, можна використати модифікатор `.native`:
 
 ```html
 <my-component
@@ -21,11 +21,11 @@ Event listeners passed to a component with `v-on` are by default only triggered 
 />
 ```
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-The `.native` modifier for `v-on` has been removed. At the same time, the [new `emits` option](./emits-option.md) allows the child to define which events it does indeed emit.
+Модифікатор `.native` для `v-on` було видалено. У той же час, [нова опція `emits`](./emits-option.md) дозволяє дочірньому компоненту визначати, які події він дійсно випромінює.
 
-Consequently, Vue will now add all event listeners that are _not_ defined as component-emitted events in the child as native event listeners to the child's root element (unless `inheritAttrs: false` has been set in the child's options).
+Отже, Vue тепер додаватиме всі слухачі подій, які у дочірньому компоненті _не_ визначені як події, які випромінюються компонентом, як рідні слухачі подій до кореневого елемента цього дочірнього компонента (якщо `inheritAttrs: false` не встановлено в опціях дочірнього елемента).
 
 ```html
 <my-component
@@ -44,16 +44,16 @@ Consequently, Vue will now add all event listeners that are _not_ defined as com
 </script>
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-- remove all instances of the `.native` modifier.
-- ensure that all your components document their events with the `emits` option.
+- видалити всі екземпляри модифікатора `.native`.
+- переконатися, що всі ваші компоненти документують свої події за допомогою опції `emits`.
 
-[Migration build flag: `COMPILER_V_ON_NATIVE`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `COMPILER_V_ON_NATIVE`](../migration-build.html#compat-configuration)
 
-## See also
+## Дивіться також
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md#v-on-listener-fallthrough)
-- [Migration guide - New Emits Option](./emits-option.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [Відповідний RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md#v-on-listener-fallthrough)
+- [Посібник з міграції - Нова опція випромінювань](./emits-option.md)
+- [Посібник з міграції - `$listeners` видалено](./listeners-removed.md)
+- [Посібник з міграції - Зміни в API функцій рендерингу](./render-function-api.md)
