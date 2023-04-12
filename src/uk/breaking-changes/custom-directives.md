@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# Custom Directives <MigrationBadges :badges="$frontmatter.badges" />
+# Користувацькі директиви <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-The hook functions for directives have been renamed to better align with the component lifecycle.
+Функції хуків для директив було перейменовано для кращої відповідності життєвому циклу компонента.
 
-Additionally, the `expression` string is no longer passed as part of the `binding` object.
+Крім того, рядок `expression` більше не передається як частина об'єкта `binding`.
 
-## 2.x Syntax
+## 2.x Синтаксис
 
-In Vue 2, custom directives were created by using the hooks listed below to target an element’s lifecycle, all of which are optional:
+У версії Vue 2 користувацькі директиви були створені за допомогою наведених нижче хуків для керування життєвим циклом елемента, кожен з яких є необов'язковим:
 
-- **bind** - Called once the directive is bound to the element. Called only once.
-- **inserted** - Called once the element is inserted into the parent DOM.
-- **update** - This hook is called when the element updates, but children haven't been updated yet.
-- **componentUpdated** - This hook is called once the component and the children have been updated.
-- **unbind** - This hook is called once the directive is removed. Also called only once.
+- **bind** - Викликається, коли директива прив'язується до елемента, лише один раз.
+- **inserted** - Викликається, коли елемент вставлено в батьківський DOM.
+- **update** - Цей хук викликається, коли елемент оновлюється, але дочірні елементи ще не оновлено.
+- **componentUpdated** - Цей хук викликається, коли елемент та його дочірні елементи оновилися.
+- **unbind** - Цей хук викликається після видалення директиви. Також викликається тільки один раз.
 
-Here’s an example of this:
+Ось один із прикладів:
 
 ```html
-<p v-highlight="'yellow'">Highlight this text bright yellow</p>
+<p v-highlight="'yellow'">Виділіть цей текст яскраво-жовтим кольором</p>
 ```
 
 ```js
@@ -35,39 +35,39 @@ Vue.directive('highlight', {
 })
 ```
 
-Here, in the initial setup for this element, the directive binds a style by passing in a value, that can be updated to different values through the application.
+Тут, під час початкових налаштувань для цього елемента, директива прив'язує стиль, передаючи через `value`, яке може бути оновлено до різних значень через застосунок.
 
-## 3.x Syntax
+## 3.x Синтаксис
 
-In Vue 3, however, we’ve created a more cohesive API for custom directives. As you can see, they differ greatly from our component lifecycle methods even though we’re hooking into similar events. We’ve now unified them like so:
+Однак у версії Vue 3 ми створили більш цілісний API для користувацьких директив. Як ви можете бачити, вони значно відрізняються від методів життєвого циклу компонентів, хоча ми підключаємося до схожих подій. Тепер ми об'єднали їх ось так:
 
-- **created** - new! This is called before the element's attributes or event listeners are applied.
+- **created** - нове! Викликається перед застосуванням атрибутів елемента або слухачів подій.
 - bind → **beforeMount**
 - inserted → **mounted**
-- **beforeUpdate**: new! This is called before the element itself is updated, much like the component lifecycle hooks.
-- update → removed! There were too many similarities to `updated`, so this is redundant. Please use `updated` instead.
+- **beforeUpdate**: нове! Він викликається перед оновленням самого елемента, так само як і хуки життєвого циклу компонента.
+- update → видалено! Занадто багато подібностей до `updated`, тому це є зайвим. Будь ласка, використовуйте `updated`.
 - componentUpdated → **updated**
-- **beforeUnmount**: new! Similar to component lifecycle hooks, this will be called right before an element is unmounted.
+- **beforeUnmount**: нове! Подібно до хуків життєвого циклу компонента, цей метод буде викликано безпосередньо перед тим, як елемент буде демонтовано.
 - unbind -> **unmounted**
 
-The final API is as follows:
+Остаточний варіант API виглядає наступним чином:
 
 ```js
 const MyDirective = {
-  created(el, binding, vnode, prevVnode) {}, // new
+  created(el, binding, vnode, prevVnode) {}, // нове
   beforeMount() {},
   mounted() {},
-  beforeUpdate() {}, // new
+  beforeUpdate() {}, // нове
   updated() {},
-  beforeUnmount() {}, // new
+  beforeUnmount() {}, // нове
   unmounted() {}
 }
 ```
 
-The resulting API could be used like this, mirroring the example from earlier:
+Оновлений API можна використовувати так, як показано в попередньому прикладі:
 
 ```html
-<p v-highlight="'yellow'">Highlight this text bright yellow</p>
+<p v-highlight="'yellow'">Виділіть цей текст яскраво-жовтим кольором</p>
 ```
 
 ```js
@@ -80,13 +80,13 @@ app.directive('highlight', {
 })
 ```
 
-Now that the custom directive lifecycle hooks mirror those of the components themselves, they become easier to reason about and remember!
+Тепер, коли хуки життєвого циклу користувацьких директив дублюють життєвий цикл самих компонентів, про них стало легше думати та запам'ятовувати!
 
-### Edge Case: Accessing the component instance
+### Крайній випадок: Доступ до екземпляра компонента
 
-It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.
+Загалом рекомендується тримати директиви незалежними від екземпляра компонента, в якому вони використовуються. Доступ до екземпляра з користувацької директиви часто є ознакою того, що директива має бути компонентом. Однак існують ситуації, коли це дійсно має сенс.
 
-In Vue 2, the component instance had to be accessed through the `vnode` argument:
+У версії Vue 2 доступ до екземпляра компонента здійснювався через аргумент `vnode`:
 
 ```js
 bind(el, binding, vnode) {
@@ -94,7 +94,7 @@ bind(el, binding, vnode) {
 }
 ```
 
-In Vue 3, the instance is now part of the `binding`:
+У версії Vue 3 екземпляр тепер є частиною `binding`:
 
 ```js
 mounted(el, binding, vnode) {
@@ -102,10 +102,10 @@ mounted(el, binding, vnode) {
 }
 ```
 
-:::warning
-With [fragments](../new/fragments.html#overview) support, components can potentially have more than one root node. When applied to a multi-root component, a custom directive will be ignored and a warning will be logged.
+:::warning ЗАСТЕРЕЖЕННЯ
+Завдяки підтримці [фрагментів](../new/fragments.html#overview) компоненти потенційно можуть мати більше одного кореневого вузла. При застосуванні до багатокореневого компонента користувацькі директиви буде проігноровано з виведенням попередження.
 :::
 
-## Migration Strategy
+## Стратегія міграції
 
-[Migration build flag: `CUSTOM_DIR`](../migration-build.html#compat-configuration)
+[Прапорець збірки міграції: `CUSTOM_DIR`](../migration-build.html#compat-configuration)
