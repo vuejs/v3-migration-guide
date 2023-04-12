@@ -141,7 +141,7 @@ export default {
             link: '/uk/breaking-changes/props-default-this'
           },
           {
-            text: 'Зміни класів в Transition',
+            text: 'Зміни класів переходів',
             link: '/uk/breaking-changes/transition'
           },
           {
