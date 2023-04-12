@@ -1,36 +1,36 @@
 ---
-title: v-if vs. v-for Precedence
+title: Пріоритет v-if проти v-for
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-- **BREAKING**: If used on the same element, `v-if` will have higher precedence than `v-for`
+- **НЕСУМІСНО**: `v-if` матиме вищий пріоритет за `v-for`, якщо використовується для того самого елемента.
 
-## Introduction
+## Вступ
 
-Two of the most commonly used directives in Vue.js are `v-if` and `v-for`. So it's no surprise that there comes a time when developers want to use both together. While this is not a recommended practice, there may be times when this is necessary, so we wanted to provide guidance for how it works.
+У Vue.js найчастіше використовуються дві директиви `v-if` і `v-for`. Тому не дивно, що настає час, коли розробники хочуть використовувати обидва разом. Хоча така практика не рекомендується, іноді можуть бути випадки коли це необхідно, тому ми захотіли додати вказівки щодо того, як це працює.
 
-## 2.x Syntax
+## Синтаксис 2.x
 
-In 2.x, when using `v-if` and `v-for` on the same element, `v-for` would take precedence.
+У 2.x при використанні `v-if` і `v-for` для того самого елемента, `v-for` буде мати пріоритет.
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-In 3.x, `v-if` will always have the higher precedence than `v-for`.
+У 3.x `v-if` завжди матиме вищий пріоритет, ніж `v-for`.
 
-## Migration Strategy
+## Стратегія міграції
 
-It is recommended to avoid using both on the same element due to the syntax ambiguity.
+Через неоднозначність синтаксису рекомендується уникати використання обох для одного елемента.
 
-Rather than managing this at the template level, one method for accomplishing this is to create a computed property that filters out a list for the visible elements.
+Натомість, щоби керувати цим на рівні шаблону, одним з методів досягнення цього є створення обчислюваної властивості, яка фільтрує список для видимих елементів.
 
-[Migration build flag: `COMPILER_V_IF_V_FOR_PRECEDENCE`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `COMPILER_V_IF_V_FOR_PRECEDENCE`](../migration-build.html#compat-configuration)
 
-## See also
+## Дивіться також
 
-- [List Rendering - Displaying Filtered/Sorted Results](https://vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
-- [List Rendering - `v-for` with `v-if`](https://vuejs.org/guide/essentials/list.html#v-for-with-v-if)
+- [Рендеринг списку - Показ відфільтрованих/відсортованих результатів](https://ua.vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
+- [Рендеринг списку - `v-for` з `v-if`](https://ua.vuejs.org/guide/essentials/list.html#v-for-with-v-if)
