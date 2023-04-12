@@ -3,18 +3,18 @@ badges:
   - breaking
 ---
 
-# Transition as Root <MigrationBadges :badges="$frontmatter.badges" />
+# Transition як кореневий елемент <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-Using a `<transition>` as a component's root will no longer trigger transitions when the component is toggled from the outside.
+Використання `<transition>` як кореневого компонента більше не запускатиме переходи, коли компонент перемикається ззовні.
 
-## 2.x Behavior
+## Поведінка 2.x
 
-In Vue 2, it was possible to trigger a transition from outside a component by using a `<transition>` as the component's root:
+У Vue 2 було можливо ініціювати перехід ззовні компонента, використовуючи `<transition>` як кореневий компонент:
 
 ```html
-<!-- modal component -->
+<!-- модальний компонент -->
 <template>
   <transition>
     <div class="modal"><slot/></div>
@@ -23,19 +23,19 @@ In Vue 2, it was possible to trigger a transition from outside a component by us
 ```
 
 ```html
-<!-- usage -->
-<modal v-if="showModal">hello</modal>
+<!-- використання -->
+<modal v-if="showModal">привіт</modal>
 ```
 
-Toggling the value of `showModal` would trigger a transition inside the modal component.
+Перемикання значення `showModal` призводить до переходу всередині модального компонента.
 
-This worked by accident, not by design. A `<transition>` is supposed to be triggered by changes to its children, not by toggling the `<transition>` itself.
+Це спрацьовує випадково, а не задумом. `<transition>` має ініціюватись змінами до його дочірніх елементів, а не перемиканням самого `<transition>`.
 
-This quirk has now been removed.
+Зараз цю примху видалено.
 
-## Migration Strategy
+## Стратегія міграції
 
-A similar effect can be achieved by passing a prop to the component instead:
+Подібного ефекту можна досягти, якщо натомість передати реквізит компоненту:
 
 ```vue
 <template>
@@ -51,11 +51,11 @@ export default {
 ```
 
 ```html
-<!-- usage -->
-<modal :show="showModal">hello</modal>
+<!-- використання -->
+<modal :show="showModal">привіт</modal>
 ```
 
-## See also
+## Дивіться також
 
-- [Some transition classes got a rename](./transition.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
+- [Деякі імена класів переходів отримали зміни](./transition.html)
+- [`<TransitionGroup>` тепер не рендерить елемент оболонки за замовчуванням](./transition-group.html)
