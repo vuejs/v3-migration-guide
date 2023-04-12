@@ -1,32 +1,32 @@
 ---
-title: Watch on Arrays
+title: Спостерігачі за масивами
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-- **BREAKING**: When watching an array, the callback will only trigger when the array is replaced. If you need to trigger on mutation, the `deep` option must be specified.
+- **НЕСУМІСНО**: Під час спостереження за масивом зворотний виклик запускатиметься лише тоді, коли масив буде замінено. Якщо вам потрібно запустити мутацію, необхідно вказати опцію `deep`.
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-When using [the `watch` option](https://vuejs.org/api/options-state.html#watch) to watch an array, the callback will only trigger when the array is replaced. In other words, the watch callback will no longer be triggered on array mutation. To trigger on mutation, the `deep` option must be specified.
+Якщо для спостереження за масивом використовується [опція `watch`](https://vuejs.org/api/options-state.html#watch), зворотний виклик запускатиметься лише тоді, коли масив буде замінено. Іншими словами, зворотний виклик спостереження більше не запускатиметься при мутації масиву. Щоб ініціювати мутацію, необхідно вказати опцію `deep`.
 
 ```js
 watch: {
   bookList: {
     handler(val, oldVal) {
-      console.log('book list changed')
+      console.log('список книг змінено')
     },
     deep: true
   },
 }
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-If you rely on watching array mutations, add the `deep` option to ensure that your callback is triggered correctly.
+Якщо ви покладаєтеся на спостереження за мутаціями масиву, додайте опцію `deep`, щоб переконатися, що ваш зворотній виклик запускається правильно.
 
-[Migration build flag: `WATCH_ARRAY`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `WATCH_ARRAY`](../migration-build.html#compat-configuration)
