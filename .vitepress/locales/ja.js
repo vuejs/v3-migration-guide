@@ -74,70 +74,70 @@ export default {
         ]
       },
       {
-        text: 'Render Function',
+        text: 'レンダー関数',
         items: [
           {
-            text: 'Render Function API',
+            text: 'レンダー関数 API',
             link: '/ja/breaking-changes/render-function-api'
           },
           {
-            text: 'Slots Unification',
+            text: 'スロットの統一',
             link: '/ja/breaking-changes/slots-unification'
           },
           {
-            text: '$listeners merged into $attrs',
+            text: '$listeners は $attrs に合併',
             link: '/ja/breaking-changes/listeners-removed'
           },
           {
-            text: '$attrs includes class & style',
+            text: '$attrs が class と style を包含',
             link: '/ja/breaking-changes/attrs-includes-class-style'
           }
         ]
       },
       {
-        text: 'Custom Elements',
+        text: 'カスタム要素',
         items: [
           {
-            text: 'Custom Elements Interop Changes',
+            text: 'カスタム要素の相互運用性の変更',
             link: '/ja/breaking-changes/custom-elements-interop'
           }
         ]
       },
       {
-        text: 'Removed APIs',
+        text: '削除された API',
         items: [
           {
-            text: 'v-on keyCode Modifiers',
+            text: 'v-on の keyCode 修飾子',
             link: '/ja/breaking-changes/keycode-modifiers'
           },
-          { text: 'Events API', link: '/ja/breaking-changes/events-api' },
-          { text: 'Filters', link: '/ja/breaking-changes/filters' },
+          { text: 'イベント API', link: '/ja/breaking-changes/events-api' },
+          { text: 'フィルター', link: '/ja/breaking-changes/filters' },
           {
-            text: 'inline-template',
+            text: 'インラインテンプレート',
             link: '/ja/breaking-changes/inline-template-attribute'
           },
           { text: '$children', link: '/ja/breaking-changes/children' },
-          { text: 'propsData option', link: '/ja/breaking-changes/props-data' }
+          { text: 'propsData オプション', link: '/ja/breaking-changes/props-data' }
         ]
       },
       {
-        text: 'Other Minor Changes',
+        text: 'その他の細かい変更',
         items: [
           {
-            text: 'Attribute Coercion Behavior',
+            text: '属性の強制変換',
             link: '/ja/breaking-changes/attribute-coercion'
           },
           {
-            text: 'Custom Directives',
+            text: 'カスタムディレクティブ',
             link: '/ja/breaking-changes/custom-directives'
           },
-          { text: 'Data Option', link: '/ja/breaking-changes/data-option' },
+          { text: 'data オプション', link: '/ja/breaking-changes/data-option' },
           {
-            text: 'Mount API changes',
+            text: 'マウント API の変更',
             link: '/ja/breaking-changes/mount-changes'
           },
           {
-            text: 'Props Default Function this Access',
+            text: 'プロパティ default 関数の this アクセス',
             link: '/ja/breaking-changes/props-default-this'
           },
           {

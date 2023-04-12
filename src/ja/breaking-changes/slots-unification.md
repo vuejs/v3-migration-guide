@@ -3,65 +3,65 @@ badges:
   - breaking
 ---
 
-# Slots Unification <MigrationBadges :badges="$frontmatter.badges" />
+# スロットの統一 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-This change unifies normal and scoped slots in 3.x.
+3.x では、通常のスロットとスコープ付きスロットが統合されます。
 
-Here is a quick summary of what has changed:
+以下は、変更点の簡単なまとめです:
 
-- `this.$slots` now exposes slots as functions
-- **BREAKING**: `this.$scopedSlots` is removed
+- `this.$slots` はスロットを関数として公開するようになりました
+- **破壊的変更**: `this.$scopedSlots` は削除されました
 
-For more information, read on!
+詳細については続きをお読みください！
 
-## 2.x Syntax
+## 2.x の構文
 
-When using the render function, i.e., `h`, 2.x used to define the `slot` data property on the content nodes.
+2.x では、`h` のようなレンダー関数を使用する場合、コンテンツノードに `slot` データプロパティを定義していました。
 
 ```js
-// 2.x Syntax
+// 2.x の構文
 h(LayoutComponent, [
   h('div', { slot: 'header' }, this.header),
   h('div', { slot: 'content' }, this.content)
 ])
 ```
 
-In addition, when referencing scoped slots, they could be referenced using the following syntax:
+また、スコープ付きスロットを参照する場合、次のような構文で参照できました:
 
 ```js
-// 2.x Syntax
+// 2.x の構文
 this.$scopedSlots.header
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-In 3.x, slots are defined as children of the current node as an object:
+3.x では、スロットは現在のノードの子としてオブジェクトで定義されます:
 
 ```js
-// 3.x Syntax
+// 3.x の構文
 h(LayoutComponent, {}, {
   header: () => h('div', this.header),
   content: () => h('div', this.content)
 })
 ```
 
-And when you need to reference scoped slots programmatically, they are now unified into the `$slots` option.
+また、スコープ付きスロットをプログラムで参照する必要がある場合、`$slots` オプションに統合されました。
 
 ```js
-// 2.x Syntax
+// 2.x の構文
 this.$scopedSlots.header
 
-// 3.x Syntax
+// 3.x の構文
 this.$slots.header()
 ```
 
-## Migration Strategy
+## 移行手順
 
-A majority of the change has already been shipped in 2.6. As a result, the migration can happen in one step:
+変更の大部分は、すでに 2.6 で出荷されています。その結果、移行は 1 つのステップで行うことができます:
 
-1. Replace all `this.$scopedSlots` occurrences with `this.$slots` in 3.x.
-2. Replace all occurrences of `this.$slots.mySlot` with `this.$slots.mySlot()`
+1. 3.x では、すべての `this.$scopedSlots` を `this.$slots` に置き換えます
+2. すべての `this.$slots.mySlot` を `this.$slots.mySlot()` に置き換えます
 
-[Migration build flag: `INSTANCE_SCOPED_SLOTS`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `INSTANCE_SCOPED_SLOTS`](../migration-build.html#compat-configuration)

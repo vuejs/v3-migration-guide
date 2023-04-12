@@ -3,25 +3,25 @@ badges:
   - breaking
 ---
 
-# Custom Directives <MigrationBadges :badges="$frontmatter.badges" />
+# カスタムディレクティブ <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-The hook functions for directives have been renamed to better align with the component lifecycle.
+ディレクティブのフック関数は、コンポーネントのライフサイクルに合わせて名称が変更されました。
 
-Additionally, the `expression` string is no longer passed as part of the `binding` object.
+さらに、`expression` の文字列は、`binding` オブジェクトの一部として渡されなくなりました。
 
-## 2.x Syntax
+## 2.x の構文
 
-In Vue 2, custom directives were created by using the hooks listed below to target an element’s lifecycle, all of which are optional:
+Vue 2 では、カスタムディレクティブは要素のライフサイクルを対象とする、以下に示すフックを使用して作成されました。これらはすべて省略可能です:
 
-- **bind** - Called once the directive is bound to the element. Called only once.
-- **inserted** - Called once the element is inserted into the parent DOM.
-- **update** - This hook is called when the element updates, but children haven't been updated yet.
-- **componentUpdated** - This hook is called once the component and the children have been updated.
-- **unbind** - This hook is called once the directive is removed. Also called only once.
+- **bind** - ディレクティブが要素にバインドされた時点で呼び出されます。一度だけ呼び出されます。
+- **inserted** - 要素が親 DOM に挿入されると呼び出されます。
+- **update** - このフックは、要素が更新されたが、子がまだ更新されていないときに呼び出されます。
+- **componentUpdated** - このフックは、コンポーネントと子が更新された時点で呼び出されます。
+- **unbind** - このフックはディレクティブが削除されると呼び出されます。また、一度だけ呼ばれます。
 
-Here’s an example of this:
+その一例を紹介します:
 
 ```html
 <p v-highlight="'yellow'">Highlight this text bright yellow</p>
@@ -35,36 +35,36 @@ Vue.directive('highlight', {
 })
 ```
 
-Here, in the initial setup for this element, the directive binds a style by passing in a value, that can be updated to different values through the application.
+ここでは、この要素の初期設定において、ディレクティブは値を渡すことでスタイルをバインドします。この値は適用によって異なる値に更新できます。
 
-## 3.x Syntax
+## 3.x の構文
 
-In Vue 3, however, we’ve created a more cohesive API for custom directives. As you can see, they differ greatly from our component lifecycle methods even though we’re hooking into similar events. We’ve now unified them like so:
+しかし、Vue 3 では、カスタムディレクティブのための、よりまとまりのある API が作成されました。ご覧のように、同様のイベントにフックしているにもかかわらず、コンポーネントのライフサイクルメソッドとは大きく異なっています。そこで、このような形で統一しました:
 
-- **created** - new! This is called before the element's attributes or event listeners are applied.
+- **created** - 新機能！　要素の属性やイベントリスナーが適用される前に呼び出されます。
 - bind → **beforeMount**
 - inserted → **mounted**
-- **beforeUpdate**: new! This is called before the element itself is updated, much like the component lifecycle hooks.
-- update → removed! There were too many similarities to `updated`, so this is redundant. Please use `updated` instead.
+- **beforeUpdate**: 新機能！　コンポーネントのライフサイクルフックと同様に、要素自体が更新される前に呼び出されます。
+- update → 削除！　`updated` との類似点が多すぎて冗長でした。代わりに `updated` を使用してください。
 - componentUpdated → **updated**
-- **beforeUnmount**: new! Similar to component lifecycle hooks, this will be called right before an element is unmounted.
+- **beforeUnmount**: 新機能！　コンポーネントのライフサイクルフックと同様に、エレメントがアンマウントされる直前に呼び出されます。
 - unbind -> **unmounted**
 
-The final API is as follows:
+最終的な API は以下の通りです:
 
 ```js
 const MyDirective = {
-  created(el, binding, vnode, prevVnode) {}, // new
+  created(el, binding, vnode, prevVnode) {}, // 新機能
   beforeMount() {},
   mounted() {},
-  beforeUpdate() {}, // new
+  beforeUpdate() {}, // 新機能
   updated() {},
-  beforeUnmount() {}, // new
+  beforeUnmount() {}, // 新機能
   unmounted() {}
 }
 ```
 
-The resulting API could be used like this, mirroring the example from earlier:
+出来上がった API は、先ほどの例と同じように、次のように使用できます:
 
 ```html
 <p v-highlight="'yellow'">Highlight this text bright yellow</p>
@@ -80,13 +80,13 @@ app.directive('highlight', {
 })
 ```
 
-Now that the custom directive lifecycle hooks mirror those of the components themselves, they become easier to reason about and remember!
+カスタムディレクティブのライフサイクルフックは、コンポーネント自体のライフサイクルフックと同じであるため、推測や覚えるのが簡単になりました！
 
-### Edge Case: Accessing the component instance
+### エッジケース: コンポーネントインスタンスへのアクセス
 
-It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.
+一般的にディレクティブは、使用されるコンポーネントインスタンスから独立していることが推奨されます。カスタムディレクティブの中からインスタンスにアクセスすることは、ディレクティブがむしろコンポーネントそのものであるべきというサインであることが多いのです。しかし、これが実際に理にかなっている状況もあります。
 
-In Vue 2, the component instance had to be accessed through the `vnode` argument:
+Vue 2 では、コンポーネントのインスタンスは `vnode` 引数を通してアクセスする必要がありました:
 
 ```js
 bind(el, binding, vnode) {
@@ -94,7 +94,7 @@ bind(el, binding, vnode) {
 }
 ```
 
-In Vue 3, the instance is now part of the `binding`:
+Vue 3 では、インスタンスは `binding` の一部となりました:
 
 ```js
 mounted(el, binding, vnode) {
@@ -103,9 +103,9 @@ mounted(el, binding, vnode) {
 ```
 
 :::warning
-With [fragments](../new/fragments.html#overview) support, components can potentially have more than one root node. When applied to a multi-root component, a custom directive will be ignored and a warning will be logged.
+[フラグメント](../new/fragments.html#overview)のサポートにより、コンポーネントは複数のルートノードを持つ可能性があります。マルチルートノードのコンポーネントに適用した場合、カスタムディレクティブは無視され、警告がログに出力されます。
 :::
 
-## Migration Strategy
+## 移行手順
 
-[Migration build flag: `CUSTOM_DIR`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `CUSTOM_DIR`](../migration-build.html#compat-configuration)

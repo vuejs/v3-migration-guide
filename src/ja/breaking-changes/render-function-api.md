@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# Render Function API <MigrationBadges :badges="$frontmatter.badges" />
+# レンダー関数 API <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-This change will not affect `<template>` users.
+この変更は、`<template>` を使用する場合には影響しません。
 
-Here is a quick summary of what has changed:
+以下は、変更点の簡単なまとめです:
 
-- `h` is now globally imported instead of passed to render functions as an argument
-- render function arguments changed to be more consistent between stateful and functional components
-- VNodes now have a flat props structure
+- `h` はレンダー関数に引数として渡されるのではなく、グローバルにインポートされるようになりました
+- ステートフルコンポーネントと関数型コンポーネントの間でより一貫性を持たせるため、レンダー関数の引数が変更されました
+- VNode のプロパティ構造はフラットになりました
 
-For more information, read on!
+詳細については続きをお読みください！
 
-## Render Function Argument
+## レンダー関数の引数
 
-### 2.x Syntax
+### 2.x の構文
 
-In 2.x, the `render` function would automatically receive the `h` function (which is a conventional alias for `createElement`) as an argument:
+2.x では、`render` 関数は引数として `h` 関数（`createElement` の従来のエイリアス）を自動的に受け取ります:
 
 ```js
-// Vue 2 Render Function Example
+// Vue 2 のレンダー関数の例
 export default {
   render(h) {
     return h('div')
@@ -32,12 +32,12 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x の構文
 
-In 3.x, `h` is now globally imported instead of being automatically passed as an argument.
+3.x では、`h` は引数として自動的に渡されるのではなく、グローバルにインポートされるようになりました。
 
 ```js
-// Vue 3 Render Function Example
+// Vue 3 のレンダー関数の例
 import { h } from 'vue'
 
 export default {
@@ -47,11 +47,11 @@ export default {
 }
 ```
 
-## VNode Props Format
+## VNode プロパティの形式
 
-### 2.x Syntax
+### 2.x の構文
 
-In 2.x, `domProps` contained a nested list within the VNode props:
+2.x では、`domProps` は VNode プロパティの中にネストしたリストを持っていました:
 
 ```js
 // 2.x
@@ -67,12 +67,12 @@ In 2.x, `domProps` contained a nested list within the VNode props:
 }
 ```
 
-### 3.x Syntax
+### 3.x の構文
 
-In 3.x, the entire VNode props structure is flattened. Using the example from above, here is what it would look like now.
+3.x では、VNode プロパティの構造全体がフラット化されています。上記の例を使用すると、次のようになります。
 
 ```js
-// 3.x Syntax
+// 3.x の構文
 {
   class: ['button', { 'is-outlined': isOutlined }],
   style: [{ color: '#34495E' }, { backgroundColor: buttonColor }],
@@ -83,11 +83,11 @@ In 3.x, the entire VNode props structure is flattened. Using the example from ab
 }
 ```
 
-## Registered Component
+## 登録済みのコンポーネント
 
-### 2.x Syntax
+### 2.x の構文
 
-In 2.x, when a component has been registered, the render function would work well when passing the component's name as a string to the first argument:
+2.x では、コンポーネントが登録されている場合、第 1 引数に文字列でコンポーネント名を渡すと、レンダー関数は正しく動作します:
 
 ```js
 // 2.x
@@ -111,9 +111,9 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x の構文
 
-In 3.x, with VNodes being context-free, we can no longer use a string ID to implicitly lookup registered components. Instead, we need to use an imported `resolveComponent` method:
+3.x では VNode はコンテキストフリーになり、登録されたコンポーネントは文字列の ID を使用して暗黙的に検索できなくなりました。代わりに、`resolveComponent` メソッドをインポートして使用する必要があります:
 
 ```js
 // 3.x
@@ -127,20 +127,20 @@ export default {
 }
 ```
 
-For more information, see [The Render Function Api Change RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
+詳しくは、[レンダー関数 API 変更の RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes) を参照してください。
 
-## Migration Strategy
+## 移行手順
 
-[Migration build flag: `RENDER_FUNCTION`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `RENDER_FUNCTION`](../migration-build.html#compat-configuration)
 
-### Library Authors
+### ライブラリー作者
 
-`h` being globally imported means that any library that contains Vue components will include `import { h } from 'vue'` somewhere. As a result, this creates a bit of overhead since it requires library authors to properly configure the externalization of Vue in their build setup:
+`h` がグローバルにインポートされるということは、Vue コンポーネントを含むライブラリーは、どこかで `import { h } from 'vue'` を含むことになります。その結果、ライブラリーの作者がビルドの設定で Vue の外部化を適切に設定する必要があるため、ちょっとしたオーバーヘッドが発生します:
 
-- Vue should not be bundled into the library
-- For module builds, the import should be left alone and be handled by the end user bundler
-- For UMD / browser builds, it should try the global Vue.h first and fallback to require calls
+- Vue はライブラリーにバンドルしないでください
+- モジュールビルドの場合、インポートは残して、エンドユーザーのバンドラーが処理する必要があります
+- UMD / ブラウザービルドの場合、まずグローバルな Vue.h を試し、require の呼び出しにフォールバックする必要があります
 
-## Next Steps
+## 次のステップ
 
-See [Render Function Guide](https://ja.vuejs.org/guide/extras/render-function.html) for more detailed documentation!
+より詳細なドキュメントについては、[レンダー関数のガイド](https://ja.vuejs.org/guide/extras/render-function.html)を参照してください！

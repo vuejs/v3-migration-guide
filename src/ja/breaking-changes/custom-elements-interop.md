@@ -3,41 +3,41 @@ badges:
   - breaking
 ---
 
-# Custom Elements Interop <MigrationBadges :badges="$frontmatter.badges" />
+# カスタム要素の相互運用性 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-- **BREAKING:** The checks to determine whether tags should be treated as custom elements are now performed during template compilation, and should be configured via compiler options instead of runtime config.
-- **BREAKING:** Special `is` attribute usage is restricted to the reserved `<component>` tag only.
-- **NEW:** To support 2.x use cases where `is` was used on native elements to work around native HTML parsing restrictions, prefix the value with `vue:` to resolve it as a Vue component.
+- **破壊的変更:** タグをカスタム要素として扱うかどうかのチェックは、テンプレートのコンパイル時に行われるようになり、ランタイム設定ではなく、コンパイラーオプションで設定する必要があります。
+- **破壊的変更:** 特別な `is` 属性の使用は、予約済みである `<component>` タグにのみ制限されます。
+- **新機能:** ネイティブの HTML パースの制限を回避する目的で、ネイティブ要素に `is` を使用するという 2.x のユースケースをサポートするため、値の前に `vue:` を付けて Vue コンポーネントとして解決するようにします。
 
-## Autonomous Custom Elements
+## 自主的なカスタム要素
 
-If we want to add a custom element defined outside of Vue (e.g. using the Web Components API), we need to 'instruct' Vue to treat it as a custom element. Let's use the following template as an example.
+Vue の外部で定義されたカスタム要素を追加したい場合（例えば Web コンポーネント API を使用するなど）、Vue にカスタム要素として扱うように「指示」する必要があります。次のテンプレートを例にして説明します。
 
 ```html
 <plastic-button></plastic-button>
 ```
 
-### 2.x Syntax
+### 2.x の構文
 
-In Vue 2.x, configuring tags as custom elements was done via `Vue.config.ignoredElements`:
+Vue 2.x では、タグをカスタム要素として設定するには、`Vue.config.ignoredElements` を使用していました:
 
 ```js
-// This will make Vue ignore custom element defined outside of Vue
-// (e.g., using the Web Components APIs)
+// これにより、Vue は Vue の外部で定義されたカスタム要素を無視するようになります
+// （例: Web コンポーネント APIを使用する場合など）
 
 Vue.config.ignoredElements = ['plastic-button']
 ```
 
-### 3.x Syntax
+### 3.x の構文
 
-**In Vue 3.0, this check is performed during template compilation.** To instruct the compiler to treat `<plastic-button>` as a custom element:
+**Vue 3.0 では、このチェックはテンプレートのコンパイル時に行われます。** `<plastic-button>` をカスタム要素として扱うようにコンパイラーに指示するには:
 
-- If using a build step: pass the `isCustomElement` option to the Vue template compiler. If using `vue-loader`, this should be passed via `vue-loader`'s `compilerOptions` option:
+- ビルドステップを使用する場合: Vue テンプレートコンパイラーに `isCustomElement` オプションを渡します。`vue-loader` を使用する場合は、`vue-loader` の `compilerOptions` オプションで渡す必要があります:
 
   ```js
-  // in webpack config
+  // webpack 設定
   rules: [
     {
       test: /\.vue$/,
@@ -52,60 +52,60 @@ Vue.config.ignoredElements = ['plastic-button']
   ]
   ```
 
-- If using on-the-fly template compilation, pass it via `app.config.compilerOptions.isCustomElement`:
+- オンザフライのテンプレートコンパイルを使用する場合は、`app.config.compilerOptions.isCustomElement` で渡します:
 
   ```js
   const app = Vue.createApp({})
   app.config.compilerOptions.isCustomElement = tag => tag === 'plastic-button'
   ```
 
-  It's important to note the runtime config only affects runtime template compilation - it won't affect pre-compiled templates.
+  ランタイム設定は、ランタイムテンプレートのコンパイルにのみ影響することに注意してください。事前にコンパイルされたテンプレートには影響しません。
 
-## Customized Built-in Elements {#customized-built-in-elements}
+## カスタマイズされたビルトイン要素 {#customized-built-in-elements}
 
-The Custom Elements specification provides a way to use custom elements as [Customized Built-in Element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) by adding the `is` attribute to a built-in element:
+カスタム要素の仕様では、組み込み要素に `is` 属性を付加することで、カスタム要素を[カスタマイズされたビルトイン要素](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example)として使用する方法を提供しています:
 
 ```html
 <button is="plastic-button">Click Me!</button>
 ```
 
-Vue's usage of the `is` special attribute was simulating what the native attribute does before it was made universally available in browsers. However, in 2.x it was interpreted as rendering a Vue component with the name `plastic-button`. This blocks the native usage of Customized Built-in Element mentioned above.
+Vue の特別な属性 `is` の使い方は、ネイティブ属性がブラウザーで普遍的に利用できるようになる前のネイティブ属性の動作をシミュレートしていました。しかし、2.x では、`plastic-button` という名前の Vue コンポーネントをレンダリングすると解釈されました。これは、前述のカスタマイズされたビルトイン要素のネイティブな使い方をブロックしています。
 
-In 3.0, we are limiting Vue's special treatment of the `is` attribute to the `<component>` tag only.
+3.0 では、Vue の `is` 属性の特別な扱いを、`<component>` タグのみに限定しています。
 
-- When used on the reserved `<component>` tag, it will behave exactly the same as in 2.x;
-- When used on normal components, it will behave like a normal attribute:
+- 予約済みである `<component>` タグで使用された場合、2.x と全く同じ動作をします。
+- 通常のコンポーネントで使用する場合は、通常の属性と同じように動作します:
 
   ```html
   <foo is="bar" />
   ```
 
-  - 2.x behavior: renders the `bar` component.
-  - 3.x behavior: renders the `foo` component and passing the `is` attribute.
+  - 2.x の動作: `bar` コンポーネントをレンダリングします。
+  - 3.x の動作: `foo` コンポーネントをレンダリングし、`is` 属性を渡します。
 
-- When used on plain elements, it will be passed to the `createElement` call as the `is` attribute, and also rendered as a native attribute. This supports the usage of customized built-in elements.
+- プレーンな要素で使用する場合、`createElement` の呼び出しに `is` 属性として渡され、ネイティブ属性としてレンダリングされます。これは、カスタマイズされたビルトイン要素の使用をサポートします。
 
   ```html
   <button is="plastic-button">Click Me!</button>
   ```
 
-  - 2.x behavior: renders the `plastic-button` component.
-  - 3.x behavior: renders a native button by calling
+  - 2.x の動作: `plastic-button` コンポーネントをレンダリングします
+  - 3.x の動作: 以下を呼び出してネイティブのボタンをレンダリングします。
 
     ```js
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[Migration build flag: `COMPILER_IS_ON_ELEMENT`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `COMPILER_IS_ON_ELEMENT`](../migration-build.html#compat-configuration)
 
-## `vue:` Prefix for In-DOM Template Parsing Workarounds
+## DOM 内テンプレートのパース回避のための `vue:` プレフィックス
 
-> Note: this section only affects cases where Vue templates are directly written in the page's HTML.
-> When using in-DOM templates, the template is subject to native HTML parsing rules. Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
+> 注意: このセクションは、Vue のテンプレートがページの HTML に直接記述されている場合にのみ影響します。
+> DOM 内テンプレートを使用する場合、テンプレートはネイティブの HTML パースルールに従います。`<ul>`、`<ol>`、`<table>`、`<select>` などの一部の HTML 要素は、その内部に表示できる要素に制限がありますし、`<li>`、`<tr>`、`<option>` などの一部の要素は、他の特定の要素内にのみ表示できます。
 
-### 2.x Syntax
+### 2.x の構文
 
-In Vue 2 we recommended working around with these restrictions by using the `is` attribute on a native tag:
+Vue 2 では、ネイティブのタグに `is` 属性を使用することで、この制限を回避することを推奨していました:
 
 ```html
 <table>
@@ -113,9 +113,9 @@ In Vue 2 we recommended working around with these restrictions by using the `is`
 </table>
 ```
 
-### 3.x Syntax
+### 3.x の構文
 
-With the behavior change of `is`, a `vue:` prefix is now required to resolve the element as a Vue component:
+`is` の動作変更に伴い、要素を Vue コンポーネントとして解決するには `vue:` プレフィックスが必要になりました:
 
 ```html
 <table>
@@ -123,12 +123,12 @@ With the behavior change of `is`, a `vue:` prefix is now required to resolve the
 </table>
 ```
 
-## Migration Strategy
+## 移行手順
 
-- Replace `config.ignoredElements` with either `vue-loader`'s `compilerOptions` (with the build step) or `app.config.compilerOptions.isCustomElement` (with on-the-fly template compilation)
+- `config.ignoredElements` は、ビルドステップの場合は `vue-loader` の `compilerOptions` に置き換え、オンザフライのテンプレートコンパイルの場合は `app.config.compilerOptions.isCustomElement` に置き換えます。
 
-- Change all non-`<component>` tags with `is` usage to `<component is="...">` (for SFC templates) or prefix it with `vue:` (for in-DOM templates).
+- `<component>` 以外で `is` が使われているタグは、SFC テンプレートの場合は `<component is="...">` に変更し、DOM 内テンプレートの場合は `vue:` プレフィックスを付けます。
 
-## See Also
+## 参照
 
-- [Guide - Vue and Web Components](https://ja.vuejs.org/guide/extras/web-components.html)
+- [ガイド - Vue と Web コンポーネント](https://ja.vuejs.org/guide/extras/web-components.html)

@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# KeyCode Modifiers <MigrationBadges :badges="$frontmatter.badges" />
+# keyCode 修飾子 <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-Here is a quick summary of what has changed:
+以下は、変更点の簡単なまとめです:
 
-- **BREAKING**: Using numbers, i.e. keyCodes, as `v-on` modifiers is no longer supported
-- **BREAKING**: `config.keyCodes` is no longer supported
+- **破壊的変更**: `v-on` 修飾子として数字、つまり keyCode を使用することはサポートされなくなりました
+- **破壊的変更**: `config.keyCodes` はサポートされなくなりました
 
-## 2.x Syntax
+## 2.x の構文
 
-In Vue 2, `keyCodes` were supported as a way to modify a `v-on` method.
+Vue 2 では、`v-on` メソッドを修飾する方法として `keyCodes` がサポートされました。
 
 ```html
-<!-- keyCode version -->
+<!-- keyCode バージョン -->
 <input v-on:keyup.13="submit" />
 
-<!-- alias version -->
+<!-- エイリアスバージョン -->
 <input v-on:keyup.enter="submit" />
 ```
 
-In addition, you could define your own aliases via the global `config.keyCodes` option.
+さらに、グローバルな `config.keyCodes` オプションで独自のエイリアスを定義できました。
 
 ```js
 Vue.config.keyCodes = {
@@ -33,40 +33,40 @@ Vue.config.keyCodes = {
 ```
 
 ```html
-<!-- keyCode version -->
+<!-- keyCode バージョン -->
 <input v-on:keyup.112="showHelpText" />
 
-<!-- custom alias version -->
+<!-- カスタムエイリアスバージョン -->
 <input v-on:keyup.f1="showHelpText" />
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-Since [`KeyboardEvent.keyCode` has been deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode), it no longer makes sense for Vue 3 to continue supporting this as well. As a result, it is now recommended to use the kebab-case name for any key you want to use as a modifier.
+[`KeyboardEvent.keyCode` は非推奨になった](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)ので、Vue 3 がこれをサポートし続けることはもはや意味がありません。そのため、修飾子として使用したいキーには、ケバブケースの名前を使用することが推奨されるようになりました。
 
 ```html
-<!-- Vue 3 Key Modifier on v-on -->
+<!-- Vue 3 の v-on キー修飾子 -->
 <input v-on:keyup.page-down="nextPage">
 
-<!-- Matches both q and Q -->
+<!-- q と Q の両方にマッチ -->
 <input v-on:keypress.q="quit">
 ```
 
-As a result, this means that `config.keyCodes` is now also deprecated and will no longer be supported.
+その結果、`config.keyCodes` も非推奨となり、今後サポートされなくなります。
 
-## Migration Strategy
+## 移行手順
 
-For those using `keyCode` in their codebase, we recommend converting them to their kebab-cased named equivalents.
+コードベースで `keyCode` を使用している場合は、ケバブケースのキー名に変換することをお勧めします。
 
-The keys for some punctuation marks can just be included literally. e.g. For the `,` key:
+一部の句読点のキーは、そのまま渡すことができます。 例：`,` キーの場合:
 
 ```html
 <input v-on:keypress.,="commaPress">
 ```
 
-Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
+構文の制限により、`"`、`'`、`/`、`=`、`>`、`.` などの特定の文字はマッチしません。これらの文字については、代わりにリスナー内で `event.key` をチェックする必要があります。
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ:](../migration-build.html#compat-configuration)
 
 - `CONFIG_KEY_CODES`
 - `V_ON_KEYCODE_MODIFIER`
