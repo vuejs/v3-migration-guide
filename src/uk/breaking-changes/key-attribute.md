@@ -3,58 +3,58 @@ badges:
   - breaking
 ---
 
-# `key` Attribute <MigrationBadges :badges="$frontmatter.badges" />
+# Aтрибут `key` <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-- **NEW:** `key`s are no longer necessary on `v-if`/`v-else`/`v-else-if` branches, since Vue now automatically generates unique `key`s.
-  - **BREAKING:** If you manually provide `key`s, then each branch must use a unique `key`. You can no longer intentionally use the same `key` to force branch reuse.
-- **BREAKING:** `<template v-for>` `key` should be placed on the `<template>` tag (rather than on its children).
+- **НОВЕ:** `key` більше не потрібні в гілках `v-if`/`v-else`/`v-else-if`, оскільки Vue тепер автоматично генерує унікальні `key`.
+  - **НЕСУМІСНО:** Якщо ви надаєте `key` вручну, тоді кожна гілка має використовувати унікальний `key`. Ви більше не можете навмисно використовувати той самий `key` для примусового повторного використання гілки.
+- **НЕСУМІСНО:** `<template v-for>` `key` слід помістити в тег `<template>` (а не в його дочірні).
 
-## Background
+## Обґрунтування
 
-The `key` special attribute is used as a hint for Vue's virtual DOM algorithm to keep track of a node's identity. That way, Vue knows when it can reuse and patch existing nodes and when it needs to reorder or recreate them. For more information, see the following sections:
+Спеціальний атрибут `key` використовується як підказка для віртуального DOM-алгоритму Vue, щоб відстежувати ідентичність вузла. Таким чином, Vue знає, коли він може повторно використовувати та виправляти існуючі вузли, а коли потрібно змінити порядок або створити їх заново. Для отримання додаткової інформації перегляньте наступні розділи:
 
-- [List Rendering: Maintaining State](https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
-- [API Reference: `key` Special Attribute](https://vuejs.org/api/built-in-special-attributes.html#key)
+- [Рендеринг списку: Підтримка стану](https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
+- [Довідник API: Спеціальний атрибут `key`](https://vuejs.org/api/built-in-special-attributes.html#key)
 
-## On conditional branches
+## На умовних гілках
 
-In Vue 2.x, it was recommended to use `key`s on `v-if`/`v-else`/`v-else-if` branches.
+У Vue 2.x, було рекомендовано використовувати `key` у гілках `v-if`/`v-else`/`v-else-if`.
 
 ```html
 <!-- Vue 2.x -->
-<div v-if="condition" key="yes">Yes</div>
-<div v-else key="no">No</div>
+<div v-if="condition" key="yes">Так</div>
+<div v-else key="no">Ні</div>
 ```
 
-The example above still works in Vue 3.x. However, we no longer recommend using the `key` attribute on `v-if`/`v-else`/`v-else-if` branches, since unique `key`s are now automatically generated on conditional branches if you don't provide them.
+Приклад вище все ще працює в Vue 3.x. Однак ми більше не рекомендуємо використовувати атрибут `key` у гілках `v-if`/`v-else`/`v-else-if`, оскільки унікальні `key` тепер автоматично генеруються в умовних гілках, якщо ви не надаєте їх.
 
 ```html
 <!-- Vue 3.x -->
-<div v-if="condition">Yes</div>
-<div v-else>No</div>
+<div v-if="condition">Так</div>
+<div v-else>Ні</div>
 ```
 
-The breaking change is that if you manually provide `key`s, each branch must use a unique `key`. In most cases, you can remove these `key`s.
+Головною зміною є те, що якщо ви вручну надаєте `key`, кожна гілка має використовувати унікальний `key`. У більшості випадків ви можете видалити ці `key`.
 
 ```html
 <!-- Vue 2.x -->
-<div v-if="condition" key="a">Yes</div>
-<div v-else key="a">No</div>
+<div v-if="condition" key="a">Так</div>
+<div v-else key="a">Ні</div>
 
-<!-- Vue 3.x (recommended solution: remove keys) -->
-<div v-if="condition">Yes</div>
-<div v-else>No</div>
+<!-- Vue 3.x (рекомендоване рішення: видаліть ключі) -->
+<div v-if="condition">Так</div>
+<div v-else>Ні</div>
 
-<!-- Vue 3.x (alternate solution: make sure the keys are always unique) -->
-<div v-if="condition" key="a">Yes</div>
-<div v-else key="b">No</div>
+<!-- Vue 3.x (альтернативне рішення: переконайтеся, що ключі завжди унікальні) -->
+<div v-if="condition" key="a">Так</div>
+<div v-else key="b">Ні</div>
 ```
 
-## With `<template v-for>`
+## З `<template v-for>`
 
-In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place the `key`s on each of its children.
+У Vue 2.x тег `<template>` не міг мати `key`. Натомість, ви могли розмістити `key` на кожному з його дочірніх елементів.
 
 ```html
 <!-- Vue 2.x -->
@@ -64,7 +64,7 @@ In Vue 2.x, a `<template>` tag could not have a `key`. Instead, you could place 
 </template>
 ```
 
-In Vue 3.x, the `key` should be placed on the `<template>` tag instead.
+У Vue 3.x `key` натомість слід розмістити в тегу `<template>`.
 
 ```html
 <!-- Vue 3.x -->
@@ -74,7 +74,7 @@ In Vue 3.x, the `key` should be placed on the `<template>` tag instead.
 </template>
 ```
 
-Similarly, when using `<template v-for>` with a child that uses `v-if`, the `key` should be moved up to the `<template>` tag.
+Подібним чином, коли використовується `<template v-for>` з дочірнім елементом, який використовує `v-if`, `key` має бути переміщений до тегу `<template>`.
 
 ```html
 <!-- Vue 2.x -->
