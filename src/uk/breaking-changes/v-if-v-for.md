@@ -32,5 +32,5 @@ badges:
 
 ## Дивіться також
 
-- [Рендеринг списку - Показ відфільтрованих/відсортованих результатів](https://vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
+- [Рендеринг списку - Показ відфільтрованих/відсортованих результатів](https://ua.vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
 - [List Rendering - `v-for` with `v-if`](https://vuejs.org/guide/essentials/list.html#v-for-with-v-if)
