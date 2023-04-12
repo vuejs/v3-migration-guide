@@ -1,22 +1,22 @@
 ---
-title: v-bind Merge Behavior
+title: Поведінка злиття v-bind
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-- **BREAKING**: Order of bindings for v-bind will affect the rendering result.
+- **НЕСУМІСНО**: Порядок зв'язування для v-bind впливатиме на результат рендерингу.
 
-## Introduction
+## Вступ
 
-When dynamically binding attributes on an element, a common scenario involves using both the `v-bind="object"` syntax as well as individual attributes in the same element. However, this raises questions as far as the priority of merging.
+Під час динамічного прив'язування атрибутів до елемента типовий сценарій передбачає використання як синтаксису `v-bind="object"`, так і окремих атрибутів у тому самому елементі. Однак, це викликає питання щодо пріоритетності об'єднання.
 
-## 2.x Syntax
+## Синтаксис 2.x
 
-In 2.x, if an element has both `v-bind="object"` and an identical individual attribute defined, the individual attribute would always overwrite bindings in the `object`.
+У 2.x, якщо елемент має як `v-bind="object"`, так і визначений ідентичний індивідуальний атрибут, індивідуальний атрибут завжди перезаписує прив'язки в `object`.
 
 ```html
 <!-- template -->
@@ -25,24 +25,24 @@ In 2.x, if an element has both `v-bind="object"` and an identical individual att
 <div id="red"></div>
 ```
 
-## 3.x Syntax
+## Синтаксис 3.x
 
-In 3x, if an element has both `v-bind="object"` and an identical individual attribute defined, the order of how the bindings are declared determines how they are merged. In other words, rather than assuming developers want the individual attribute to always override what is defined in the `object`, developers now have more control over the desired merging behavior.
+У 3x, якщо елемент має як `v-bind="object"`, так і визначений ідентичний індивідуальний атрибут, порядок оголошення прив'язок визначає спосіб їх об'єднання. Іншими словами, замість того, щоб припускати, що розробники хочуть, щоб індивідуальний атрибут завжди перевизначав те, що визначено в `object`, розробники тепер мають більше контролю над бажаною поведінкою об'єднання.
 
 ```html
-<!-- template -->
+<!-- шаблон -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- результат -->
 <div id="blue"></div>
 
-<!-- template -->
+<!-- шаблон -->
 <div v-bind="{ id: 'blue' }" id="red"></div>
-<!-- result -->
+<!-- результат -->
 <div id="red"></div>
 ```
 
-## Migration Strategy
+## Стратегія міграції
 
-If you are relying on this override functionality for `v-bind`, we currently recommend ensuring that your `v-bind` attribute is defined before individual attributes.
+Якщо ви покладаєтеся на цю функцію заміни для `v-bind`, наразі ми рекомендуємо переконатися, що ваш атрибут `v-bind` визначено перед окремими атрибутами.
 
-[Migration build flag: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build.html#compat-configuration)
+[Прапор збірки міграції: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build.html#compat-configuration)
