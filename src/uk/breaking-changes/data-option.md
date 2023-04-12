@@ -1,25 +1,25 @@
 ---
-title: Data Option
+title: Опція data
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Огляд
 
-- **BREAKING**: `data` component option declaration no longer accepts a plain JavaScript `object` and expects a `function` declaration.
+- **НЕСУМІСНО**: оголошення опції компонента `data` більше не приймає звичайний JavaScript об'єкт і очікує оголошення за допомогою функції.
 
-- **BREAKING**: when merging multiple `data` return values from mixins or extends, the merge is now shallow instead of deep (only root-level properties are merged).
+- **НЕСУМІСНО**: при об'єднанні декількох значень, що повертаються `data` з міксинів або розширювачів, злиття тепер є поверхневим, а не поглибленим (об'єднуються лише властивості кореневого рівня).
 
-## 2.x Syntax
+## 2.x Синтаксис
 
-In 2.x, developers could define the `data` option with either an `object` or a `function`.
+У версії 2.x розробники могли оголошувати опцію `data` за допомогою об'єкта або функції.
 
-For example:
+Наприклад:
 
 ```html
-<!-- Object Declaration -->
+<!-- Декларація за допомогою об'єкта -->
 <script>
   const app = new Vue({
     data: {
@@ -28,7 +28,7 @@ For example:
   })
 </script>
 
-<!-- Function Declaration -->
+<!-- Декларація за допомогою функції -->
 <script>
   const app = new Vue({
     data() {
@@ -40,13 +40,13 @@ For example:
 </script>
 ```
 
-Though this provided some convenience in terms of root instances having a shared state, this has led to confusion due to the fact that its only possible on the root instance.
+Хоча це забезпечило певну зручність з точки зору того, що кореневі екземпляри мають спільний стан, це призвело до плутанини через те, що це можливо лише для кореневого екземпляра.
 
-## 3.x Update
+## 3.x Оновлення
 
-In 3.x, the `data` option has been standardized to only accept a `function` that returns an `object`.
+У версії 3.x опцію `data` було стандартизовано так, щоб вона приймала лише функцію, яка повертає об'єкт.
 
-Using the example above, there would only be one possible implementation of the code:
+Беручи до уваги вище наведенний приклад, тут буде можлива лише одна реалізація коду:
 
 ```html
 <script>
@@ -62,9 +62,9 @@ Using the example above, there would only be one possible implementation of the 
 </script>
 ```
 
-## Mixin Merge Behavior Change
+## Зміна поведінки при злитті міксинів
 
-In addition, when `data()` from a component and its mixins or extends base are merged, the merge is now performed *shallowly*:
+Крім того, коли об'єднуються `data()` та міксини в компоненті, злиття тепер виконується *неглибоко*:
 
 ```js
 const Mixin = {
@@ -90,7 +90,7 @@ const CompA = {
 }
 ```
 
-In Vue 2.x, the resulting `$data` is:
+У версії Vue 2.x результатом `$data` є:
 
 ```json
 {
@@ -101,7 +101,7 @@ In Vue 2.x, the resulting `$data` is:
 }
 ```
 
-In 3.0, the result will be:
+У версії 3.0 результатом `$data` буде:
 
 ```json
 {
@@ -111,18 +111,18 @@ In 3.0, the result will be:
 }
 ```
 
-[Migration build flag: `OPTIONS_DATA_FN`](../migration-build.html#compat-configuration)
+[Прапорець збірки міграції: `OPTIONS_DATA_FN`](../migration-build.html#compat-configuration)
 
-## Migration Strategy
+## Стратегія міграції
 
-For users relying on the object declaration, we recommend:
+Користувачам, які звикли до оголошення об'єктів, ми рекомендуємо:
 
-- Extracting the shared data into an external object and using it as a property in `data`
-- Rewrite references to the shared data to point to a new shared object
+- Вилучення спільних даних у зовнішній об'єкт і використання його як властивості в `data`
+- Переписати посилання на спільні дані, щоб вони вказували на новий загальний об'єкт
 
-For users relying on the deep merge behavior from mixins, we recommend refactoring your code to avoid such reliance altogether, since deep merges from mixins are very implicit and can make the code logic more difficult to understand and debug.
+Користувачам, які звикли до глибокого злиття міксинів, ми рекомендуємо рефакторинг вашого коду, щоб уникнути такої залежності, оскільки глибоке злиття міксинів є дуже неявним і може ускладнити логіку коду для розуміння та налагодження.
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Прапорці збірки міграції:](../migration-build.html#compat-configuration)
 
 - `OPTIONS_DATA_FN`
 - `OPTIONS_DATA_MERGE`
