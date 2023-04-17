@@ -3,17 +3,17 @@ badges:
   - breaking
 ---
 
-# VNode Lifecycle Events <MigrationBadges :badges="$frontmatter.badges" />
+# VNode ライフサイクルイベント <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-In Vue 2, it was possible to use events to listen for key stages in a component's lifecycle. These events had names that started with the prefix `hook:`, followed by the name of the corresponding lifecycle hook.
+Vue 2 ではイベントを使用して、コンポーネントのライフサイクルの主要な段階を購読できました。これらのイベントは `hook:` プレフィックスで始まり、その後に対応するライフサイクルフックの名前が続きます。
 
-In Vue 3, this prefix has been changed to `vue:`. In addition, these events are now available for HTML elements as well as components.
+Vue 3 では、このプレフィックスは `vue:` に変更されました。さらに、これらのイベントは、コンポーネントだけでなく HTML 要素でも利用できるようになりました。
 
-## 2.x Syntax
+## 2.x の構文
 
-In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed with `hook:`:
+Vue 2 では、イベント名は相当するライフサイクルフックと同じで、プレフィックスとして `hook:` が付きます:
 
 ```html
 <template>
@@ -21,9 +21,9 @@ In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed 
 </template>
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-In Vue 3, the event name is prefixed with `vue:`:
+Vue 3 では、イベント名の前に `vue:` が付きます:
 
 ```html
 <template>
@@ -31,12 +31,12 @@ In Vue 3, the event name is prefixed with `vue:`:
 </template>
 ```
 
-## Migration Strategy
+## 移行手順
 
-In most cases it should just require changing the prefix. The lifecycle hooks `beforeDestroy` and `destroyed` have been renamed to `beforeUnmount` and `unmounted` respectively, so the corresponding event names will also need to be updated.
+ほとんどの場合、プレフィックスを変更するだけでよいでしょう。ライフサイクルフックの `beforeDestroy` と `destroyed` はそれぞれ `beforeUnmount` と `unmounted` に名前が変更されたので、対応するイベントの名前も更新する必要があります。
 
-[Migration build flags: `INSTANCE_EVENT_HOOKS`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `INSTANCE_EVENT_HOOKS`](../migration-build.html#compat-configuration)
 
-## See Also
+## 参照
 
-- [Migration guide - Events API](./events-api.html)
+- [移行ガイド - イベント API](./events-api.html)

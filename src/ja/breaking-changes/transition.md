@@ -1,20 +1,20 @@
 ---
-title: Transition Class Change
+title: トランジションクラスの変更
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-The `v-enter` transition class has been renamed to `v-enter-from` and the `v-leave` transition class has been renamed to `v-leave-from`.
+`v-enter` トランジションクラスは `v-enter-from` に名称変更され、`v-leave` トランジションクラスは `v-leave-from` に名称変更されました。
 
-## 2.x Syntax
+## 2.x の構文
 
-Before v2.1.8, we had two transition classes for each transition direction: initial and active states.
+v2.1.8 以前は、トランジションの方向ごとに 2 つの遷移クラス（初期状態と活性状態）がありました。
 
-In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/leave transitions. However, for backward compatibility, the `v-enter` name was untouched:
+v2.1.8 で、enter/leave のトランジション間のタイミングギャップに対応するため、`v-enter-to` を導入しました。しかし、後方互換性のために、`v-enter` という名前はそのまま残されています:
 
 ```css
 .v-enter,
@@ -28,11 +28,11 @@ In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/le
 }
 ```
 
-This became confusing, as _enter_ and _leave_ were broad and not using the same naming convention as their class hook counterparts.
+_enter_ と _leave_ は幅広く、対応するクラスフックと同じ命名規則を使っていないため、これは混乱を招きました。
 
-## 3.x Update
+## 3.x の更新内容
 
-In order to be more explicit and legible, we have now renamed these initial state classes:
+より明示的で分かりやすくするために、これらの初期状態クラスの名前を変更しました:
 
 ```css
 .v-enter-from,
@@ -46,22 +46,22 @@ In order to be more explicit and legible, we have now renamed these initial stat
 }
 ```
 
-It's now much clearer what the difference between these states is.
+これらの状態の違いがより明確になりました。
 
 ![Transition Diagram](/images/transitions.svg)
 
-The `<transition>` component's related prop names are also changed:
+また、`<transition>` コンポーネントの関連プロパティの名前も変更されました:
 
-- `leave-class` is renamed to `leave-from-class` (can be written as `leaveFromClass` in render functions or JSX)
-- `enter-class` is renamed to `enter-from-class` (can be written as `enterFromClass` in render functions or JSX)
+- `leave-class` は `leave-from-class` に名称変更されます（レンダー関数や JSX では `leaveFromClass` と記述できます）
+- `enter-class` は `enter-from-class` に名称変更されます（レンダー関数や JSX では `enterFromClass` と記述できます）
 
-## Migration Strategy
+## 移行手順
 
-1. Replace instances of `.v-enter` to `.v-enter-from`
-2. Replace instances of `.v-leave` to `.v-leave-from`
-3. Replace instances of related prop names, as above.
+1. `.v-enter` の使用箇所を `.v-enter-from` に置き換える。
+2. `.v-leave` の使用箇所を `.v-leave-from` に置き換える。
+3. 上述の、関連するプロパティ名の使用箇所を置き換える。
 
-## See also
+## 参照
 
-- [`<Transition>` as a root can no longer be toggled from the outside](./transition-as-root.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
+- [ルートの `<Transition>` は、外部からトグルできなくなりました](./transition-as-root.html)
+- [`<TransitionGroup>` はデフォルトでラッパー要素をレンダリングしなくなりました](./transition-group.html)
