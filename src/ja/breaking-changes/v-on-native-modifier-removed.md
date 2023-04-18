@@ -46,7 +46,7 @@ badges:
 
 ## 移行手順
 
-- `.native` 修飾子のインスタンスをすべて削除します。
+- `.native` 修飾子の使用箇所をすべて削除します。
 - すべてのコンポーネントで `emits` オプションを使用して、イベントをドキュメント化するようにします。
 
 [移行ビルドのフラグ: `COMPILER_V_ON_NATIVE`](../migration-build.html#compat-configuration)

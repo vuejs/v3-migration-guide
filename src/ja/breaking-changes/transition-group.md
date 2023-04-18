@@ -1,18 +1,18 @@
 ---
-title: Transition Group Root Element
+title: トランジショングループのルート要素
 badges:
   - breaking
 ---
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## 概要
 
-`<transition-group>` no longer renders a root element by default, but can still create one with the `tag` attribute.
+`<transition-group>` はデフォルトでルート要素をレンダリングしなくなりましたが、`tag` 属性でルート要素を作成できます。
 
-## 2.x Syntax
+## 2.x の構文
 
-In Vue 2, `<transition-group>`, like other custom components, needed a root element, which by default was a `<span>` but was customizable via the `tag` attribute.
+Vue 2 では、`<transition-group>` は他のカスタムコンポーネントと同様にルート要素が必要でした。ルート要素はデフォルトでは `<span>` ですが、`tag` 属性によってカスタマイズできます。
 
 ```html
 <transition-group tag="ul">
@@ -22,12 +22,12 @@ In Vue 2, `<transition-group>`, like other custom components, needed a root elem
 </transition-group>
 ```
 
-## 3.x Syntax
+## 3.x の構文
 
-In Vue 3, we have [fragment support](../new/fragments.html), so components no longer _need_ a root node. Consequently, `<transition-group>` no longer renders one by default.
+Vue 3 では、[fragment のサポート](../new/fragments.html)があるので、コンポーネントにはルートノードが不要になりました。その結果、`<transition-group>` はデフォルトでルートノードをレンダリングしなくなりました。
 
-- If you already have the `tag` attribute defined in your Vue 2 code, like in the example above, everything will work as before
-- If you didn't have one defined _and_ your styling or other behaviors relied on the presence of the `<span>` root element to work properly, simply add `tag="span"` to the `<transition-group>`:
+- 上の例のように、Vue 2 のコードですでに `tag` 属性が定義されている場合、すべて以前と同じように動作します
+- 定義されておらず、スタイリングやその他の動作がルート要素の `<span>` に依存して正しく動作しない場合は、`<transition-group>` に `tag="span"` を追加するだけです：
 
 ```html
 <transition-group tag="span">
@@ -35,11 +35,11 @@ In Vue 3, we have [fragment support](../new/fragments.html), so components no lo
 </transition-group>
 ```
 
-## Migration Strategy
+## 移行手順
 
-[Migration build flag: `TRANSITION_GROUP_ROOT`](../migration-build.html#compat-configuration)
+[移行ビルドのフラグ: `TRANSITION_GROUP_ROOT`](../migration-build.html#compat-configuration)
 
-## See also
+## 参照
 
-- [Some transition classes got a rename](./transition.html)
-- [`<Transition>` as a root can no longer be toggled from the outside](./transition-as-root.html)
+- [一部のトランジションクラスが名称変更されました](./transition.html)
+- [ルートの `<Transition>` は、外部からトグルできなくなりました](./transition-as-root.html)

@@ -141,22 +141,22 @@ export default {
             link: '/ja/breaking-changes/props-default-this'
           },
           {
-            text: 'Transition Class Change',
+            text: 'トランジションクラスの変更',
             link: '/ja/breaking-changes/transition'
           },
           {
-            text: 'Transition as Root',
+            text: 'ルートのトランジション',
             link: '/ja/breaking-changes/transition-as-root'
           },
           {
-            text: 'Transition Group Root Element',
+            text: 'トランジショングループのルート要素',
             link: '/ja/breaking-changes/transition-group'
           },
           {
-            text: 'VNode lifecycle events',
+            text: 'VNode ライフサイクルイベント',
             link: '/ja/breaking-changes/vnode-lifecycle-events'
           },
-          { text: 'Watch on Arrays', link: '/ja/breaking-changes/watch' }
+          { text: '配列の監視', link: '/ja/breaking-changes/watch' }
         ]
       }
     ]
