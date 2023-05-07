@@ -1,10 +1,10 @@
-# Vue 3 Migration Guide
+# Guia de Migração da Vue 3
 
-:::warning Vue 2 support will end on December 31st, 2023.
-Learn more about [Extended LTS](https://v2.vuejs.org/lts/) if upgrading to Vue 3 isn't feasible before the EOL date.
+:::warning O suporte da Vue 2 terminará no dia 31 de Dezembro de 2023.
+Saiba mais sobre a [Suporte de Longo Prazo Estendido](https://v2.vuejs.org/lts/) se atualização para Vue 3 não for viável antes da data do Fim da Vida.
 :::
 
-This guide is primarily for users with prior Vue 2 experience who want to learn about the changes between Vue 2 and Vue 3. **This is not something you have to read from top to bottom before trying out Vue 3.** The recommended way to learn Vue 3 is by reading the [new documentation](https://vuejs.org).
+Este guia é primariamente para os utilizadores com experiência de Vue 2 prévia que querem ficar a saber das mudanças entre a Vue 2 e a Vue 3. **Isto não é algo que tens de ler de cima a baixo antes de experimentares a Vue 3.** A maneira recomendada para aprender a Vue 3 é lendo a [nova documentação](https://vuejs.org). 
 
 <!-- VueMastery Start -->
 <script setup>
@@ -13,34 +13,34 @@ import VueMasteryWidget from './VueMastery.vue'
 <VueMasteryWidget/>
 <!-- VueMastery End -->
 
-## Notable New Features
+## Novas Funcionalidades Notáveis
 
-Some of the new features to keep an eye on in Vue 3 include:
+Algumas das novas funcionalidades a vigiar na Vue 3 incluem:
 
-- [Composition API](https://vuejs.org/guide/extras/composition-api-faq.html)<span class="note">\*</span>
-- [SFC Composition API Syntax Sugar (`<script setup>`)](https://vuejs.org/api/sfc-script-setup.html)<span class="note">\*</span>
-- [Teleport](https://vuejs.org/guide/built-ins/teleport.html)
-- [Fragments](./new/fragments.html)
-- [Emits Component Option](https://vuejs.org/api/options-state.html#emits)<span class="note">\*\*</span>
-- [`createRenderer` API from `@vue/runtime-core`](https://vuejs.org/api/custom-renderer.html) to create custom renderers
-- [SFC State-driven CSS Variables (`v-bind` in `<style>`)](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)<span class="note">\*</span>
-- [SFC `<style scoped>` can now include global rules or rules that target only slotted content](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
+- [API de Composição](https://vuejs.org/guide/extras/composition-api-faq.html)<span class="note">\*</span>
+- [Açúcar de Sintaxe da API de Composição da SFC (`<script setup>`)](https://vuejs.org/api/sfc-script-setup.html)<span class="note">\*</span>
+- [Teletransporte](https://vuejs.org/guide/built-ins/teleport.html)
+- [Fragmentos](./new/fragments.html)
+- [Opção do Componente de Emissões](https://vuejs.org/api/options-state.html#emits)<span class="note">\*\*</span>
+- [API `createRenderer` de `@vue/runtime-core`](https://vuejs.org/api/custom-renderer.html) para criar interpretadores personalizados.
+- [Variáveis de CSS Orientadas a Estado de Componente de Ficheiro Único (`v-bind` no `<style>`)](https://vuejs.org/api/sfc-css-features.html#v-bind-in-css)<span class="note">\*</span>
+- [`<style scoped>` do Componente de Ficheiro Único agora pode incluir regras globais ou regras que apontam apenas conteúdo encaixado](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0023-scoped-styles-changes.md)
 - [Suspense](https://vuejs.org/guide/built-ins/suspense.html) <sup class="warning">experimental</sup>
 
-<sub class="note"><b>\*</b> Now also supported in <a href="https://blog.vuejs.org/posts/vue-2-7-naruto.html" target="_blank">Vue 2.7</a></sub><br>
-<sub class="note"><b>\*\*</b> Supported in Vue 2.7, but only for type inference</sub>
+<sub class="note"><b>\*</b> Agora também suportada na <a href="https://blog.vuejs.org/posts/vue-2-7-naruto.html" target="_blank">Vue 2.7</a></sub><br>
+<sub class="note"><b>\*\*</b> Suportada na Vue 2.7, mas apenas para inferência de tipo</sub>
 
-## Breaking Changes
+## Mudanças de Rutura
 
-Breaking changes between Vue 2 and Vue 3 are listed [here](./breaking-changes/).
+Mudanças de rutura entre a Vue 2 e Vue 3 são listadas [nesta ligação](./breaking-changes/).
 
-## New Framework-level Recommendations
+## Novas Recomendações de Nível de Abstração
 
-New framework-level recommendations are listed [here](./recommendations).
+Novas recomendações de nível de abstração são listadas [nesta ligação](./recommendations)
 
-## Migration Build
+## Construção da Migração
 
-If you have an existing Vue 2 project or library that you intend to upgrade to Vue 3, we provide a build of Vue 3 that offers Vue 2 compatible APIs. Check out the [Migration Build](./migration-build.html) page for more details.
+Se tiveres um projeto de Vue 2 existente ou biblioteca que tencionas migrar para a Vue 3, fornecemos uma construção de Vue 3 que oferece APIs compatíveis de Vue 2. Consulte a página [Construção de Migração](./migration-build.html) para mais detalhes.
 
 <style>
 .note {
