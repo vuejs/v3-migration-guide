@@ -88,7 +88,6 @@ A migration strategy taking into account both the parent and the child would be:
 
 For a fuller discussion, see this [GitHub issue comment](https://github.com/vuejs/core/issues/4566#issuecomment-917997056).
 
-
 ## See also
 
 - [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md#v-on-listener-fallthrough)
