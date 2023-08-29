@@ -1,4 +1,4 @@
-# Guia de Migração da Vue 3
+# Guia de Migração da Vue 3 {#vue-3-migration-guide}
 
 :::warning O suporte da Vue 2 terminará no dia 31 de Dezembro de 2023.
 Saiba mais sobre a [Suporte de Longo Prazo Estendido](https://v2.vuejs.org/lts/) se atualização para Vue 3 não for viável antes da data do Fim da Vida.
@@ -8,12 +8,12 @@ Este guia é primariamente para os utilizadores com experiência de Vue 2 prévi
 
 <!-- VueMastery Start -->
 <script setup>
-import VueMasteryWidget from './VueMastery.vue'
+import VueMasteryWidget from '../VueMastery.vue'
 </script>
 <VueMasteryWidget/>
 <!-- VueMastery End -->
 
-## Novas Funcionalidades Notáveis
+## Novas Funcionalidades Notáveis {#notable-new-features}
 
 Algumas das novas funcionalidades a vigiar na Vue 3 incluem:
 
@@ -30,15 +30,15 @@ Algumas das novas funcionalidades a vigiar na Vue 3 incluem:
 <sub class="note"><b>\*</b> Agora também suportada na <a href="https://blog.vuejs.org/posts/vue-2-7-naruto.html" target="_blank">Vue 2.7</a></sub><br>
 <sub class="note"><b>\*\*</b> Suportada na Vue 2.7, mas apenas para inferência de tipo</sub>
 
-## Mudanças de Rutura
+## Mudanças de Rutura {#breaking-changes}
 
 Mudanças de rutura entre a Vue 2 e Vue 3 são listadas [nesta ligação](./breaking-changes/).
 
-## Novas Recomendações de Nível de Abstração
+## Novas Recomendações de Nível de Abstração {#new-framework-level-recommendations}
 
 Novas recomendações de nível de abstração são listadas [nesta ligação](./recommendations)
 
-## Construção da Migração
+## Construção da Migração {#migration-build}
 
 Se tiveres um projeto de Vue 2 existente ou biblioteca que tencionas migrar para a Vue 3, fornecemos uma construção de Vue 3 que oferece APIs compatíveis de Vue 2. Consulte a página [Construção de Migração](./migration-build.html) para mais detalhes.
 
