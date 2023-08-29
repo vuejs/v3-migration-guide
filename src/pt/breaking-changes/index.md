@@ -1,66 +1,66 @@
-# Breaking Changes
+# Mudanças de Rutura {#breaking-changes}
 
-This page lists all Vue 3 breaking changes from Vue 2.
+Esta página lista todas as mudanças de rutura da Vue 3 a partir da Vue 2.
 
-While it looks like a lot has changed, a lot of what you know and love about Vue is still the same; but we wanted to be as thorough as possible and provide detailed explanations and examples for every documented change.
+Embora pareça que muito tem mudado, muito do que conhecemos e amamos sobre a Vue ainda é o mesmo; mas queríamos ser o mais exaustivos possível e fornecer explicações e exemplos detalhados para cada mudança documentada.
 
-## Details
+## Detalhes {#details}
 
-### Global API
+### API Global {#global-api}
 
-- [Global Vue API is changed to use an application instance](./global-api.html)
-- [Global and internal APIs have been restructured to be tree-shakable](./global-api-treeshaking.html)
+- [A API Global da Vue está alterada para usar uma instância de aplicação](./global-api)
+- [As APIs internas e globais foram reestruturadas para ser passíveis a agitação da árvore](./global-api-treeshaking)
 
-### Template Directives
+### Diretivos do Modelo de Marcação {#template-directives}
 
-- [`v-model` usage on components has been reworked, replacing `v-bind.sync`](./v-model.html)
-- [`key` usage on `<template v-for>` and non-`v-for` nodes has changed](./key-attribute.html)
-- [`v-if` and `v-for` precedence when used on the same element has changed](./v-if-v-for.html)
-- [`v-bind="object"` is now order-sensitive](./v-bind.html)
-- [`v-on:event.native` modifier has been removed](./v-on-native-modifier-removed.md)
+- [O uso de `v-model` sobre os componentes foi re-trabalhado, substituindo o `v-bind.sync`](./v-model)
+- [O uso de `key` sobre `<template v-for>` e nós que não são `v-for` mudou](./key-attribute)
+- [a precedência de `v-if` e `v-for` quando usada sobre o mesmo elemento mudou](./v-if-v-for)
+- [`v-bind="object"` agora é sensível a ordem](./v-bind)
+- [O modificador `v-on:event.native` foi removido](./v-on-native-modifier-removed)
 
-### Components
+### Componentes {#components}
 
-- [Functional components can only be created using a plain function](./functional-components.html)
-- [`functional` attribute on single-file component (SFC) `<template>` and `functional` component option are deprecated](./functional-components.html)
-- [Async components now require `defineAsyncComponent` method to be created](./async-components.html)
-- [Component events should now be declared with the `emits` option](./emits-option.md)
+- [Os componentes funcionais apenas podem ser criados usando uma função simples](./functional-components)
+- [O atributo `functional` sobre o `<template>` do componente de ficheiro único e a opção de componente `functional` foram depreciados](./functional-components)
+- [Os componentes assíncronos agora exigem que o método `defineAsyncComponent` para serem criados](./async-components)
+- [Os eventos do componente agora devem ser declarados com a opção `emits`](./emits-option)
 
-### Render Function
+### Função de Interpretação {#render-function}
 
-- [Render function API changed](./render-function-api.html)
-- [`$scopedSlots` property is removed and all slots are exposed via `$slots` as functions](./slots-unification.html)
-- [`$listeners` has been removed / merged into `$attrs`](./listeners-removed)
-- [`$attrs` now includes `class` and `style` attributes](./attrs-includes-class-style.md)
+- [A API da função de interpretação mudou](./render-function-api)
+- [A propriedade `$scopedSlots` foi removida e todas as ranhuras são expostas através de `$slots` como funções](./slots-unification)
+- [`$listeners` foi removido / combinado ao `$attrs`](./listeners-removed)
+- [`$attrs` agora inclui os atributos `class` e `style`](./attrs-includes-class-style)
 
-### Custom Elements
+### Elementos Personalizados {#custom-elements}
 
-- [Custom element checks are now performed during template compilation](./custom-elements-interop.html)
-- [Special `is` attribute usage is restricted to the reserved `<component>` tag only](./custom-elements-interop.html#customized-built-in-elements)
+- [As verificações de elemento personalizado agora são realizadas durante a compilação do modelo de marcação](./custom-elements-interop)
+- [O uso do atributo `is` especial está restrito apenas ao marcador `<component>` reservado](./custom-elements-interop#customized-built-in-elements)
 
-### Other Minor Changes
+### Outras Pequenas Mudanças {#other-minor-changes}
 
-- The `destroyed` lifecycle option has been renamed to `unmounted`
-- The `beforeDestroy` lifecycle option has been renamed to `beforeUnmount`
-- [Props `default` factory function no longer has access to `this` context](./props-default-this.html)
-- [Custom directive API changed to align with component lifecycle and `binding.expression` removed](./custom-directives.html)
-- [The `data` option should always be declared as a function](./data-option.html)
-- [The `data` option from mixins is now merged shallowly](./data-option.html#mixin-merge-behavior-change)
-- [Attributes coercion strategy changed](./attribute-coercion.html)
-- [Some transition classes got a rename](./transition.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
-- [When watching an array, the callback will only trigger when the array is replaced. If you need to trigger on mutation, the `deep` option must be specified.](./watch.html)
-- `<template>` tags with no special directives (`v-if/else-if/else`, `v-for`, or `v-slot`) are now treated as plain elements and will result in a native `<template>` element instead of rendering its inner content.
-- [Mounted application does not replace the element it's mounted to](./mount-changes.html)
-- [Lifecycle `hook:` events prefix changed to `vnode-`](./vnode-lifecycle-events.html)
+- A opção do ciclo de vida `destroyed` foi renomeada para `unmounted`
+- A opção do ciclo de vida `beforeDestroy` foi renomeada para `beforeUnmount`
+- [A função de fábrica `default` das propriedades não mais tem acesso ao contexto de `this`](./props-default-this)
+- [A API de diretiva personalizada mudou para alinhar com o ciclo de vida do componente e `binding.expression` foi removida](./custom-directives)
+- [A opção `data` deve ser sempre declarada como uma função](./data-option)
+- [A opção `data` das misturas agora é combinada superficialmente](./data-option#mixin-merge-behavior-change)
+- [A estratégia de coerção de atributos mudou](./attribute-coercion)
+- [Algumas classes de transição foram renomeadas](./transition)
+- [`<TransitionGroup>` agora não desenha nenhum elemento envolvente por padrão](./transition-group)
+- [Quando observamos um vetor, a função de resposta apenas acionará quando o vetor for substituído. Se precisarmos acionar sobre a mutação, a opção `deep` deve ser especificada](./watch)
+- Os marcadores `<template>` sem diretivas especiais (`v-if/else-if/else`, `v-for`, ou `v-slot`) agora são tratados como elementos simples e resultarão num elemento `<template>` nativo ao invés de desenhar o seu conteúdo interno.
+- [A aplicação montada não substitui o elemento em que está montado](./mount-changes)
+- [O prefixo de eventos `hook:` do ciclo de vida mudou para `vnode-`](./vnode-lifecycle-events)
 
-### Removed APIs
+### APIs Removidas {#removed-apis}
 
-- [`keyCode` support as `v-on` modifiers](./keycode-modifiers.html)
-- [$on, $off and \$once instance methods](./events-api.html)
-- [Filters](./filters.html)
-- [Inline templates attributes](./inline-template-attribute.html)
-- [`$children` instance property](./children.html)
-- [`propsData` option](./props-data.html)
-- `$destroy` instance method. Users should no longer manually manage the lifecycle of individual Vue components.
-- Global functions `set` and `delete`, and the instance methods `$set` and `$delete`. They are no longer required with proxy-based change detection.
+- [Suporte de `keyCode` como modificadores de `v-on`](./keycode-modifiers)
+- [Os métodos de instância `$on`, `$off` and `$once`](./events-api)
+- [Filtros](./filters)
+- [Os atributos dos modelos de marcação embutidos](./inline-template-attribute)
+- [A propriedade de instância `$children`](./children)
+- [A opção `propsData`](./props-data)
+- Método de instância `$destroy`. Os utilizadores não mais gerem manualmente o ciclo de vida dos componentes da Vue individuais.
+- As funções globais `set` e `delete`, e os métodos de instância `$set` e `$delete`. Já não são exigidos com a deteção de mudança baseada em delegação.
