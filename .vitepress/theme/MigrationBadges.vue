@@ -25,6 +25,12 @@ const localeBadges = {
     breaking: 'несумісно',
     removed: 'видалено',
     updated: 'змінено'
+  },
+  'pt-PT': {
+    new: 'novo',
+    breaking: 'rutura',
+    removed: 'removido',
+    updated: 'atualizado'
   }
 }
 
