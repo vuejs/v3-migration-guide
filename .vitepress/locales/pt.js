@@ -1,157 +1,174 @@
 export default {
   vitepressConfig: {
-    title: 'Vue 3 Migration Guide',
-    description: 'Guide on migrating from Vue 2 to Vue 3',
-    lang: 'en-US'
+    title: 'Guia de Migração da Vue 3',
+    description: 'Guia sobre a migração da Vue 2 à Vue 3',
+    lang: 'pt-PT'
   },
   themeConfig: {
     nav: [
-      { text: 'Vue 3 Docs', link: 'https://vuejs.org' },
+      { text: 'Documentação da Vue 3', link: 'https://pt.vuejs.org' },
     ],
 
     sidebar: [
       {
         text: 'Guide',
         items: [
-          { text: 'Overview', link: '/' },
-          { text: 'New Recommendations', link: '/recommendations' },
-          { text: 'Migration Build', link: '/migration-build' },
+          { text: 'Visão Geral', link: '/pt/' },
+          { text: 'Novas Recomendações', link: '/pt/recommendations' },
+          { text: 'Construção de Migração', link: '/pt/migration-build' },
           {
-            text: 'Breaking Changes',
-            link: '/breaking-changes/'
+            text: 'Mudanças de Rutura',
+            link: '/pt/breaking-changes/'
           }
         ]
       },
       {
-        text: 'Global API',
+        text: 'API Global',
         items: [
           {
-            text: 'Global API Application Instance',
-            link: '/breaking-changes/global-api'
+            text: 'Instância e Aplicação da API Global',
+            link: '/pt/breaking-changes/global-api'
           },
           {
-            text: 'Global API Treeshaking',
-            link: '/breaking-changes/global-api-treeshaking'
+            text: 'Agitação de Árvore da API Global',
+            link: '/pt/breaking-changes/global-api-treeshaking'
           }
         ]
       },
       {
-        text: 'Template Directives',
+        text: 'Diretivas do Modelo de Marcação',
         items: [
-          { text: 'v-model', link: '/breaking-changes/v-model' },
+          { text: 'v-model', link: '/pt/breaking-changes/v-model' },
           {
-            text: 'key Usage Change',
-            link: '/breaking-changes/key-attribute'
+            text: 'Mudança de Uso de `key`',
+            link: '/pt/breaking-changes/key-attribute'
           },
           {
-            text: 'v-if vs. v-for Precedence',
-            link: '/breaking-changes/v-if-v-for'
+            text: 'Precedência de `v-if` vs. `v-for`',
+            link: '/pt/breaking-changes/v-if-v-for'
           },
-          { text: 'v-bind Merge Behavior', link: '/breaking-changes/v-bind' },
           {
-            text: 'v-on.native modifier removed',
-            link: '/breaking-changes/v-on-native-modifier-removed'
+            text: 'Comportamento de Combinação de `v-bind`',
+            link: '/pt/breaking-changes/v-bind'
+          },
+          {
+            text: 'Modificador `v-on.native` removido',
+            link: '/pt/breaking-changes/v-on-native-modifier-removed'
           }
         ]
       },
       {
-        text: 'Components',
+        text: 'Componentes',
         items: [
           {
-            text: 'Functional Components',
-            link: '/breaking-changes/functional-components'
+            text: 'Componentes Funcionais',
+            link: '/pt/breaking-changes/functional-components'
           },
           {
-            text: 'Async Components',
-            link: '/breaking-changes/async-components'
-          },
-          { text: 'emits Option', link: '/breaking-changes/emits-option' }
-        ]
-      },
-      {
-        text: 'Render Function',
-        items: [
-          {
-            text: 'Render Function API',
-            link: '/breaking-changes/render-function-api'
+            text: 'Componentes Assíncronos',
+            link: '/pt/breaking-changes/async-components'
           },
           {
-            text: 'Slots Unification',
-            link: '/breaking-changes/slots-unification'
-          },
-          {
-            text: '$listeners merged into $attrs',
-            link: '/breaking-changes/listeners-removed'
-          },
-          {
-            text: '$attrs includes class & style',
-            link: '/breaking-changes/attrs-includes-class-style'
+            text: 'Opção `emits`',
+            link: '/pt/breaking-changes/emits-option'
           }
         ]
       },
       {
-        text: 'Custom Elements',
+        text: 'Função de Interpretação',
         items: [
           {
-            text: 'Custom Elements Interop Changes',
-            link: '/breaking-changes/custom-elements-interop'
+            text: 'API da Função de Interpretação',
+            link: '/pt/breaking-changes/render-function-api'
+          },
+          {
+            text: 'Unificação de Ranhuras',
+            link: '/pt/breaking-changes/slots-unification'
+          },
+          {
+            text: '`$listeners` combinados no `$attrs`',
+            link: '/pt/breaking-changes/listeners-removed'
+          },
+          {
+            text: '`$attrs` inclui `class` & `style`',
+            link: '/pt/breaking-changes/attrs-includes-class-style'
           }
         ]
       },
       {
-        text: 'Removed APIs',
+        text: 'Elementos Personalizados',
         items: [
           {
-            text: 'v-on keyCode Modifiers',
-            link: '/breaking-changes/keycode-modifiers'
-          },
-          { text: 'Events API', link: '/breaking-changes/events-api' },
-          { text: 'Filters', link: '/breaking-changes/filters' },
-          {
-            text: 'inline-template',
-            link: '/breaking-changes/inline-template-attribute'
-          },
-          { text: '$children', link: '/breaking-changes/children' },
-          { text: 'propsData option', link: '/breaking-changes/props-data' }
+            text: 'Mudanças Interoperacionais dos Elementos Personalizados',
+            link: '/pt/breaking-changes/custom-elements-interop'
+          }
         ]
       },
       {
-        text: 'Other Minor Changes',
+        text: 'APIs Removidas',
         items: [
           {
-            text: 'Attribute Coercion Behavior',
-            link: '/breaking-changes/attribute-coercion'
+            text: 'Modificadores de `keyCode` de `v-on`',
+            link: '/pt/breaking-changes/keycode-modifiers'
+          },
+          { text: 'API de Eventos', link: '/pt/breaking-changes/events-api' },
+          { text: 'Filtros', link: '/pt/breaking-changes/filters' },
+          {
+            text: '`inline-template`',
+            link: '/pt/breaking-changes/inline-template-attribute'
           },
           {
-            text: 'Custom Directives',
-            link: '/breaking-changes/custom-directives'
-          },
-          { text: 'Data Option', link: '/breaking-changes/data-option' },
-          {
-            text: 'Mount API changes',
-            link: '/breaking-changes/mount-changes'
+            text: '`$children`', link: '/pt/breaking-changes/children'
           },
           {
-            text: 'Props Default Function this Access',
-            link: '/breaking-changes/props-default-this'
+            text: 'Opção `propsData`',
+            link: '/pt/breaking-changes/props-data'
+          }
+        ]
+      },
+      {
+        text: 'Outras Pequenas Mudanças',
+        items: [
+          {
+            text: 'Comportamento de Coerção de Atributo',
+            link: '/pt/breaking-changes/attribute-coercion'
           },
           {
-            text: 'Transition Class Change',
-            link: '/breaking-changes/transition'
+            text: 'Diretivas Personalizadas',
+            link: '/pt/breaking-changes/custom-directives'
           },
           {
-            text: 'Transition as Root',
-            link: '/breaking-changes/transition-as-root'
+            text: 'Opção `data`',
+            link: '/pt/breaking-changes/data-option'
           },
           {
-            text: 'Transition Group Root Element',
-            link: '/breaking-changes/transition-group'
+            text: 'Mudanças da API de Montagem',
+            link: '/pt/breaking-changes/mount-changes'
           },
           {
-            text: 'VNode lifecycle events',
-            link: '/breaking-changes/vnode-lifecycle-events'
+            text: 'Acesso de `this` da Função Padrão das Propriedades',
+            link: '/pt/breaking-changes/props-default-this'
           },
-          { text: 'Watch on Arrays', link: '/breaking-changes/watch' }
+          {
+            text: 'Mudança da Classe de Transição',
+            link: '/pt/breaking-changes/transition'
+          },
+          {
+            text: '`Transition` como Raiz',
+            link: '/pt/breaking-changes/transition-as-root'
+          },
+          {
+            text: 'Elemento de Raiz do Grupo de Transição',
+            link: '/pt/breaking-changes/transition-group'
+          },
+          {
+            text: 'Eventos do Ciclo de Vida do Nó Virtual',
+            link: '/pt/breaking-changes/vnode-lifecycle-events'
+          },
+          {
+            text: 'Observação dos Vetores',
+            link: '/pt/breaking-changes/watch'
+          }
         ]
       }
     ]
