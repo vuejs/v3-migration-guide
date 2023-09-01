@@ -136,9 +136,8 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    export default {
      resolve: {
        alias: [{
-        find: /^vue$/, replacement: '@vue/compat'
+         find: /^vue$/, replacement: '@vue/compat'
        }]
-      }
      },
      plugins: [
        vue({
