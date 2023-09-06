@@ -3,17 +3,17 @@ badges:
   - breaking
 ---
 
-# VNode Lifecycle Events <MigrationBadges :badges="$frontmatter.badges" />
+# Eventos do Ciclo de Vida do Nó Virtual <MigrationBadges :badges="$frontmatter.badges" /> {#vnode-lifecycle-events}
 
-## Overview
+## Visão Geral {#overview}
 
-In Vue 2, it was possible to use events to listen for key stages in a component's lifecycle. These events had names that started with the prefix `hook:`, followed by the name of the corresponding lifecycle hook.
+Na Vue 2, era possível usar eventos para ouvir os estágios principais do ciclo de vida dum componente. Estes eventos tinham nomes que começavam com o prefixo `hook:`, seguido pelo nome do gatilho do ciclo de vida correspondente.
 
-In Vue 3, this prefix has been changed to `vue:`. In addition, these events are now available for HTML elements as well as components.
+Na Vue 3, este prefixo foi mudado para `vue:`. Além disto, estes eventos agora estão disponíveis para os elementos de HTML, bem como para componentes.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed with `hook:`:
+Na Vue 2, o nome do evento é o mesmo que o gatilho do ciclo de vida equivalente, prefixado com `hook:`:
 
 ```html
 <template>
@@ -21,9 +21,9 @@ In Vue 2, the event name is the same as the equivalent lifecycle hook, prefixed 
 </template>
 ```
 
-## 3.x Syntax
+## Sintaxe 3.x {#_3-x-syntax}
 
-In Vue 3, the event name is prefixed with `vue:`:
+Na Vue 3, o nome do evento é prefixado com `vue:`:
 
 ```html
 <template>
@@ -31,12 +31,12 @@ In Vue 3, the event name is prefixed with `vue:`:
 </template>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-In most cases it should just require changing the prefix. The lifecycle hooks `beforeDestroy` and `destroyed` have been renamed to `beforeUnmount` and `unmounted` respectively, so the corresponding event names will also need to be updated.
+Na maioria dos casos, basta alterar o prefixo. Os gatilhos do ciclo de vida `beforeDestroy` e `destroyed` foram renomeado para `beforeUnmount` e `unmounted` respetivamente, então os nomes de evento correspondente também precisarão ser atualizados.
 
-[Migration build flags: `INSTANCE_EVENT_HOOKS`](../migration-build.html#compat-configuration)
+[Opções da Construção de Migração: `INSTANCE_EVENT_HOOKS`](../migration-build#compat-configuration)
 
-## See Also
+## Consulte Também {#see-also}
 
-- [Migration guide - Events API](./events-api.html)
+- [Guia de Migração - API de Eventos](./events-api)
