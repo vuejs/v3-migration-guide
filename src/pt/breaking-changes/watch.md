@@ -1,18 +1,17 @@
 ---
-title: Watch on Arrays
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Observação dos Vetores <MigrationBadges :badges="$frontmatter.badges" /> {#watch-on-arrays}
 
-## Overview
+## Visão Geral {#overview}
 
-- **BREAKING**: When watching an array, the callback will only trigger when the array is replaced. If you need to trigger on mutation, the `deep` option must be specified.
+- **RUTURA**: Quando observamos um vetor, a função de resposta apenas aciona quando o vetor é substituído. Se precisarmos de acionar na mutação, a opção `deep` deve ser especificada.
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-When using [the `watch` option](https://vuejs.org/api/options-state.html#watch) to watch an array, the callback will only trigger when the array is replaced. In other words, the watch callback will no longer be triggered on array mutation. To trigger on mutation, the `deep` option must be specified.
+Quando usamos [a opção `watch`](https://pt.vuejs.org/api/options-state#watch) para observar um vetor, a função de resposta apenas aciona quando o vetor é substituído. Em outras palavras, a função de resposta do observador não será mais acionada na mutação do vetor. Para acionar na mutação, a opção `deep` deve ser especificada.
 
 ```js
 watch: {
@@ -25,8 +24,8 @@ watch: {
 }
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-If you rely on watching array mutations, add the `deep` option to ensure that your callback is triggered correctly.
+Se dependermos da observação de mutações de vetores, adicionamos a opção `deep` para garantir que a nossa função de resposta é acionada corretamente.
 
-[Migration build flag: `WATCH_ARRAY`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `WATCH_ARRAY`](../migration-build#compat-configuration)
