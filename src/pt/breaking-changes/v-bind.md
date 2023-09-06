@@ -1,48 +1,47 @@
 ---
-title: v-bind Merge Behavior
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Comportamento de Fusão de `v-bind` <MigrationBadges :badges="$frontmatter.badges" /> {#v-bind-merge-behavior}
 
-## Overview
+## Visão Geral {#overview}
 
-- **BREAKING**: Order of bindings for v-bind will affect the rendering result.
+- **RUTURA**: Ordem dos vínculos para `v-bind` afetará o resultado da interpretação.
 
-## Introduction
+## Introdução {#introduction}
 
-When dynamically binding attributes on an element, a common scenario involves using both the `v-bind="object"` syntax as well as individual attributes in the same element. However, this raises questions as far as the priority of merging.
+Quando vinculamos dinamicamente os atributos num elemento, um cenário comum envolve usar ambas a sintaxe `v-bind="object"` bem como atributos individuais no mesmo elemento. No entanto, isto levanta questões quanto a prioridade da combinação.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, if an element has both `v-bind="object"` and an identical individual attribute defined, the individual attribute would always overwrite bindings in the `object`.
+Na 2.x, se um elemento tinha ambos `v-bind="object"` e um atributo individual idêntico definidos, o atributo individual sempre sobrescreveria os vínculos na `object`:
 
 ```html
-<!-- template -->
+<!-- modelo de marcação -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- resultado -->
 <div id="red"></div>
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In 3x, if an element has both `v-bind="object"` and an identical individual attribute defined, the order of how the bindings are declared determines how they are merged. In other words, rather than assuming developers want the individual attribute to always override what is defined in the `object`, developers now have more control over the desired merging behavior.
+Na 3.x, se um elemento tiver ambos `v-bind="object"` e um um atributo individual idêntico definidos, a ordem de como os vínculos são declarados determina como serão combinados. Em outras palavras, ao invés de assumir que os programadores querem que o atributo individual sempre sobreponha o que foi definido no `object`, agora os programadores têm mais controlo sobre o comportamento de combinação desejado:
 
 ```html
-<!-- template -->
+<!-- modelo de marcação -->
 <div id="red" v-bind="{ id: 'blue' }"></div>
-<!-- result -->
+<!-- resultado -->
 <div id="blue"></div>
 
-<!-- template -->
+<!-- modelo de marcação -->
 <div v-bind="{ id: 'blue' }" id="red"></div>
-<!-- result -->
+<!-- resultado -->
 <div id="red"></div>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-If you are relying on this override functionality for `v-bind`, we currently recommend ensuring that your `v-bind` attribute is defined before individual attributes.
+Se dependemos desta funcionalidade de sobreposição para `v-bind`, atualmente recomendamos garantir que o nosso atributo `v-bind` está definido antes dos atributos individuais.
 
-[Migration build flag: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build.html#compat-configuration)
+[Opção de Construção de Migração: `COMPILER_V_BIND_OBJECT_ORDER`](../migration-build#compat-configuration)
