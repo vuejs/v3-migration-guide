@@ -1,36 +1,35 @@
 ---
-title: v-if vs. v-for Precedence
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Precedência de `v-if` vs. `v-for` <MigrationBadges :badges="$frontmatter.badges" /> {#v-if-vs-v-for-precedence}
 
-## Overview
+## Visão Geral {#overview}
 
-- **BREAKING**: If used on the same element, `v-if` will have higher precedence than `v-for`
+- **RUTURA**: Se usada sobre o mesmo elemento, `v-if` terá precedência superior do que `v-for`
 
-## Introduction
+## Introdução {#introduction}
 
-Two of the most commonly used directives in Vue.js are `v-if` and `v-for`. So it's no surprise that there comes a time when developers want to use both together. While this is not a recommended practice, there may be times when this is necessary, so we wanted to provide guidance for how it works.
+Duas das diretivas mais usadas comummente na Vue.js são a `v-if` e `v-for`. Então não é de surpreender de que exista um momento quando os programadores querem usar ambas em conjunto. Enquanto isto não é uma prática recomendada, podem existir momentos em que isto é necessário, então queríamos fornecer orientação de como isto funciona.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, when using `v-if` and `v-for` on the same element, `v-for` would take precedence.
+Na 2.x, quando usamos `v-if` e `v-for` sobre o mesmo elemento, `v-for` receberia a prioridade.
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In 3.x, `v-if` will always have the higher precedence than `v-for`.
+Na 3.x, `v-if` sempre terá precedência superior a `v-for`.
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-It is recommended to avoid using both on the same element due to the syntax ambiguity.
+É recomendado evitar usar ambos sobre o mesmo elemento devido à ambiguidade da sintaxe.
 
-Rather than managing this at the template level, one method for accomplishing this is to create a computed property that filters out a list for the visible elements.
+No lugar de lidar com isto no nível do modelo de marcação, um método de alcançar isto é criar uma propriedade computada que filtra uma lista para os elementos visíveis.
 
-[Migration build flag: `COMPILER_V_IF_V_FOR_PRECEDENCE`](../migration-build.html#compat-configuration)
+[Opções da Construção de Migração: `COMPILER_V_IF_V_FOR_PRECEDENCE`](../migration-build#compat-configuration)
 
-## See also
+## Consulte também {#see-also}
 
-- [List Rendering - Displaying Filtered/Sorted Results](https://vuejs.org/guide/essentials/list.html#displaying-filtered-sorted-results)
-- [List Rendering - `v-for` with `v-if`](https://vuejs.org/guide/essentials/list.html#v-for-with-v-if)
+- [Interpretação de Lista - Exibição de Resultados Filtrados ou Organizados](https://pt.vuejs.org/guide/essentials/list#displaying-filtered-sorted-results)
+- [Interpretação de Lista - `v-for` com `v-if`](https://pt.vuejs.org/guide/essentials/list#v-for-with-v-if)
