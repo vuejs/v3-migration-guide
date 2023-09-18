@@ -3,42 +3,42 @@ badges:
   - breaking
 ---
 
-# `v-model` <MigrationBadges :badges="$frontmatter.badges" />
+# `v-model` <MigrationBadges :badges="$frontmatter.badges" /> {#v-model}
 
-## Overview
+## Visão Geral {#overview}
 
-In terms of what has changed, at a high level:
+Em termos do que mudou, num alto nível:
 
-- **BREAKING:** When used on custom components, `v-model` prop and event default names are changed:
-  - prop: `value` -> `modelValue`;
-  - event: `input` -> `update:modelValue`;
-- **BREAKING:** `v-bind`'s `.sync` modifier and component `model` option are removed and replaced with an argument on `v-model`;
-- **NEW:** Multiple `v-model` bindings on the same component are possible now;
-- **NEW:** Added the ability to create custom `v-model` modifiers.
+- **RUTURA:** Quando usada sobre os componentes personalizados, os nomes padrão da propriedade e evento da `v-model` são mudados:
+  - propriedade: `value` -> `modelValue`;
+  - evento: `input` -> `update:modelValue`;
+- **RUTURA:** O modificar `.sync` da `v-bind` e a opção `model` do componente foram removidos e substituídos por um argumento na `v-model`;
+- **NOVO:** Agora é possível realizar vários vínculos de `v-model` sobre o mesmo componente;
+- **NOVO:** Adicionada a habilidade de criar modificadores de `v-model` personalizados.
 
-For more information, read on!
+Para mais informação, continue a ler!
 
-## Introduction
+## Introdução {#introduction}
 
-When Vue 2.0 was released, the `v-model` directive required developers to always use the `value` prop. And if developers required different props for different purposes, they would have to resort to using `v-bind.sync`. In addition, this hard-coded relationship between `v-model` and `value` led to issues with how native elements and custom elements were handled.
+Quando a Vue 2.0 foi lançada, a diretiva `v-model` exigia que os programadores usassem sempre a propriedade `value`. E se os programadores precisassem de propriedades diferentes para diferentes propósitos, teriam de recorrer ao uso de `v-bind.sync`. Além disto, este relacionamento escrito manualmente entre `v-model` e `value` conduz a problemas a respeito de como os elementos nativos e elementos personalizados eram manipulados.
 
-In 2.2 we introduced the `model` component option that allows the component to customize the prop and event to use for `v-model`. However, this still only allowed a single `v-model` to be used on the component.
+Na 2.2, introduzimos a opção de componente `model` que permite o componente personalizar a propriedade e evento à usar para `v-model`. No entanto, isto ainda permitia apenas uma única `v-model` para ser usada sobre o componente.
 
-With Vue 3, the API for two-way data binding is being standardized in order to reduce confusion and to allow developers more flexibility with the `v-model` directive.
+Com a Vue 3, a API para o vínculo de dados bidirecional está a ser padronizada no sentido de reduzir a confusão e permitir que os programadores tenham mais flexibilidade com a diretiva `v-model`.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, using a `v-model` on a component was an equivalent of passing a `value` prop and emitting an `input` event:
+Na 2.x, usar uma `v-model` sobre um componente era equivalente a passar uma propriedade `value` e emitir um evento de `input`:
 
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- would be shorthand for: -->
+<!-- seria abreviação para: -->
 
 <ChildComponent :value="pageTitle" @input="pageTitle = $event" />
 ```
 
-If we wanted to change prop or event names to something different, we would need to add a `model` option to `ChildComponent` component:
+Se quiséssemos mudar os nomes da propriedade ou evento para algo diferente, precisaríamos de adicionar uma opção `model` ao componente `ChildComponent`:
 
 ```html
 <!-- ParentComponent.vue -->
@@ -55,9 +55,9 @@ export default {
     event: 'change'
   },
   props: {
-    // this allows using the `value` prop for a different purpose
+    // isto permite usar a propriedade `value` para um propósito diferente
     value: String,
-    // use `title` as the prop which take the place of `value`
+    // usar `title` como propriedade que toma o lugar de `value`
     title: {
       type: String,
       default: 'Default title'
@@ -66,40 +66,40 @@ export default {
 }
 ```
 
-So, `v-model` in this case would be a shorthand to
+Então, `v-model` neste caso seria uma abreviação para
 
 ```html
 <ChildComponent :title="pageTitle" @change="pageTitle = $event" />
 ```
 
-### Using `v-bind.sync`
+### Usando `v-bind.sync` {#using-v-bind-sync}
 
-In some cases, we might need "two-way binding" for a prop (sometimes in addition to existing `v-model` for the different prop). To do so, we recommended emitting events in the pattern of `update:myPropName`. For example, for `ChildComponent` from the previous example with the `title` prop, we could communicate the intent of assigning a new value with:
+Em alguns casos, podemos precisar do "vínculo bidirecional" para uma propriedade (algumas vezes além da `v-model` existente para a propriedade diferente). Para fazer isto, recomendamos emitir os eventos no padrão de `update:myPropName`. Por exemplo, para `ChildComponent` do exemplo anterior com a propriedade `title`, poderíamos comunicar a intenção de atribuir um novo valor com:
 
 ```js
 this.$emit('update:title', newValue)
 ```
 
-Then the parent could listen to that event and update a local data property, if it wants to. For example:
+Depois o pai poderia ouvir este evento e atualizar uma propriedade de dados local, se quisesse. Por exemplo:
 
 ```html
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
 
-For convenience, we had a shorthand for this pattern with the `.sync` modifier:
+Por conveniência, tínhamos uma abreviação para este padrão com o modificador `.sync`:
 
 ```html
 <ChildComponent :title.sync="pageTitle" />
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In 3.x `v-model` on the custom component is an equivalent of passing a `modelValue` prop and emitting an `update:modelValue` event:
+Na 3.x, usar a `v-model` sobre o componente personalizado é equivalente a passar uma propriedade `modelValue` e emitir um evento `update:modelValue`:
 
 ```html
 <ChildComponent v-model="pageTitle" />
 
-<!-- would be shorthand for: -->
+<!-- seria abreviação para: -->
 
 <ChildComponent
   :modelValue="pageTitle"
@@ -107,26 +107,26 @@ In 3.x `v-model` on the custom component is an equivalent of passing a `modelVal
 />
 ```
 
-### `v-model` arguments
+### Argumentos de `v-model` {#v-model-arguments}
 
-To change a model name, instead of a `model` component option, now we can pass an _argument_ to `v-model`:
+Para mudar o nome dum modelo, ao invés duma opção de componente `model`, agora podemos passar um _argumento_ à `v-model`:
 
 ```html
 <ChildComponent v-model:title="pageTitle" />
 
-<!-- would be shorthand for: -->
+<!-- seria abreviação para: -->
 
 <ChildComponent :title="pageTitle" @update:title="pageTitle = $event" />
 ```
 
-![v-bind anatomy](/images/v-bind-instead-of-sync.png)
+![anatomia da `v-bind`](/images/v-bind-instead-of-sync.png)
 
-This also serves as a replacement to `.sync` modifier and allows us to have multiple `v-model`s on the custom component.
+Isto também serve como uma substituição para o modificador `.sync` e permite-nos ter várias `v-model` sobre o componente personalizado:
 
 ```html
 <ChildComponent v-model:title="pageTitle" v-model:content="pageContent" />
 
-<!-- would be shorthand for: -->
+<!-- seria abreviação para: -->
 
 <ChildComponent
   :title="pageTitle"
@@ -136,31 +136,31 @@ This also serves as a replacement to `.sync` modifier and allows us to have mult
 />
 ```
 
-### `v-model` modifiers
+### Modificadores de `v-model` {#v-model-modifiers}
 
-In addition to 2.x hard-coded `v-model` modifiers like `.trim`, now 3.x supports custom modifiers:
+Além dos modificadores de `v-model` escritos manualmente da 2.x como `.trim`, agora a 3.x suporta modificadores personalizados:
 
 ```html
 <ChildComponent v-model.capitalize="pageTitle" />
 ```
 
-Read more about [custom `v-model` modifiers on components](https://vuejs.org/guide/components/v-model.html#handling-v-model-modifiers).
+Leia mais sobre [modificadores de `v-model` personalizados sobre os componentes](https://pt.vuejs.org/guide/components/v-model#handling-v-model-modifiers).
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-We recommend:
+Nós recomendamos:
 
-- checking your codebase for `.sync` usage and replace it with `v-model`:
+- verificar a base de código à procura pelo uso de `.sync` e substituí-lo por `v-model`:
 
   ```html
   <ChildComponent :title.sync="pageTitle" />
 
-  <!-- to be replaced with -->
+  <!-- para ser substituído por -->
 
   <ChildComponent v-model:title="pageTitle" />
   ```
 
-- for all `v-model`s without arguments, make sure to change props and events name to `modelValue` and `update:modelValue` respectively
+- para todas as `v-model` sem argumentos, certificar-se de mudar os nome das propriedades e eventos para `modelValue` e `update:modelValue` respetivamente:
 
   ```html
   <ChildComponent v-model="pageTitle" />
@@ -171,26 +171,26 @@ We recommend:
 
   export default {
     props: {
-      modelValue: String // previously was `value: String`
+      modelValue: String // anteriormente era `value: String`
     },
     emits: ['update:modelValue'],
     methods: {
       changePageTitle(title) {
-        this.$emit('update:modelValue', title) // previously was `this.$emit('input', title)`
+        this.$emit('update:modelValue', title) // anteriormente era `this.$emit('input', title)`
       }
     }
   }
   ```
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Opções da Construção de Migração:](../migration-build#compat-configuration)
 
 - `COMPONENT_V_MODEL`
 - `COMPILER_V_BIND_SYNC`
 
-## Next Steps
+## Próximas Etapas {#next-steps}
 
-For more information on the new `v-model` syntax, see:
+Para mais informação sobre a nova sintaxe da `v-model`, consulte:
 
-- [Using `v-model` on Components](https://vuejs.org/guide/components/v-model.html)
-- [`v-model` arguments](https://vuejs.org/guide/components/v-model.html#v-model-arguments)
-- [Handling `v-model` modifiers](https://vuejs.org/guide/components/v-model.html#handling-v-model-modifiers)
+- [Uso da `v-model` sobre os Componentes](https://pt.vuejs.org/guide/components/v-model)
+- [Argumentos da `v-model`](https://pt.vuejs.org/guide/components/v-model#v-model-arguments)
+- [Manipulação dos modificadores da `v-model`](https://pt.vuejs.org/guide/components/v-model#handling-v-model-modifiers)
