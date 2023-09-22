@@ -139,7 +139,7 @@ Para mais informação, consulte o [RFC da Mudança da API da Função de Interp
 
 - A Vue não deve ser empacotada na biblioteca
 - Para construções de módulo, a importação deve ser isolada e ser manipulada pelo empacotador do utilizador final
-- Para construções do UMD / navegador, deve tentar primeiro a `Vue.h` e o recuo para exigir chamadas
+- Para construções do UMD / navegador, deve tentar primeiro a `Vue.h` e o retrocesso para exigir chamadas
 
 ## Próximos Passos {#next-steps}
 
