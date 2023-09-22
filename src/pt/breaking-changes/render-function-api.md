@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# Render Function API <MigrationBadges :badges="$frontmatter.badges" />
+# API da Função de Interpretação <MigrationBadges :badges="$frontmatter.badges" /> {#render-function-api}
 
-## Overview
+## Visão Geral {#overview}
 
-This change will not affect `<template>` users.
+Esta mudança não afetará os utilizadores de `<template>`.
 
-Here is a quick summary of what has changed:
+Eis um  rápido sumário do que mudou:
 
-- `h` is now globally imported instead of passed to render functions as an argument
-- render function arguments changed to be more consistent between stateful and functional components
-- VNodes now have a flat props structure
+- `h` agora é globalmente importada ao invés de passada para as funções de interpretação como um argumento
+- Os argumentos da função de interpretação mudaram para serem mais consistentes entre os componentes de estado e funcionais
+- Os nós virtuais agora têm uma estrutura de propriedades plana
 
-For more information, read on!
+Para mais informação, continue a ler!
 
-## Render Function Argument
+## Argumento da Função de Interpretação {#render-function-argument}
 
-### 2.x Syntax
+### Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, the `render` function would automatically receive the `h` function (which is a conventional alias for `createElement`) as an argument:
+Na 2.x, a função `render` receberia automaticamente a função `h` (que é um pseudónimo convencional para `createElement`) como um argumento:
 
 ```js
-// Vue 2 Render Function Example
+// Exemplo da Função de Interpretação da Vue 2
 export default {
   render(h) {
     return h('div')
@@ -32,12 +32,12 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### Sintaxe da 3.x {#_3-x-syntax}
 
-In 3.x, `h` is now globally imported instead of being automatically passed as an argument.
+Na 3.x, `h` agora é importada globalmente ao invés de ser automaticamente passada como um argumento.
 
 ```js
-// Vue 3 Render Function Example
+// Exemplo da Função de Interpretação da Vue 3
 import { h } from 'vue'
 
 export default {
@@ -47,11 +47,11 @@ export default {
 }
 ```
 
-## VNode Props Format
+## Formato das Propriedades do Nó Virtual {#vnode-props-format}
 
-### 2.x Syntax
+### Sintaxe da 2.x {#_2-x-syntax-1}
 
-In 2.x, `domProps` contained a nested list within the VNode props:
+Na 2.x, `domProps` continha uma lista encaixada dentro das propriedades do nó virtual:
 
 ```js
 // 2.x
@@ -67,12 +67,12 @@ In 2.x, `domProps` contained a nested list within the VNode props:
 }
 ```
 
-### 3.x Syntax
+### Sintaxe da 3.x {#_3-x-syntax-1}
 
-In 3.x, the entire VNode props structure is flattened. Using the example from above, here is what it would look like now.
+Na 3.x, a estrutura inteira de propriedades do nó virtual foi aplanada. Usando o exemplo de cima, eis como se pareceria agora:
 
 ```js
-// 3.x Syntax
+// Sintaxe da 3.x
 {
   class: ['button', { 'is-outlined': isOutlined }],
   style: [{ color: '#34495E' }, { backgroundColor: buttonColor }],
@@ -83,11 +83,11 @@ In 3.x, the entire VNode props structure is flattened. Using the example from ab
 }
 ```
 
-## Registered Component
+## Componente Registado {#registered-component}
 
-### 2.x Syntax
+### Sintaxe da 2.x {#_2-x-syntax-2}
 
-In 2.x, when a component has been registered, the render function would work well when passing the component's name as a string to the first argument:
+Na 2.x, quando um componente era registado, a função de interpretação funcionaria bem quando passamos o nome do componente como uma sequência de caracteres ao primeiro argumento:
 
 ```js
 // 2.x
@@ -111,9 +111,9 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### Sintaxe da 3.x {#_3-x-syntax-2}
 
-In 3.x, with VNodes being context-free, we can no longer use a string ID to implicitly lookup registered components. Instead, we need to use an imported `resolveComponent` method:
+Na 3.x, com os nós virtuais sendo livres de contexto, já não podemos usar um identificador de sequência de caracteres para procurar implicitamente os componentes registados. No lugar disto, precisamos usar um método `resolveComponent` importado:
 
 ```js
 // 3.x
@@ -127,20 +127,20 @@ export default {
 }
 ```
 
-For more information, see [The Render Function Api Change RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
+Para mais informação, consulte o [RFC da Mudança da API da Função de Interpretação](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-[Migration build flag: `RENDER_FUNCTION`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `RENDER_FUNCTION`](../migration-build#compat-configuration)
 
-### Library Authors
+### Autores de Biblioteca {#library-authors}
 
-`h` being globally imported means that any library that contains Vue components will include `import { h } from 'vue'` somewhere. As a result, this creates a bit of overhead since it requires library authors to properly configure the externalization of Vue in their build setup:
+`h` sendo importada globalmente significa que qualquer biblioteca que contém componentes de Vue incluirá `import { h } from vue` em algum lugar. Como resultado, isto cria um pouco de custo uma vez que exige que os autores de biblioteca configurem apropriadamente a exteriorização da Vue em suas configurações de construção:
 
-- Vue should not be bundled into the library
-- For module builds, the import should be left alone and be handled by the end user bundler
-- For UMD / browser builds, it should try the global Vue.h first and fallback to require calls
+- A Vue não deve ser empacotada na biblioteca
+- Para construções de módulo, a importação deve ser isolada e ser manipulada pelo empacotador do utilizador final
+- Para construções do UMD / navegador, deve tentar primeiro a `Vue.h` e o recuo para exigir chamadas
 
-## Next Steps
+## Próximos Passos {#next-steps}
 
-See [Render Function Guide](https://vuejs.org/guide/extras/render-function.html) for more detailed documentation!
+Consulte o [Guia da Função de Interpretação](https://pt.vuejs.org/guide/extras/render-function) por documentação mais detalhada!
