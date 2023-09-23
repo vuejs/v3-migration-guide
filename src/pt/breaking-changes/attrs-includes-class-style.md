@@ -1,23 +1,22 @@
 ---
-title: $attrs includes class & style
 badges:
   - breaking
 ---
 
-# `$attrs` includes `class` & `style` <MigrationBadges :badges="$frontmatter.badges" />
+# `$attrs` inclui `class` e `style` <MigrationBadges :badges="$frontmatter.badges" /> {#attrs-includes-class-style}
 
-## Overview
+## Visão Geral {#overview}
 
-`$attrs` now contains _all_ attributes passed to a component, including `class` and `style`.
+`$attrs` agora contém _todos_ os atributos passados à um componente, incluindo `class` e `style`.
 
-## 2.x Behavior
+## Comportamento da 2.x {#_2-x-behavior}
 
-`class` and `style` attributes get some special handling in the Vue 2 virtual DOM implementation. For that reason, they are _not_ included in `$attrs`, while all other attributes are.
+Os atributos `class` e `style` são manipulados de maneira especial na implementação do DOM virtual da Vue 2. Por esta razão, _não_ estão incluídas na `$attrs`, enquanto todos os outros atributos estão.
 
-A side effect of this manifests when using `inheritAttrs: false`:
+Um efeito secundário disto manifesta-se quando usamos `inheritAttrs: false`:
 
-- Attributes in `$attrs` are no longer automatically added to the root element, leaving it to the developer to decide where to add them.
-- But `class` and `style`, not being part of `$attrs`, will still be applied to the component's root element:
+- Os atributos na `$attrs` não mais são automaticamente adicionados ao elemento de raiz, deixando-o ao programador decidir onde adicioná-los.
+- Mas `class` e `style`, não sendo parte de `$attrs`, ainda serão aplicados ao elemento de raiz do componente:
 
 ```vue
 <template>
@@ -32,13 +31,13 @@ export default {
 </script>
 ```
 
-when used like this:
+quando usado desta maneira:
 
 ```html
 <my-component id="my-id" class="my-class"></my-component>
 ```
 
-...will generate this HTML:
+...gerará este HTML:
 
 ```html
 <label class="my-class">
@@ -46,9 +45,9 @@ when used like this:
 </label>
 ```
 
-## 3.x Behavior
+## Comportamento da 3.x {#_3-x-behavior}
 
-`$attrs` contains _all_ attributes, which makes it easier to apply all of them to a different element. The example from above now generates the following HTML:
+`$attrs` contém _todos_ os atributos, o que torna mais fácil aplicar todos eles à um elemento diferente. O exemplo de cima agora gera o seguinte HTML:
 
 ```html
 <label>
@@ -56,16 +55,16 @@ when used like this:
 </label>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-In components that use `inheritAttrs: false`, make sure that styling still works as intended. If you previously relied on the special behavior of `class` and `style`, some visuals might be broken as these attributes might now be applied to another element.
+Nos componentes que usam `inheritAttrs: false`, devemos certificar-nos de que a estilização ainda funciona como pretendida. Se anteriormente dependíamos do comportamento especial de `class` e `style`, alguns visuais podem estar quebrados visto que estes atributos agora podem ser aplicados à um outro elemento.
 
-[Migration build flag: `INSTANCE_ATTRS_CLASS_STYLE`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `INSTANCE_ATTRS_CLASS_STYLE`](../migration-build#compat-configuration)
 
-## See also
+## Consulte também {#see-also}
 
-- [Relevant RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md)
-- [Migration guide - `$listeners` removed](./listeners-removed.md)
-- [Migration guide - New Emits Option](./emits-option.md)
-- [Migration guide - `.native` modifier removed](./v-on-native-modifier-removed.md)
-- [Migration guide - Changes in the Render Functions API](./render-function-api.md)
+- [RFC Relevante](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0031-attr-fallthrough.md)
+- [Guia de Migração - `$attrs` inclui `class` e `style`](./attrs-includes-class-style)
+- [Guia de Migração - Mudanças na API de Funções de Interpretação](./render-function-api)
+- [Guia de Migração - Nova Opção `emits`](./emits-option)
+- [Guia de Migração - modificador `.native` removido](./v-on-native-modifier-removed)
