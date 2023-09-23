@@ -3,65 +3,65 @@ badges:
   - breaking
 ---
 
-# Slots Unification <MigrationBadges :badges="$frontmatter.badges" />
+# Unificação de Ranhuras <MigrationBadges :badges="$frontmatter.badges" /> {#slots-unification}
 
-## Overview
+## Visão Geral {#overview}
 
-This change unifies normal and scoped slots in 3.x.
+Esta mudança unifica as ranhuras normais e isoladas na 3.x.
 
-Here is a quick summary of what has changed:
+Eis um rápido sumário do que mudou:
 
-- `this.$slots` now exposes slots as functions
-- **BREAKING**: `this.$scopedSlots` is removed
+- `this.$slots` agora expõe as ranhuras como funções
+- **RUTURA**: `this.$scopeSlots` foi removida
 
-For more information, read on!
+Para mais informação, continue a ler!
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-When using the render function, i.e., `h`, 2.x used to define the `slot` data property on the content nodes.
+Quando usamos a função de interpretação, por exemplo, a `h`, que a 2.x usava para definir a propriedade de dados `slot` sobre os nós de conteúdo:
 
 ```js
-// 2.x Syntax
+// Sintaxe da 2.x
 h(LayoutComponent, [
   h('div', { slot: 'header' }, this.header),
   h('div', { slot: 'content' }, this.content)
 ])
 ```
 
-In addition, when referencing scoped slots, they could be referenced using the following syntax:
+Além disto, quando referenciarmos as ranhuras isoladas, poderiam ser referenciadas usando a seguinte sintaxe:
 
 ```js
-// 2.x Syntax
+// Sintaxe da 2.x
 this.$scopedSlots.header
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In 3.x, slots are defined as children of the current node as an object:
+Na 3.x, as ranhuras são definidas como filhas do nó atual como um objeto:
 
 ```js
-// 3.x Syntax
+// Sintaxe da 3.x
 h(LayoutComponent, {}, {
   header: () => h('div', this.header),
   content: () => h('div', this.content)
 })
 ```
 
-And when you need to reference scoped slots programmatically, they are now unified into the `$slots` option.
+E quando precisarmos de referenciar as ranhuras isoladas programaticamente, agora estão unificadas na opção `$slots`:
 
 ```js
-// 2.x Syntax
+// Sintaxe da 2.x
 this.$scopedSlots.header
 
-// 3.x Syntax
+// Sintaxe da 3.x
 this.$slots.header()
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-A majority of the change has already been shipped in 2.6. As a result, the migration can happen in one step:
+Uma grande parte da mudança já foi entregada na 2.6. Como resultado, a migração pode acontecer em um passo:
 
-1. Replace all `this.$scopedSlots` occurrences with `this.$slots` in 3.x.
-2. Replace all occurrences of `this.$slots.mySlot` with `this.$slots.mySlot()`
+1. Substituir todas as ocorrências de `this.$scopedSlots` por `this.$slots` na 3.x.
+2. Substituir todas as ocorrências de `this.$slots.mySlot` por `this.$slot.mySlot()`.
 
-[Migration build flag: `INSTANCE_SCOPED_SLOTS`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `INSTANCE_SCOPED_SLOTS`](../migration-build#compat-configuration)
