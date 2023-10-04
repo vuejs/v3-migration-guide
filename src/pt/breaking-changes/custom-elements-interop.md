@@ -3,41 +3,41 @@ badges:
   - breaking
 ---
 
-# Custom Elements Interop <MigrationBadges :badges="$frontmatter.badges" />
+# Interoperabilidade dos Elementos Personalizados <MigrationBadges :badges="$frontmatter.badges" /> {#custom-elements-interop}
 
-## Overview
+## Visão Geral {#overview}
 
-- **BREAKING:** The checks to determine whether tags should be treated as custom elements are now performed during template compilation, and should be configured via compiler options instead of runtime config.
-- **BREAKING:** Special `is` attribute usage is restricted to the reserved `<component>` tag only.
-- **NEW:** To support 2.x use cases where `is` was used on native elements to work around native HTML parsing restrictions, prefix the value with `vue:` to resolve it as a Vue component.
+- **RUTURA:** As verificações para determinar se os marcadores devem ser tratados como elementos personalizados são agora realizadas durante a compilação do modelo de marcação, e deve ser configurada através das opções do compilador ao invés da configuração do tempo de execução.
+- **RUTURA:** O uso do atributo `is` especial está restrito apenas ao marcador `<component>` reservado.
+- **NOVO:** Para suportar os casos de uso da 2.x onde `is` era usado sobre os elementos nativos para dar a volta as restrições de analise do HTML nativo, prefixamos o valor com `vue:` para resolvê-lo como um componente de Vue.
 
-## Autonomous Custom Elements
+## Elementos Personalizados Autónomos {#autonomous-custom-elements}
 
-If we want to add a custom element defined outside of Vue (e.g. using the Web Components API), we need to 'instruct' Vue to treat it as a custom element. Let's use the following template as an example.
+Se quisermos adicionar um elemento personalizado definido fora da Vue (por exemplo, usando a API de Componentes da Web), precisamos de 'instruir' a Vue à tratá-lo como um elemento personalizado. Vamos usar o seguinte modelo de marcação como um exemplo:
 
 ```html
 <plastic-button></plastic-button>
 ```
 
-### 2.x Syntax
+### Sintaxe da 2.x {#_2-x-syntax}
 
-In Vue 2.x, configuring tags as custom elements was done via `Vue.config.ignoredElements`:
+Na Vue 2.x, a configuração dos marcadores como elementos personalizado era feita através da `Vue.config.ignoredElements`:
 
 ```js
-// This will make Vue ignore custom element defined outside of Vue
-// (e.g., using the Web Components APIs)
+// Isto fará a Vue ignorar elemento personalizado definido fora da Vue
+// (por exemplo, usando as APIs de Componentes da Web)
 
 Vue.config.ignoredElements = ['plastic-button']
 ```
 
-### 3.x Syntax
+### Sintaxe da 3.x {#_3-x-syntax}
 
-**In Vue 3.0, this check is performed during template compilation.** To instruct the compiler to treat `<plastic-button>` as a custom element:
+**Na Vue 3.0, esta verificação é realizada durante a compilação do modelo de marcação.** Para instruir o compilador à tratar `<plastic-button>` como um elemento personalizado:
 
-- If using a build step: pass the `isCustomElement` option to the Vue template compiler. If using `vue-loader`, this should be passed via `vue-loader`'s `compilerOptions` option:
+- Se estivermos a usar uma etapa de construção: passamos a opção `isCustomElement` ao compilador do modelo de marcação da Vue. Se estivermos a usar o `vue-loader`, esta deve ser passada através da opção `compilerOptions` da `vue-loader`:
 
   ```js
-  // in webpack config
+  // na configuração da webpack
   rules: [
     {
       test: /\.vue$/,
@@ -52,60 +52,59 @@ Vue.config.ignoredElements = ['plastic-button']
   ]
   ```
 
-- If using on-the-fly template compilation, pass it via `app.config.compilerOptions.isCustomElement`:
+- Se estivermos a usar a compilação de modelo de marcação em tempo real, passamos-o através `app.config.compilerOptions.isCustomElement`:
 
   ```js
   const app = Vue.createApp({})
   app.config.compilerOptions.isCustomElement = tag => tag === 'plastic-button'
   ```
 
-  It's important to note the runtime config only affects runtime template compilation - it won't affect pre-compiled templates.
+  É importante notar que a configuração da execução apenas afeta a compilação de modelo de marcação da execução - não afetará os modelos de marcação pré-compilados.
 
-## Customized Built-in Elements
+## Elementos Embutidos Personalizados {#customized-built-in-elements}
 
-The Custom Elements specification provides a way to use custom elements as [Customized Built-in Element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) by adding the `is` attribute to a built-in element:
+A especificação dos Elementos Personalizados fornece uma maneira de usar os elementos personalizados como [Elemento Embutido Personalizado](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example) adicionado o atributo `is` à um elemento embutido:
 
 ```html
 <button is="plastic-button">Click Me!</button>
 ```
 
-Vue's usage of the `is` special attribute was simulating what the native attribute does before it was made universally available in browsers. However, in 2.x it was interpreted as rendering a Vue component with the name `plastic-button`. This blocks the native usage of Customized Built-in Element mentioned above.
+O uso da Vue do atributo especial `is` era simular o que o atributo nativo faz antes que fosse tornado universalmente disponível nos navegadores. No entanto, na 2.X era interpretado como desenhar um componente de Vue com o nome `plastic-button`. Isto bloqueia o uso nativo do Elemento Embutido Personalizado mencionado acima.
 
-In 3.0, we are limiting Vue's special treatment of the `is` attribute to the `<component>` tag only.
+Na 3.0, estamos limitando o tratamento especial da Vue do atributo `is` apenas ao marcador `<component>`:
 
-- When used on the reserved `<component>` tag, it will behave exactly the same as in 2.x;
-- When used on normal components, it will behave like a normal attribute:
+- Quando usado no marcador `<component>` reservado, comportar-se-á exatamente como na 2.x;
+- Quando usado sobre os componentes normais, comportar-se-á tal como um atributo normal:
 
   ```html
   <foo is="bar" />
   ```
 
-  - 2.x behavior: renders the `bar` component.
-  - 3.x behavior: renders the `foo` component and passing the `is` attribute.
+  - Comportamento da 2.x: desenha o componente `bar`.
+  - Comportamento da 3.x: desenha o componente `foo` e passando o atributo `is`.
 
-- When used on plain elements, it will be passed to the `createElement` call as the `is` attribute, and also rendered as a native attribute. This supports the usage of customized built-in elements.
+- Quando usado sobre os elementos simples, será passado à chamada de `createElement` como o atributo `is`, e também será desenhado como um atributo nativo. Isto suporta o uso dos elementos embutidos personalizados:
 
   ```html
   <button is="plastic-button">Click Me!</button>
   ```
 
-  - 2.x behavior: renders the `plastic-button` component.
-  - 3.x behavior: renders a native button by calling
+  - Comportamento da 2.x: desenha o componente `plastic-button`.
+  - Comportamento da 3.x: desenha um botão nativo chamado:
 
     ```js
     document.createElement('button', { is: 'plastic-button' })
     ```
 
-[Migration build flag: `COMPILER_IS_ON_ELEMENT`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `COMPILER_IS_ON_ELEMENT`](../migration-build#compat-configuration)
 
-## `vue:` Prefix for In-DOM Template Parsing Workarounds
+## Prefixo `vue:` para Solucionar a Analise do Modelo de Marcação no DOM {#vue-prefix-for-in-dom-template-parsing-workarounds}
 
-> Note: this section only affects cases where Vue templates are directly written in the page's HTML.
-> When using in-DOM templates, the template is subject to native HTML parsing rules. Some HTML elements, such as `<ul>`, `<ol>`, `<table>` and `<select>` have restrictions on what elements can appear inside them, and some elements such as `<li>`, `<tr>`, and `<option>` can only appear inside certain other elements.
+> Nota: esta seção apenas afeta casos onde os modelos de marcação da Vue são diretamente escritos no HTML da página. Quando usamos os modelos de marcação no DOM, o modelo de marcação está sujeito às regras de analise de HTML nativa. Alguns elementos de HTML, tal como `<ul>`, `<ol>`, `<table>` e `<select>` têm restrições sobre quais elementos podem aparecer dentro deles, e alguns elementos tais como `<li>`, `<tr>`, e `<option>` apenas podem aparecer dentro de outros certos elementos.
 
-### 2.x Syntax
+### Sintaxe da 2.x {#_2-x-syntax-1}
 
-In Vue 2 we recommended working around with these restrictions by using the `is` attribute on a native tag:
+Na Vue 2, recomendados dar a volta a estas restrições usando o atributo `is` sobre um marcador nativo:
 
 ```html
 <table>
@@ -113,9 +112,9 @@ In Vue 2 we recommended working around with these restrictions by using the `is`
 </table>
 ```
 
-### 3.x Syntax
+### Sintaxe da 3.x {#_3-x-syntax-1}
 
-With the behavior change of `is`, a `vue:` prefix is now required to resolve the element as a Vue component:
+Com a mudança de comportamento do `is`, um prefixo `vue:` agora é necessário para resolver o elemento como um componente de Vue:
 
 ```html
 <table>
@@ -123,12 +122,12 @@ With the behavior change of `is`, a `vue:` prefix is now required to resolve the
 </table>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-- Replace `config.ignoredElements` with either `vue-loader`'s `compilerOptions` (with the build step) or `app.config.compilerOptions.isCustomElement` (with on-the-fly template compilation)
+- Substituir `config.ignoredElements` ou com a `compilerOptions` da `vue-loader` (com a etapa de construção) ou com a `app.config.compilerOptions.isCustomElement` (com a compilação do modelo de marcação em tempo real).
 
-- Change all non-`<component>` tags with `is` usage to `<component is="...">` (for SFC templates) or prefix it with `vue:` (for in-DOM templates).
+- Mudar todos os marcadores que são `<component>` com o uso do `is` para `<component is="...">` (para os modelos de marcação do componente de ficheiro único) ou o prefixar com `vue:` (para os modelos de marcação no DOM).
 
-## See Also
+## Consulte também {#see-also}
 
-- [Guide - Vue and Web Components](https://vuejs.org/guide/extras/web-components.html)
+- [Guia - Vue e os Componentes da Web](https://pt.vuejs.org/guide/extras/web-components)
