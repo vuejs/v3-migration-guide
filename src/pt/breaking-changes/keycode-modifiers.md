@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# KeyCode Modifiers <MigrationBadges :badges="$frontmatter.badges" />
+# Modificadores de Código de Tecla <MigrationBadges :badges="$frontmatter.badges" /> {#keycode-modifiers}
 
-## Overview
+## Visão Geral {#overview}
 
-Here is a quick summary of what has changed:
+Eis um rápido sumário do que mudou:
 
-- **BREAKING**: Using numbers, i.e. keyCodes, as `v-on` modifiers is no longer supported
-- **BREAKING**: `config.keyCodes` is no longer supported
+- **RUTURA**: Usamos números, ou seja, os códigos da tecla, uma vez que modificadores da `v-on` já não são suportados.
+- **RUTURA**: `config.keyCodes` já não é suportado.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In Vue 2, `keyCodes` were supported as a way to modify a `v-on` method.
+Na Vue 2, `keyCodes` era suportado como uma maneira de modificar um método de `v-on`:
 
 ```html
-<!-- keyCode version -->
+<!-- versão de código de tecla -->
 <input v-on:keyup.13="submit" />
 
-<!-- alias version -->
+<!-- versão de pseudónimo -->
 <input v-on:keyup.enter="submit" />
 ```
 
-In addition, you could define your own aliases via the global `config.keyCodes` option.
+Além disto, poderíamos definir os nossos próprios pseudónimos através duma opção `config.keyCodes` global:
 
 ```js
 Vue.config.keyCodes = {
@@ -33,40 +33,40 @@ Vue.config.keyCodes = {
 ```
 
 ```html
-<!-- keyCode version -->
+<!-- versão de código de tecla -->
 <input v-on:keyup.112="showHelpText" />
 
-<!-- custom alias version -->
+<!-- versão de pseudónimo personalizado -->
 <input v-on:keyup.f1="showHelpText" />
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-Since [`KeyboardEvent.keyCode` has been deprecated](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode), it no longer makes sense for Vue 3 to continue supporting this as well. As a result, it is now recommended to use the kebab-case name for any key you want to use as a modifier.
+Já que a [`KeyboardEvent.keyCode` foi depreciado](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode), também já não faz sentido para a Vue 3 continuar a suportar isto. Como resultado, agora é recomendado usar o nome de caixa-espetada para qualquer chave que quisermos usar como um modificador:
 
 ```html
-<!-- Vue 3 Key Modifier on v-on -->
+<!-- Modificador de Tecla da Vue 3 sobre a `v-on` -->
 <input v-on:keyup.page-down="nextPage">
 
-<!-- Matches both q and Q -->
+<!-- Corresponde a ambos q e Q -->
 <input v-on:keypress.q="quit">
 ```
 
-As a result, this means that `config.keyCodes` is now also deprecated and will no longer be supported.
+Como resultado, isto significa que `config.keyCodes` agora também está depreciada e já não será suportada.
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-For those using `keyCode` in their codebase, we recommend converting them to their kebab-cased named equivalents.
+Para aqueles usando `keyCode` na sua base de código, recomendados convertê-los aos seus equivalentes nomeados com a caixa-espetada.
 
-The keys for some punctuation marks can just be included literally. e.g. For the `,` key:
+As teclas para alguns marcadores de pontuação apenas podem ser incluídos literalmente, por exemplo para a tecla `,`:
 
 ```html
 <input v-on:keypress.,="commaPress">
 ```
 
-Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
+Limitações da sintaxe impedem certos caracteres de serem correspondidos, tais como `"`, `'`, `/`, `=`, `>`, e `.`. Para estes caracteres devemos verificar a `event.key` dentro do ouvinte.
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração:](../migration-build#compat-configuration)
 
 - `CONFIG_KEY_CODES`
 - `V_ON_KEYCODE_MODIFIER`
