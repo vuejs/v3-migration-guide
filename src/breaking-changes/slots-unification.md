@@ -65,7 +65,7 @@ A majority of the change has already been shipped in 2.6. As a result, the migra
 2. Replace all occurrences of `this.$slots.mySlot` with `this.$slots.mySlot()`
 
 If you are upgrading to Vue 3 from Vue <2.6.0, you can look at the
-[documentation of slots in Vue 2 docs][https://v2.vuejs.org/v2/guide/components-slots]
+(documentation of slots in Vue 2 docs)[https://v2.vuejs.org/v2/guide/components-slots]
 to gain more information on how the slots are changed.
 
 [Migration build flag: `INSTANCE_SCOPED_SLOTS`](../migration-build.html#compat-configuration)
