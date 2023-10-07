@@ -3,17 +3,17 @@ badges:
   - removed
 ---
 
-# Filters <MigrationBadges :badges="$frontmatter.badges" />
+# Filtros <MigrationBadges :badges="$frontmatter.badges" /> {#filters}
 
-## Overview
+## Visão Geral {#overview}
 
-Filters are removed from Vue 3.0 and no longer supported.
+Os filtros foram removidos da Vue 3.0 e já não são suportados.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, developers could use filters in order to apply common text formatting.
+Na 2.x, os programadores poderiam usar os filtros para aplicar formatação de texto comum.
 
-For example:
+Por exemplo:
 
 ```html
 <template>
@@ -38,13 +38,13 @@ For example:
 </script>
 ```
 
-While this seems like a convenience, it requires a custom syntax that breaks the assumption of expressions inside curly braces being "just JavaScript," which has both learning and implementation costs.
+Embora isto pareça como uma conveniência, exige uma sintaxe personalizada que quebra a suposição de expressões dentro das chavetas serem "apenas JavaScript", o que tem ambos custos de aprendizagem e implementação.
 
-## 3.x Update
+## Atualização da 3.x {#_3-x-update}
 
-In 3.x, filters are removed and no longer supported. Instead, we recommend replacing them with method calls or computed properties.
+Na 3.x, os filtros foram removidos e já não são suportados. Ao invés disto, recomendamos substituí-los por chamadas de métodos ou propriedades computadas.
 
-Using the example above, here is one example of how it could be implemented.
+Usando o exemplo acima, eis um exemplo de como poderia ser implementado:
 
 ```html
 <template>
@@ -69,20 +69,20 @@ Using the example above, here is one example of how it could be implemented.
 </script>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-Instead of using filters, we recommend replacing them with computed properties or methods.
+No lugar do uso de filtros, recomendamos substituí-los por propriedades computadas ou métodos.
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Opções da Construção de Migração:](../migration-build#compat-configuration)
 
 - `FILTERS`
 - `COMPILER_FILTERS`
 
-### Global Filters
+### Filtros Globais {#global-filters}
 
-If you are using filters that were globally registered and then used throughout your app, it's likely not convenient to replace them with computed properties or methods in each individual component.
+Se estivermos a usar os filtros que eram registados globalmente e depois usados por toda nossa aplicação, provavelmente não é conveniente substituí-los por propriedades computadas ou métodos em cada componente individual.
 
-Instead, you can make your global filters available to all components through [globalProperties](https://vuejs.org/api/application.html#app-config-globalproperties):
+Ao invés disto, podemos tornar os nossos filtros globais disponíveis à todos os componentes através da [`globalProperties`](https://pt.vuejs.org/api/application#app-config-globalproperties):
 
 ```js
 // main.js
@@ -95,7 +95,7 @@ app.config.globalProperties.$filters = {
 }
 ```
 
-Then you can fix all templates using this `$filters` object like this:
+Depois podemos consertar todos os modelos de marcação usando este objeto `$filters` desta maneira:
 
 ```html
 <template>
@@ -104,4 +104,4 @@ Then you can fix all templates using this `$filters` object like this:
 </template>
 ```
 
-Note that with this approach, you can only use methods, not computed properties, as the latter only make sense when defined in the context of an individual component.
+Nota que com esta abordagem, apenas podemos usar métodos, e nada de propriedades computadas, visto que o segundo apenas faz sentido quando definido no contexto dum componente individual.
