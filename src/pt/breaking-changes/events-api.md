@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Events API <MigrationBadges :badges="$frontmatter.badges" />
+# API de Eventos <MigrationBadges :badges="$frontmatter.badges" /> {#events-api}
 
-## Overview
+## Visão Geral {#overview}
 
-`$on`, `$off` and `$once` instance methods are removed. Component instances no longer implement the event emitter interface.
+Os métodos de instância `$on`, `$off`, e `$once` foram removidos. As instâncias do componente já não implementam a interface emissora de evento.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, a Vue instance could be used to trigger handlers attached imperatively via the event emitter API (`$on`, `$off` and `$once`). This could be used to create an _event bus_ to create global event listeners used across the whole application:
+Na 2.x, uma instância de Vue poderia ser usada para acionar manipuladores anexados imperativamente através da API emissora de evento (`$on`, `$off` e `$once`). Isto poderia ser usado para criar um _autocarro de evento_ para criar ouvintes de evento global usados por toda aplicação:
 
 ```js
 // eventBus.js
@@ -27,13 +27,13 @@ import eventBus from './eventBus'
 
 export default {
   mounted() {
-    // adding eventBus listener
+    // adicionado ouvinte do `eventBus`
     eventBus.$on('custom-event', () => {
       console.log('Custom event triggered!')
     })
   },
   beforeDestroy() {
-    // removing eventBus listener
+    // removendo o ouvinte do `eventBus`
     eventBus.$off('custom-event')
   }
 }
@@ -46,40 +46,40 @@ import eventBus from './eventBus'
 export default {
   methods: {
     callGlobalCustomEvent() {
-      eventBus.$emit('custom-event') // if ChildComponent is mounted, we will have a message in the console
+      eventBus.$emit('custom-event') // se `ChildComponent` estiver montado, teremos uma mensagem na consola
     }
   }
 }
 ```
 
-## 3.x Update
+## Atualização da 3.x {#_3-x-update}
 
-We removed `$on`, `$off` and `$once` methods from the instance completely. `$emit` is still a part of the existing API as it's used to trigger event handlers declaratively attached by a parent component.
+Nós removemos completamente os métodos `$on`, `$off` e `$once` da instância. `$emit` ainda é uma parte da API existente uma vez que é usado para acionar os manipuladores de evento anexados de maneira declarativa por um componente pai.
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-[Migration build flag: `INSTANCE_EVENT_EMITTER`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `INSTANCE_EVENT_EMITTER`](../migration-build#compat-configuration)
 
-In Vue 3, it is no longer possible to use these APIs to listen to a component's own emitted events from within a component. There is no migration path for that use case.
+Na Vue 3, já não é possível usar estas APIs para ouvir os eventos emitidos por um componente a partir de dentro dum componente. Não existe nenhum caminho de migração para este caso de uso.
 
-### Root Component Events
+### Eventos do Componente de Raiz {#root-component-events}
 
-Static event listeners can be added to the root component by passing them as props to `createApp`:
+Os ouvintes de evento estático podem ser adicionados ao componente de raiz passando-os como propriedades ao `createApp`:
 
 ```js
 createApp(App, {
-  // Listen for the 'expand' event
+  // Ouvir o evento 'expand'
   onExpand() {
     console.log('expand')
   }
 })
 ```
 
-### Event Bus
+### Autocarro de Evento {#event-bus}
 
-The event bus pattern can be replaced by using an external library implementing the event emitter interface, for example [mitt](https://github.com/developit/mitt) or [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
+O padrão de autocarro de evento pode ser substituído usando uma biblioteca externa implementando a interface emissora de evento, por exemplo [`mitt`](https://github.com/developit/mitt) ou [`tiny-emitter`](https://github.com/scottcorgan/tiny-emitter).
 
-Example:
+Exemplo:
 
 ```js
 // eventBus.js
@@ -93,12 +93,12 @@ export default {
 }
 ```
 
-This provides the same event emitter API as in Vue 2.
+Isto fornece a mesma API emissora de evento que na Vue 2.
 
-In most circumstances, using a global event bus for communicating between components is discouraged. While it is often the simplest solution in the short term, it almost invariably proves to be a maintenance headache in the long term. Depending on the circumstances, there are various alternatives to using an event bus:
+Na maioria das circunstâncias, o uso dum autocarro de evento global para comunicação entre componentes é desencorajada. Embora seja frequentemente a solução mais simples a curto prazo, quase sempre se revela uma dor de cabeça para a manutenção a longo prazo. Dependendo das circunstâncias, existem várias alternativas para o uso dum autocarro de evento: 
 
-* Props and events should be your first choice for parent-child communication. Siblings can communicate via their parent.
-* Provide / inject allow a component to communicate with its slot contents. This is useful for tightly-coupled components that are always used together.
-* Provide / inject can also be used for long-distance communication between components. It can help to avoid 'prop drilling', where props need to be passed down through many levels of components that don't need those props themselves.
-* Prop drilling can also be avoided by refactoring to use slots. If an interim component doesn't need the props then it might indicate a problem with separation of concerns. Introducing a slot in that component allows the parent to create the content directly, so that props can be passed without the interim component needing to get involved.
-* [Global state management](https://vuejs.org/guide/scaling-up/state-management.html), such as [Pinia](https://pinia.vuejs.org/).
+* As propriedades e eventos devem ser a nossa primeira escolha para comunicação pai-filho. Os irmãos podem comunicarem-se através do seu pai
+* O fornecimento e injeção permitem um componente comunicar com os conteúdos da sua ranhura. Isto é útil para componentes fortemente acoplados que são sempre usados juntos.
+* O fornecimento e injeção também podem ser usados para comunicação de longa distância entre componentes. Pode ajudar a evitar 'perfuração de propriedade', onde as propriedades precisam ser passadas para baixo através de vários níveis de componentes que não precisam em si mesmos daquelas propriedades.
+* A perfuração de propriedade também pode ser evitada refatorando o uso de ranhuras. Se um componente interino não precisar das propriedades então pode indicar um problema com a separação de interesses. A introdução duma ranhura neste componente permite o pai criar o conteúdo diretamente, para que as propriedades possam ser passadas sem o componente interino precisar envolver-se.
+* [Gestão de Estado Global](https://pt.vuejs.org/guide/scaling-up/state-management), tal como a [Pinia](https://pinia-docs-pt.netlify.app/).
