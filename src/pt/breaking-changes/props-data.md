@@ -3,15 +3,15 @@ badges:
   - removed
 ---
 
-# `propsData` <MigrationBadges :badges="$frontmatter.badges" />
+# `propsData` <MigrationBadges :badges="$frontmatter.badges" /> {#propsdata}
 
-## Overview
+## Visão Geral {#overview}
 
-The `propsData` option, used to pass props to the Vue instance during its creation, is removed. To pass props to the root component of a Vue 3 application, use the second argument of [createApp](https://vuejs.org/api/application.html#createapp).
+A opção `propsData`, usada para passar propriedades à instância de Vue durante sua criação, foi removido. Para passar propriedades ao componente de raiz duma aplicação de Vue 3, usamos o segundo argumento da [`createApp`](https://pt.vuejs.org/api/application#createapp).
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, we were able to pass props to a Vue instance during its creation:
+Na 2.x, éramos capazes de passar propriedades à uma instância de Vue durante sua criação:
 
 ```js
 const Comp = Vue.extend({
@@ -26,9 +26,9 @@ new Comp({
 })
 ```
 
-## 3.x Update
+## Atualização da 3.x {#_3-x-update}
 
-The `propsData` option has been removed. If you need to pass props to the root component instance during its creation, you should use the second argument of `createApp`:
+A opção `propsData` foi removida. Se precisarmos de passar propriedades à instância do componente de raiz durante sua criação, devemos usar o segundo argumento da `createApp`:
 
 ```js
 const app = createApp(
