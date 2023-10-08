@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Inline Template Attribute <MigrationBadges :badges="$frontmatter.badges" />
+# Atributo `inline-template` <MigrationBadges :badges="$frontmatter.badges" /> {#inline-template-attribute}
 
-## Overview
+## Visão Geral {#overview}
 
-Support for the [inline-template feature](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates) has been removed.
+O suporte para a [funcionalidade `inline-template`](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates) foi removido.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, Vue provided the `inline-template` attribute on child components to use its inner content as its template instead of treating it as distributed content.
+Na 2.x, a Vue fornecia o atributo `inline-template` sobre os componentes filho para usar o seu conteúdo interno como seu modelo de marcação ao invés de tratá-lo como conteúdo distribuído:
 
 ```html
 <my-component inline-template>
@@ -22,19 +22,19 @@ In 2.x, Vue provided the `inline-template` attribute on child components to use 
 </my-component>
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-This feature will no longer be supported.
+Esta funcionalidade já não será suportada.
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-Most of the use cases for `inline-template` assumes a no-build-tool setup, where all templates are written directly inside the HTML page.
+A maioria dos casos de uso para `inline-template` presumem uma configuração sem ferramenta de construção, onde todos os modelos de marcação são escritos diretamente dentro da página HTML.
 
-[Migration build flag: `COMPILER_INLINE_TEMPLATE`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `COMPILER_INLINE_TEMPLATE`](../migration-build#compat-configuration)
 
-### Option #1: Use `<script>` tag
+### Opção #1: Usar o marcador `<script>` {#option-1-use-script-tag}
 
-The most straightforward workaround in such cases is using `<script>` with an alternative type:
+A solução mais direta em tais casos é usar o `<script>` com um tipo alternativo:
 
 ```html
 <script type="text/html" id="my-comp-template">
@@ -42,7 +42,7 @@ The most straightforward workaround in such cases is using `<script>` with an al
 </script>
 ```
 
-And in the component, target the template using a selector:
+E no componente, apontamos o modelo de marcação usando um seletor:
 
 ```js
 const MyComp = {
@@ -51,34 +51,34 @@ const MyComp = {
 }
 ```
 
-This doesn't require any build setup, works in all browsers, is not subject to any in-DOM HTML parsing caveats (e.g. you can use camelCase prop names), and provides proper syntax highlighting in most IDEs. In traditional server-side frameworks, these templates can be split out into server template partials (included into the main HTML template) for better maintainability.
+Isto não exige nenhuma configuração de construção, funciona em todos os navegadores, não está sujeito à quaisquer advertências de analise de HTML no DOM (por exemplo, podemos usar nomes de propriedade de caixaDeCamelo), e fornece destacamento de sintaxe apropriado na maioria dos ambientes de desenvolvimento integrado. Nas abstrações do lado do servidor tradicionais, estes modelos de marcação podem ser separados em parciais de modelo de marcação do servidor (incluído no modelo de marcação de HTML principal) para melhor facilidade de manutenção.
 
-### Option #2: Default Slot
+### Opção #2: Ranhura Padrão {#option-2-default-slot}
 
-A component previously using `inline-template` can also be refactored using the default slot - which makes the data scoping more explicit while preserving the convenience of writing child content inline:
+Um componente anteriormente usando `inline-template` também pode ser refeito usando a ranhura padrão - a qual torna o isolamento de dados mais explícito enquanto preservamos a conveniência de escrever o componente filho em linha:
 
 ```html
-<!-- 2.x Syntax -->
+<!-- Sintaxe da 2.x -->
 <my-comp inline-template :msg="parentMsg">
   {{ msg }} {{ childState }}
 </my-comp>
 
-<!-- Default Slot Version -->
+<!-- Versão da Ranhura Padrão -->
 <my-comp v-slot="{ childState }">
   {{ parentMsg }} {{ childState }}
 </my-comp>
 ```
 
-The child, instead of providing no template, should now render the default slot\*:
+O filho, ao invés de fornecer nenhum modelo de marcação, agora deve interpretar a ranhura padrão \*:
 
 ```html
 <!--
-  in child template, render default slot while passing
-  in necessary private state of child.
+  no modelo de marcação do filho, interpretar a ranhura padrão
+  enquanto passamos o estado privado necessário do filho.
 -->
 <template>
   <slot :childState="childState" />
 </template>
 ```
 
-> - Note: In 3.x, slots can be rendered as the root with native [fragments](../new/fragments) support!
+> - Nota: Na 3.x, as ranhuras podem ser interpretadas como raiz com o suporte de [fragmentos](../new/fragments) nativos!
