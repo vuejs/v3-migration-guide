@@ -1,25 +1,24 @@
 ---
-title: Data Option
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Opção `data` <MigrationBadges :badges="$frontmatter.badges" /> {##data-option}
 
-## Overview
+## Visão Geral {#overview}
 
-- **BREAKING**: `data` component option declaration no longer accepts a plain JavaScript `object` and expects a `function` declaration.
+- **RUTURA**: a declaração da opção de componente `data` já não aceita um `object` de JavaScript simples e espera uma declaração de `function`.
 
-- **BREAKING**: when merging multiple `data` return values from mixins or extends, the merge is now shallow instead of deep (only root-level properties are merged).
+- **RUTURA**: quando combinamos vários valores de retorno de `data` a partir de misturas ou extensões, a combinação agora é superficial ao invés de profunda (apenas as propriedades do nível da raiz são combinadas).
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In 2.x, developers could define the `data` option with either an `object` or a `function`.
+Na 2.x, os programadores poderiam definir a opção `data` ou com um `object` ou uma `function`.
 
-For example:
+Por exemplo:
 
 ```html
-<!-- Object Declaration -->
+<!-- Declaração de Objeto -->
 <script>
   const app = new Vue({
     data: {
@@ -28,7 +27,7 @@ For example:
   })
 </script>
 
-<!-- Function Declaration -->
+<!-- Declaração de Função -->
 <script>
   const app = new Vue({
     data() {
@@ -40,13 +39,13 @@ For example:
 </script>
 ```
 
-Though this provided some convenience in terms of root instances having a shared state, this has led to confusion due to the fact that its only possible on the root instance.
+Embora isto fornecesse alguma conveniência em termos de instâncias de raiz terem um estado partilhado, isto levava à confusão devido ao fato de que apenas é possível na instância de raiz.
 
-## 3.x Update
+## Atualização da 3.x {#_3-x-update}
 
-In 3.x, the `data` option has been standardized to only accept a `function` that returns an `object`.
+Na 3.x, a opção `data` foi padronizada para apenas aceitar uma `function` que retorna um `object`.
 
-Using the example above, there would only be one possible implementation of the code:
+Usando o exemplo acima, apenas existiria uma implementação possível do código:
 
 ```html
 <script>
@@ -62,9 +61,9 @@ Using the example above, there would only be one possible implementation of the 
 </script>
 ```
 
-## Mixin Merge Behavior Change
+## Mudança do Comportamento de Combinação de Mistura {#mixin-merge-behavior-change}
 
-In addition, when `data()` from a component and its mixins or extends base are merged, the merge is now performed *shallowly*:
+Além disto, quando `data()` dum componente e suas misturas ou base de extensões forem combinadas, a combinação agora é realizada *superficialmente*:
 
 ```js
 const Mixin = {
@@ -90,7 +89,7 @@ const CompA = {
 }
 ```
 
-In Vue 2.x, the resulting `$data` is:
+Na Vue 2.x, a `$data` resultante é:
 
 ```json
 {
@@ -101,7 +100,7 @@ In Vue 2.x, the resulting `$data` is:
 }
 ```
 
-In 3.0, the result will be:
+Na 3.0, o resultado será:
 
 ```json
 {
@@ -111,18 +110,18 @@ In 3.0, the result will be:
 }
 ```
 
-[Migration build flag: `OPTIONS_DATA_FN`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `OPTIONS_DATA_FN`](../migration-build#compat-configuration)
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-For users relying on the object declaration, we recommend:
+Para os utilizadores que dependem da declaração de objeto, recomendamos:
 
-- Extracting the shared data into an external object and using it as a property in `data`
-- Rewrite references to the shared data to point to a new shared object
+- Extrair os dados partilhados para um objeto eterno e usá-lo como uma propriedade na `data`
+- Reescrever as referências aos dados partilhados para apontarem para um novo objeto partilhado
 
-For users relying on the deep merge behavior from mixins, we recommend refactoring your code to avoid such reliance altogether, since deep merges from mixins are very implicit and can make the code logic more difficult to understand and debug.
+Para os utilizadores que dependem do comportamento de combinação profunda das misturas, recomendamos refazer o código para evitar tal dependência completamente, uma vez que combinações profundas das misturas são muitos implícitas e podem tornar a lógica do código mais difícil de entender e depurar.
 
-[Migration build flags:](../migration-build.html#compat-configuration)
+[Opções da Construção de Migração:](../migration-build#compat-configuration)
 
 - `OPTIONS_DATA_FN`
 - `OPTIONS_DATA_MERGE`
