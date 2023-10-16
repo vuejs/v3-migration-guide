@@ -1,18 +1,19 @@
 ---
-title: 'Mount API changes'
 badges:
   - breaking
 ---
 
-# Mounted application does not replace the element <MigrationBadges :badges="$frontmatter.badges" />
+# Mudanças da API de Montagem <MigrationBadges :badges="$frontmatter.badges" /> {#mount-api-changes}
 
-## Overview
+## Visão Geral {#overview}
 
-In Vue 2.x, when mounting an application that has a `template`, the rendered content replaces the element we mount to. In Vue 3.x, the rendered application is appended as a child of such an element, replacing element's `innerHTML`.
+> A aplicação montada não substitui o elemento.
 
-## 2.x Syntax
+Na Vue 2.x, quando montamos uma aplicação que tem um `template`, o conteúdo interpretado substitui o elemento para qual montámos. Na Vue 3.x, a aplicação interpretada é anexada como um filho de tal elemento, substituindo a `innerHTML` do elemento.
 
-In Vue 2.x, we pass an HTML element selector to `new Vue()` or `$mount`:
+## Sintaxe da 2.X {#_2-x-syntax}
+
+Na Vue 2.x, passamos um seletor de elemento de HTML ao `new Vue()` ou `$mount`:
 
 ```js
 new Vue({
@@ -27,7 +28,7 @@ new Vue({
   `
 })
 
-// or
+// ou
 const app = new Vue({
   data() {
     return {
@@ -42,7 +43,7 @@ const app = new Vue({
 app.$mount('#app')
 ```
 
-When we mount this application to the page that has a `div` with the passed selector (in our case, it's `id="app"`):
+Quando montamos esta aplicação à página que tem um `div` com o seletor passado (no nosso caso, é `id="app"`):
 
 ```html
 <body>
@@ -52,7 +53,7 @@ When we mount this application to the page that has a `div` with the passed sele
 </body>
 ```
 
-in the rendered result, the mentioned `div` will be replaced with the rendered application content:
+no resultado interpretado, o `div` mencionado será substituído com o conteúdo da aplicação interpretada:
 
 ```html
 <body>
@@ -60,9 +61,9 @@ in the rendered result, the mentioned `div` will be replaced with the rendered a
 </body>
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In Vue 3.x, when we mount an application, its rendered content will replace the `innerHTML` of the element we pass to `mount`:
+Na Vue 3.x, quando montamos uma aplicação, o seu conteúdo interpretado substituído a `innerHTML` do elemento passamos à `mount`:
 
 ```js
 const app = Vue.createApp({
@@ -79,7 +80,7 @@ const app = Vue.createApp({
 app.mount('#app')
 ```
 
-When this app is mounted to the page that has a `div` with `id="app"`, this will result in:
+Quando esta aplicação é montada à página que tem um `div` com o `id="app"`, isto resultará em:
 
 ```html
 <body>
@@ -89,10 +90,10 @@ When this app is mounted to the page that has a `div` with `id="app"`, this will
 </body>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-[Migration build flag: `GLOBAL_MOUNT_CONTAINER`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `GLOBAL_MOUNT_CONTAINER`](../migration-build#compat-configuration)
 
-## See Also
+## Consulte Também {#see-also}
 
-- [`mount` API](https://vuejs.org/api/application.html#app-mount)
+- [API `mount`](https://pt.vuejs.org/api/application#app-mount)
