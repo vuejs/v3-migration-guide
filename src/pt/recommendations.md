@@ -6,8 +6,8 @@ As bibliotecas de apoio para Vue 3 passaram por atualizações principais. Cá e
 - Cadeia de Ferramenta de Construção: Interface da Linha de Comando da Vue -> [Vite](https://pt.vitejs.dev/)
 - Gestão de Estado: Vuex -> [Pinia](https://pinia-docs-pt.netlify.app/)
 - Suporte de Ambiente de Desenvolvimento Integrado (IDE): Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-- Novo suporte de TypeScript de linha de comando: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
-- SSG: VuePress -> [VitePress](https://vitepress.vuejs.org/)
+- Novo suporte de TypeScript da Linha de Comando: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
+- Produção de Aplicações Estáticas: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
 ## Detalhes {#details}
@@ -16,7 +16,7 @@ As bibliotecas de apoio para Vue 3 passaram por atualizações principais. Cá e
 
 Nós agora recomendamos a [Vite](https://pt.vitejs.dev/) como nova cadeia de ferramenta de construção para projetos de Vue 3. A Vite é uma nova ferramenta de construção que oferece inicio de servidor extremamente rápido e desempenho de atualização instantânea. Foi originalmente criada pela equipa de Vue mas agora é uma ferramenta de abstração cruzada. Saiba mais sobre o [porquê estamos a recomendar a Vite](https://pt.vitejs.dev/guide/why).
 
-Tu podes criar um novo projeto de Vue 3 alimentado pela Vite através da [`create-vue`](https://github.com/vuejs/create-vue), nossa nova ferramenta de criação de projeto:
+Nós podemos criar um novo projeto de Vue 3 alimentado pela Vite através da [`create-vue`](https://github.com/vuejs/create-vue), nossa nova ferramenta de criação de projeto:
 
 ```sh
 npm init vue@3
@@ -27,7 +27,7 @@ Embora a interface da linha de comando da Vue tem também sido atualizada para s
 - [Guia de Migração de Vue CLI -> Vite da VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [Ferramentas / Extensões que ajudam com migração automática](https://github.com/vitejs/awesome-vite#vue-cli)
 
-Também consulte o [capítulo de Ferramental na nova documentação](https://pt.vuejs.org/guide/scaling-up/tooling).
+Também consulte o [capítulo do Ferramental na nova documentação](https://pt.vuejs.org/guide/scaling-up/tooling).
 
 ### Vue Router {#vue-router}
 
@@ -62,7 +62,7 @@ A extensão da ferramenta de programação recebeu atualizações principais (la
 
 ### Suporte de TypeScript {#typescript-support}
 
-Tu podes agora verificar o tipo e gerar os ficheiros de definição para os Componentes de Ficheiro Único (Vue SFCs) a partir da linha de comando usando [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
+Nós agora podemos verificar o tipo e gerar os ficheiros de definição para os Componentes de Ficheiro Único a partir da linha de comando usando [`vue-tsc`](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
 
 Consulte também o [guia de TypeScript na nova documentação](https://vuejs.org/guide/typescript/overview).
 
