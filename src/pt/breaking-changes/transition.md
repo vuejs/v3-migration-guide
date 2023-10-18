@@ -1,20 +1,19 @@
 ---
-title: Transition Class Change
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Mudança da Classe de Transição<MigrationBadges :badges="$frontmatter.badges" /> {#transition-class-change}
 
-## Overview
+## Visão Geral {#overview}
 
-The `v-enter` transition class has been renamed to `v-enter-from` and the `v-leave` transition class has been renamed to `v-leave-from`.
+A classe de transição `v-enter` foi renomeada para `v-enter-from` e a classe de transição `v-leave` foi renomeada para `v-leave-from`.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-Before v2.1.8, we had two transition classes for each transition direction: initial and active states.
+Antes da v2.1.8, tínhamos duas classes de transição para cada direção de transição: estado inicial e em atividade.
 
-In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/leave transitions. However, for backward compatibility, the `v-enter` name was untouched:
+Na v2.1.8, introduzimos a `v-enter-to` para abordar o intervalo de tempo entre as transições de entrada e saída. No entanto, por questões de compatibilidade com versões anteriores, o nome `v-enter` era intocável:
 
 ```css
 .v-enter,
@@ -28,11 +27,11 @@ In v2.1.8, we introduced `v-enter-to` to address the timing gap between enter/le
 }
 ```
 
-This became confusing, as _enter_ and _leave_ were broad and not using the same naming convention as their class hook counterparts.
+Isto tornou-se confuso, uma vez que _enter_ e _leave_ eram extensas e não usavam a mesma convenção de nomenclatura como os equivalentes de gatilho de classe.
 
-## 3.x Update
+## Atualização da 3.x {#_3-x-update}
 
-In order to be more explicit and legible, we have now renamed these initial state classes:
+No sentido de ser mais explícito e legível, agora renomeamos estas classes de estado inicial:
 
 ```css
 .v-enter-from,
@@ -46,22 +45,22 @@ In order to be more explicit and legible, we have now renamed these initial stat
 }
 ```
 
-It's now much clearer what the difference between these states is.
+Agora está mais claro qual é a diferença entre estes estados.
 
-![Transition Diagram](/images/transitions.svg)
+![Diagrama da Transição](/images/transitions.svg)
 
-The `<transition>` component's related prop names are also changed:
+Os nomes de propriedade relacionados ao componente `<transition>` também foram mudados:
 
-- `leave-class` is renamed to `leave-from-class` (can be written as `leaveFromClass` in render functions or JSX)
-- `enter-class` is renamed to `enter-from-class` (can be written as `enterFromClass` in render functions or JSX)
+- `leave-class` foi renomeada para `leave-from-class` (pode ser escrita como `leaveFromClass` nas funções de interpretação ou JSX)
+- `enter-class` foi renomeada para `leave-from-class` (pode ser escrita como `enterFromClass` nas funções de interpretação ou JSX)
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-1. Replace instances of `.v-enter` to `.v-enter-from`
-2. Replace instances of `.v-leave` to `.v-leave-from`
-3. Replace instances of related prop names, as above.
+1. Renomear as instâncias de `.v-enter` para `.v-enter-from`
+2. Renomear as instâncias de `.v-leave` para `.v-leave-from`
+3. Renomear as instâncias dos nomes de propriedades relacionadas, como acima.
 
-## See also
+## Consulte Também {#see-also}
 
-- [`<Transition>` as a root can no longer be toggled from the outside](./transition-as-root.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
+- [`<Transition>` como raiz já não pode ser alternado a partir de fora](./transition-as-root)
+- [`<TransitionGroup>` agora não desenha nenhum elemento envolvente por padrão](./transition-group)
