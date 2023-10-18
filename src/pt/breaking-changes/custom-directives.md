@@ -3,25 +3,25 @@ badges:
   - breaking
 ---
 
-# Custom Directives <MigrationBadges :badges="$frontmatter.badges" />
+# Diretivas Personalizadas<MigrationBadges :badges="$frontmatter.badges" /> {#custom-directives}
 
-## Overview
+## Visão Geral {#overview}
 
-The hook functions for directives have been renamed to better align with the component lifecycle.
+As funções de gatilho para as diretivas foram renomeadas para alinharem-se melhor com o ciclo de vida do componente.
 
-Additionally, the `expression` string is no longer passed as part of the `binding` object.
+Adicionalmente, a sequência de caracteres de `expression` já não é passada como parte do objeto de `binding`.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In Vue 2, custom directives were created by using the hooks listed below to target an element’s lifecycle, all of which are optional:
+Na Vue 2, as diretivas personalizadas eram criadas usando os gatilhos listados abaixo para atingir um ciclo de vida do elemento, das quais todas são opcionais:
 
-- **bind** - Called once the directive is bound to the element. Called only once.
-- **inserted** - Called once the element is inserted into the parent DOM.
-- **update** - This hook is called when the element updates, but children haven't been updated yet.
-- **componentUpdated** - This hook is called once the component and the children have been updated.
-- **unbind** - This hook is called once the directive is removed. Also called only once.
+- **`bind`** - Chamado assim que a diretiva for vinculada ao elemento. Chamada apenas uma vez.
+- **`inserted`** - Chamado assim que o elemento for inserido num DOM pai.
+- **`update`** - Este gatilho é chamado quando o elemento atualiza-se, mas os filhos ainda não foram atualizados.
+- **`componentUpdated`** - Este gatilho é chamado assim que o componente e os filhos forem atualizados.
+- **`unbind`** - Este gatilho é chamado assim que a diretiva for removia. Também chamada apenas uma vez.
 
-Here’s an example of this:
+Eis um exemplo deste:
 
 ```html
 <p v-highlight="'yellow'">Highlight this text bright yellow</p>
@@ -35,36 +35,36 @@ Vue.directive('highlight', {
 })
 ```
 
-Here, in the initial setup for this element, the directive binds a style by passing in a value, that can be updated to different values through the application.
+Aqui, na configuração inicial para este elemento, a diretiva vincula um estilo passando um valor, que pode ser atualizado para diferentes valores através da aplicação.
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In Vue 3, however, we’ve created a more cohesive API for custom directives. As you can see, they differ greatly from our component lifecycle methods even though we’re hooking into similar events. We’ve now unified them like so:
+Na Vue 3, no entanto, críamos uma API mais coesa para as diretivas personalizadas. Como podemos ver, diferem grandemente dos nossos métodos do ciclo de vida do componente apesar de prendermos em eventos semelhantes. Agora os unificamos tal como:
 
-- **created** - new! This is called before the element's attributes or event listeners are applied.
-- bind → **beforeMount**
-- inserted → **mounted**
-- **beforeUpdate**: new! This is called before the element itself is updated, much like the component lifecycle hooks.
-- update → removed! There were too many similarities to `updated`, so this is redundant. Please use `updated` instead.
-- componentUpdated → **updated**
-- **beforeUnmount**: new! Similar to component lifecycle hooks, this will be called right before an element is unmounted.
-- unbind -> **unmounted**
+- **`created`** - novo! Este é chamado antes dos atributos do elemento ou ouvintes de evento forem aplicados.
+- `bind` → **`beforeMount`**
+- `inserted` → **`mounted`**
+- **`beforeUpdate`**: novo! Este é chamado antes do próprio elemento ser atualizado, mais como os gatilhos do ciclo de vida do componente.
+- `update` → removido! Existiam muitas semelhanças ao `updated`, então isto é redundante. Use `updated`.
+- `componentUpdated` → **`updated`**
+- **`beforeUnmount`**: novo! Semelhante aos gatilhos do ciclo de vida do componente, este será chamado imediatamente antes dum elemento ser desmontado.
+- `unbind` → **`unmounted`**
 
-The final API is as follows:
+A API final é como se segue:
 
 ```js
 const MyDirective = {
-  created(el, binding, vnode, prevVnode) {}, // new
+  created(el, binding, vnode, prevVnode) {}, // novo
   beforeMount() {},
   mounted() {},
-  beforeUpdate() {}, // new
+  beforeUpdate() {}, // novo
   updated() {},
-  beforeUnmount() {}, // new
+  beforeUnmount() {}, // novo
   unmounted() {}
 }
 ```
 
-The resulting API could be used like this, mirroring the example from earlier:
+A API resultante poderia ser usada desta maneira, espelhando o exemplo anterior:
 
 ```html
 <p v-highlight="'yellow'">Highlight this text bright yellow</p>
@@ -80,13 +80,13 @@ app.directive('highlight', {
 })
 ```
 
-Now that the custom directive lifecycle hooks mirror those of the components themselves, they become easier to reason about and remember!
+Agora que os gatilhos do ciclo de vida da diretiva personalizada espelha aqueles dos próprios componentes, tornaram-se mais fáceis de compreender e lembrar!
 
-### Edge Case: Accessing the component instance
+### Caso Extremo: Acessando a Instância do Componente {#edge-case-accessing-the-component-instance}
 
-It's generally recommended to keep directives independent of the component instance they are used in. Accessing the instance from within a custom directive is often a sign that the directive should rather be a component itself. However, there are situations where this actually makes sense.
+É geralmente recomendado manter as diretivas independentes da instância do componente em que são usadas. Acessar a instância a partir de dentro duma diretiva personalizada é muitas vezes um sinal de que a diretiva deveria ela própria ser um componente. No entanto, existem situações onde isto de fato faz sentido.
 
-In Vue 2, the component instance had to be accessed through the `vnode` argument:
+Na Vue 2, a instância do componente tinha de ser acessada através do argumento `vnode`:
 
 ```js
 bind(el, binding, vnode) {
@@ -94,7 +94,7 @@ bind(el, binding, vnode) {
 }
 ```
 
-In Vue 3, the instance is now part of the `binding`:
+Na Vue 3, a instância agora é parte do `binding`:
 
 ```js
 mounted(el, binding, vnode) {
@@ -102,10 +102,10 @@ mounted(el, binding, vnode) {
 }
 ```
 
-:::warning
-With [fragments](../new/fragments.html#overview) support, components can potentially have more than one root node. When applied to a multi-root component, a custom directive will be ignored and a warning will be logged.
+:::warning AVISO
+Com o suporte a [fragmentos](../new/fragments#overview), os componentes podem potencialmente ter mais do que um nó de raiz. Quando aplicado à um componente de várias raízes, uma diretiva personalizada será ignorada e um aviso será registado.
 :::
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-[Migration build flag: `CUSTOM_DIR`](../migration-build.html#compat-configuration)
+[Opção da Construção de Migração: `CUSTOM_DIR`](../migration-build#compat-configuration)
