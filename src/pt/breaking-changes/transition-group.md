@@ -1,18 +1,17 @@
 ---
-title: Transition Group Root Element
 badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# Elemento de Raiz do Grupo de Transição <MigrationBadges :badges="$frontmatter.badges" /> {#transition-group-root-element}
 
-## Overview
+## Visão Geral {#overview}
 
-`<transition-group>` no longer renders a root element by default, but can still create one with the `tag` attribute.
+`<transition-group>` já não desenha um elemento de raiz por padrão, mais ainda pode criar um com o atributo `tag`.
 
-## 2.x Syntax
+## Sintaxe da 2.x {#_2-x-syntax}
 
-In Vue 2, `<transition-group>`, like other custom components, needed a root element, which by default was a `<span>` but was customizable via the `tag` attribute.
+Na Vue 2, `<transition-group>`, tal como outros componentes personalizados, precisava dum elemento de raiz, que por padrão era `<span>` mas era personalizável através do atributo `tag`:
 
 ```html
 <transition-group tag="ul">
@@ -22,12 +21,12 @@ In Vue 2, `<transition-group>`, like other custom components, needed a root elem
 </transition-group>
 ```
 
-## 3.x Syntax
+## Sintaxe da 3.x {#_3-x-syntax}
 
-In Vue 3, we have [fragment support](../new/fragments.html), so components no longer _need_ a root node. Consequently, `<transition-group>` no longer renders one by default.
+Na Vue 3, temos [suporte a fragmento](../new/fragments.html), então os componentes já não _precisam_ dum nó de raiz. Consequentemente, `<transition-group>` já não desenha um por padrão.
 
-- If you already have the `tag` attribute defined in your Vue 2 code, like in the example above, everything will work as before
-- If you didn't have one defined _and_ your styling or other behaviors relied on the presence of the `<span>` root element to work properly, simply add `tag="span"` to the `<transition-group>`:
+- Se já tivermos o atributo `tag` definido no nosso código de Vue 2, tal como no exemplo acima, tudo funcionará como antes.
+- Se não tínhamos um definido _e_ a nossa estilização ou outros comportamentos dependem da presença do elemento de raiz `<span>` para funcionar apropriadamente, simplesmente adicionamos `tag="span"` ao `<transition-group>`:
 
 ```html
 <transition-group tag="span">
@@ -35,11 +34,11 @@ In Vue 3, we have [fragment support](../new/fragments.html), so components no lo
 </transition-group>
 ```
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-[Migration build flag: `TRANSITION_GROUP_ROOT`](../migration-build.html#compat-configuration)
+[Opção de Construção de Migração: `TRANSITION_GROUP_ROOT`](../migration-build#compat-configuration)
 
-## See also
+## Consulte Também {#see-also}
 
-- [Some transition classes got a rename](./transition.html)
-- [`<Transition>` as a root can no longer be toggled from the outside](./transition-as-root.html)
+- [Algumas classes de transição foram renomeadas](./transition)
+- [`<Transition>` como raiz já não pode ser alternado a partir de fora](./transition-as-root)
