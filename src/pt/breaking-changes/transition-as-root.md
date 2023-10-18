@@ -3,18 +3,18 @@ badges:
   - breaking
 ---
 
-# Transition as Root <MigrationBadges :badges="$frontmatter.badges" />
+# Transição como Raiz <MigrationBadges :badges="$frontmatter.badges" /> {#transition-as-root}
 
-## Overview
+## Visão Geral {#overview}
 
-Using a `<transition>` as a component's root will no longer trigger transitions when the component is toggled from the outside.
+Usar um `<transition>` como uma raiz do componente já não acionará as transições quando o componente for alternado a partir de fora.
 
-## 2.x Behavior
+## Comportamento da 2.x {#_2-x-behavior}
 
-In Vue 2, it was possible to trigger a transition from outside a component by using a `<transition>` as the component's root:
+Na Vue 2, era possível acionar uma transição a partir de fora dum componente usando um `<transition>` como a raiz do componente:
 
 ```html
-<!-- modal component -->
+<!-- componente de modal -->
 <template>
   <transition>
     <div class="modal"><slot/></div>
@@ -23,19 +23,19 @@ In Vue 2, it was possible to trigger a transition from outside a component by us
 ```
 
 ```html
-<!-- usage -->
+<!-- uso -->
 <modal v-if="showModal">hello</modal>
 ```
 
-Toggling the value of `showModal` would trigger a transition inside the modal component.
+Alternar o valor do `showModal` acionaria uma transição dentro do componente de modal.
 
-This worked by accident, not by design. A `<transition>` is supposed to be triggered by changes to its children, not by toggling the `<transition>` itself.
+Isto funcionava por acidente, não por desenho. Um `<transition>` é suposto ser acionado pelas mudanças aos seus filhos, não pela alternância do próprio `<transition>`.
 
-This quirk has now been removed.
+Esta peculiaridade agora foi removida.
 
-## Migration Strategy
+## Estratégia de Migração {#migration-strategy}
 
-A similar effect can be achieved by passing a prop to the component instead:
+Um efeito semelhante pode ser alcançado passando uma propriedade ao componente:
 
 ```vue
 <template>
@@ -51,11 +51,11 @@ export default {
 ```
 
 ```html
-<!-- usage -->
+<!-- uso -->
 <modal :show="showModal">hello</modal>
 ```
 
-## See also
+## Consulte Também {#see-also}
 
-- [Some transition classes got a rename](./transition.html)
-- [`<TransitionGroup>` now renders no wrapper element by default](./transition-group.html)
+- [Algumas classes de transição foram renomeadas](./transition)
+- [`<TransitionGroup>` agora não desenha nenhum elemento envolvente por padrão](./transition-group)
