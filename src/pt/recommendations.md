@@ -14,7 +14,7 @@ As bibliotecas de apoio para Vue 3 passaram por atualizações principais. Cá e
 
 ### Cadeia de Ferramenta de Construção {#build-toolchain}
 
-Nós agora recomendamos a [Vite](https://pt.vitejs.dev/) como nova cadeia de ferramenta de construção para projetos de Vue 3. A Vite é uma nova ferramenta de construção que oferece inicio de servidor extremamente rápido e desempenho de atualização instantânea. Foi originalmente criada pela equipa de Vue mas agora é uma ferramenta de abstração cruzada. Saiba mais sobre o [porquê estamos a recomendar a Vite](https://pt.vitejs.dev/guide/why).
+Nós agora recomendamos a [Vite](https://pt.vitejs.dev/) como nova cadeia de ferramenta de construção para projetos de Vue 3. A Vite é uma nova ferramenta de construção que oferece inicio de servidor extremamente rápido e desempenho de atualização instantânea. Foi originalmente criada pela equipa de Vue mas agora é uma ferramenta de abstração cruzada. Saiba mais sobre o [porquê de estarmos a recomendar a Vite](https://pt.vitejs.dev/guide/why).
 
 Nós podemos criar um novo projeto de Vue 3 alimentado pela Vite através da [`create-vue`](https://github.com/vuejs/create-vue), nossa nova ferramenta de criação de projeto:
 
@@ -39,7 +39,7 @@ A Vue Router 4.0 fornece suporte de Vue 3 e tem um número de mudanças de rutur
 
 ### Gestão de Estado {#state-management}
 
-A [Pinia](https://pinia-docs-pt.netlify.app/) é a nova solução de gestão de estado de grande escala recomendada. A Pinia foi criada como um protótipo para Vuex 5, e agora evoluiu para a implementação de fato daquilo que tínhamos planeado para a Vuex 5. Nós decidimos manter o seu nome original em respeito da quantidade de trabalho que foi investida nela pelo membro da equipa principal [Eduardo](https://github.com/posva).
+A [Pinia](https://pinia-docs-pt.netlify.app/) é a nova solução de gestão de estado de grande escala recomendada. A Pinia foi criada como um protótipo para Vuex 5, e agora evoluiu para a implementação de fato daquilo que tínhamos planeado para a Vuex 5. Nós decidimos manter o seu nome original em respeito a quantidade de trabalho que foi investida nela pelo membro da equipa principal [Eduardo](https://github.com/posva).
 
 - [Documentação](https://pinia-docs-pt.netlify.app/)
 - [GitHub](https://github.com/vuejs/pinia)
@@ -47,15 +47,15 @@ A [Pinia](https://pinia-docs-pt.netlify.app/) é a nova solução de gestão de 
 
 A Vuex 4.0 também oferece suporte de Vue 3 em grande parte com a mesma API que a 3.x, e pode ser usada se tiveres memórias de Vuex existentes que precisam de ser migradas para Vue 3. A única mudança de rutura é [como a extensão é instalada](https://vuex.vuejs.org/guide/migrating-to-4-0-from-3-x#breaking-changes).
 
-### Suporte de Ambiente de Desenvolvimento Integrado (IDE) {#ide-support}
+### Suporte de Ambiente de Desenvolvimento Integrado {#ide-support}
 
 A [Volar](https://github.com/johnsoncodehk/volar) é agora a nova extensão de VSCode oficial, com suporte de TypeScript muito melhorado para Componentes de Ficheiro Único (Vue SFC), incluindo inferência de tipo completa para expressões de modelo de marcação.
 
-Se tens instalado a anterior Vetur, certifica-te de a desativar para evitar conflitos com a Volar.
+Se temos instalado a extensão anterior Vetur, devemos certificar-nos de desativá-la para evitar conflitos com a Volar.
 
 ### Extensão das Ferramentas de Programação {#devtools-extension}
 
-A extensão da ferramenta de programação recebeu atualizações principais (lançada como v6) para suportar ambas Vue 2 e Vue 3. Se instalaste anteriormente a v6 através do canal beta, agora podes removê-lo e instalar a extensão a partir do canal estável:
+A extensão da ferramenta de programação recebeu atualizações principais (lançada como v6) para suportar ambas Vue 2 e Vue 3. Se instalaste anteriormente a v6 através do canal beta, agora podemos removê-lo e instalar a extensão a partir do canal estável:
 
 - [Documentação](https://devtools.vuejs.org/guide/installation)
 - [GitHub](https://github.com/vuejs/devtools)
