@@ -21,6 +21,16 @@
         fill: #231f20;
       }
 
+      @media (prefers-color-scheme: dark) {
+        .cls-3 {
+          fill: #f0f0f0;
+        }
+
+        .cls-10, .cls-2 {
+          stroke: #f0f0f0;
+        }
+      }
+
       .cls-4, .cls-6 {
         fill: #39b54a;
       }
