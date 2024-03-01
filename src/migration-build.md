@@ -135,9 +135,9 @@ The following workflow walks through the steps of migrating an actual Vue 2 app 
    // vite.config.js
    export default {
      resolve: {
-       alias: {
-         vue: '@vue/compat'
-       }
+       alias: [{
+         find: /^vue$/, replacement: '@vue/compat'
+       }]
      },
      plugins: [
        vue({
