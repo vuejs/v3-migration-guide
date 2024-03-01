@@ -49,7 +49,7 @@ Since [`KeyboardEvent.keyCode` has been deprecated](https://developer.mozilla.or
 <input v-on:keyup.page-down="nextPage">
 
 <!-- Matches both q and Q -->
-<input v-on:keypress.q="quit">
+<input v-on:keydown.q="quit">
 ```
 
 As a result, this means that `config.keyCodes` is now also deprecated and will no longer be supported.
@@ -61,7 +61,7 @@ For those using `keyCode` in their codebase, we recommend converting them to the
 The keys for some punctuation marks can just be included literally. e.g. For the `,` key:
 
 ```html
-<input v-on:keypress.,="commaPress">
+<input v-on:keydown.,="commaPress">
 ```
 
 Limitations of the syntax prevent certain characters from being matched, such as `"`, `'`, `/`, `=`, `>`, and `.`. For those characters you should check `event.key` inside the listener instead.
