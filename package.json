@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build",
-    "serve": "vitepress serve"
+    "serve": "vitepress serve",
+    "translation:compare": "v-translation compare",
+    "translation:update": "v-translation update",
+    "translation:status": "v-translation status"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.8"
+    "vitepress": "1.0.0-rc.36",
+    "vitepress-translation-helper": "^0.1.3"
   },
   "pnpm": {
     "peerDependencyRules": {

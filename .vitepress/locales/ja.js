@@ -1,9 +1,7 @@
 export default {
-  vitepressConfig: {
-    title: 'Vue 3 移行ガイド',
-    description: 'Vue 2 から Vue 3 への移行に関するガイド',
-    lang: 'ja-JP',
-  },
+  title: 'Vue 3 移行ガイド',
+  description: 'Vue 2 から Vue 3 への移行に関するガイド',
+  lang: 'ja-JP',
   themeConfig: {
     docFooter: {
       prev: '前のページ',

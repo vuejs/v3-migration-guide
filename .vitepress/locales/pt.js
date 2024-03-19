@@ -1,9 +1,7 @@
 export default {
-  vitepressConfig: {
-    title: 'Guia de Migração da Vue 3',
-    description: 'Guia sobre a migração da Vue 2 à Vue 3',
-    lang: 'pt-PT'
-  },
+  title: 'Guia de Migração da Vue 3',
+  description: 'Guia sobre a migração da Vue 2 à Vue 3',
+  lang: 'pt-PT',
   themeConfig: {
     nav: [
       { text: 'Documentação da Vue 3', link: 'https://pt.vuejs.org' },

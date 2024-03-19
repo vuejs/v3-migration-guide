@@ -1,23 +1,13 @@
-import locales from "./locales"
+import { defineConfig } from 'vitepress'
+import { en, zh, ja, uk, pt } from "./locales"
 
-/**
- * @type {import('vitepress').UserConfig}
- */
-export default {
+export default defineConfig({
   srcDir: 'src',
-  locales: locales.vitepressConfig,
-
-
-  themeConfig: {
-    localeLinks: {
-      items: [
-        {text: 'English', link: '/'},
-        {text: '中文简体', link: '/zh/'},
-        {text: '日本語', link: '/ja/'},
-        {text: 'Українська', link: '/uk/'},
-        {text: 'Português', link: '/pt/'}
-      ]
-    },
-    locales: locales.themeConfig
+  locales: {
+    root: { label: 'English', lang: 'en-US', link: '/', ...en },
+    zh: { label: '中文简体',  lang: 'zh-CN', link: '/zh/', ...zh },
+    ja: { label: '日本語', lang: 'ja-JP', link: '/ja/', ...ja },
+    uk: { label: 'Українська', lang: 'uk', link: '/uk/', ...uk },
+    pt: { label: 'Português', lang: 'pt-BR', link: '/pt/', ...pt },
   }
-}
+})
