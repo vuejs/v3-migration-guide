@@ -7,7 +7,7 @@
     "dev": "vitepress",
     "build": "vitepress build",
     "serve": "vitepress serve",
-    "translation:compare": "v-translation compare",
+    "translation:compare": "v-translation compare --path={src/index.md,src/migration-build.md,src/recommendations.md,src/new,src/breaking-changes}",
     "translation:update": "v-translation update",
     "translation:status": "v-translation status"
   },
