@@ -1,9 +1,7 @@
 export default {
-  vitepressConfig: {
-    title: 'Міграція з Vue 3',
-    description: 'Гід з міграції з Vue 2 на Vue 3',
-    lang: 'ua-UK'
-  },
+  title: 'Міграція з Vue 3',
+  description: 'Гід з міграції з Vue 2 на Vue 3',
+  lang: 'ua-UK',
   themeConfig: {
     docFooter: {
       prev: 'Попередня сторінка',

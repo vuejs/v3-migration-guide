@@ -1,10 +1,8 @@
 
 export default {
-  vitepressConfig: {
-    title: 'Vue 3 迁移指南',
-    description: '从 Vue 2 迁移到 Vue 3 的指南',
-    lang: 'zh-CN',
-  },
+  title: 'Vue 3 迁移指南',
+  description: '从 Vue 2 迁移到 Vue 3 的指南',
+  lang: 'zh-CN',
   themeConfig: {
     docFooter: {
       prev: '上一页',

@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "vitepress",
     "build": "vitepress build",
-    "serve": "vitepress serve"
+    "serve": "vitepress serve",
+    "translation:compare": "v-translation compare --path={src/index.md,src/migration-build.md,src/recommendations.md,src/new,src/breaking-changes}",
+    "translation:update": "v-translation update",
+    "translation:status": "v-translation status"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.8"
+    "vitepress": "^1.0.0",
+    "vitepress-translation-helper": "^0.2.1"
   },
   "pnpm": {
     "peerDependencyRules": {
