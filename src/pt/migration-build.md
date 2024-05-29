@@ -34,7 +34,7 @@ A construção de migração será fornecida começando com a 3.1, e continuará
 
 ## Fluxo de Trabalho da Atualização {#upgrade-workflow}
 
-O seguinte fluxo de trabalho percorre as etapas de migração duma aplicação de Vue 2 verdadeira (Vue HackerNews 2.0) para Vue 3. As consolidações completas podem ser encontradas [nesta ligação](https://github.com/vuejs/vue-hackernews-2.0/compare/migration). Nota que as etapas propriamente dita necessárias para o nosso projeto pode variar, estas etapas deveriam ser tratadas como orientações gerais ao invés de instruções estritas. 
+O seguinte fluxo de trabalho percorre as etapas de migração duma aplicação de Vue 2 verdadeira (Vue HackerNews 2.0) para Vue 3. As consolidações completas podem ser encontradas [nesta ligação](https://github.com/vuejs/vue-hackernews-2.0/compare/migration). Nota que as etapas propriamente dita necessárias para o nosso projeto pode variar, estas etapas deveriam ser tratadas como orientações gerais ao invés de instruções estritas.
 
 ### Preparações {#preparations}
 
@@ -167,6 +167,8 @@ O seguinte fluxo de trabalho percorre as etapas de migração duma aplicação d
      export { configureCompat }
    }
    ```
+
+Notemos que esta declaração de módulo deve ser colocada num ficheiro `*.d.ts` que contém pelo menos outra importação ou exportação de alto nível (`export {}` é o suficiente) para estes tipos [aumentarem o módulo](https://pt.vuejs.org/guide/typescript/options-api#type-augmentation-placement) em vez de sobreescrevê-lo.
 
 5. Neste ponto, a nossa aplicação pode deparar-se com alguns erros de tempo de compilação ou avisos (por exemplo, uso de filtros). Temos que os corrigir primeiro. Se todos os avisos do compilador forem solucionados, também podemos definir o compilador para o modo de Vue 3.
 
