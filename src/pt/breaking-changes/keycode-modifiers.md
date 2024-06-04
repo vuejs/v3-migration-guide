@@ -49,7 +49,7 @@ Já que a [`KeyboardEvent.keyCode` foi depreciado](https://developer.mozilla.org
 <input v-on:keyup.page-down="nextPage">
 
 <!-- Corresponde a ambos q e Q -->
-<input v-on:keypress.q="quit">
+<input v-on:keydown.q="quit">
 ```
 
 Como resultado, isto significa que `config.keyCodes` agora também está depreciada e já não será suportada.
@@ -61,7 +61,7 @@ Para aqueles usando `keyCode` na sua base de código, recomendados convertê-los
 As teclas para alguns marcadores de pontuação apenas podem ser incluídos literalmente, por exemplo para a tecla `,`:
 
 ```html
-<input v-on:keypress.,="commaPress">
+<input v-on:keydown.,="commaPress">
 ```
 
 Limitações da sintaxe impedem certos caracteres de serem correspondidos, tais como `"`, `'`, `/`, `=`, `>`, e `.`. Para estes caracteres devemos verificar a `event.key` dentro do ouvinte.
