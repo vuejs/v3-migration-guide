@@ -38,7 +38,7 @@
 
 ### 准备工作
 
-- 如果你仍然使用[废弃的具名/作用域插槽语法](https://cn.vuejs.org/v2/guide/components-slots.html#废弃了的语法)，请先将其更新至 (2.6 已经支持的) 最新的语法。
+- 如果你仍然使用[废弃的具名/作用域插槽语法](https://v2.cn.vuejs.org/v2/guide/components-slots.html#废弃了的语法)，请先将其更新至 (2.6 已经支持的) 最新的语法。
 
 ### 安装
 
