@@ -22,7 +22,6 @@ While it looks like a lot has changed, a lot of what you know and love about Vue
 ### Components
 
 - [Functional components can only be created using a plain function](./functional-components.html)
-- [`functional` attribute on single-file component (SFC) `<template>` and `functional` component option are deprecated](./functional-components.html)
 - [Async components now require `defineAsyncComponent` method to be created](./async-components.html)
 - [Component events should now be declared with the `emits` option](./emits-option.md)
 
