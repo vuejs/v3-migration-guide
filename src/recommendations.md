@@ -5,8 +5,8 @@ The supporting libraries for Vue 3 have undergone major updates. Here is a summa
 - New versions of Router, Devtools & test utils w/ Vue 3 support
 - Build Toolchain: Vue CLI -> [Vite](https://vitejs.dev/)
 - State Management: Vuex -> [Pinia](https://pinia.vuejs.org/)
-- IDE Support: Vetur -> [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-- New command line TypeScript support: [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc)
+- IDE Support: Vetur -> [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=vue.volar)
+- New command line TypeScript support: [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc)
 - SSG: VuePress -> [VitePress](https://vitepress.vuejs.org/)
 - JSX: `@vue/babel-preset-jsx` -> [`@vue/babel-plugin-jsx`](https://github.com/vuejs/jsx-next)
 
@@ -49,9 +49,9 @@ Vuex 4.0 also provides Vue 3 support with largely the same API as 3.x, and can b
 
 ### IDE Support
 
-[Volar](https://github.com/johnsoncodehk/volar) is now the new official VSCode extension, with greatly improved TypeScript support for Vue SFCs, including full type inference for template expressions.
+[Vue (Official)](https://github.com/vuejs/language-tools/tree/master/extensions/vscode) is now the new official VSCode extension, with greatly improved TypeScript support for Vue SFCs, including full type inference for template expressions.
 
-If you have previous installed Vetur, make sure to disable it to avoid conflict with Volar.
+If you have previous installed Vetur, make sure to disable it to avoid conflict with Vue (Official).
 
 ### Devtools Extension
 
@@ -62,7 +62,7 @@ The devtools extension has received major updates (released as v6) to support bo
 
 ### TypeScript Support
 
-You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vue-tsc).
+You can now type-check and generate definition files for Vue SFCs from the command line using [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc).
 
 Also see [TypeScript Guide in new docs](https://vuejs.org/guide/typescript/overview.html).
 
