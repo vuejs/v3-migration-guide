@@ -5,16 +5,12 @@ badges:
 
 # Attribute Coercion Behavior <MigrationBadges :badges="$frontmatter.badges" />
 
-::: info Info
-This is a low-level internal API change and does not affect most developers.
-:::
-
 ## Overview
 
 Here is a high level summary of the changes:
 
 - Drop the internal concept of enumerated attributes and treat those attributes the same as normal non-boolean attributes
-- **BREAKING**: No longer removes attribute if the value is boolean `false`. Instead, it's set as attr="false". To remove the attribute, use `null` or `undefined`.
+- **BREAKING**: No longer removes non-boolean attribute if the value is boolean `false`. Instead, it's set as attr="false". To remove the attribute, use `null` or `undefined`. Handling of [boolean attributes](https://meiert.com/en/blog/boolean-attributes-of-html/) remain untouched.
 
 For more information, read on!
 
@@ -30,7 +26,7 @@ In 2.x, we had the following strategies for coercing `v-bind` values:
 
 - For other attributes, we remove "falsy" values (`undefined`, `null`, or `false`) and set other values as-is (see [here](https://github.com/vuejs/vue/blob/bad3c326a3f8b8e0d3bcf07917dc0adf97c32351/src/platforms/web/runtime/modules/attrs.js#L92-L113)).
 
-The following table describes how Vue coerce "enumerated attributes" differently with normal non-boolean attributes:
+The following table describes how Vue coerces "enumerated attributes" differently with normal non-boolean attributes:
 
 | Binding expression  | `foo` <sup>normal</sup> | `draggable` <sup>enumerated</sup> |
 | ------------------- | ----------------------- | --------------------------------- |
@@ -91,7 +87,7 @@ In 2.x, invalid values were coerced to `'true'` for enumerated attributes. This 
 
 ### Coercing `false` to `'false'` instead of removing the attribute
 
-In 3.x, `null` or `undefined` should be used to explicitly remove an attribute.
+In 3.x, `null` or `undefined` should be used to explicitly remove a non-boolean attribute.
 
 ### Comparison between 2.x & 3.x behavior
 
