@@ -337,6 +337,5 @@ export default {
 | COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` замінено на `v-model` з аргументами                              | [link](./breaking-changes/v-model.html)                                                      |
 | COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` тепер чутливий до порядку                                    | [link](./breaking-changes/v-bind.html)                                                       |
 | COMPILER_V_ON_NATIVE         | ✔    | Модифікатор `v-on.native` видалено                                             | [link](./breaking-changes/v-on-native-modifier-removed.html)                                 |
-| COMPILER_V_FOR_REF           | ✔    | `ref` в `v-for` (підтримка компілятора)                                             |                                                                                              |
 | COMPILER_NATIVE_TEMPLATE     | ✔    | `<template>` без спеціальних директив тепер відображається як рідний елемент          |                                                                                              |
 | COMPILER_FILTERS             | ✔    | фільтри (підтримка компілятора)                                                     |                                                                                              |

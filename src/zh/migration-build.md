@@ -336,6 +336,5 @@ export default {
 | COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` 被替换为带参数的 `v-model` | [链接](./breaking-changes/v-model.html) |
 | COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` 现在是顺序敏感的 | [链接](./breaking-changes/v-bind.html) |
 | COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` 修饰符被移除 | [链接](./breaking-changes/v-on-native-modifier-removed.html) |
-| COMPILER_V_FOR_REF           | ✔    | `v-for` 中的 `ref` (编译器支持)) | |
 | COMPILER_NATIVE_TEMPLATE     | ✔    | 没有特殊指令的 `<template>` 现在会被渲染为原生元素 | |
 | COMPILER_FILTERS             | ✔    | 过滤器 (编译器支持) | |
