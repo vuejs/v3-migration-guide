@@ -339,6 +339,5 @@ As funcionalidades que começam com `COMPILER_` são específicas do compilador:
 | COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` substituído por `v-model` com argumentos                 | [ligação](./breaking-changes/v-model)                                                      |
 | COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` agora é sensível a ordem                              | [ligação](./breaking-changes/v-bind)                                                       |
 | COMPILER_V_ON_NATIVE         | ✔    | modificador `v-on.native` removido                                        | [ligação](./breaking-changes/v-on-native-modifier-removed)                                 |
-| COMPILER_V_FOR_REF           | ✔    | `ref` no `v-for` (suporte de compilador)                                   |                                                                                             |
 | COMPILER_NATIVE_TEMPLATE     | ✔    | `<template>` sem diretivas especiais agora desenha-se como elemento nativo |                                                                                             |
 | COMPILER_FILTERS             | ✔    | filtros (suporte de compilador)                                            |                                                                                             |

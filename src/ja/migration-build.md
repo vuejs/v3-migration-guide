@@ -337,6 +337,5 @@ export default {
 | COMPILER_V_BIND_SYNC         | ✔    | `v-bind.sync` は引数つきの `v-model` に置き換わりました                    | [link](./breaking-changes/v-model.html)                                                      |
 | COMPILER_V_BIND_OBJECT_ORDER | ✔    | `v-bind="object"` は順序に依存するようになりました                              | [link](./breaking-changes/v-bind.html)                                                       |
 | COMPILER_V_ON_NATIVE         | ✔    | `v-on.native` 修飾子は削除されました                                        | [link](./breaking-changes/v-on-native-modifier-removed.html)                                 |
-| COMPILER_V_FOR_REF           | ✔    | `v-for` 内の `ref`（コンパイラーサポート）                                   |                                                                                             |
 | COMPILER_NATIVE_TEMPLATE     | ✔    | 特別なディレクティブなしの `<template>` は、ネイティブ要素としてレンダリングされるようになりました |                                                                                             |
 | COMPILER_FILTERS             | ✔    | フィルター（コンパイラーサポート）                                            |                                                                                             |
